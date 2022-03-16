@@ -13,9 +13,9 @@
     "fix": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
   },
   "keywords": [
-    "Ruben"
+    "Lune"
   ],
-  "author": "Ruben",
+  "author": "Lune Climate",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.21.1",

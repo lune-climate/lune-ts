@@ -1,4 +1,4 @@
-# Ruben TS client prototype
+# Lune TS client prototype
 
 ## Base client
 
