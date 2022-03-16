@@ -76,7 +76,7 @@ build-final-client: reset-client add-services-client append-models-client
 full-build: install api-schema fix-services build-final-client fix-linting build
 
 publish:
-	npm publish
+	npm publish --access public
 
 update-version-patch:
 	npm version patch
