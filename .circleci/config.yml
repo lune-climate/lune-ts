@@ -1,0 +1,34 @@
+version: 2.1
+
+jobs:
+  publish:
+    docker:
+      - image: cimg/node:17.7.1
+    steps:
+      - checkout
+      - run:
+          name: Set registry URL
+          command: npm set registry https://packagecloud.io/lune-climate/lune/npm/
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
+      - run:
+          name: Publish package
+          command: make publish
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - publish:
+          requires:
+            - hold-publish
+          filters:
+            branches:
+              only:
+                master
+      - hold-publish:
+          type: approval
+          filters:
+            branches:
+              only:
+                master

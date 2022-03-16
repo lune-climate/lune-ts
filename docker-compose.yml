@@ -1,0 +1,7 @@
+version: "1.0"
+services:
+  client:
+    build: .
+    command: bash
+    volumes:
+      - .:/lune-ts

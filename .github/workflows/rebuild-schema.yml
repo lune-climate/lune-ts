@@ -1,0 +1,35 @@
+name: Rebuild client and open PR with changes
+
+# Perform workflow whenever we get a change in schema event
+on:
+  repository_dispatch:
+    types: [rebuild_schema_change]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Rebuild schema from scratch
+        run: docker-compose -f docker-compose-ci.yml run update_schema
+      - name: Create PR with changes
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.AUTO_REBUILD_TOKEN }}
+          commit-message: Client auto update
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          base: master
+          branch: auto-schema-update
+          delete-branch: true
+          title: 'Client auto update'
+          body: |
+            Underlying schema has changed. Check changes and approve accordingly to determine which
+            version change this is.
+          labels: |
+            Schema Rebuild
+            Automated PR
+          reviewers: lune-eng
+          draft: false
