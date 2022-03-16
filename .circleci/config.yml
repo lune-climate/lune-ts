@@ -7,9 +7,6 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Set registry URL
-          command: npm set registry https://packagecloud.io/lune-climate/lune/npm/
-      - run:
           name: Authenticate with registry
           command: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
       - run:
