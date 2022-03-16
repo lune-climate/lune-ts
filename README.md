@@ -1,4 +1,4 @@
-# Lune TS client prototype
+# Lune TS client
 
 ## Base client
 
