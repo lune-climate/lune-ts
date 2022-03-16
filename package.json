@@ -1,5 +1,5 @@
 {
-  "name": "lune",
+  "name": "@lune-climate/lune",
   "version": "1.0.0",
   "description": "Lune Typescript Client",
   "main": "dist/client.js",
