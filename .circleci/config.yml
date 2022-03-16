@@ -4,6 +4,7 @@ jobs:
   publish:
     docker:
       - image: cimg/node:17.7.1
+    resource_class: small
     steps:
       - checkout
       - run:
