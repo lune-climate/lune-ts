@@ -1,8 +1,8 @@
-const lune = require("ruben-ts-client");
+const lune = require("lune");
 // If you're on a module, you can also import in this manner
-// import * as lune from "ruben-ts-client";
+// import * as lune from "lune";
 
-const luneClient = new lune.LuneClient("your_api_key_would_go_here");
+const luneClient = new lune.LuneClient('your_api_key_would_go_here');
 (async () => {
   const resp = await luneClient.createOrderByMass({
     mass: { amount: "123.21", unit: "t" },
@@ -16,6 +16,6 @@ const luneClient = new lune.LuneClient("your_api_key_would_go_here");
     console.log(`Human friendly error description: ${resp.val.description}`);
   } else if (resp.ok) {
     const orderByQuantity = resp.val;
-    console.log(`OrderByQuantity: ${orderByQuantity}`);
+    console.log(`OrderByQuantity: ${JSON.stringify(orderByQuantity)}`);
   }
 })();
