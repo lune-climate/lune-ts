@@ -7,6 +7,7 @@ import type { Webhook } from '../models/Webhook'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -19,7 +20,7 @@ export abstract class WebhooksService {
      * @returns Webhook Existing webhooks fetched successfully
      * @throws ApiError
      */
-    public getWebhooks(): Promise<Result<Array<Webhook>, string>> {
+    public getWebhooks(): Promise<Result<Array<Webhook>, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/webhooks',
@@ -36,7 +37,7 @@ export abstract class WebhooksService {
      * @returns Webhook A webhook created successfully
      * @throws ApiError
      */
-    public createWebhook(requestBody: CreateWebhookRequest): Promise<Result<Webhook, string>> {
+    public createWebhook(requestBody: CreateWebhookRequest): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/webhooks',
@@ -56,7 +57,7 @@ export abstract class WebhooksService {
      * @returns Webhook Existing webhook fetched successfully
      * @throws ApiError
      */
-    public getWebhookById(id: string): Promise<Result<Webhook, string>> {
+    public getWebhookById(id: string): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/webhooks/{id}',
@@ -81,7 +82,7 @@ export abstract class WebhooksService {
     public updateWebhook(
         id: string,
         requestBody: UpdateWebhookRequest,
-    ): Promise<Result<Webhook, string>> {
+    ): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {
             method: 'PUT',
             url: '/webhooks/{id}',
@@ -105,7 +106,7 @@ export abstract class WebhooksService {
      * @returns any Existing webhook deleted successfully
      * @throws ApiError
      */
-    public deleteWebhook(id: string): Promise<Result<any, string>> {
+    public deleteWebhook(id: string): Promise<Result<any, ApiError>> {
         return __request(this.client, this.config, {
             method: 'DELETE',
             url: '/webhooks/{id}',
@@ -129,7 +130,7 @@ export abstract class WebhooksService {
      * @returns Webhook The secret was rotated successfully
      * @throws ApiError
      */
-    public rotateWebhookSecret(id: string): Promise<Result<Webhook, string>> {
+    public rotateWebhookSecret(id: string): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {
             method: 'PUT',
             url: '/webhooks/{id}/rotate-secret',

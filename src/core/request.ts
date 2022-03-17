@@ -3,8 +3,9 @@
 /* eslint-disable */
 import type { ApiRequestOptions } from './ApiRequestOptions'
 import type { ClientConfig, Headers } from './ClientConfig'
-import { AxiosInstance } from 'axios'
+import { AxiosError, AxiosInstance } from 'axios'
 import { Err, Ok, Result } from 'ts-results-es'
+import { ApiError } from './ApiError'
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null
@@ -234,7 +235,7 @@ export const request = async <T>(
     client: AxiosInstance,
     config: ClientConfig,
     options: ApiRequestOptions,
-): Promise<Result<T, string>> => {
+): Promise<Result<T, ApiError>> => {
     const url = getUrl(config, options)
     const formData = getFormData(options)
     const body = getRequestBody(options)
@@ -250,13 +251,7 @@ export const request = async <T>(
         .then(function (response) {
             return Ok(response.data as T)
         })
-        .catch(function (error) {
-            if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
-                return Err(getError(options, error.response.status))
-            } else {
-                return Err(error.message)
-            }
+        .catch(function (error: AxiosError) {
+            return Err(new ApiError(error, options))
         })
 }

@@ -8,6 +8,7 @@ import type { Project } from '../models/Project'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -44,7 +45,7 @@ export abstract class ProjectsService {
         limit?: string,
         after?: string,
         recentlyDisabled?: boolean,
-    ): Promise<Result<PaginatedBundles, string>> {
+    ): Promise<Result<PaginatedBundles, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/bundles',
@@ -73,7 +74,7 @@ export abstract class ProjectsService {
      * @returns Bundle The response returns a bundle
      * @throws ApiError
      */
-    public getBundleById(id: string): Promise<Result<Bundle, string>> {
+    public getBundleById(id: string): Promise<Result<Bundle, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/bundles/{id}',
@@ -114,7 +115,7 @@ export abstract class ProjectsService {
         limit?: string,
         after?: string,
         recentlyDisabled?: boolean,
-    ): Promise<Result<PaginatedProjects, string>> {
+    ): Promise<Result<PaginatedProjects, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/projects',
@@ -141,7 +142,7 @@ export abstract class ProjectsService {
      * @returns Project The response returns a project
      * @throws ApiError
      */
-    public getProjectById(id: string): Promise<Result<Project, string>> {
+    public getProjectById(id: string): Promise<Result<Project, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/projects/{id}',
@@ -165,7 +166,7 @@ export abstract class ProjectsService {
      * @returns Project The response returns a project
      * @throws ApiError
      */
-    public getProjectBySlug(slug: string): Promise<Result<Project, string>> {
+    public getProjectBySlug(slug: string): Promise<Result<Project, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/projects/by-slug/{slug}',

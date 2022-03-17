@@ -5,6 +5,7 @@ import type { Account } from '../models/Account'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -22,7 +23,7 @@ export abstract class AccountsService {
      * @returns Account The response returns an account
      * @throws ApiError
      */
-    public getAccount(): Promise<Result<Account, string>> {
+    public getAccount(): Promise<Result<Account, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/accounts/me',

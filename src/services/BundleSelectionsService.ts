@@ -6,6 +6,7 @@ import type { BundleSelectionRequest } from '../models/BundleSelectionRequest'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -26,7 +27,7 @@ export abstract class BundleSelectionsService {
      * @returns BundleSelection The response returns the account's bundle selections
      * @throws ApiError
      */
-    public getBundleSelection(): Promise<Result<BundleSelection, string>> {
+    public getBundleSelection(): Promise<Result<BundleSelection, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/bundle-selections',
@@ -49,7 +50,7 @@ export abstract class BundleSelectionsService {
      */
     public updateBundleSelection(
         requestBody: BundleSelectionRequest,
-    ): Promise<Result<BundleSelection, string>> {
+    ): Promise<Result<BundleSelection, ApiError>> {
         return __request(this.client, this.config, {
             method: 'PUT',
             url: '/bundle-selections',

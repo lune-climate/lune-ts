@@ -9,6 +9,7 @@ import type { PaginatedOffsetLinks } from '../models/PaginatedOffsetLinks'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -22,7 +23,7 @@ export abstract class OffsetLinksService {
      * @returns OffsetLink Offset link fetched successfully.
      * @throws ApiError
      */
-    public getOffsetLinkById(id: string): Promise<Result<OffsetLink, string>> {
+    public getOffsetLinkById(id: string): Promise<Result<OffsetLink, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links/{id}',
@@ -47,7 +48,7 @@ export abstract class OffsetLinksService {
     public updateOffsetLinkById(
         id: string,
         requestBody: OffsetLinkUpdateRequest,
-    ): Promise<Result<OffsetLink, string>> {
+    ): Promise<Result<OffsetLink, ApiError>> {
         return __request(this.client, this.config, {
             method: 'PUT',
             url: '/offset-links/{id}',
@@ -82,7 +83,7 @@ export abstract class OffsetLinksService {
     public getOffsetLinks(
         limit?: string,
         after?: string,
-    ): Promise<Result<PaginatedOffsetLinks, string>> {
+    ): Promise<Result<PaginatedOffsetLinks, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links',
@@ -103,7 +104,7 @@ export abstract class OffsetLinksService {
      * @returns OffsetLink The offset link created successfully.
      * @throws ApiError
      */
-    public createOffsetLink(requestBody: OffsetLinkRequest): Promise<Result<OffsetLink, string>> {
+    public createOffsetLink(requestBody: OffsetLinkRequest): Promise<Result<OffsetLink, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/offset-links',
@@ -124,7 +125,7 @@ export abstract class OffsetLinksService {
      * @returns OffsetLinkAnalytics Offset link analytics fetched successfully.
      * @throws ApiError
      */
-    public getOffsetLinkAnalyticsById(id: string): Promise<Result<OffsetLinkAnalytics, string>> {
+    public getOffsetLinkAnalyticsById(id: string): Promise<Result<OffsetLinkAnalytics, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links/{id}/analytics',

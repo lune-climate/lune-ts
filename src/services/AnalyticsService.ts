@@ -5,6 +5,7 @@ import type { Analytics } from '../models/Analytics'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -25,7 +26,7 @@ export abstract class AnalyticsService {
      * @returns Analytics The response return account analytics
      * @throws ApiError
      */
-    public getAnalytics(start?: string, end?: string): Promise<Result<Analytics, string>> {
+    public getAnalytics(start?: string, end?: string): Promise<Result<Analytics, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/analytics',

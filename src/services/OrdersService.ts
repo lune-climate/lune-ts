@@ -14,6 +14,7 @@ import type { PaginatedOrders } from '../models/PaginatedOrders'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -32,7 +33,7 @@ export abstract class OrdersService {
      */
     public createOrderByMass(
         requestBody: CreateOrderByQuantityRequest,
-    ): Promise<Result<OrderByQuantity, string>> {
+    ): Promise<Result<OrderByQuantity, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/orders/by-mass',
@@ -64,7 +65,7 @@ export abstract class OrdersService {
      */
     public createOrderByValue(
         requestBody: CreateOrderByValueRequest,
-    ): Promise<Result<OrderByValue, string>> {
+    ): Promise<Result<OrderByValue, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/orders/by-value',
@@ -112,7 +113,7 @@ export abstract class OrdersService {
         limit?: string,
         after?: string,
         offsetLinkId?: string,
-    ): Promise<Result<PaginatedOrders, string>> {
+    ): Promise<Result<PaginatedOrders, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/orders',
@@ -136,7 +137,7 @@ export abstract class OrdersService {
      * @returns Order The response returns an order
      * @throws ApiError
      */
-    public getOrderById(id: string): Promise<Result<Order, string>> {
+    public getOrderById(id: string): Promise<Result<Order, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/orders/{id}',
@@ -158,7 +159,7 @@ export abstract class OrdersService {
      * @returns binary The response returns the Carbon Offset Certificate
      * @throws ApiError
      */
-    public getOrderCertificateById(id: string): Promise<Result<Blob, string>> {
+    public getOrderCertificateById(id: string): Promise<Result<Blob, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/orders/{id}/certificate',
@@ -180,7 +181,7 @@ export abstract class OrdersService {
      * @returns Order The response returns an order
      * @throws ApiError
      */
-    public getOrderByIdempotencyKey(idempotencyKey: string): Promise<Result<Order, string>> {
+    public getOrderByIdempotencyKey(idempotencyKey: string): Promise<Result<Order, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/orders/by-idempotency-key/{idempotencyKey}',
@@ -207,7 +208,7 @@ export abstract class OrdersService {
      */
     public getOrderQuoteByMass(
         requestBody: OrderQuoteByQuantityRequest,
-    ): Promise<Result<OrderQuoteByQuantity, string>> {
+    ): Promise<Result<OrderQuoteByQuantity, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/orders/by-mass/quote',
@@ -235,7 +236,7 @@ export abstract class OrdersService {
      */
     public getOrderQuoteByValue(
         requestBody: OrderQuoteByValueRequest,
-    ): Promise<Result<OrderQuoteByValue, string>> {
+    ): Promise<Result<OrderQuoteByValue, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/orders/by-value/quote',

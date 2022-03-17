@@ -11,6 +11,7 @@ import type { TransactionEstimateRequest } from '../models/TransactionEstimateRe
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -31,7 +32,7 @@ export abstract class EmissionEstimatesService {
      */
     public getElectricityEstimate(
         requestBody: ElectricityEstimateRequest,
-    ): Promise<Result<EmissionEstimate, string>> {
+    ): Promise<Result<EmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/electricity',
@@ -60,7 +61,7 @@ export abstract class EmissionEstimatesService {
      */
     public getFlightEstimate(
         requestBody: FlightEstimateRequest,
-    ): Promise<Result<EmissionEstimate, string>> {
+    ): Promise<Result<EmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/flight',
@@ -160,7 +161,7 @@ export abstract class EmissionEstimatesService {
      */
     public getShippingEstimate(
         requestBody: ShippingEstimateRequest,
-    ): Promise<Result<EmissionEstimate, string>> {
+    ): Promise<Result<EmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/shipping',
@@ -195,7 +196,7 @@ export abstract class EmissionEstimatesService {
      */
     public getTransactionEstimate(
         requestBody: TransactionEstimateRequest,
-    ): Promise<Result<EmissionEstimate, string>> {
+    ): Promise<Result<EmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/transactions',
@@ -226,7 +227,7 @@ export abstract class EmissionEstimatesService {
      */
     public getCompanyEstimate(
         requestBody: CompanyEstimateRequest,
-    ): Promise<Result<CompanyEmissionEstimate, string>> {
+    ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/company',

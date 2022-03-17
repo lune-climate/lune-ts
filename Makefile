@@ -23,13 +23,14 @@ SERVICES_DIR = ./src/services
 fix-services: $(SERVICES_DIR)/*
 	sed -i '/^import type { CancelablePromise }/d' $^
 	sed -i 's/OpenAPI/ClientConfig/g' $^
-	sed -i '/^import { request as __request }.*/a import { AxiosInstance } from "axios";' $^
+	sed -i '/^import { request as __request }.*/a import { ApiError } from "../core/ApiError";' $^
+	sed -i '/^import { ApiError }.*/a import { AxiosInstance } from "axios";' $^
 	sed -i '/^import { AxiosInstance }/a import { Result } from "ts-results-es";' $^
 	sed -i 's/export class/export abstract class/' $^
 	sed -i '/^export abstract class.*/a protected abstract config: ClientConfig;' $^
 	sed -i '/^export abstract class.*/a protected abstract client: AxiosInstance;' $^
 	sed -i 's/public static/public/' $^
-	sed -i -r 's/CancelablePromise<(.*)>/Promise<Result<\1, string>>/' $^
+	sed -i -r 's/CancelablePromise<(.*)>/Promise<Result<\1, ApiError>>/' $^
 	sed -i 's/return __request(ClientConfig,/return __request(this.client, this.config,/' $^
 
 reset-client:

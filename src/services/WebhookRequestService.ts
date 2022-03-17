@@ -5,6 +5,7 @@ import type { WebhookRequest } from '../models/WebhookRequest'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -18,7 +19,7 @@ export abstract class WebhookRequestService {
      * @returns any The events have been successfully handled. Any status code of the `2xx` format has the same behaviour. Any header or body are ignored by Lune.
      * @throws ApiError
      */
-    public webhookRequest(requestBody: WebhookRequest): Promise<Result<any, string>> {
+    public webhookRequest(requestBody: WebhookRequest): Promise<Result<any, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/WebhookRequest',

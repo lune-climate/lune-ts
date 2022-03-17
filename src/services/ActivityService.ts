@@ -5,6 +5,7 @@ import type { PaginatedActivity } from '../models/PaginatedActivity'
 
 import { ClientConfig } from '../core/ClientConfig'
 import { request as __request } from '../core/request'
+import { ApiError } from '../core/ApiError'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
@@ -33,7 +34,10 @@ export abstract class ActivityService {
      * @returns PaginatedActivity The response returns paginated activity
      * @throws ApiError
      */
-    public getActivity(limit?: string, after?: string): Promise<Result<PaginatedActivity, string>> {
+    public getActivity(
+        limit?: string,
+        after?: string,
+    ): Promise<Result<PaginatedActivity, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/activity',
