@@ -8,11 +8,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-      - name: Rebuild schema from scratch
-        run: docker-compose -f docker-compose-ci.yml run update_schema
+      - name: Rebuild client from remote schema
+        run: docker-compose -f docker-compose-ci.yml run update_from_remote_schema
       - name: Create PR with changes
         uses: peter-evans/create-pull-request@v3
         with:
@@ -26,7 +27,7 @@ jobs:
           delete-branch: true
           title: 'Client auto update'
           body: |
-            Underlying schema has changed. Check changes and approve accordingly to determine which
+            Underlying schema has changed. Check changes and approve accordingly. This will not create any release, simply assimilate changes on the schema.
             version change this is.
           labels: |
             Schema Rebuild

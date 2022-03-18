@@ -9,6 +9,9 @@ shell: build-image
 install:
 	npm install
 
+check-linting:
+	npm run lint
+
 fix-linting:
 	npm run fix
 
@@ -74,7 +77,10 @@ append-models-client:
 build-final-client: reset-client add-services-client append-models-client
 
 # Full build of the client from the openapi schema. Use this whenever the openapi schema is updated
-full-build: install api-schema fix-services build-final-client fix-linting build
+build-from-schema: install api-schema fix-services build-final-client fix-linting build
+
+# Build from source. This makes sure code is acceptable and working
+build-from-source: install check-linting build
 
 publish:
 	npm publish --access public

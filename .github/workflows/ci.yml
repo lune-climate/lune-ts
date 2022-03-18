@@ -1,0 +1,11 @@
+name: Make sure client is building
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Build schema from source
+        run: docker-compose -f docker-compose-ci.yml run build_from_source
