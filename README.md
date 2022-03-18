@@ -68,24 +68,23 @@ We use docker to make sure all builds are the same. To get a shell inside it, ju
 `make shell`
 
 Once inside, to fully rebuild the client library from the openapi schema. Just do:
-`make full-build`
+`make build-from-schema`
+
+If all you want is to check if everything is building, you can use:
+`make build`
+or
+`make build-from-source` (checks linting)
 
 Feel free to explore all other commands in the Makefile.
 
 ## Publish
 
-Publishing currently requires manual intervention to up the version. There are Makefile utilities to help
-do the version increase automatically (update-version-'patch | minor | major').
-The whole process goes as follow:
-- Increase the version manually or with the commands above.
-- Send the change to the repository (via PR is recommended)
-- After the change is merged, push the publish task on CircleCI.
+Publishing currently requires manual intervention to up the version. The recommended way is to create a release in github. This will automatically be published to NPM once accepted.
 
 ## TODO
 
-- Have deploy process be fully automatic, currently it requires version change in
-`package.json` and `package-lock.json` be manual. This was to not have git credentials
-on CircleCI since it would be at publish time that the version required change in git.
 - Tests
-- Further functionalities like HMAC verification etc.
+- Rich types on data (Big on Mass instead of string for example)
+- Add advanced functionalities like HMAC verification etc.
 - Improve this README and documentation in general
+- Think about fully automatic patch deployment when remote schema changes. This might become a bit noisy though.
