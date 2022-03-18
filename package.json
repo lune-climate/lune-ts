@@ -5,6 +5,7 @@
   "main": "dist/client.js",
   "types": "dist/client.d.ts",
   "scripts": {
+    "install": "yarn install",
     "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --check \"src/**/*.ts\"",

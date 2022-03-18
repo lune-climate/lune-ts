@@ -7,11 +7,10 @@ shell: build-image
 	docker compose run --service-ports --rm client
 
 install:
-	npm install
+	npm run install
 
 check-linting:
-	whoami
-	ls -lha /root/.config
+	ls -lha /root
 	npm run lint
 
 fix-linting:
