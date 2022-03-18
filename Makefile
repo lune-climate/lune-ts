@@ -7,16 +7,16 @@ shell: build-image
 	docker compose run --service-ports --rm client
 
 install:
-	yarn install
+	npm ci
 
 check-linting:
-	yarn lint
+	npm run check-format
 
 fix-linting:
-	yarn fix
+	npm run fix-format
 
 build:
-	yarn build
+	npm run build
 
 api-schema:
 	npx openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --useUnionTypes --exportCore false --exportServices true --exportSchemas true

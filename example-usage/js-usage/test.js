@@ -1,6 +1,6 @@
-const lune = require("lune");
-// If you're on a module, you can also import in this manner
-// import * as lune from "lune";
+import * as lune from "lune";
+// Alternatively, you can import with
+// const lune = require("lune");
 
 const luneClient = new lune.LuneClient('your_api_key_would_go_here');
 (async () => {
