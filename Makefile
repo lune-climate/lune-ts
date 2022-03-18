@@ -10,6 +10,8 @@ install:
 	npm install
 
 check-linting:
+	whoami
+	ls -lha /root/.config
 	npm run lint
 
 fix-linting:
