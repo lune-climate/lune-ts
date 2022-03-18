@@ -10,7 +10,6 @@ install:
 	yarn install
 
 check-linting:
-	ls -lha /root
 	yarn lint
 
 fix-linting:
