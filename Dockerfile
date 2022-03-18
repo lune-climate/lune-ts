@@ -12,6 +12,7 @@ RUN apt-get update && apt-get install -y \
     nodejs=16.14.2-deb-1nodesource1 \
     && rm -rf /var/lib/apt/lists/*
 
+WORKDIR /lune-ts
+
 RUN npm install --force --global yarn
 
-WORKDIR /lune-ts
