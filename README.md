@@ -60,7 +60,7 @@ original core library since it was quite good tbh.
 ## How to use
 
 Check `example-usage` folder for a basic usage of the library in both TS and JS. But mostly, all you
-need is to add it as a depency, create a new client and use as normally :)
+need is to add it as a dependency, create a new client and use as normally :)
 
 ## Build
 
