@@ -1,5 +1,7 @@
 name: Make sure client is building
 
+on: [push]
+
 jobs:
   build:
     runs-on: ubuntu-latest
