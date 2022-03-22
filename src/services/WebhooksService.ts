@@ -1,13 +1,13 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CreateWebhookRequest } from '../models/CreateWebhookRequest'
-import type { UpdateWebhookRequest } from '../models/UpdateWebhookRequest'
-import type { Webhook } from '../models/Webhook'
+import type { CreateWebhookRequest } from '../models/CreateWebhookRequest.js'
+import type { UpdateWebhookRequest } from '../models/UpdateWebhookRequest.js'
+import type { Webhook } from '../models/Webhook.js'
 
-import { ClientConfig } from '../core/ClientConfig'
-import { request as __request } from '../core/request'
-import { ApiError } from '../core/ApiError'
+import { ClientConfig } from '../core/ClientConfig.js'
+import { request as __request } from '../core/request.js'
+import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 

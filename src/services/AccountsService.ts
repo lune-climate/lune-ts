@@ -1,11 +1,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Account } from '../models/Account'
+import type { Account } from '../models/Account.js'
 
-import { ClientConfig } from '../core/ClientConfig'
-import { request as __request } from '../core/request'
-import { ApiError } from '../core/ApiError'
+import { ClientConfig } from '../core/ClientConfig.js'
+import { request as __request } from '../core/request.js'
+import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 

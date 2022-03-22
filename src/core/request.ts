@@ -1,11 +1,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ApiRequestOptions } from './ApiRequestOptions'
-import type { ClientConfig, Headers } from './ClientConfig'
+import type { ApiRequestOptions } from './ApiRequestOptions.js'
+import type { ClientConfig, Headers } from './ClientConfig.js'
 import { AxiosError, AxiosInstance } from 'axios'
 import { Err, Ok, Result } from 'ts-results-es'
-import { ApiError } from './ApiError'
+import { ApiError } from './ApiError.js'
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null

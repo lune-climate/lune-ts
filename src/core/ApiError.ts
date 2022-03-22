@@ -1,7 +1,7 @@
 import { AxiosError } from 'axios'
 
-import { Errors } from '../models/Errors'
-import { ApiRequestOptions } from './ApiRequestOptions'
+import { Errors } from '../models/Errors.js'
+import { ApiRequestOptions } from './ApiRequestOptions.js'
 
 export class ApiError {
     public readonly description: string

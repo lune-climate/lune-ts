@@ -1,20 +1,20 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CreateOrderByQuantityRequest } from '../models/CreateOrderByQuantityRequest'
-import type { CreateOrderByValueRequest } from '../models/CreateOrderByValueRequest'
-import type { Order } from '../models/Order'
-import type { OrderByQuantity } from '../models/OrderByQuantity'
-import type { OrderByValue } from '../models/OrderByValue'
-import type { OrderQuoteByQuantity } from '../models/OrderQuoteByQuantity'
-import type { OrderQuoteByQuantityRequest } from '../models/OrderQuoteByQuantityRequest'
-import type { OrderQuoteByValue } from '../models/OrderQuoteByValue'
-import type { OrderQuoteByValueRequest } from '../models/OrderQuoteByValueRequest'
-import type { PaginatedOrders } from '../models/PaginatedOrders'
+import type { CreateOrderByQuantityRequest } from '../models/CreateOrderByQuantityRequest.js'
+import type { CreateOrderByValueRequest } from '../models/CreateOrderByValueRequest.js'
+import type { Order } from '../models/Order.js'
+import type { OrderByQuantity } from '../models/OrderByQuantity.js'
+import type { OrderByValue } from '../models/OrderByValue.js'
+import type { OrderQuoteByQuantity } from '../models/OrderQuoteByQuantity.js'
+import type { OrderQuoteByQuantityRequest } from '../models/OrderQuoteByQuantityRequest.js'
+import type { OrderQuoteByValue } from '../models/OrderQuoteByValue.js'
+import type { OrderQuoteByValueRequest } from '../models/OrderQuoteByValueRequest.js'
+import type { PaginatedOrders } from '../models/PaginatedOrders.js'
 
-import { ClientConfig } from '../core/ClientConfig'
-import { request as __request } from '../core/request'
-import { ApiError } from '../core/ApiError'
+import { ClientConfig } from '../core/ClientConfig.js'
+import { request as __request } from '../core/request.js'
+import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 

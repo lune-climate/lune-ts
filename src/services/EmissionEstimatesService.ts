@@ -1,17 +1,17 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CompanyEmissionEstimate } from '../models/CompanyEmissionEstimate'
-import type { CompanyEstimateRequest } from '../models/CompanyEstimateRequest'
-import type { ElectricityEstimateRequest } from '../models/ElectricityEstimateRequest'
-import type { EmissionEstimate } from '../models/EmissionEstimate'
-import type { FlightEstimateRequest } from '../models/FlightEstimateRequest'
-import type { ShippingEstimateRequest } from '../models/ShippingEstimateRequest'
-import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest'
+import type { CompanyEmissionEstimate } from '../models/CompanyEmissionEstimate.js'
+import type { CompanyEstimateRequest } from '../models/CompanyEstimateRequest.js'
+import type { ElectricityEstimateRequest } from '../models/ElectricityEstimateRequest.js'
+import type { EmissionEstimate } from '../models/EmissionEstimate.js'
+import type { FlightEstimateRequest } from '../models/FlightEstimateRequest.js'
+import type { ShippingEstimateRequest } from '../models/ShippingEstimateRequest.js'
+import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
-import { ClientConfig } from '../core/ClientConfig'
-import { request as __request } from '../core/request'
-import { ApiError } from '../core/ApiError'
+import { ClientConfig } from '../core/ClientConfig.js'
+import { request as __request } from '../core/request.js'
+import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 

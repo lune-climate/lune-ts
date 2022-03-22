@@ -24,6 +24,7 @@ api-schema:
 # This fixes the generated service files. See README.md for more info
 SERVICES_DIR = ./src/services
 fix-services: $(SERVICES_DIR)/*
+	# Update services to reflect new src/core structure and class format
 	sed -i '/^import type { CancelablePromise }/d' $^
 	sed -i 's/OpenAPI/ClientConfig/g' $^
 	sed -i '/^import { request as __request }.*/a import { ApiError } from "../core/ApiError";' $^
@@ -35,6 +36,11 @@ fix-services: $(SERVICES_DIR)/*
 	sed -i 's/public static/public/' $^
 	sed -i -r 's/CancelablePromise<(.*)>/Promise<Result<\1, ApiError>>/' $^
 	sed -i 's/return __request(ClientConfig,/return __request(this.client, this.config,/' $^
+	# [ESM support] Update imports to point to .js file
+	sed -i -r "s/import type \{(.*)\} from '..\/(.*)'/import type \{\1\} from '..\/\2.js'/" $^
+	sed -i -r "s/import \{(.*)\} from '..\/(.*)'/import \{\1\} from '..\/\2.js'/" $^
+	sed -i -r 's/import type \{(.*)\} from "..\/(.*)"/import type \{\1\} from "..\/\2.js"/' $^
+	sed -i -r 's/import \{(.*)\} from "..\/(.*)"/import \{\1\} from "..\/\2.js"/' $^
 
 reset-client:
 	cp -p src/base_client.ts src/client.ts
@@ -58,6 +64,7 @@ MIXINS_METHOD = \
 # Order is important here to be defined, using ls to sort alphabetically
 SERVICES_FILENAMES := $(shell cd $(SERVICES_DIR) && ls ./* | sed 's,./,,')
 add-services-client:
+	# Add services as Mixin.
 	sed -i '/export class LuneClient/i $(MIXINS_METHOD)' src/client.ts
 	echo 'applyMixins(LuneClient, [{SERVICES_TEMPLATE}]);' >> src/client.ts
 	echo '// eslint-disable-next-line no-redeclare -- mixins require same name' >> src/client.ts
@@ -66,13 +73,18 @@ add-services-client:
 	sed -i 's/\.ts/,/g' src/client.ts
 	sed -i 's/Service,]/Service]/' src/client.ts
 	sed -i 's/Service,{/Service {/' src/client.ts
+	# Add imports of all these services.
 	for file in $(SERVICES_FILENAMES) ; do \
 		sed -i "/^import { ClientConfig }.*/a import { $${file} } from \"\.\/services\/$${file}\";" src/client.ts; \
-		sed -i "s/Service\.ts/Service/g" src/client.ts; \
+		sed -i "s/Service\.ts }/Service }/g" src/client.ts; \
+		sed -i "s/Service\.ts\"/Service.js\"/g" src/client.ts; \
   done
 
 append-models-client:
 	cat src/index.ts | grep export >> src/client.ts
+	# [ESM support] exports must point to .js file
+	sed -i -r "s/export type \{(.*)\} from '(.*)'/export type \{\1\} from '\2.js'/" src/client.ts
+	sed -i -r "s/export \{(.*)\} from '(.*)'/export \{\1\} from '\2.js'/" src/client.ts
 
 build-final-client: reset-client add-services-client append-models-client
 
@@ -82,20 +94,8 @@ build-from-schema: install api-schema fix-services build-final-client fix-lintin
 # Build from source. This makes sure code is acceptable and working
 build-from-source: install check-linting build
 
+# Rebuild final client and build from source. This rebuilds based on base_client
+rebuild-from-source: install build-final-client fix-linting build
+
 publish:
-	npm publish --access public
-
-update-version-patch:
-	npm version patch
-
-update-version-minor:
-	npm version minor
-
-update-version-major:
-	npm version major
-
-publish-patch-version: update-version-patch publish
-
-publish-minor-version: update-version-minor publish
-
-publish-major-version: update-version-major publish
+	cd dist && npm publish --access public

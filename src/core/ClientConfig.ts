@@ -1,8 +1,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { ApiRequestOptions } from './ApiRequestOptions'
-
 export type Headers = Record<string, string>
 
 export type ClientConfig = {

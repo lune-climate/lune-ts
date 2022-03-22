@@ -1,15 +1,15 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { OffsetLink } from '../models/OffsetLink'
-import type { OffsetLinkAnalytics } from '../models/OffsetLinkAnalytics'
-import type { OffsetLinkRequest } from '../models/OffsetLinkRequest'
-import type { OffsetLinkUpdateRequest } from '../models/OffsetLinkUpdateRequest'
-import type { PaginatedOffsetLinks } from '../models/PaginatedOffsetLinks'
+import type { OffsetLink } from '../models/OffsetLink.js'
+import type { OffsetLinkAnalytics } from '../models/OffsetLinkAnalytics.js'
+import type { OffsetLinkRequest } from '../models/OffsetLinkRequest.js'
+import type { OffsetLinkUpdateRequest } from '../models/OffsetLinkUpdateRequest.js'
+import type { PaginatedOffsetLinks } from '../models/PaginatedOffsetLinks.js'
 
-import { ClientConfig } from '../core/ClientConfig'
-import { request as __request } from '../core/request'
-import { ApiError } from '../core/ApiError'
+import { ClientConfig } from '../core/ClientConfig.js'
+import { request as __request } from '../core/request.js'
+import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 

@@ -1,14 +1,14 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Bundle } from '../models/Bundle'
-import type { PaginatedBundles } from '../models/PaginatedBundles'
-import type { PaginatedProjects } from '../models/PaginatedProjects'
-import type { Project } from '../models/Project'
+import type { Bundle } from '../models/Bundle.js'
+import type { PaginatedBundles } from '../models/PaginatedBundles.js'
+import type { PaginatedProjects } from '../models/PaginatedProjects.js'
+import type { Project } from '../models/Project.js'
 
-import { ClientConfig } from '../core/ClientConfig'
-import { request as __request } from '../core/request'
-import { ApiError } from '../core/ApiError'
+import { ClientConfig } from '../core/ClientConfig.js'
+import { request as __request } from '../core/request.js'
+import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 

@@ -1,0 +1,28 @@
+{
+  "name": "@lune-climate/lune",
+  "version": "1.0.3",
+  "description": "Lune Typescript Client",
+  "main": "cjs/client.js",
+  "module": "esm/client.js",
+  "types": "esm/client.d.ts",
+  "exports": {
+      ".": {
+          "import": "./esm/client.js",
+          "require": "./cjs/client.js"
+      }
+  },
+  "keywords": [
+    "Lune"
+  ],
+  "author": "Lune Climate",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lune-climate/lune-ts"
+  },
+  "readme": "README.md",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ts-results-es": "^3.4.0"
+  }
+}
