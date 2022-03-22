@@ -8,11 +8,14 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Build schema from source
+        run: docker-compose -f docker-compose-ci.yml run build_from_source
       - uses: actions/setup-node@v1
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: npm publish --access public
+      - run: make publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
