@@ -1,6 +1,6 @@
 {
   "name": "@lune-climate/lune",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Lune Typescript Client",
   "main": "dist/client.js",
   "types": "dist/client.d.ts",
@@ -10,7 +10,7 @@
     "build:ts:reverse": "npm run build:ts:esm && npm run build:ts:cjs",
     "build:ts:cjs": "tsc -p tsconfig-cjs.json",
     "build:ts:esm": "tsc -p tsconfig-esm.json",
-    "build:copy": "cp README.md dist && cp LICENSE dist && cp package.json dist && cp package-cjs.json dist/cjs/package.json && cp package-esm.json dist/esm/package.json",
+    "build:copy": "cp README.md dist && cp LICENSE dist && cp src/package.json dist && cp package-cjs.json dist/cjs/package.json && cp package-esm.json dist/esm/package.json",
     "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --check \"src/**/*.ts\"",
