@@ -54,8 +54,8 @@ is used to generate the final `client.ts`. The main stages are:
 ## Core implementation
 
 We currently use Axios to perform the operations and define our config via an interface dedicated to
-hold it. The core implementation still requires a bit of work, and is still highly based on the
-original core library since it was quite good tbh.
+hold it. The core implementation might be improved a bit, being still highly based on the original
+core library since it was quite good already.
 
 ## How to use
 
@@ -64,7 +64,15 @@ need is to add it as a dependency, create a new client and use as normally :)
 
 ## Build
 
-We use docker to make sure all builds are the same. To get a shell inside it, just do:
+For a simple command that does all the building of the current source code inside docker as done on CI:
+`docker-compose -f docker-compose-ci.yml run build_from_schema`
+
+If you want to update from the remote schema API, you can do:
+`docker-compose -f docker-compose-ci.yml run update_from_remote_schema`
+
+If you want to get hands on inside the container, you can get in and use the make commands as much
+as you want.
+To get a shell inside it, just do:
 `make shell`
 
 Once inside, to fully rebuild the client library from the openapi schema. Just do:
@@ -86,5 +94,3 @@ Publishing currently requires manual intervention to up the version. The recomme
 - Tests
 - Rich types on data (Big on Mass instead of string for example)
 - Add advanced functionalities like HMAC verification etc.
-- Improve this README and documentation in general
-- Think about fully automatic patch deployment when remote schema changes. This might become a bit noisy though.
