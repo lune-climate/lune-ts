@@ -1,11 +1,9 @@
-/* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
-import type { ApiRequestOptions } from './ApiRequestOptions.js'
-import type { ClientConfig, Headers } from './ClientConfig.js'
 import { AxiosError, AxiosInstance } from 'axios'
 import { Err, Ok, Result } from 'ts-results-es'
+
 import { ApiError } from './ApiError.js'
+import type { ApiRequestOptions } from './ApiRequestOptions.js'
+import type { ClientConfig, Headers } from './ClientConfig.js'
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null
@@ -81,7 +79,7 @@ const getQueryString = (params: Record<string, any>): string => {
 
 const getUrl = (config: ClientConfig, options: ApiRequestOptions): string => {
     const path = options.url.replace(/{(.*?)}/g, (substring: string, group: string) => {
-        if (options.path?.hasOwnProperty(group)) {
+        if (Object.prototype.hasOwnProperty.call(options.path, group)) {
             return encodeURI(String(options.path[group]))
         }
         return substring
@@ -119,10 +117,7 @@ const getFormData = (options: ApiRequestOptions): FormData | undefined => {
 
         return formData
     }
-    return
 }
-
-type Resolver<T> = (options: ApiRequestOptions) => Promise<T>
 
 const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers => {
     const bearerToken = config.BEARER_TOKEN
@@ -145,12 +140,12 @@ const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers =
         )
 
     if (isStringWithValue(bearerToken)) {
-        headers['Authorization'] = `Bearer ${bearerToken}`
+        headers.Authorization = `Bearer ${bearerToken}`
     }
 
     if (isStringWithValue(username) && isStringWithValue(password)) {
         const credentials = base64(`${username}:${password}`)
-        headers['Authorization'] = `Basic ${credentials}`
+        headers.Authorization = `Basic ${credentials}`
     }
 
     if (options.body) {
@@ -178,59 +173,8 @@ const getRequestBody = (options: ApiRequestOptions): any => {
             return JSON.stringify(options.body)
         }
     }
-    return
 }
 
-const getResponseHeader = (response: Response, responseHeader?: string): string | undefined => {
-    if (responseHeader) {
-        const content = response.headers.get(responseHeader)
-        if (isString(content)) {
-            return content
-        }
-    }
-    return
-}
-
-const getResponseBody = async (response: Response): Promise<any> => {
-    if (response.status !== 204) {
-        try {
-            const contentType = response.headers.get('Content-Type')
-            if (contentType) {
-                const isJSON = contentType.toLowerCase().startsWith('application/json')
-                if (isJSON) {
-                    return await response.json()
-                } else {
-                    return await response.text()
-                }
-            }
-        } catch (error) {
-            console.error(error)
-        }
-    }
-    return
-}
-
-const getError = (options: ApiRequestOptions, statusCode: number): string => {
-    const errors: Record<number, string> = {
-        400: 'Bad Request',
-        401: 'Unauthorized',
-        403: 'Forbidden',
-        404: 'Not Found',
-        500: 'Internal Server Error',
-        502: 'Bad Gateway',
-        503: 'Service Unavailable',
-        ...options.errors,
-    }
-
-    return errors[statusCode]
-}
-
-/**
- * Request method
- * @param config The OpenAPI configuration object
- * @param options The request options from the service
- * @returns CancelablePromise<T>
- */
 export const request = async <T>(
     client: AxiosInstance,
     config: ClientConfig,
@@ -248,10 +192,10 @@ export const request = async <T>(
         params: formData,
         data: body,
     })
-        .then(function (response) {
+        .then(function(response) {
             return Ok(response.data as T)
         })
-        .catch(function (error: AxiosError) {
+        .catch(function(error: AxiosError) {
             return Err(new ApiError(error, options))
         })
 }

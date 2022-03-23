@@ -22,7 +22,7 @@
     "Lune"
   ],
   "author": "Lune Climate",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "ts-results-es": "^3.4.0"

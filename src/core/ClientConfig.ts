@@ -1,6 +1,3 @@
-/* istanbul ignore file */
-/* tslint:disable */
-/* eslint-disable */
 export type Headers = Record<string, string>
 
 export type ClientConfig = {

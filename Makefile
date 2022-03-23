@@ -24,7 +24,7 @@ api-schema:
 # This fixes the generated service files. See README.md for more info
 SERVICES_DIR = ./src/services
 fix-services: $(SERVICES_DIR)/*
-	# Update services to reflect new src/core structure and class format
+	# Update services to reflect new src/core structure and updated class format
 	sed -i '/^import type { CancelablePromise }/d' $^
 	sed -i 's/OpenAPI/ClientConfig/g' $^
 	sed -i '/^import { request as __request }.*/a import { ApiError } from "../core/ApiError";' $^
@@ -61,10 +61,10 @@ MIXINS_METHOD = \
 	  });\
 	};\
 
-# Order is important here to be defined, using ls to sort alphabetically
+# Order is important here to be defined or rebuilds can produce different results, using ls to sort alphabetically
 SERVICES_FILENAMES := $(shell cd $(SERVICES_DIR) && ls ./* | sed 's,./,,')
 add-services-client:
-	# Add services as Mixin.
+	# Add services as Mixin. Add them on `applyMixins` and to the exported interface
 	sed -i '/export class LuneClient/i $(MIXINS_METHOD)' src/client.ts
 	echo 'applyMixins(LuneClient, [{SERVICES_TEMPLATE}]);' >> src/client.ts
 	echo '// eslint-disable-next-line no-redeclare -- mixins require same name' >> src/client.ts
@@ -73,7 +73,7 @@ add-services-client:
 	sed -i 's/\.ts/,/g' src/client.ts
 	sed -i 's/Service,]/Service]/' src/client.ts
 	sed -i 's/Service,{/Service {/' src/client.ts
-	# Add imports of all these services.
+	# Add imports of all the services added.
 	for file in $(SERVICES_FILENAMES) ; do \
 		sed -i "/^import { ClientConfig }.*/a import { $${file} } from \"\.\/services\/$${file}\";" src/client.ts; \
 		sed -i "s/Service\.ts }/Service }/g" src/client.ts; \
@@ -81,11 +81,13 @@ add-services-client:
   done
 
 append-models-client:
+	# Add all the exports on the index.ts to the client
 	cat src/index.ts | grep export >> src/client.ts
 	# [ESM support] exports must point to .js file
 	sed -i -r "s/export type \{(.*)\} from '(.*)'/export type \{\1\} from '\2.js'/" src/client.ts
 	sed -i -r "s/export \{(.*)\} from '(.*)'/export \{\1\} from '\2.js'/" src/client.ts
 
+# Recreate the final client file
 build-final-client: reset-client add-services-client append-models-client
 
 # Full build of the client from the openapi schema. Use this whenever the openapi schema is updated
