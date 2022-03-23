@@ -80,7 +80,7 @@ const getQueryString = (params: Record<string, any>): string => {
 const getUrl = (config: ClientConfig, options: ApiRequestOptions): string => {
     const path = options.url.replace(/{(.*?)}/g, (substring: string, group: string) => {
         if (Object.prototype.hasOwnProperty.call(options.path, group)) {
-            return encodeURI(String(options.path[group]))
+            return encodeURI(String(options.path![group]))
         }
         return substring
     })
@@ -117,6 +117,7 @@ const getFormData = (options: ApiRequestOptions): FormData | undefined => {
 
         return formData
     }
+    return undefined
 }
 
 const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers => {
