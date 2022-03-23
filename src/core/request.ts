@@ -192,10 +192,10 @@ export const request = async <T>(
         params: formData,
         data: body,
     })
-        .then(function (response) {
+        .then((response) => {
             return Ok(response.data as T)
         })
-        .catch(function (error: AxiosError) {
+        .catch((error: AxiosError) => {
             return Err(new ApiError(error, options))
         })
 }
