@@ -6,10 +6,10 @@ export class LuneClient {
     protected client: AxiosInstance
     protected config: ClientConfig
 
-    constructor(apiKey: string) {
+    constructor(apiKey: string, baseUrl: string = 'https://api.lune.co', apiVersion: string = '1') {
         this.config = {
-            BASE_URL: 'http://localhost:3000/v{api-version}',
-            VERSION: '1',
+            BASE_URL: `${baseUrl}/v{api-version}`,
+            VERSION: apiVersion,
             BEARER_TOKEN: apiKey,
         }
         this.client = axios.create()
