@@ -6,16 +6,17 @@
   "module": "esm/client.js",
   "types": "esm/client.d.ts",
   "exports": {
-      ".": {
-          "import": "./esm/client.js",
-          "require": "./cjs/client.js"
-      }
+    ".": {
+        "import": "./esm/client.js",
+        "require": "./cjs/client.js"
+    }
   },
   "keywords": [
-    "Lune"
+    "Lune", "Typescript", "Javascript"
   ],
   "author": "Lune Climate",
   "license": "MIT",
+  "homepage": "https://docs.lune.co/",
   "repository": {
     "type": "git",
     "url": "https://github.com/lune-climate/lune-ts"
