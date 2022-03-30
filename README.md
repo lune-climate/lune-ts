@@ -71,12 +71,12 @@ explicit there so not repeating it here.
 For a simple command that does all the building of the current source code inside docker as done on CI:
 `docker-compose -f docker-compose-ci.yml run build_from_schema`
 
-Keep in mind the previous command does not incorporate any changes done to the `base_client` file.
-If you also want to build the final client (useful if changes were made in `base_client`) update from the
+Keep in mind the previous command does not include any changes done to the `base_client` file.
+If you also want to build the client (useful if changes were made in `base_client`) update from the
 remote schema API, you can do:
 `docker-compose -f docker-compose-ci.yml run rebuild_from_schema`
 
-If you want to update the current code based on the current remote openAPI schema, you can do:
+If you want to rebuild the library based on the official openAPI schema (https://docs.lune.co/openapi.yml), you can do:
 `docker-compose -f docker-compose-ci.yml run update_from_remote_schema`
 
 If you want to get hands on inside the container, you can get in and use the make commands as much
@@ -104,7 +104,7 @@ Publishing is currently done by creating a new release on Github. The current wa
 Prior to publish step though, it is required to actually update the version as intended in the code.
 For this, use the `Makefile` commands `patch|minor|major-version` accordingly and commit the changes as usual.
 
-## TODO
+## Future work
 
 - Tests
 - Rich types on data (Big on Mass instead of string for example)
