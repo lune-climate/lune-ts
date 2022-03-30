@@ -72,7 +72,8 @@ For a simple command that does all the building of the current source code insid
 `docker-compose -f docker-compose-ci.yml run build_from_schema`
 
 Keep in mind the previous command does not incorporate any changes done to the `base_client` file.
-If you also want to build the final client (usefull if changes were made in `base_client`)update from the remote schema API, you can do:
+If you also want to build the final client (useful if changes were made in `base_client`) update from the
+remote schema API, you can do:
 `docker-compose -f docker-compose-ci.yml run rebuild_from_schema`
 
 If you want to update the current code based on the current remote openAPI schema, you can do:
