@@ -113,6 +113,7 @@ export abstract class OffsetLinksService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
             },

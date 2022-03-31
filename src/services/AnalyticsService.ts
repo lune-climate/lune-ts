@@ -35,6 +35,7 @@ export abstract class AnalyticsService {
                 end: end,
             },
             errors: {
+                400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
                 429: `Rate limit exceeded`,
             },

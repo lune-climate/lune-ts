@@ -27,7 +27,7 @@ export const $Activity = {
             Unit: Account currency
             `,
             isRequired: true,
-            pattern: '^[0-9]+(\\.[0-9]+)?$',
+            pattern: '^-?[0-9]+(\\.[0-9]+)?$',
         },
         balance_delta: {
             type: 'string',
@@ -38,7 +38,7 @@ export const $Activity = {
             Unit: Account currency
             `,
             isRequired: true,
-            pattern: '^[0-9]+(\\.[0-9]+)?$',
+            pattern: '^-?[0-9]+(\\.[0-9]+)?$',
         },
         balance_outstanding: {
             type: 'string',
@@ -47,7 +47,7 @@ export const $Activity = {
             Unit: Account currency
             `,
             isRequired: true,
-            pattern: '^[0-9]+(\\.[0-9]+)?$',
+            pattern: '^-?[0-9]+(\\.[0-9]+)?$',
         },
         balance_outstanding_delta: {
             type: 'string',
@@ -58,7 +58,7 @@ export const $Activity = {
             Unit: Account currency
             `,
             isRequired: true,
-            pattern: '^[0-9]+(\\.[0-9]+)?$',
+            pattern: '^-?[0-9]+(\\.[0-9]+)?$',
         },
         quantity: {
             type: 'string',
