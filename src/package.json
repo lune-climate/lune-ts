@@ -6,10 +6,10 @@
   "module": "esm/client.js",
   "types": "esm/client.d.ts",
   "exports": {
-      ".": {
-          "import": "./esm/client.js",
-          "require": "./cjs/client.js"
-      }
+    ".": {
+        "import": "./esm/client.js",
+        "require": "./cjs/client.js"
+    }
   },
   "keywords": [
     "Lune"
