@@ -9,7 +9,7 @@ export const $OrderByQuantity = {
         },
         {
             properties: {
-                requested_quantity: {
+                requestedQuantity: {
                     type: 'string',
                     description: `Represents the requested quantity of CO2 offsets to purchase in tonnes.`,
                     isRequired: true,

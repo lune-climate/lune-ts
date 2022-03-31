@@ -3,12 +3,12 @@
 /* eslint-disable */
 export const $OffsetLinkOrder = {
     properties: {
-        order_id: {
+        orderId: {
             type: 'string',
             description: `The order's unique identifier`,
             isRequired: true,
         },
-        created_at: {
+        createdAt: {
             type: 'Timestamp',
             isRequired: true,
         },
@@ -21,12 +21,12 @@ export const $OffsetLinkOrder = {
             type: 'array',
             contains: {
                 properties: {
-                    bundle_id: {
+                    bundleId: {
                         type: 'string',
                         description: `The bundle's unique identifier`,
                         isRequired: true,
                     },
-                    bundle_name: {
+                    bundleName: {
                         type: 'string',
                         description: `The bundle's name`,
                         isRequired: true,

@@ -3,7 +3,7 @@
 /* eslint-disable */
 export const $Merchant = {
     properties: {
-        category_code: {
+        categoryCode: {
             type: 'string',
             description: `An ISO 18245 Merchant Category Code (leading zeros need to be preserved) corresponding
             to the transaction.
@@ -16,7 +16,7 @@ export const $Merchant = {
             type: 'string',
             description: `The name of the merchant.`,
         },
-        country_code: {
+        countryCode: {
             type: 'string',
             description: `The three-letter code of the merchant's country.`,
             isRequired: true,

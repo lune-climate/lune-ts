@@ -14,7 +14,7 @@ export const $OrderQuoteByQuantityRequest = {
             ],
             isRequired: true,
         },
-        bundle_selection: {
+        bundleSelection: {
             type: 'BundleSelectionRequest',
         },
     },

@@ -17,7 +17,7 @@ export const $FlightEstimateRequest = {
             ],
             isRequired: true,
         },
-        cabin_class: {
+        cabinClass: {
             type: 'CabinClass',
         },
         passengers: {

@@ -26,7 +26,7 @@ export const $CompanyEmissionEstimate = {
                 },
                 components: {
                     properties: {
-                        material_and_waste: {
+                        materialAndWaste: {
                             type: 'Mass',
                             description: `Emissions associated with buying equipment and generating waste.`,
                             isRequired: true,
@@ -36,12 +36,12 @@ export const $CompanyEmissionEstimate = {
                             description: `Emissions associated with purchasing energy (electricy, heating etc.)`,
                             isRequired: true,
                         },
-                        travel_and_commute: {
+                        travelAndCommute: {
                             type: 'Mass',
                             description: `Emissions associated with business travels and commuting to/from work.`,
                             isRequired: true,
                         },
-                        food_and_drink: {
+                        foodAndDrink: {
                             type: 'Mass',
                             description: `Emissions associated with food and drinks.`,
                             isRequired: true,

@@ -13,5 +13,5 @@ export type OrderQuoteByQuantityRequest = {
      * Mass of CO2 offsets to purchase
      */
     mass: Mass
-    bundle_selection?: BundleSelectionRequest
+    bundleSelection: BundleSelectionRequest
 }

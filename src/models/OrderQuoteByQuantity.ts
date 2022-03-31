@@ -8,5 +8,5 @@ export type OrderQuoteByQuantity = OrderQuoteBase & {
     /**
      * Requested quantity for the specific bundle (tonnes CO2)
      */
-    requested_quantity: string
+    requestedQuantity: string
 }

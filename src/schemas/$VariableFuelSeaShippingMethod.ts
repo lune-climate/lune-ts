@@ -3,7 +3,7 @@
 /* eslint-disable */
 export const $VariableFuelSeaShippingMethod = {
     properties: {
-        vessel_type: {
+        vesselType: {
             type: 'Enum',
             isRequired: true,
         },

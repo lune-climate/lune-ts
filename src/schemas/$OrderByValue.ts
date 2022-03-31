@@ -9,7 +9,7 @@ export const $OrderByValue = {
         },
         {
             properties: {
-                requested_value: {
+                requestedValue: {
                     type: 'string',
                     description: `Represents the requested value of CO2 offsets to purchase.
 

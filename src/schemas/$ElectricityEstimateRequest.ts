@@ -8,7 +8,7 @@ export const $ElectricityEstimateRequest = {
             type: 'ElectricityConsumption',
             isRequired: true,
         },
-        country_code: {
+        countryCode: {
             type: 'string',
             description: `The three-letter code of the country where the consumption takes place, if applicable.
 

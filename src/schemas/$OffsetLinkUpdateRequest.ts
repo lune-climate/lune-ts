@@ -40,10 +40,10 @@ export const $OffsetLinkUpdateRequest = {
                 type: 'string',
             },
         },
-        expires_at: {
+        expiresAt: {
             type: 'Timestamp',
         },
-        use_logo: {
+        useLogo: {
             type: 'boolean',
             description: `Whether to include the Offset link logo (defined in Account settings) in the footer.
             `,

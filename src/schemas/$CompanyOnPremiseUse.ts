@@ -4,7 +4,7 @@
 export const $CompanyOnPremiseUse = {
     description: `Company's own tech infrastructure details`,
     properties: {
-        electricity_cost: {
+        electricityCost: {
             type: 'MonetaryAmount',
             isRequired: true,
         },

@@ -12,17 +12,17 @@ export const $CompanyEstimateRequest = {
             description: `Number of employees`,
             isRequired: true,
         },
-        remote_employees_percentage: {
+        remoteEmployeesPercentage: {
             type: 'IntegerPercentage',
             description: `Share of employees working remotely (in percent)`,
             isRequired: true,
         },
-        office_area: {
+        officeArea: {
             type: 'Area',
             description: `Office area in square meters`,
             isRequired: true,
         },
-        country_code: {
+        countryCode: {
             type: 'string',
             description: `The three-letter country code of the country where the company is located.`,
             isRequired: true,
@@ -34,67 +34,67 @@ export const $CompanyEstimateRequest = {
         city: {
             type: 'string',
         },
-        electricity_consumption: {
+        electricityConsumption: {
             type: 'number',
             description: `Electricity consumption in kWh`,
             isRequired: true,
         },
-        green_electricity_used: {
+        greenElectricityUsed: {
             type: 'boolean',
             description: `Is the electricity provided by renewable source(s)?`,
             isRequired: true,
         },
-        gas_consumption: {
+        gasConsumption: {
             type: 'number',
             description: `Yearly natural gas consumption in cubic meters`,
             isRequired: true,
         },
-        company_cars: {
+        companyCars: {
             type: 'number',
             description: `Company cars`,
             isRequired: true,
         },
-        average_car_distance_travelled: {
+        averageCarDistanceTravelled: {
             type: 'Distance',
             description: `Average yearly distance travelled per car`,
             isRequired: true,
         },
-        employees_using_public_transport: {
+        employeesUsingPublicTransport: {
             type: 'number',
             description: `Number of employees commuting by public transport`,
             isRequired: true,
         },
-        short_flights: {
+        shortFlights: {
             type: 'number',
             description: `Number of short (under 3 hours) flights per year`,
             isRequired: true,
         },
-        medium_flights: {
+        mediumFlights: {
             type: 'number',
             description: `Number of medium (between 3 and 6 hours) flights per year`,
             isRequired: true,
         },
-        long_flights: {
+        longFlights: {
             type: 'number',
             description: `Number of long (over 6 hours) flights per year`,
             isRequired: true,
         },
-        first_or_business_class_percentage: {
+        firstOrBusinessClassPercentage: {
             type: 'IntegerPercentage',
             description: `Share of business or first class flights, in percent`,
             isRequired: true,
         },
-        food_and_drinks_expenses: {
+        foodAndDrinksExpenses: {
             type: 'MonetaryAmount',
             description: `Amount spend on food and drinks`,
             isRequired: true,
         },
-        vegetarian_and_vegan_percentage: {
+        vegetarianAndVeganPercentage: {
             type: 'IntegerPercentage',
             description: `Share of vegetarians or vegans in the company, in percent`,
             isRequired: true,
         },
-        electronic_device_expenses: {
+        electronicDeviceExpenses: {
             type: 'MonetaryAmount',
             description: `New electronic devices (laptops, monitors, etc.) expenses`,
             isRequired: true,
@@ -104,14 +104,14 @@ export const $CompanyEstimateRequest = {
             description: `The amount of garbage produced, in kilograms`,
             isRequired: true,
         },
-        recycled_garbage_percentage: {
+        recycledGarbagePercentage: {
             type: 'IntegerPercentage',
             description: `Share of recycled garbage, in percent`,
             isRequired: true,
         },
         tech: {
             properties: {
-                on_premise: {
+                onPremise: {
                     type: 'CompanyOnPremiseUse',
                 },
                 cloud: {

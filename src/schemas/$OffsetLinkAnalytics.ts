@@ -8,12 +8,12 @@ export const $OffsetLinkAnalytics = {
             description: `The offset link identifier`,
             isRequired: true,
         },
-        unique_visitors: {
+        uniqueVisitors: {
             type: 'number',
             description: `The number of unique visitors for the specific offset link`,
             isRequired: true,
         },
-        placed_orders: {
+        placedOrders: {
             type: 'number',
             description: `The number of placed orders for the specific offset link`,
             isRequired: true,

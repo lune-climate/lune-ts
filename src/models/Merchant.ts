@@ -10,7 +10,7 @@ export type Merchant = {
      * See https://github.com/greggles/mcc-codes for available codes.
      *
      */
-    category_code: string
+    categoryCode: string
     /**
      * The name of the merchant.
      */
@@ -18,5 +18,5 @@ export type Merchant = {
     /**
      * The three-letter code of the merchant's country.
      */
-    country_code: string
+    countryCode: string
 }

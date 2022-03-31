@@ -3,12 +3,12 @@
 /* eslint-disable */
 export const $OrderBundle = {
     properties: {
-        bundle_id: {
+        bundleId: {
             type: 'string',
             description: `The bundle's unique identifier`,
             isRequired: true,
         },
-        bundle_name: {
+        bundleName: {
             type: 'string',
             description: `The bundle's name`,
             isRequired: true,
@@ -19,7 +19,7 @@ export const $OrderBundle = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        unit_price: {
+        unitPrice: {
             type: 'string',
             description: `Bundle unit price per tonne CO2
 
@@ -28,7 +28,7 @@ export const $OrderBundle = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        gross_unit_price: {
+        grossUnitPrice: {
             type: 'string',
             description: `Bundle unit price per tonne CO2 inclusive of fees.
 
@@ -37,7 +37,7 @@ export const $OrderBundle = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        offset_cost: {
+        offsetCost: {
             type: 'string',
             description: `Represents the net cost of offsets purchased by the order for this bundle.
 
@@ -46,7 +46,7 @@ export const $OrderBundle = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        insufficient_available_quantity: {
+        insufficientAvailableQuantity: {
             type: 'boolean',
             description: `If true, there is no inventory necessary to fully satisfy the order for this bundle.
             `,

@@ -4,7 +4,7 @@
 export const $BundlePercentage = {
     description: `Maps a bundle id to an allocation ratio`,
     properties: {
-        bundle_id: {
+        bundleId: {
             type: 'string',
             description: `The bundle's unique identifier`,
             isRequired: true,

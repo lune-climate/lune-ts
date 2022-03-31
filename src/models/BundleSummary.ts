@@ -15,12 +15,12 @@ export type BundleSummary = {
      * Bundle unit price per tonne CO2
      *
      */
-    unit_price: string
+    unitPrice: string
     /**
      * Bundle unit price per tonne CO2 inclusive of fees
      *
      */
-    gross_unit_price: string
+    grossUnitPrice: string
     /**
      * Currency code
      */
@@ -28,11 +28,11 @@ export type BundleSummary = {
     /**
      * A bundle's image URL
      */
-    primary_image?: string
+    primaryImage: string
     /**
      * A bundle's high resolution image URL
      */
-    primary_image_hires?: string
+    primaryImageHires: string
     /**
      * The bundle's description
      */
@@ -45,13 +45,13 @@ export type BundleSummary = {
     /**
      * Quantity of CO2 offsets available to purchase (in tonnes).
      *
-     * If available_quantity is not set, assume there is an unlimited amount of offsets to purchase.
+     * If availableQuantity is not set, assume there is an unlimited amount of offsets to purchase.
      *
      */
-    available_quantity?: string
+    availableQuantity: string
     /**
      * Offset type classification
      *
      */
-    offset_type?: 'emissions_reduction' | 'carbon_removal'
+    offsetType: 'emissions_reduction' | 'carbon_removal'
 }

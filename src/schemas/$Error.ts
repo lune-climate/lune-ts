@@ -4,7 +4,7 @@
 export const $Error = {
     description: `Individual error information`,
     properties: {
-        error_code: {
+        errorCode: {
             type: 'Enum',
             isRequired: true,
         },

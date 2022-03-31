@@ -10,7 +10,7 @@ export const $OrderQuoteByValueRequest = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        bundle_selection: {
+        bundleSelection: {
             type: 'BundleSelectionRequest',
         },
     },

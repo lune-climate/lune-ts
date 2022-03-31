@@ -3,12 +3,12 @@
 /* eslint-disable */
 export const $Address = {
     properties: {
-        street_line1: {
+        streetLine1: {
             type: 'string',
             description: `A street and house number (or equivalent).`,
             isRequired: true,
         },
-        street_line2: {
+        streetLine2: {
             type: 'string',
             description: `An address component more precise than a street and house number.`,
         },
@@ -21,7 +21,7 @@ export const $Address = {
             type: 'string',
             isRequired: true,
         },
-        country_code: {
+        countryCode: {
             type: 'string',
             description: `A three-letter country code.`,
             isRequired: true,

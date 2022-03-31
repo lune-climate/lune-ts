@@ -13,14 +13,14 @@ export const $BundleSummary = {
             description: `The bundle's name`,
             isRequired: true,
         },
-        unit_price: {
+        unitPrice: {
             type: 'string',
             description: `Bundle unit price per tonne CO2
             `,
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        gross_unit_price: {
+        grossUnitPrice: {
             type: 'string',
             description: `Bundle unit price per tonne CO2 inclusive of fees
             `,
@@ -32,11 +32,11 @@ export const $BundleSummary = {
             description: `Currency code`,
             isRequired: true,
         },
-        primary_image: {
+        primaryImage: {
             type: 'string',
             description: `A bundle's image URL`,
         },
-        primary_image_hires: {
+        primaryImageHires: {
             type: 'string',
             description: `A bundle's high resolution image URL`,
         },
@@ -50,15 +50,15 @@ export const $BundleSummary = {
             `,
             isRequired: true,
         },
-        available_quantity: {
+        availableQuantity: {
             type: 'string',
             description: `Quantity of CO2 offsets available to purchase (in tonnes).
 
-            If available_quantity is not set, assume there is an unlimited amount of offsets to purchase.
+            If availableQuantity is not set, assume there is an unlimited amount of offsets to purchase.
             `,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        offset_type: {
+        offsetType: {
             type: 'Enum',
         },
     },

@@ -17,12 +17,12 @@ export type OrderBase = {
     /**
      * Optional unique identifier provided by the client.
      *
-     * `idempotency_key` has two purposes:
+     * `idempotencyKey` has two purposes:
      * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
-     * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
+     * 2. Clients can use `idempotencyKey` to reconcile orders with other entities on their system.
      *
      */
-    idempotency_key?: string
+    idempotencyKey: string
     /**
      * Identifies whether the order has been placed by quantity (kg CO2) or value (monetary amount)
      */
@@ -45,14 +45,14 @@ export type OrderBase = {
      * Unit: order currency
      *
      */
-    offset_cost?: string
+    offsetCost: string
     /**
      * The total cost for the order inclusive of fees.
      *
      * Unit: order currency
      *
      */
-    total_cost?: string
+    totalCost: string
     /**
      * Represents Lune's fee.
      *
@@ -71,7 +71,7 @@ export type OrderBase = {
     /**
      * Order creation timestamp
      */
-    created_at: string
+    createdAt: string
     /**
      * bundles are set when the order's status is `placed`, `paid`, `allocated` or `complete`.
      *
@@ -101,7 +101,7 @@ export type OrderBase = {
     /**
      * The offset link identifier, if the order was placed through an offset link
      */
-    offset_link_id?: string
+    offsetLinkId: string
     /**
      * End-user email.
      *

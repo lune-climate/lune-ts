@@ -21,6 +21,56 @@ build:
 api-schema:
 	npx openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --useUnionTypes --exportCore false --exportServices true --exportSchemas true
 
+# Method to convert all parameters from snake_case to camelCase.
+# The first parameter is all files that we want to convert, the second the path where those files exist
+#
+# Since we only want to camel case parameters and not enums or anything in the comments, we first must
+# get the occurences we are interested in, fix them and them fully substitute. The each of the files
+# we want to fix, the following procedure is done:
+# 1. Occurences of parameters we are interested in converting are fetched.
+# 2. Fixed occurence is converted to camelCase
+# 3. Ocurrence in the file is substituted with the camelCase version
+#
+# The regexp work can be explained with:
+# - Match can be on any level of indentation, but the start of the word must have only spaces before.
+#   This discards enum occurences and anything inside comments.
+# - Match consists of a word consisting of any number of alphanumeric character. It must have
+#   at least one underscore and be followed by a colon or a question mark and colon. This should
+#   guarantee that only actual parameters are caught.
+#
+# To generate the camelCase version of the parameter:
+# - Remove the last colon and question mark where existent that is caught in the egrep and trim all
+#   spaces so any occurence of the actual parameter is correctly changed even in comments and any other
+#   reference.
+# - Generate the camelCase version with sed by substituting all chars after the underscore with
+#   their uppercase version and removing the underscore itself.
+#
+# Any match that is a word that matched the snake_case version (with possibly ending with ?) is then
+# converted to the camelCase version.
+define convertParametersToCamelCase
+		for file in $1 ; do \
+		 occurences=`egrep -Eoh '^( *)[[:alnum:]]*_[a-zA-Z0-9_]*(\?:|:)' $2$${file}`; \
+		 for occurence in $$occurences ; do \
+		  correct_occurence=`echo $${occurence} | sed -r 's/://g;s/\?//g;s/ //g'`; \
+			fixed_occurence=`echo $$correct_occurence | sed -r 's/_(.)/\U\1/g'`; \
+			sed -i -r "s/\b$$correct_occurence(\b|\?)/$$fixed_occurence/g" $2$${file}; \
+		 done; \
+		done
+endef
+
+# This fixes the generated models. See README.md for more info
+MODELS_DIR = ./src/models
+MODELS_FILENAMES := $(shell cd $(MODELS_DIR) && ls ./* | sed 's,./,,')
+fix-models:
+	$(call convertParametersToCamelCase, $(MODELS_FILENAMES), $(MODELS_DIR)/)
+
+# This fixes the generated schemas. See README.md for more info
+SCHEMAS_DIR = ./src/schemas
+# Since the schema filenames come prepended with $, we need to escape it to work with bash
+SCHEMAS_FILENAMES := $(shell cd $(SCHEMAS_DIR) && ls ./* | sed 's,./,,' | sed 's,\$$,\\\$$,g')
+fix-schemas:
+	$(call convertParametersToCamelCase, $(SCHEMAS_FILENAMES), $(SCHEMAS_DIR)/)
+
 # This fixes the generated service files. See README.md for more info
 SERVICES_DIR = ./src/services
 fix-services: $(SERVICES_DIR)/*
@@ -91,7 +141,7 @@ append-models-client:
 build-final-client: reset-client add-services-client append-models-client
 
 # Full build of the client from the openapi schema. Use this whenever the openapi schema is updated
-build-from-schema: install api-schema fix-services build-final-client fix-linting build
+build-from-schema: install api-schema fix-services fix-models fix-schemas build-final-client fix-linting build
 
 # Build from source. This makes sure code is acceptable and working
 build-from-source: install check-linting build

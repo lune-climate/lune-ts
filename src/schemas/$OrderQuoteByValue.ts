@@ -9,7 +9,7 @@ export const $OrderQuoteByValue = {
         },
         {
             properties: {
-                requested_value: {
+                requestedValue: {
                     type: 'string',
                     description: `Requested order value inclusive of commission`,
                     isRequired: true,

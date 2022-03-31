@@ -14,7 +14,7 @@ export type Account = {
     /**
      * The unique identifier of the organisation this account belongs to
      */
-    organisation_id: string
+    organisationId: string
     /**
      * The Account's currency
      */
@@ -34,7 +34,7 @@ export type Account = {
      * Unit: Account currency
      *
      */
-    balance_outstanding: string
+    balanceOutstanding: string
     /**
      * The account's type.
      *

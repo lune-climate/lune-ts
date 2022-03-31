@@ -29,18 +29,18 @@ export const $Activity = {
             isRequired: true,
             pattern: '^-?[0-9]+(\\.[0-9]+)?$',
         },
-        balance_delta: {
+        balanceDelta: {
             type: 'string',
             description: `Account's cash balance delta.
 
-            The previous balance plus \`balance_delta\` equals the current balance.
+            The previous balance plus \`balanceDelta\` equals the current balance.
 
             Unit: Account currency
             `,
             isRequired: true,
             pattern: '^-?[0-9]+(\\.[0-9]+)?$',
         },
-        balance_outstanding: {
+        balanceOutstanding: {
             type: 'string',
             description: `The Account's outstanding balance at the time of this activity
 
@@ -49,11 +49,11 @@ export const $Activity = {
             isRequired: true,
             pattern: '^-?[0-9]+(\\.[0-9]+)?$',
         },
-        balance_outstanding_delta: {
+        balanceOutstandingDelta: {
             type: 'string',
             description: `Account's outstanding balance delta.
 
-            The previous outstanding balance plus \`balance_outstanding_delta\` equals the current outstanding balance.
+            The previous outstanding balance plus \`balanceOutstandingDelta\` equals the current outstanding balance.
 
             Unit: Account currency
             `,
@@ -65,19 +65,19 @@ export const $Activity = {
             description: `Quantity of CO2 offsets linked to this activity (tonnes CO2)`,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        order_id: {
+        orderId: {
             type: 'string',
             description: `The order's unique identifier`,
         },
-        project_id: {
+        projectId: {
             type: 'string',
             description: `The project's unique identifier`,
         },
-        project_name: {
+        projectName: {
             type: 'string',
             description: `The project's name`,
         },
-        created_at: {
+        createdAt: {
             type: 'string',
             description: `Activity creation timestamp`,
             isRequired: true,

@@ -25,7 +25,7 @@ export const $ShippingEstimateRequest = {
             type: 'ShippingMethod',
             isRequired: true,
         },
-        country_code: {
+        countryCode: {
             type: 'string',
             description: `The three-letter code of the country where the shipping takes place, if applicable.
 

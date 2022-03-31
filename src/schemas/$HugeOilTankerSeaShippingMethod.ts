@@ -3,7 +3,7 @@
 /* eslint-disable */
 export const $HugeOilTankerSeaShippingMethod = {
     properties: {
-        vessel_type: {
+        vesselType: {
             type: 'Enum',
             isRequired: true,
         },

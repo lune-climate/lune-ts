@@ -37,7 +37,7 @@ export const $OffsetLink = {
             This is the logo URL that appears on the first screen of the offset links flow.
             `,
         },
-        use_logo: {
+        useLogo: {
             type: 'boolean',
             description: `Whether to include the Offset link logo (defined in Account settings) in the footer.
             `,
@@ -67,7 +67,7 @@ export const $OffsetLink = {
                 type: 'Bundle',
             },
         },
-        created_at: {
+        createdAt: {
             type: 'Timestamp',
             isRequired: true,
         },
@@ -75,10 +75,10 @@ export const $OffsetLink = {
             type: 'OffsetLinkStatus',
             isRequired: true,
         },
-        expires_at: {
+        expiresAt: {
             type: 'Timestamp',
         },
-        require_payment: {
+        requirePayment: {
             type: 'boolean',
             description: `If true, the user of the Offset Link is required to pay by credit/debit card.
             `,

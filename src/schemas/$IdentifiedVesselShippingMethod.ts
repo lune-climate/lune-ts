@@ -3,7 +3,7 @@
 /* eslint-disable */
 export const $IdentifiedVesselShippingMethod = {
     properties: {
-        vessel_imo_number: {
+        vesselImoNumber: {
             type: 'string',
             description: `The ship's [IMO number](https://en.wikipedia.org/wiki/IMO_number) *without* the \`IMO\` prefix.
             `,

@@ -13,7 +13,7 @@ export const $Account = {
             description: `The Account's name`,
             isRequired: true,
         },
-        organisation_id: {
+        organisationId: {
             type: 'string',
             description: `The unique identifier of the organisation this account belongs to`,
             isRequired: true,
@@ -32,7 +32,7 @@ export const $Account = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        balance_outstanding: {
+        balanceOutstanding: {
             type: 'string',
             description: `The Account's outstanding balance represents the sum of placed and unpaid orders.
 

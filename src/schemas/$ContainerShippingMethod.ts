@@ -3,7 +3,7 @@
 /* eslint-disable */
 export const $ContainerShippingMethod = {
     properties: {
-        vessel_type: {
+        vesselType: {
             type: 'Enum',
             isRequired: true,
         },
@@ -15,7 +15,7 @@ export const $ContainerShippingMethod = {
             This parameter defaults to \`true\`.
             `,
         },
-        trade_lane: {
+        tradeLane: {
             type: 'Enum',
         },
     },

@@ -18,5 +18,5 @@ export type Shipment =
       }
     | {
           containers: string
-          cargo_type?: 'lightweight' | 'average' | 'heavyweight' | 'container_only'
+          cargoType: 'lightweight' | 'average' | 'heavyweight' | 'container_only'
       }

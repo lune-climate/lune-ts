@@ -14,7 +14,7 @@ export type ProjectSummary = {
     /**
      * The project's short name. May coincide with name.
      */
-    short_name: string
+    shortName: string
     /**
      * Project slug
      */
@@ -26,15 +26,15 @@ export type ProjectSummary = {
     /**
      * The project's offset type, eg Forest conservation, Afforestation, Direct Air Capture
      */
-    project_type: string
+    projectType: string
     /**
      * The project's Verification Standard Entity name or equivalent organization.
      */
-    registry_name: string
+    registryName: string
     /**
      * A link to the registry's project details page.
      */
-    registry_link?: string
+    registryLink: string
     /**
      * Latitude
      */
@@ -46,11 +46,11 @@ export type ProjectSummary = {
     /**
      * The project's country
      */
-    country_name: string
+    countryName: string
     /**
      * The project's 3 character country code
      */
-    country_code: string
+    countryCode: string
     /**
      * The project's region
      */
@@ -58,11 +58,11 @@ export type ProjectSummary = {
     /**
      * A project image URL
      */
-    primary_image?: string
+    primaryImage: string
     /**
      * A project thumbnail image URL
      */
-    thumbnail_image?: string
+    thumbnailImage: string
     /**
      * Project results
      */
@@ -73,7 +73,7 @@ export type ProjectSummary = {
      * Each number in the array represent one UN Sustainable Development Goal. See https://sdgs.un.org/goals.
      *
      */
-    un_sdg?: Array<number>
+    unSdg: Array<number>
     /**
      * Disabled projects do not get allocated to orders
      *

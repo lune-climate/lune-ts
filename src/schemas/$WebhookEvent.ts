@@ -3,18 +3,18 @@
 /* eslint-disable */
 export const $WebhookEvent = {
     properties: {
-        api_version: {
+        apiVersion: {
             type: 'string',
             description: `Version of the API that serialized the event. The only possible value at the moment is \`v1\`.
             `,
             isRequired: true,
         },
-        event_id: {
+        eventId: {
             type: 'string',
             description: `The event’s id. The id can be used for idempotency behaviour if stored on the client side.`,
             isRequired: true,
         },
-        event_type: {
+        eventType: {
             type: 'Enum',
             isRequired: true,
         },

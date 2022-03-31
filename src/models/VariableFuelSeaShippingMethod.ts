@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 export type VariableFuelSeaShippingMethod = {
-    vessel_type:
+    vesselType:
         | 'sea_oil_tanker_small'
         | 'sea_oil_tanker_medium'
         | 'sea_oil_tanker_large'

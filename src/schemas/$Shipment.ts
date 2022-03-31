@@ -25,7 +25,7 @@ export const $Shipment = {
                     isRequired: true,
                     pattern: '^[0-9]+(\\.[0-9]+)?$',
                 },
-                cargo_type: {
+                cargoType: {
                     type: 'Enum',
                 },
             },

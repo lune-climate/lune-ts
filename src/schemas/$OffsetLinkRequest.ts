@@ -40,16 +40,16 @@ export const $OffsetLinkRequest = {
                 type: 'string',
             },
         },
-        expires_at: {
+        expiresAt: {
             type: 'Timestamp',
         },
-        use_logo: {
+        useLogo: {
             type: 'boolean',
             description: `Whether to include the Offset link logo (defined in Account settings) in the footer.
             `,
             isRequired: true,
         },
-        require_payment: {
+        requirePayment: {
             type: 'boolean',
             description: `If true, the user of the Offset Link is required to pay by credit/debit card.
             This value cannot be updated once the offset link has been created.

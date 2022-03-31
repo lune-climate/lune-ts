@@ -8,7 +8,7 @@ export const $OrderQuoteBase = {
             description: `Currency code`,
             isRequired: true,
         },
-        estimated_quantity: {
+        estimatedQuantity: {
             type: 'string',
             description: `Estimated quantity (tonnes CO2).
 
@@ -17,7 +17,7 @@ export const $OrderQuoteBase = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        estimated_offset_cost: {
+        estimatedOffsetCost: {
             type: 'string',
             description: `Estimated offset cost
 
@@ -26,7 +26,7 @@ export const $OrderQuoteBase = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        estimated_total_cost: {
+        estimatedTotalCost: {
             type: 'string',
             description: `Estimated total cost inclusive of Lune fees.
 
@@ -35,7 +35,7 @@ export const $OrderQuoteBase = {
             isRequired: true,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        estimated_commission: {
+        estimatedCommission: {
             type: 'string',
             description: `Estimated commission`,
             isRequired: true,

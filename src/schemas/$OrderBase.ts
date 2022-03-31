@@ -9,13 +9,13 @@ export const $OrderBase = {
             description: `The order's unique identifier`,
             isRequired: true,
         },
-        idempotency_key: {
+        idempotencyKey: {
             type: 'string',
             description: `Optional unique identifier provided by the client.
 
-            \`idempotency_key\` has two purposes:
+            \`idempotencyKey\` has two purposes:
             1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
-            2. Clients can use \`idempotency_key\` to reconcile orders with other entities on their system.
+            2. Clients can use \`idempotencyKey\` to reconcile orders with other entities on their system.
             `,
             maxLength: 100,
         },
@@ -32,7 +32,7 @@ export const $OrderBase = {
             description: `Order currency code`,
             isRequired: true,
         },
-        offset_cost: {
+        offsetCost: {
             type: 'string',
             description: `Represents the net cost of offsets purchased by the order. May be lower than \`requested_value\`.
 
@@ -44,7 +44,7 @@ export const $OrderBase = {
             `,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        total_cost: {
+        totalCost: {
             type: 'string',
             description: `The total cost for the order inclusive of fees.
 
@@ -69,7 +69,7 @@ export const $OrderBase = {
             description: `Quantity of CO2 offsets purchased in tonnes.`,
             pattern: '^[0-9]+(\\.[0-9]+)?$',
         },
-        created_at: {
+        createdAt: {
             type: 'string',
             description: `Order creation timestamp`,
             isRequired: true,
@@ -98,7 +98,7 @@ export const $OrderBase = {
             type: 'Metadata',
             isRequired: true,
         },
-        offset_link_id: {
+        offsetLinkId: {
             type: 'string',
             description: `The offset link identifier, if the order was placed through an offset link`,
         },

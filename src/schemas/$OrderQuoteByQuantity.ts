@@ -9,7 +9,7 @@ export const $OrderQuoteByQuantity = {
         },
         {
             properties: {
-                requested_quantity: {
+                requestedQuantity: {
                     type: 'string',
                     description: `Requested quantity for the specific bundle (tonnes CO2)`,
                     isRequired: true,

@@ -13,7 +13,7 @@ export const $ProjectSummary = {
             description: `The project's name`,
             isRequired: true,
         },
-        short_name: {
+        shortName: {
             type: 'string',
             description: `The project's short name. May coincide with name.`,
             isRequired: true,
@@ -28,17 +28,17 @@ export const $ProjectSummary = {
             description: `Project description`,
             isRequired: true,
         },
-        project_type: {
+        projectType: {
             type: 'string',
             description: `The project's offset type, eg Forest conservation, Afforestation, Direct Air Capture`,
             isRequired: true,
         },
-        registry_name: {
+        registryName: {
             type: 'string',
             description: `The project's Verification Standard Entity name or equivalent organization.`,
             isRequired: true,
         },
-        registry_link: {
+        registryLink: {
             type: 'string',
             description: `A link to the registry's project details page.`,
         },
@@ -54,12 +54,12 @@ export const $ProjectSummary = {
             isRequired: true,
             format: 'float',
         },
-        country_name: {
+        countryName: {
             type: 'string',
             description: `The project's country`,
             isRequired: true,
         },
-        country_code: {
+        countryCode: {
             type: 'string',
             description: `The project's 3 character country code`,
             isRequired: true,
@@ -68,11 +68,11 @@ export const $ProjectSummary = {
             type: 'string',
             description: `The project's region`,
         },
-        primary_image: {
+        primaryImage: {
             type: 'string',
             description: `A project image URL`,
         },
-        thumbnail_image: {
+        thumbnailImage: {
             type: 'string',
             description: `A project thumbnail image URL`,
         },
@@ -82,7 +82,7 @@ export const $ProjectSummary = {
                 type: 'string',
             },
         },
-        un_sdg: {
+        unSdg: {
             type: 'array',
             contains: {
                 type: 'number',

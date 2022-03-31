@@ -13,6 +13,10 @@ the schema is made.
 
 ## Base client changes
 
+The generated models and schemas are modified to have their parameters as camelCase instead
+of snake_case. The TS/JS ecosystem prefers camelCase while http arguments usually do snake_case
+so we convert them to better reflect usage in code.
+
 The original services are generated as classes, where each method is a static method.
 As an example, to place an order, one would call it as: `OrdersService.createOrderByQuantity`
 A service in the case of openapi schema is a `tagGroup`, while the method is the `operationId`.
