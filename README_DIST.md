@@ -17,7 +17,7 @@ Overview:
 
 ```javascript
 // Setup your client once in your application
-var lune = require('lune');
+import * as lune from '@lune-climate/lune';
 var luneClient = new lune.LuneClient('your_api_key_would_go_here');
 
 // Whenever you want to use it (remember this is a Promise so it's an async operation)
