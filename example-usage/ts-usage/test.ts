@@ -1,6 +1,6 @@
-const lune = require('lune')
+const lune = require('@lune-climate/lune')
 // Alternatively, you can import it via ESM with
-// import * as lune from 'lune'
+// import * as lune from '@lune-climate/lune'
 
 const luneClient = new lune.LuneClient('your_api_key_would_go_here')
 ;(async () => {
