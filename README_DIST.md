@@ -6,7 +6,7 @@ list of possible operations, you can rely on your IDE auto-completion, check the
 classes directly or go through our full OpenAPI schema present here:
 https://docs.lune.co/openapi.yml
 
-The library is ECMA and CommonJS compatible.
+The library is ESM and CommonJS compatible.
 
 ## How to use
 
