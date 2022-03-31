@@ -26,6 +26,7 @@ export type Error = {
         | 'webhook_limit_reached'
         | 'invalid_time_range'
         | 'exchange_rate_not_found'
+        | 'live_account_required'
     /**
      * Human readable error message.
      *

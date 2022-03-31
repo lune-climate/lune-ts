@@ -59,6 +59,7 @@ export abstract class BundleSelectionsService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 429: `Rate limit exceeded`,
             },
         })

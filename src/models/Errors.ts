@@ -5,6 +5,11 @@
 import type { Error } from './Error'
 
 /**
- * An array containing errors
+ * An error container
  */
-export type Errors = Array<Error>
+export type Errors = {
+    /**
+     * An array containing errors
+     */
+    errors: Array<Error>
+}

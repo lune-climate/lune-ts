@@ -2,8 +2,14 @@
 /* tslint:disable */
 /* eslint-disable */
 export const $Errors = {
-    type: 'array',
-    contains: {
-        type: 'Error',
+    description: `An error container`,
+    properties: {
+        errors: {
+            type: 'array',
+            contains: {
+                type: 'Error',
+            },
+            isRequired: true,
+        },
     },
 } as const

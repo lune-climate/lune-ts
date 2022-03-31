@@ -47,8 +47,7 @@ export const $OffsetLink = {
             type: 'string',
             description: `The actual offset link URL that can be used to place orders`,
             isRequired: true,
-            pattern:
-                '^https:\\/\\/[-a-zA-Z0-9@:%._\\+~#=]{2,256}\\.[a-z]{2,6}\\b([-a-zA-Z0-9@:%_\\+.~#?&\\/\\/=]*)$',
+            pattern: '^https?:\\/\\/.+$',
         },
         value: {
             type: 'Money',
