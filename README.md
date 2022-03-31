@@ -8,6 +8,8 @@ on the dashboard and it overall produces the best results for our use case. Ther
 adaptations we do the generated services, but they are minimal.
 We do not export the core client and instead have our own implementations. Models and schemas
 are currently untouched, but as stated before, the services are touched and updated.
+The main advantage of this approach is not requiring manual intervention whenever a change in
+the schema is made.
 
 ## Base client changes
 
@@ -61,36 +63,51 @@ core library since it was quite good already.
 
 Check `example-usage` folder for a basic usage of the library in both TS and JS. But mostly, all you
 need is to add it as a dependency, create a new client and use as normally :)
+Also, you can check `README_DIST.md` for the README present on the npm package, example usage should be
+explicit there so not repeating it here.
 
 ## Build
 
 For a simple command that does all the building of the current source code inside docker as done on CI:
 `docker-compose -f docker-compose-ci.yml run build_from_schema`
 
-If you want to update from the remote schema API, you can do:
+Keep in mind the previous command does not include any changes done to the `base_client` file.
+If you also want to build the client (useful if changes were made in `base_client`) update from the
+remote schema API, you can do:
+`docker-compose -f docker-compose-ci.yml run rebuild_from_schema`
+
+If you want to rebuild the library based on the official openAPI schema (https://docs.lune.co/openapi.yml), you can do:
 `docker-compose -f docker-compose-ci.yml run update_from_remote_schema`
 
 If you want to get hands on inside the container, you can get in and use the make commands as much
-as you want.
-To get a shell inside it, just do:
+as you want. To get a shell inside it, just do:
 `make shell`
 
-Once inside, to fully rebuild the client library from the openapi schema. Just do:
+Once inside, you have many commands at your disposal. Here are a few with some description. Feel free to explore the `Makefile` to see all available.
+
+Fully rebuild from the remote openAPI schema
 `make build-from-schema`
 
-If all you want is to check if everything is building, you can use:
-`make build`
-or
-`make build-from-source` (checks linting)
+Fully rebuild from current source code
+`make rebuild-from-source`
 
-Feel free to explore all other commands in the Makefile.
+If all you want is to check if code is valid and building
+`make build-from-source`
 
 ## Publish
 
-Publishing currently requires manual intervention to up the version. The recommended way is to create a release in github. This will automatically be published to NPM once accepted.
+Publishing is currently done by creating a new release on Github. The current way is to:
+- Create a new git tag (v<number>).
+- Title of the release should be the release <number>.
+- Body of the release is free form, but you can try and use the auto generated one.
 
-## TODO
+Prior to publish step though, it is required to actually update the version as intended in the code.
+For this, use the `Makefile` commands `patch|minor|major-version` accordingly and commit the changes as usual.
+
+## Future work
 
 - Tests
 - Rich types on data (Big on Mass instead of string for example)
 - Add advanced functionalities like HMAC verification etc.
+- Improve core code. It is still highly similar to original code and I believe a better approach could be made.
+- Verify example usage and improve README
