@@ -45,8 +45,9 @@ export abstract class ProjectsService {
         limit?: string,
         after?: string,
         recentlyDisabled?: boolean,
+        overrideAccount?: string,
     ): Promise<Result<PaginatedBundles, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/bundles',
             query: {
@@ -74,8 +75,8 @@ export abstract class ProjectsService {
      * @returns Bundle The response returns a bundle
      * @throws ApiError
      */
-    public getBundleById(id: string): Promise<Result<Bundle, ApiError>> {
-        return __request(this.client, this.config, {
+    public getBundleById(id: string, overrideAccount?: string): Promise<Result<Bundle, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/bundles/{id}',
             path: {
@@ -115,8 +116,9 @@ export abstract class ProjectsService {
         limit?: string,
         after?: string,
         recentlyDisabled?: boolean,
+        overrideAccount?: string,
     ): Promise<Result<PaginatedProjects, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/projects',
             query: {
@@ -142,8 +144,11 @@ export abstract class ProjectsService {
      * @returns Project The response returns a project
      * @throws ApiError
      */
-    public getProjectById(id: string): Promise<Result<Project, ApiError>> {
-        return __request(this.client, this.config, {
+    public getProjectById(
+        id: string,
+        overrideAccount?: string,
+    ): Promise<Result<Project, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/projects/{id}',
             path: {
@@ -166,8 +171,11 @@ export abstract class ProjectsService {
      * @returns Project The response returns a project
      * @throws ApiError
      */
-    public getProjectBySlug(slug: string): Promise<Result<Project, ApiError>> {
-        return __request(this.client, this.config, {
+    public getProjectBySlug(
+        slug: string,
+        overrideAccount?: string,
+    ): Promise<Result<Project, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/projects/by-slug/{slug}',
             path: {

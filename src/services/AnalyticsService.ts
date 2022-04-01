@@ -26,8 +26,12 @@ export abstract class AnalyticsService {
      * @returns Analytics The response return account analytics
      * @throws ApiError
      */
-    public getAnalytics(start?: string, end?: string): Promise<Result<Analytics, ApiError>> {
-        return __request(this.client, this.config, {
+    public getAnalytics(
+        start?: string,
+        end?: string,
+        overrideAccount?: string,
+    ): Promise<Result<Analytics, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/analytics',
             query: {

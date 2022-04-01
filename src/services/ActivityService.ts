@@ -37,8 +37,9 @@ export abstract class ActivityService {
     public getActivity(
         limit?: string,
         after?: string,
+        overrideAccount?: string,
     ): Promise<Result<PaginatedActivity, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/activity',
             query: {

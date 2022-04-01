@@ -120,8 +120,13 @@ const getFormData = (options: ApiRequestOptions): FormData | undefined => {
     return undefined
 }
 
-const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers => {
+const getHeaders = (
+    overrideAccount: string | undefined,
+    config: ClientConfig,
+    options: ApiRequestOptions,
+): Headers => {
     const bearerToken = config.BEARER_TOKEN
+    const targetAccount = config.TARGET_ACCOUNT
     const username = config.USERNAME
     const password = config.PASSWORD
     const additionalHeaders = config.HEADERS
@@ -147,6 +152,15 @@ const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers =
     if (isStringWithValue(username) && isStringWithValue(password)) {
         const credentials = base64(`${username}:${password}`)
         headers.Authorization = `Basic ${credentials}`
+    }
+
+    if (isStringWithValue(targetAccount)) {
+        headers['Lune-Account'] = targetAccount
+    }
+
+    // Per endpoint override takes priority over client target account
+    if (isStringWithValue(overrideAccount)) {
+        headers['Lune-Account'] = overrideAccount
     }
 
     if (options.body) {
@@ -177,6 +191,7 @@ const getRequestBody = (options: ApiRequestOptions): any => {
 }
 
 export const request = async <T>(
+    overrideAccount: string | undefined,
     client: AxiosInstance,
     config: ClientConfig,
     options: ApiRequestOptions,
@@ -184,7 +199,7 @@ export const request = async <T>(
     const url = getUrl(config, options)
     const formData = getFormData(options)
     const body = getRequestBody(options)
-    const headers = getHeaders(config, options)
+    const headers = getHeaders(overrideAccount, config, options)
 
     return client({
         baseURL: url,

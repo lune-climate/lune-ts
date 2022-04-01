@@ -34,8 +34,9 @@ fix-services: $(SERVICES_DIR)/*
 	sed -i '/^export abstract class.*/a protected abstract config: ClientConfig;' $^
 	sed -i '/^export abstract class.*/a protected abstract client: AxiosInstance;' $^
 	sed -i 's/public static/public/' $^
+	sed -i -r 's/\): CancelablePromise</overrideAccount?: string\): CancelablePromise</' $^
 	sed -i -r 's/CancelablePromise<(.*)>/Promise<Result<\1, ApiError>>/' $^
-	sed -i 's/return __request(ClientConfig,/return __request(this.client, this.config,/' $^
+	sed -i 's/return __request(ClientConfig,/return __request(overrideAccount, this.client, this.config,/' $^
 	# [ESM support] Update imports to point to .js file
 	sed -i -r "s/import type \{(.*)\} from '..\/(.*)'/import type \{\1\} from '..\/\2.js'/" $^
 	sed -i -r "s/import \{(.*)\} from '..\/(.*)'/import \{\1\} from '..\/\2.js'/" $^

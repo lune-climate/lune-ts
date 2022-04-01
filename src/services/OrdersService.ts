@@ -33,8 +33,9 @@ export abstract class OrdersService {
      */
     public createOrderByMass(
         requestBody: CreateOrderByQuantityRequest,
+        overrideAccount?: string,
     ): Promise<Result<OrderByQuantity, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'POST',
             url: '/orders/by-mass',
             body: requestBody,
@@ -65,8 +66,9 @@ export abstract class OrdersService {
      */
     public createOrderByValue(
         requestBody: CreateOrderByValueRequest,
+        overrideAccount?: string,
     ): Promise<Result<OrderByValue, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'POST',
             url: '/orders/by-value',
             body: requestBody,
@@ -113,8 +115,9 @@ export abstract class OrdersService {
         limit?: string,
         after?: string,
         offsetLinkId?: string,
+        overrideAccount?: string,
     ): Promise<Result<PaginatedOrders, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/orders',
             query: {
@@ -137,8 +140,8 @@ export abstract class OrdersService {
      * @returns Order The response returns an order
      * @throws ApiError
      */
-    public getOrderById(id: string): Promise<Result<Order, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOrderById(id: string, overrideAccount?: string): Promise<Result<Order, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/orders/{id}',
             path: {
@@ -159,8 +162,11 @@ export abstract class OrdersService {
      * @returns binary The response returns the Carbon Offset Certificate
      * @throws ApiError
      */
-    public getOrderCertificateById(id: string): Promise<Result<Blob, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOrderCertificateById(
+        id: string,
+        overrideAccount?: string,
+    ): Promise<Result<Blob, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/orders/{id}/certificate',
             path: {
@@ -181,8 +187,11 @@ export abstract class OrdersService {
      * @returns Order The response returns an order
      * @throws ApiError
      */
-    public getOrderByIdempotencyKey(idempotencyKey: string): Promise<Result<Order, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOrderByIdempotencyKey(
+        idempotencyKey: string,
+        overrideAccount?: string,
+    ): Promise<Result<Order, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/orders/by-idempotency-key/{idempotencyKey}',
             path: {
@@ -208,8 +217,9 @@ export abstract class OrdersService {
      */
     public getOrderQuoteByMass(
         requestBody: OrderQuoteByQuantityRequest,
+        overrideAccount?: string,
     ): Promise<Result<OrderQuoteByQuantity, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'POST',
             url: '/orders/by-mass/quote',
             body: requestBody,
@@ -236,8 +246,9 @@ export abstract class OrdersService {
      */
     public getOrderQuoteByValue(
         requestBody: OrderQuoteByValueRequest,
+        overrideAccount?: string,
     ): Promise<Result<OrderQuoteByValue, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'POST',
             url: '/orders/by-value/quote',
             body: requestBody,

@@ -27,8 +27,10 @@ export abstract class BundleSelectionsService {
      * @returns BundleSelection The response returns the account's bundle selections
      * @throws ApiError
      */
-    public getBundleSelection(): Promise<Result<BundleSelection, ApiError>> {
-        return __request(this.client, this.config, {
+    public getBundleSelection(
+        overrideAccount?: string,
+    ): Promise<Result<BundleSelection, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/bundle-selections',
             errors: {
@@ -50,8 +52,9 @@ export abstract class BundleSelectionsService {
      */
     public updateBundleSelection(
         requestBody: BundleSelectionRequest,
+        overrideAccount?: string,
     ): Promise<Result<BundleSelection, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'PUT',
             url: '/bundle-selections',
             body: requestBody,

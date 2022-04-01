@@ -23,8 +23,8 @@ export abstract class AccountsService {
      * @returns Account The response returns an account
      * @throws ApiError
      */
-    public getAccount(): Promise<Result<Account, ApiError>> {
-        return __request(this.client, this.config, {
+    public getAccount(overrideAccount?: string): Promise<Result<Account, ApiError>> {
+        return __request(overrideAccount, this.client, this.config, {
             method: 'GET',
             url: '/accounts/me',
             errors: {
