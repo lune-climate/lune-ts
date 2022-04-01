@@ -14,7 +14,9 @@
     "noImplicitThis": true,
     "noImplicitAny": false,
     "baseUrl": "./",
-    "target": "ES2019"
+    "target": "ES2019",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "**/*.spec.ts", "./dist"]

@@ -25,6 +25,8 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
+    "camelcase-keys": "^7.0.2",
+    "snakecase-keys": "^5.1.2",
     "ts-results-es": "^3.4.0"
   },
   "devDependencies": {

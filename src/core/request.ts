@@ -1,4 +1,6 @@
 import { AxiosError, AxiosInstance } from 'axios'
+import camelCaseKeys from 'camelcase-keys'
+import snakeCaseKeys from 'snakecase-keys'
 import { Err, Ok, Result } from 'ts-results-es'
 
 import { ApiError } from './ApiError.js'
@@ -167,11 +169,11 @@ const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers =
 const getRequestBody = (options: ApiRequestOptions): any => {
     if (options.body) {
         if (options.mediaType?.includes('/json')) {
-            return JSON.stringify(options.body)
+            return JSON.stringify(snakeCaseKeys(options.body, { deep: true }))
         } else if (isString(options.body) || isBlob(options.body) || isFormData(options.body)) {
             return options.body
         } else {
-            return JSON.stringify(options.body)
+            return JSON.stringify(snakeCaseKeys(options.body, { deep: true }))
         }
     }
 }
@@ -194,7 +196,7 @@ export const request = async <T>(
         data: body,
     })
         .then((response) => {
-            return Ok(response.data as T)
+            return Ok(camelCaseKeys(response.data, { deep: true }) as T)
         })
         .catch((error: AxiosError) => {
             return Err(new ApiError(error, options))
