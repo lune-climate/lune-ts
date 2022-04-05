@@ -32,9 +32,8 @@ export abstract class EmissionEstimatesService {
      */
     public getElectricityEstimate(
         requestBody: ElectricityEstimateRequest,
-        overrideAccount?: string,
     ): Promise<Result<EmissionEstimate, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/electricity',
             body: requestBody,
@@ -62,9 +61,8 @@ export abstract class EmissionEstimatesService {
      */
     public getFlightEstimate(
         requestBody: FlightEstimateRequest,
-        overrideAccount?: string,
     ): Promise<Result<EmissionEstimate, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/flight',
             body: requestBody,
@@ -163,9 +161,8 @@ export abstract class EmissionEstimatesService {
      */
     public getShippingEstimate(
         requestBody: ShippingEstimateRequest,
-        overrideAccount?: string,
     ): Promise<Result<EmissionEstimate, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/shipping',
             body: requestBody,
@@ -199,9 +196,8 @@ export abstract class EmissionEstimatesService {
      */
     public getTransactionEstimate(
         requestBody: TransactionEstimateRequest,
-        overrideAccount?: string,
     ): Promise<Result<EmissionEstimate, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/transactions',
             body: requestBody,
@@ -231,9 +227,8 @@ export abstract class EmissionEstimatesService {
      */
     public getCompanyEstimate(
         requestBody: CompanyEstimateRequest,
-        overrideAccount?: string,
     ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/company',
             body: requestBody,

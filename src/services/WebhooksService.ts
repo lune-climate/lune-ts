@@ -20,8 +20,8 @@ export abstract class WebhooksService {
      * @returns Webhook Existing webhooks fetched successfully
      * @throws ApiError
      */
-    public getWebhooks(overrideAccount?: string): Promise<Result<Array<Webhook>, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public getWebhooks(): Promise<Result<Array<Webhook>, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'GET',
             url: '/webhooks',
             errors: {
@@ -37,11 +37,8 @@ export abstract class WebhooksService {
      * @returns Webhook A webhook created successfully
      * @throws ApiError
      */
-    public createWebhook(
-        requestBody: CreateWebhookRequest,
-        overrideAccount?: string,
-    ): Promise<Result<Webhook, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public createWebhook(requestBody: CreateWebhookRequest): Promise<Result<Webhook, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'POST',
             url: '/webhooks',
             body: requestBody,
@@ -60,11 +57,8 @@ export abstract class WebhooksService {
      * @returns Webhook Existing webhook fetched successfully
      * @throws ApiError
      */
-    public getWebhookById(
-        id: string,
-        overrideAccount?: string,
-    ): Promise<Result<Webhook, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public getWebhookById(id: string): Promise<Result<Webhook, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'GET',
             url: '/webhooks/{id}',
             path: {
@@ -88,9 +82,8 @@ export abstract class WebhooksService {
     public updateWebhook(
         id: string,
         requestBody: UpdateWebhookRequest,
-        overrideAccount?: string,
     ): Promise<Result<Webhook, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'PUT',
             url: '/webhooks/{id}',
             path: {
@@ -113,8 +106,8 @@ export abstract class WebhooksService {
      * @returns any Existing webhook deleted successfully
      * @throws ApiError
      */
-    public deleteWebhook(id: string, overrideAccount?: string): Promise<Result<any, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public deleteWebhook(id: string): Promise<Result<any, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'DELETE',
             url: '/webhooks/{id}',
             path: {
@@ -137,11 +130,8 @@ export abstract class WebhooksService {
      * @returns Webhook The secret was rotated successfully
      * @throws ApiError
      */
-    public rotateWebhookSecret(
-        id: string,
-        overrideAccount?: string,
-    ): Promise<Result<Webhook, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public rotateWebhookSecret(id: string): Promise<Result<Webhook, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'PUT',
             url: '/webhooks/{id}/rotate-secret',
             path: {

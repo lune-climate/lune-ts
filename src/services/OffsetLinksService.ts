@@ -23,11 +23,8 @@ export abstract class OffsetLinksService {
      * @returns OffsetLink Offset link fetched successfully.
      * @throws ApiError
      */
-    public getOffsetLinkById(
-        id: string,
-        overrideAccount?: string,
-    ): Promise<Result<OffsetLink, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public getOffsetLinkById(id: string): Promise<Result<OffsetLink, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links/{id}',
             path: {
@@ -51,9 +48,8 @@ export abstract class OffsetLinksService {
     public updateOffsetLinkById(
         id: string,
         requestBody: OffsetLinkUpdateRequest,
-        overrideAccount?: string,
     ): Promise<Result<OffsetLink, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'PUT',
             url: '/offset-links/{id}',
             path: {
@@ -87,9 +83,8 @@ export abstract class OffsetLinksService {
     public getOffsetLinks(
         limit?: string,
         after?: string,
-        overrideAccount?: string,
     ): Promise<Result<PaginatedOffsetLinks, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+        return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links',
             query: {
@@ -109,11 +104,8 @@ export abstract class OffsetLinksService {
      * @returns OffsetLink The offset link created successfully.
      * @throws ApiError
      */
-    public createOffsetLink(
-        requestBody: OffsetLinkRequest,
-        overrideAccount?: string,
-    ): Promise<Result<OffsetLink, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public createOffsetLink(requestBody: OffsetLinkRequest): Promise<Result<OffsetLink, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'POST',
             url: '/offset-links',
             body: requestBody,
@@ -134,11 +126,8 @@ export abstract class OffsetLinksService {
      * @returns OffsetLinkAnalytics Offset link analytics fetched successfully.
      * @throws ApiError
      */
-    public getOffsetLinkAnalyticsById(
-        id: string,
-        overrideAccount?: string,
-    ): Promise<Result<OffsetLinkAnalytics, ApiError>> {
-        return __request(overrideAccount, this.client, this.config, {
+    public getOffsetLinkAnalyticsById(id: string): Promise<Result<OffsetLinkAnalytics, ApiError>> {
+        return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links/{id}/analytics',
             path: {

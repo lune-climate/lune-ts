@@ -6,6 +6,6 @@ export type ClientConfig = {
     BEARER_TOKEN?: string
     USERNAME?: string
     PASSWORD?: string
-    TARGET_ACCOUNT?: string
+    ACCOUNT?: string
     HEADERS?: Headers
 }
