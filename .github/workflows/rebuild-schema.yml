@@ -28,6 +28,7 @@ jobs:
           title: 'Client auto update'
           body: |
             Underlying schema has changed. Check changes and approve accordingly. This will not create any release, simply assimilate changes on the schema.
+            version change this is.
           labels: |
             Schema Rebuild
             Automated PR
