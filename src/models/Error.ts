@@ -9,7 +9,7 @@ export type Error = {
     /**
      * Immutable string representing a specific error.
      */
-    error_code:
+    errorCode:
         | 'account_suspended'
         | 'invalid_selected_account_id'
         | 'bundle_selection_not_100_pct'

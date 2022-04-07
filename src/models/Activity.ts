@@ -55,14 +55,14 @@ export type Activity = {
      * Unit: Account currency
      *
      */
-    balance_delta: string
+    balanceDelta: string
     /**
      * The Account's outstanding balance at the time of this activity
      *
      * Unit: Account currency
      *
      */
-    balance_outstanding: string
+    balanceOutstanding: string
     /**
      * Account's outstanding balance delta.
      *
@@ -71,7 +71,7 @@ export type Activity = {
      * Unit: Account currency
      *
      */
-    balance_outstanding_delta: string
+    balanceOutstandingDelta: string
     /**
      * Quantity of CO2 offsets linked to this activity (tonnes CO2)
      */
@@ -79,17 +79,17 @@ export type Activity = {
     /**
      * The order's unique identifier
      */
-    order_id?: string
+    orderId?: string
     /**
      * The project's unique identifier
      */
-    project_id?: string
+    projectId?: string
     /**
      * The project's name
      */
-    project_name?: string
+    projectName?: string
     /**
      * Activity creation timestamp
      */
-    created_at: string
+    createdAt: string
 }

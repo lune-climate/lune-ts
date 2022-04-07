@@ -45,7 +45,7 @@ export type OffsetLink = {
      * Whether to include the Offset link logo (defined in Account settings) in the footer.
      *
      */
-    use_logo: boolean
+    useLogo: boolean
     /**
      * The actual offset link URL that can be used to place orders
      */
@@ -60,12 +60,12 @@ export type OffsetLink = {
      * Bundle objects
      */
     bundles?: Array<Bundle>
-    created_at: Timestamp
+    createdAt: Timestamp
     status: OffsetLinkStatus
-    expires_at?: Timestamp
+    expiresAt?: Timestamp
     /**
      * If true, the user of the Offset Link is required to pay by credit/debit card.
      *
      */
-    require_payment: boolean
+    requirePayment: boolean
 }

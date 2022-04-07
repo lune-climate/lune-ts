@@ -21,7 +21,6 @@ export abstract class OffsetLinksService {
      * Get an offset link by id
      * @param id The offset links's unique identifier
      * @returns OffsetLink Offset link fetched successfully.
-     * @throws ApiError
      */
     public getOffsetLinkById(id: string): Promise<Result<OffsetLink, ApiError>> {
         return __request(this.client, this.config, {
@@ -43,7 +42,6 @@ export abstract class OffsetLinksService {
      * @param id The offset links's unique identifier
      * @param requestBody
      * @returns OffsetLink The offset link updated successfully.
-     * @throws ApiError
      */
     public updateOffsetLinkById(
         id: string,
@@ -78,7 +76,6 @@ export abstract class OffsetLinksService {
      * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
      *
      * @returns PaginatedOffsetLinks Offset links fetched successfully.
-     * @throws ApiError
      */
     public getOffsetLinks(
         limit?: string,
@@ -102,7 +99,6 @@ export abstract class OffsetLinksService {
      * Create a new offset link
      * @param requestBody
      * @returns OffsetLink The offset link created successfully.
-     * @throws ApiError
      */
     public createOffsetLink(requestBody: OffsetLinkRequest): Promise<Result<OffsetLink, ApiError>> {
         return __request(this.client, this.config, {
@@ -124,7 +120,6 @@ export abstract class OffsetLinksService {
      * Get analytics for a given offset link
      * @param id The offset links's unique identifier
      * @returns OffsetLinkAnalytics Offset link analytics fetched successfully.
-     * @throws ApiError
      */
     public getOffsetLinkAnalyticsById(id: string): Promise<Result<OffsetLinkAnalytics, ApiError>> {
         return __request(this.client, this.config, {

@@ -24,7 +24,6 @@ export abstract class AnalyticsService {
      * @param end The end date of the custom date range.
      * The date must be in the format YYYY-MM-DD.
      * @returns Analytics The response return account analytics
-     * @throws ApiError
      */
     public getAnalytics(start?: string, end?: string): Promise<Result<Analytics, ApiError>> {
         return __request(this.client, this.config, {

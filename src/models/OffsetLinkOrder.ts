@@ -8,8 +8,8 @@ export type OffsetLinkOrder = {
     /**
      * The order's unique identifier
      */
-    order_id: string
-    created_at: Timestamp
+    orderId: string
+    createdAt: Timestamp
     /**
      * The email address of the user that placed an order through the offset link
      */
@@ -18,10 +18,10 @@ export type OffsetLinkOrder = {
         /**
          * The bundle's unique identifier
          */
-        bundle_id: string
+        bundleId: string
         /**
          * The bundle's name
          */
-        bundle_name: string
+        bundleName: string
     }>
 }

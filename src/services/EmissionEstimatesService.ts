@@ -29,7 +29,6 @@ export abstract class EmissionEstimatesService {
      * @param requestBody
      * @returns EmissionEstimate Estimation calculated successfully.
      *
-     * @throws ApiError
      */
     public getElectricityEstimate(
         requestBody: ElectricityEstimateRequest,
@@ -58,7 +57,6 @@ export abstract class EmissionEstimatesService {
      * @param requestBody
      * @returns EmissionEstimate Estimation calculated successfully.
      *
-     * @throws ApiError
      */
     public getFlightEstimate(
         requestBody: FlightEstimateRequest,
@@ -158,7 +156,6 @@ export abstract class EmissionEstimatesService {
      * @param requestBody
      * @returns EmissionEstimate Estimation calculated successfully.
      *
-     * @throws ApiError
      */
     public getShippingEstimate(
         requestBody: ShippingEstimateRequest,
@@ -193,7 +190,6 @@ export abstract class EmissionEstimatesService {
      * @param requestBody
      * @returns EmissionEstimate Estimation calculated successfully.
      *
-     * @throws ApiError
      */
     public getTransactionEstimate(
         requestBody: TransactionEstimateRequest,
@@ -224,7 +220,6 @@ export abstract class EmissionEstimatesService {
      * @param requestBody
      * @returns CompanyEmissionEstimate Estimation calculated successfully.
      *
-     * @throws ApiError
      */
     public getCompanyEstimate(
         requestBody: CompanyEstimateRequest,
@@ -253,7 +248,6 @@ export abstract class EmissionEstimatesService {
      * @param requestBody
      * @returns EmissionEstimate Estimation calculated successfully.
      *
-     * @throws ApiError
      */
     public getIndividualEstimate(
         requestBody: IndividualEstimateRequest,

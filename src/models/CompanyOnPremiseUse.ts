@@ -8,5 +8,5 @@ import type { MonetaryAmount } from './MonetaryAmount'
  * Company's own tech infrastructure details
  */
 export type CompanyOnPremiseUse = {
-    electricity_cost: MonetaryAmount
+    electricityCost: MonetaryAmount
 }

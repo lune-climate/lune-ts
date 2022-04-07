@@ -18,7 +18,6 @@ export abstract class WebhooksService {
     /**
      * Get existing webhooks
      * @returns Webhook Existing webhooks fetched successfully
-     * @throws ApiError
      */
     public getWebhooks(): Promise<Result<Array<Webhook>, ApiError>> {
         return __request(this.client, this.config, {
@@ -35,7 +34,6 @@ export abstract class WebhooksService {
      * Create a new webhook
      * @param requestBody
      * @returns Webhook A webhook created successfully
-     * @throws ApiError
      */
     public createWebhook(requestBody: CreateWebhookRequest): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {
@@ -55,7 +53,6 @@ export abstract class WebhooksService {
      * Get an existing webhook
      * @param id The webhooks's unique identifier
      * @returns Webhook Existing webhook fetched successfully
-     * @throws ApiError
      */
     public getWebhookById(id: string): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {
@@ -77,7 +74,6 @@ export abstract class WebhooksService {
      * @param id The webhooks's unique identifier
      * @param requestBody
      * @returns Webhook Existing webhook updated successfully
-     * @throws ApiError
      */
     public updateWebhook(
         id: string,
@@ -104,7 +100,6 @@ export abstract class WebhooksService {
      * Delete an existing webhook
      * @param id The webhooks's unique identifier
      * @returns any Existing webhook deleted successfully
-     * @throws ApiError
      */
     public deleteWebhook(id: string): Promise<Result<any, ApiError>> {
         return __request(this.client, this.config, {
@@ -128,7 +123,6 @@ export abstract class WebhooksService {
      *
      * @param id The webhooks's unique identifier
      * @returns Webhook The secret was rotated successfully
-     * @throws ApiError
      */
     public rotateWebhookSecret(id: string): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {

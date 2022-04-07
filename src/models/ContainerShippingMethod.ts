@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 export type ContainerShippingMethod = {
-    vessel_type: 'container_ship'
+    vesselType: 'container_ship'
     /**
      * A container transport is either refrigerated or "dry" (not refrigerated). Dry transports
      * result in lower emissions.
@@ -25,7 +25,7 @@ export type ContainerShippingMethod = {
      * Asia to Africa and Africa to Asia.
      *
      */
-    trade_lane?:
+    tradeLane?:
         | 'aggregated_panama_trade'
         | 'aggregated_transatlantic'
         | 'aggregated_transsuez'

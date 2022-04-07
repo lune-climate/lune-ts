@@ -36,16 +36,16 @@ export type OffsetLinkRequest = {
      * The email addresses of users that are allowed to use the offset link.
      */
     emails?: Array<string>
-    expires_at?: Timestamp
+    expiresAt?: Timestamp
     /**
      * Whether to include the Offset link logo (defined in Account settings) in the footer.
      *
      */
-    use_logo: boolean
+    useLogo: boolean
     /**
      * If true, the user of the Offset Link is required to pay by credit/debit card.
      * This value cannot be updated once the offset link has been created.
      *
      */
-    require_payment?: boolean
+    requirePayment?: boolean
 }

@@ -32,7 +32,6 @@ export abstract class ActivityService {
      * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
      *
      * @returns PaginatedActivity The response returns paginated activity
-     * @throws ApiError
      */
     public getActivity(
         limit?: string,

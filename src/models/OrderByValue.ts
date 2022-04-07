@@ -11,5 +11,5 @@ export type OrderByValue = OrderBase & {
      * Unit: order currency
      *
      */
-    requested_value: string
+    requestedValue: string
 }

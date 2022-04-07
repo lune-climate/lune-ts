@@ -21,7 +21,6 @@ export abstract class AccountsService {
      * One account object is returned.
      *
      * @returns Account The response returns an account
-     * @throws ApiError
      */
     public getAccount(): Promise<Result<Account, ApiError>> {
         return __request(this.client, this.config, {

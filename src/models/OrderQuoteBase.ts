@@ -15,25 +15,25 @@ export type OrderQuoteBase = {
      * May be lower than `requested_quantity`.
      *
      */
-    estimated_quantity: string
+    estimatedQuantity: string
     /**
      * Estimated offset cost
      *
      * Unit: order quote currency
      *
      */
-    estimated_offset_cost: string
+    estimatedOffsetCost: string
     /**
      * Estimated total cost inclusive of Lune fees.
      *
      * Unit: order quote currency
      *
      */
-    estimated_total_cost: string
+    estimatedTotalCost: string
     /**
      * Estimated commission
      */
-    estimated_commission: string
+    estimatedCommission: string
     /**
      * Bundles included in the quote including quantity and cost breakdown.
      *

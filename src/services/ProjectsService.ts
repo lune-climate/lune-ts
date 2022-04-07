@@ -39,7 +39,6 @@ export abstract class ProjectsService {
      * Default is false.
      * Omitting or setting recently_disabled to false has the same effect.
      * @returns PaginatedBundles The response returns paginated bundles
-     * @throws ApiError
      */
     public getBundles(
         limit?: string,
@@ -72,7 +71,6 @@ export abstract class ProjectsService {
      *
      * @param id The bundle's unique identifier
      * @returns Bundle The response returns a bundle
-     * @throws ApiError
      */
     public getBundleById(id: string): Promise<Result<Bundle, ApiError>> {
         return __request(this.client, this.config, {
@@ -109,7 +107,6 @@ export abstract class ProjectsService {
      * Default is false.
      * Omitting or setting recently_disabled to false has the same effect.
      * @returns PaginatedProjects The response returns paginated projects
-     * @throws ApiError
      */
     public getProjects(
         limit?: string,
@@ -140,7 +137,6 @@ export abstract class ProjectsService {
      *
      * @param id The project's unique identifier
      * @returns Project The response returns a project
-     * @throws ApiError
      */
     public getProjectById(id: string): Promise<Result<Project, ApiError>> {
         return __request(this.client, this.config, {
@@ -164,7 +160,6 @@ export abstract class ProjectsService {
      *
      * @param slug The project's unique slug
      * @returns Project The response returns a project
-     * @throws ApiError
      */
     public getProjectBySlug(slug: string): Promise<Result<Project, ApiError>> {
         return __request(this.client, this.config, {

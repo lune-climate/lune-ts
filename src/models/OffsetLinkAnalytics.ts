@@ -12,10 +12,10 @@ export type OffsetLinkAnalytics = {
     /**
      * The number of unique visitors for the specific offset link
      */
-    unique_visitors: number
+    uniqueVisitors: number
     /**
      * The number of placed orders for the specific offset link
      */
-    placed_orders: number
+    placedOrders: number
     orders: Array<OffsetLinkOrder>
 }

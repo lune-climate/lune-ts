@@ -29,7 +29,6 @@ export abstract class OrdersService {
      * @returns OrderByQuantity Order created successfully.
      * The response returns an Order object.
      *
-     * @throws ApiError
      */
     public createOrderByMass(
         requestBody: CreateOrderByQuantityRequest,
@@ -61,7 +60,6 @@ export abstract class OrdersService {
      * @returns OrderByValue Order created successfully.
      * The response returns an Order object.
      *
-     * @throws ApiError
      */
     public createOrderByValue(
         requestBody: CreateOrderByValueRequest,
@@ -107,7 +105,6 @@ export abstract class OrdersService {
      * If offset_link_id is set, the response will only include orders belonging to the particular offset link.
      *
      * @returns PaginatedOrders The response returns paginated orders
-     * @throws ApiError
      */
     public getOrders(
         limit?: string,
@@ -135,7 +132,6 @@ export abstract class OrdersService {
      *
      * @param id The order's unique identifier
      * @returns Order The response returns an order
-     * @throws ApiError
      */
     public getOrderById(id: string): Promise<Result<Order, ApiError>> {
         return __request(this.client, this.config, {
@@ -157,7 +153,6 @@ export abstract class OrdersService {
      *
      * @param id The order's unique identifier
      * @returns binary The response returns the Carbon Offset Certificate
-     * @throws ApiError
      */
     public getOrderCertificateById(id: string): Promise<Result<Blob, ApiError>> {
         return __request(this.client, this.config, {
@@ -179,7 +174,6 @@ export abstract class OrdersService {
      *
      * @param idempotencyKey The order's idempotency key
      * @returns Order The response returns an order
-     * @throws ApiError
      */
     public getOrderByIdempotencyKey(idempotencyKey: string): Promise<Result<Order, ApiError>> {
         return __request(this.client, this.config, {
@@ -204,7 +198,6 @@ export abstract class OrdersService {
      * @param requestBody
      * @returns OrderQuoteByQuantity Order quote processed successfully.
      *
-     * @throws ApiError
      */
     public getOrderQuoteByMass(
         requestBody: OrderQuoteByQuantityRequest,
@@ -232,7 +225,6 @@ export abstract class OrdersService {
      * @param requestBody
      * @returns OrderQuoteByValue Order quote processed successfully.
      *
-     * @throws ApiError
      */
     public getOrderQuoteByValue(
         requestBody: OrderQuoteByValueRequest,
