@@ -3,8 +3,9 @@
 /* eslint-disable */
 
 import type { Address } from './Address'
+import type { GeographicCoordinates } from './GeographicCoordinates'
 
 export type SourceDestination = {
-    source: Address
-    destination: Address
+    source: Address | GeographicCoordinates
+    destination: Address | GeographicCoordinates
 }

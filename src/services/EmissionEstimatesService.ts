@@ -6,6 +6,7 @@ import type { CompanyEstimateRequest } from '../models/CompanyEstimateRequest.js
 import type { ElectricityEstimateRequest } from '../models/ElectricityEstimateRequest.js'
 import type { EmissionEstimate } from '../models/EmissionEstimate.js'
 import type { FlightEstimateRequest } from '../models/FlightEstimateRequest.js'
+import type { IndividualEstimateRequest } from '../models/IndividualEstimateRequest.js'
 import type { ShippingEstimateRequest } from '../models/ShippingEstimateRequest.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
@@ -231,6 +232,35 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/company',
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                415: `The request is not an application/json encoded request`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
+     * Estimate individual annual emissions
+     * Estimate emissions produced by an individual for a year. This includes travel emissions, food, drinks, energy and shopping activities.
+     *
+     * The result is an estimate of a year-worth of emissions.
+     *
+     * @param requestBody
+     * @returns EmissionEstimate Estimation calculated successfully.
+     *
+     * @throws ApiError
+     */
+    public getIndividualEstimate(
+        requestBody: IndividualEstimateRequest,
+    ): Promise<Result<EmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'POST',
+            url: '/estimates/individual',
             body: requestBody,
             mediaType: 'application/json',
             errors: {

@@ -4,11 +4,27 @@
 export const $SourceDestination = {
     properties: {
         source: {
-            type: 'Address',
+            type: 'one-of',
+            contains: [
+                {
+                    type: 'Address',
+                },
+                {
+                    type: 'GeographicCoordinates',
+                },
+            ],
             isRequired: true,
         },
         destination: {
-            type: 'Address',
+            type: 'one-of',
+            contains: [
+                {
+                    type: 'Address',
+                },
+                {
+                    type: 'GeographicCoordinates',
+                },
+            ],
             isRequired: true,
         },
     },
