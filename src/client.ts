@@ -1,6 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
 import camelCaseKeys from 'camelcase-keys'
-import snakeCaseKeys from 'snakecase-keys'
 
 import { ClientConfig } from './core/ClientConfig'
 import { AccountsService } from './services/AccountsService.js'
@@ -44,26 +43,10 @@ export class LuneClient {
         }
         this.client = axios.create()
 
-        // Convert to snake case when sending request
-        this.client.interceptors.request.use((req) => {
-            const requestCopy = { ...req }
-
-            if (requestCopy.params) {
-                requestCopy.params = snakeCaseKeys(req.params, { deep: true })
-            }
-
-            if (requestCopy.data) {
-                requestCopy.data = snakeCaseKeys(req.data, { deep: true })
-            }
-
-            return requestCopy
-        })
-
         // Convert to camelCase when receiving request
-        this.client.interceptors.response.use(
-            (response) => camelCaseKeys(response.data, { deep: true }),
-            (error) => Promise.reject(error.response),
-        )
+        this.client.interceptors.response.use((response) => {
+            return { ...response, data: camelCaseKeys(response.data, { deep: true }) }
+        })
     }
 
     public setAccount(accountId: string) {
