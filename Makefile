@@ -22,7 +22,7 @@ api-schema:
 	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --useUnionTypes --exportCore false --exportServices true --exportSchemas false
 
 move-client:
-	mv src/luneClient.ts client.ts
+	mv src/luneClient.ts src/client.ts
 
 # Recreate the final client file. At this point, move the generated luneClient
 build-final-client: move-client
@@ -32,9 +32,6 @@ build-from-schema: install api-schema build-final-client fix-linting build
 
 # Build from source. This makes sure code is acceptable and working
 build-from-source: install check-linting build
-
-# Rebuild final client and build from source. This rebuilds based on base_client
-rebuild-from-source: install build-final-client fix-linting build
 
 patch-version:
 	npm --no-git-tag-version version patch
