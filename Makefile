@@ -19,7 +19,7 @@ build:
 	npm run build
 
 api-schema:
-	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --useUnionTypes --exportCore false --exportServices true --exportSchemas true
+	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --useUnionTypes --exportCore false --exportServices true --exportSchemas false
 
 # This fixes the generated service files. See README.md for more info
 SERVICES_DIR = ./src/services
