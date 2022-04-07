@@ -122,6 +122,7 @@ const getFormData = (options: ApiRequestOptions): FormData | undefined => {
 
 const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers => {
     const bearerToken = config.BEARER_TOKEN
+    const luneAccount = config.ACCOUNT
     const username = config.USERNAME
     const password = config.PASSWORD
     const additionalHeaders = config.HEADERS
@@ -147,6 +148,10 @@ const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers =
     if (isStringWithValue(username) && isStringWithValue(password)) {
         const credentials = base64(`${username}:${password}`)
         headers.Authorization = `Basic ${credentials}`
+    }
+
+    if (isStringWithValue(luneAccount)) {
+        headers['Lune-Account'] = luneAccount
     }
 
     if (options.body) {

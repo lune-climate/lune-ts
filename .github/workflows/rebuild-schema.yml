@@ -17,7 +17,7 @@ jobs:
       - name: Create PR with changes
         uses: peter-evans/create-pull-request@v3
         with:
-          token: ${{ secrets.AUTO_REBUILD_TOKEN }}
+          token: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
           commit-message: Client auto update
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
@@ -28,7 +28,6 @@ jobs:
           title: 'Client auto update'
           body: |
             Underlying schema has changed. Check changes and approve accordingly. This will not create any release, simply assimilate changes on the schema.
-            version change this is.
           labels: |
             Schema Rebuild
             Automated PR
