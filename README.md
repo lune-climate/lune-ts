@@ -91,9 +91,6 @@ Fully rebuild from the remote openAPI schema
 Build with current source code
 `make build-from-source`
 
-Fix linting/style check in files
-`make fix-linting`
-
 If all you want is to check if code is valid and building
 `make build-from-source`
 
