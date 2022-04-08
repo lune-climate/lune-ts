@@ -36,10 +36,10 @@ export type OffsetLinkUpdateRequest = {
      * The email addresses of users that are allowed to use the offset link.
      */
     emails?: Array<string>
-    expires_at?: Timestamp
+    expiresAt?: Timestamp
     /**
      * Whether to include the Offset link logo (defined in Account settings) in the footer.
      *
      */
-    use_logo: boolean
+    useLogo: boolean
 }

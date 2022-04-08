@@ -21,7 +21,7 @@ export type CreateOrderByValueRequest = {
      * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
      *
      */
-    idempotency_key?: string
-    bundle_selection?: BundleSelectionRequest
+    idempotencyKey?: string
+    bundleSelection?: BundleSelectionRequest
     metadata?: Metadata
 }

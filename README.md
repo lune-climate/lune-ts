@@ -74,7 +74,7 @@ For a simple command that does all the building of the current source code insid
 Keep in mind the previous command does not include any changes done to the `base_client` file.
 If you also want to build the client (useful if changes were made in `base_client`) update from the
 remote schema API, you can do:
-`docker-compose -f docker-compose-ci.yml run rebuild_from_schema`
+`docker-compose -f docker-compose-ci.yml run build_from_source`
 
 If you want to rebuild the library based on the official openAPI schema (https://docs.lune.co/openapi.yml), you can do:
 `docker-compose -f docker-compose-ci.yml run update_from_remote_schema`
@@ -88,8 +88,8 @@ Once inside, you have many commands at your disposal. Here are a few with some d
 Fully rebuild from the remote openAPI schema
 `make build-from-schema`
 
-Fully rebuild from current source code
-`make rebuild-from-source`
+Build with current source code
+`make build-from-source`
 
 If all you want is to check if code is valid and building
 `make build-from-source`

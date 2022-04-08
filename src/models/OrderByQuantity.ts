@@ -8,5 +8,5 @@ export type OrderByQuantity = OrderBase & {
     /**
      * Represents the requested quantity of CO2 offsets to purchase in tonnes.
      */
-    requested_quantity: string
+    requestedQuantity: string
 }

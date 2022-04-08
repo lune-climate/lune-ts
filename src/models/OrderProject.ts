@@ -6,19 +6,19 @@ export type OrderProject = {
     /**
      * The project's unique identifier
      */
-    project_id: string
+    projectId: string
     /**
      * The project's name
      */
-    project_name: string
+    projectName: string
     /**
      * The project's offset type, eg Forest conservation, Afforestation, Direct Air Capture
      */
-    project_type: string
+    projectType: string
     /**
      * The project's unique slug
      */
-    project_slug: string
+    projectSlug: string
     /**
      * Carbon offset purchased (tonnes CO2)
      */
@@ -29,12 +29,12 @@ export type OrderProject = {
      * Unit: order currency
      *
      */
-    unit_price: string
+    unitPrice: string
     /**
      * Represents the net cost of offsets purchased by the order for this project.
      *
      * Unit: order currency
      *
      */
-    offset_cost: string
+    offsetCost: string
 }

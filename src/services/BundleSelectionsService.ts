@@ -25,7 +25,6 @@ export abstract class BundleSelectionsService {
      * Every account is created with default bundle selections.
      *
      * @returns BundleSelection The response returns the account's bundle selections
-     * @throws ApiError
      */
     public getBundleSelection(): Promise<Result<BundleSelection, ApiError>> {
         return __request(this.client, this.config, {
@@ -46,7 +45,6 @@ export abstract class BundleSelectionsService {
      *
      * @param requestBody
      * @returns BundleSelection The response returns the new account's bundle selections
-     * @throws ApiError
      */
     public updateBundleSelection(
         requestBody: BundleSelectionRequest,

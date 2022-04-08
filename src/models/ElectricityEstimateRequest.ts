@@ -16,5 +16,5 @@ export type ElectricityEstimateRequest = {
      * the global average will be used.
      *
      */
-    country_code?: string
+    countryCode?: string
 }

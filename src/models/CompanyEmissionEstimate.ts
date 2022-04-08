@@ -22,7 +22,7 @@ export type CompanyEmissionEstimate = EmissionEstimate & {
         /**
          * Emissions associated with buying equipment and generating waste.
          */
-        material_and_waste: Mass
+        materialAndWaste: Mass
         /**
          * Emissions associated with purchasing energy (electricy, heating etc.)
          */
@@ -30,11 +30,11 @@ export type CompanyEmissionEstimate = EmissionEstimate & {
         /**
          * Emissions associated with business travels and commuting to/from work.
          */
-        travel_and_commute: Mass
+        travelAndCommute: Mass
         /**
          * Emissions associated with food and drinks.
          */
-        food_and_drink: Mass
+        foodAndDrink: Mass
         /**
          * Emissions associated with operating computer systems.
          */

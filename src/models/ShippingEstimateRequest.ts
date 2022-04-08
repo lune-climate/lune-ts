@@ -25,5 +25,5 @@ export type ShippingEstimateRequest = {
      * the country with the largest share of the route.
      *
      */
-    country_code?: string
+    countryCode?: string
 }

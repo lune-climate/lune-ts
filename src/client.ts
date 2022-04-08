@@ -1,4 +1,5 @@
 import axios, { AxiosInstance } from 'axios'
+import camelCaseKeys from 'camelcase-keys'
 
 import { ClientConfig } from './core/ClientConfig'
 import { AccountsService } from './services/AccountsService.js'
@@ -23,6 +24,7 @@ function applyMixins(derivedCtor: any, constructors: any[]) {
         })
     })
 }
+
 export class LuneClient {
     protected client: AxiosInstance
     protected config: ClientConfig
@@ -40,12 +42,18 @@ export class LuneClient {
             ACCOUNT: account,
         }
         this.client = axios.create()
+
+        // Convert to camelCase when receiving request
+        this.client.interceptors.response.use((response) => {
+            return { ...response, data: camelCaseKeys(response.data, { deep: true }) }
+        })
     }
 
     public setAccount(accountId: string) {
         this.config.ACCOUNT = accountId
     }
 }
+
 applyMixins(LuneClient, [
     AccountsService,
     ActivityService,
@@ -58,6 +66,7 @@ applyMixins(LuneClient, [
     WebhookRequestService,
     WebhooksService,
 ])
+
 // eslint-disable-next-line no-redeclare -- mixins require same name
 export interface LuneClient
     extends AccountsService,
@@ -70,6 +79,7 @@ export interface LuneClient
         ProjectsService,
         WebhookRequestService,
         WebhooksService {}
+
 export type { Account } from './models/Account.js'
 export type { Activity } from './models/Activity.js'
 export type { Address } from './models/Address.js'
@@ -157,6 +167,7 @@ export type { VariableFuelVariableLoadSeaShippingMethod } from './models/Variabl
 export type { Webhook } from './models/Webhook.js'
 export type { WebhookEvent } from './models/WebhookEvent.js'
 export type { WebhookRequest } from './models/WebhookRequest.js'
+
 export { AccountsService } from './services/AccountsService.js'
 export { ActivityService } from './services/ActivityService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'

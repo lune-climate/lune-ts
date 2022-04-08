@@ -14,7 +14,7 @@ export type FlightEstimateRequest = {
      * Either the flying distance or the start/destination airport code (ICAO or IATA).
      */
     route: Distance | AirportSourceDestination
-    cabin_class?: CabinClass
+    cabinClass?: CabinClass
     /**
      * Number of passengers the calculation should be applied to.
      * This parameter defaults to 1.

@@ -1,4 +1,5 @@
 import { AxiosError, AxiosInstance } from 'axios'
+import snakeCaseKeys from 'snakecase-keys'
 import { Err, Ok, Result } from 'ts-results-es'
 
 import { ApiError } from './ApiError.js'
@@ -101,7 +102,7 @@ const getFormData = (options: ApiRequestOptions): FormData | undefined => {
             if (isString(value) || isBlob(value)) {
                 formData.append(key, value)
             } else {
-                formData.append(key, JSON.stringify(value))
+                formData.append(key, JSON.stringify(snakeCaseKeys(value, { deep: true })))
             }
         }
 
@@ -172,11 +173,11 @@ const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers =
 const getRequestBody = (options: ApiRequestOptions): any => {
     if (options.body) {
         if (options.mediaType?.includes('/json')) {
-            return JSON.stringify(options.body)
+            return JSON.stringify(snakeCaseKeys(options.body, { deep: true }))
         } else if (isString(options.body) || isBlob(options.body) || isFormData(options.body)) {
             return options.body
         } else {
-            return JSON.stringify(options.body)
+            return JSON.stringify(snakeCaseKeys(options.body, { deep: true }))
         }
     }
 }

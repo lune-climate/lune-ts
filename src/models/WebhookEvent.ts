@@ -9,15 +9,15 @@ export type WebhookEvent = {
      * Version of the API that serialized the event. The only possible value at the moment is `v1`.
      *
      */
-    api_version: string
+    apiVersion: string
     /**
      * The event’s id. The id can be used for idempotency behaviour if stored on the client side.
      */
-    event_id: string
+    eventId: string
     /**
      * The event type. The type of event data will depend on the value present here.
      */
-    event_type:
+    eventType:
         | 'order.received'
         | 'order.placed'
         | 'order.allocated'

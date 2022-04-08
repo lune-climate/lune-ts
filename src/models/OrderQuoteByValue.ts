@@ -8,5 +8,5 @@ export type OrderQuoteByValue = OrderQuoteBase & {
     /**
      * Requested order value inclusive of commission
      */
-    requested_value: string
+    requestedValue: string
 }

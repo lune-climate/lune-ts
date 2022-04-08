@@ -10,8 +10,3 @@ services:
     command: bash -c "cd /lune-ts && make build-from-source"
     volumes:
       - .:/lune-ts
-  rebuild_from_source:
-    build: .
-    command: bash -c "cd /lune-ts && make rebuild-from-source"
-    volumes:
-      - .:/lune-ts
