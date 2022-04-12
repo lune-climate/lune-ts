@@ -24,7 +24,7 @@ export type IndividualEstimateRequest = {
     /**
      * How is the car powered?
      */
-    carFuelType?: 'gasoline' | 'electric' | 'hybrid'
+    carFuelType?: IndividualEstimateRequest.car_fuel_type
     /**
      * Average yearly distance travelled per car
      */
@@ -78,4 +78,15 @@ export type IndividualEstimateRequest = {
      * Annual natural gas consumption in cubic meters
      */
     gasConsumption: number
+}
+
+export namespace IndividualEstimateRequest {
+    /**
+     * How is the car powered?
+     */
+    export enum car_fuel_type {
+        GASOLINE = 'gasoline',
+        ELECTRIC = 'electric',
+        HYBRID = 'hybrid',
+    }
 }

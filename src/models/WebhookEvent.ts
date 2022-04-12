@@ -17,14 +17,7 @@ export type WebhookEvent = {
     /**
      * The event type. The type of event data will depend on the value present here.
      */
-    eventType:
-        | 'order.received'
-        | 'order.placed'
-        | 'order.allocated'
-        | 'order.paid'
-        | 'order.cancelled'
-        | 'order.failed'
-        | 'order.completed'
+    eventType: WebhookEvent.event_type
     /**
      * The event’s sequence. This can be compared lexicographically to determine the order of events.
      *
@@ -38,4 +31,19 @@ export type WebhookEvent = {
      * Data of the event. On order.* events, this means an Order.
      */
     data: Order
+}
+
+export namespace WebhookEvent {
+    /**
+     * The event type. The type of event data will depend on the value present here.
+     */
+    export enum event_type {
+        ORDER_RECEIVED = 'order.received',
+        ORDER_PLACED = 'order.placed',
+        ORDER_ALLOCATED = 'order.allocated',
+        ORDER_PAID = 'order.paid',
+        ORDER_CANCELLED = 'order.cancelled',
+        ORDER_FAILED = 'order.failed',
+        ORDER_COMPLETED = 'order.completed',
+    }
 }

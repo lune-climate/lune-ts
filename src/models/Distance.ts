@@ -7,5 +7,15 @@ export type Distance = {
     /**
      * Unit, `km` for kilometers, `mi` for miles
      */
-    unit: 'km' | 'mi'
+    unit: Distance.unit
+}
+
+export namespace Distance {
+    /**
+     * Unit, `km` for kilometers, `mi` for miles
+     */
+    export enum unit {
+        KM = 'km',
+        MI = 'mi',
+    }
 }

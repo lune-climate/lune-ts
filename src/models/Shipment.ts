@@ -18,5 +18,14 @@ export type Shipment =
       }
     | {
           containers: string
-          cargoType?: 'lightweight' | 'average' | 'heavyweight' | 'container_only'
+          cargoType?: Shipment.cargo_type
       }
+
+export namespace Shipment {
+    export enum cargo_type {
+        LIGHTWEIGHT = 'lightweight',
+        AVERAGE = 'average',
+        HEAVYWEIGHT = 'heavyweight',
+        CONTAINER_ONLY = 'container_only',
+    }
+}

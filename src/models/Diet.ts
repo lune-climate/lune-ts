@@ -10,10 +10,11 @@
  * fish.
  *
  */
-export type Diet =
-    | 'high_meat_eater'
-    | 'medium_meat_eater'
-    | 'low_meat_eater'
-    | 'fish_eater'
-    | 'vegetarian'
-    | 'vegan'
+export enum Diet {
+    HIGH_MEAT_EATER = 'high_meat_eater',
+    MEDIUM_MEAT_EATER = 'medium_meat_eater',
+    LOW_MEAT_EATER = 'low_meat_eater',
+    FISH_EATER = 'fish_eater',
+    VEGETARIAN = 'vegetarian',
+    VEGAN = 'vegan',
+}

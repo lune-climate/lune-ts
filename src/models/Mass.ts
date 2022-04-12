@@ -7,5 +7,15 @@ export type Mass = {
     /**
      * Unit, `t` for tonne, `kg` for kilogram
      */
-    unit: 'kg' | 't'
+    unit: Mass.unit
+}
+
+export namespace Mass {
+    /**
+     * Unit, `t` for tonne, `kg` for kilogram
+     */
+    export enum unit {
+        KG = 'kg',
+        T = 't',
+    }
 }

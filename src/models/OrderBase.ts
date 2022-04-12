@@ -26,11 +26,11 @@ export type OrderBase = {
     /**
      * Identifies whether the order has been placed by quantity (kg CO2) or value (monetary amount)
      */
-    type: 'quantity' | 'value'
+    type: OrderBase.type
     /**
      * Order status
      */
-    status: 'received' | 'placed' | 'paid' | 'allocated' | 'cancelled' | 'complete' | 'failed'
+    status: OrderBase.status
     /**
      * Order currency code
      */
@@ -109,4 +109,27 @@ export type OrderBase = {
      *
      */
     email?: string
+}
+
+export namespace OrderBase {
+    /**
+     * Identifies whether the order has been placed by quantity (kg CO2) or value (monetary amount)
+     */
+    export enum type {
+        QUANTITY = 'quantity',
+        VALUE = 'value',
+    }
+
+    /**
+     * Order status
+     */
+    export enum status {
+        RECEIVED = 'received',
+        PLACED = 'placed',
+        PAID = 'paid',
+        ALLOCATED = 'allocated',
+        CANCELLED = 'cancelled',
+        COMPLETE = 'complete',
+        FAILED = 'failed',
+    }
 }

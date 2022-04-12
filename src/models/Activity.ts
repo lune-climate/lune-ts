@@ -29,17 +29,7 @@ export type Activity = {
      * * `order_failed` Order failed to process.
      *
      */
-    source:
-        | 'admin_credit'
-        | 'admin_debit'
-        | 'order_received'
-        | 'order_placed'
-        | 'order_paid'
-        | 'order_allocated'
-        | 'order_cancelled'
-        | 'order_allocation_retired'
-        | 'order_complete'
-        | 'order_failed'
+    source: Activity.source
     /**
      * Account's cash balance at the time of this activity
      *
@@ -92,4 +82,34 @@ export type Activity = {
      * Activity creation timestamp
      */
     createdAt: string
+}
+
+export namespace Activity {
+    /**
+     * The source event that has yielded the activity.
+     *
+     * * `admin_credit` The account has been credited by Lune.
+     * * `admin_debit` The account has been debited by Lune.
+     * * `order_received` The account has placed an order and Lune has received it.
+     * * `order_placed` An order has been matched to bundles. Quantites and costs are known and have been set.
+     * * `order_paid` The order has been paid for.
+     * * `order_allocated` The order has been allocated to projects.
+     * * `order_cancelled` The order has been cancelled
+     * * `order_allocation_retired` Carbon credits linked to a specific project have been retired
+     * * `order_complete` All carbon credits linked to the order have been retired
+     * * `order_failed` Order failed to process.
+     *
+     */
+    export enum source {
+        ADMIN_CREDIT = 'admin_credit',
+        ADMIN_DEBIT = 'admin_debit',
+        ORDER_RECEIVED = 'order_received',
+        ORDER_PLACED = 'order_placed',
+        ORDER_PAID = 'order_paid',
+        ORDER_ALLOCATED = 'order_allocated',
+        ORDER_CANCELLED = 'order_cancelled',
+        ORDER_ALLOCATION_RETIRED = 'order_allocation_retired',
+        ORDER_COMPLETE = 'order_complete',
+        ORDER_FAILED = 'order_failed',
+    }
 }

@@ -53,5 +53,16 @@ export type BundleSummary = {
      * Offset type classification
      *
      */
-    offsetType?: 'emissions_reduction' | 'carbon_removal'
+    offsetType?: BundleSummary.offset_type
+}
+
+export namespace BundleSummary {
+    /**
+     * Offset type classification
+     *
+     */
+    export enum offset_type {
+        EMISSIONS_REDUCTION = 'emissions_reduction',
+        CARBON_REMOVAL = 'carbon_removal',
+    }
 }

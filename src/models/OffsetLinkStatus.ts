@@ -2,4 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type OffsetLinkStatus = 'enabled' | 'disabled'
+export enum OffsetLinkStatus {
+    ENABLED = 'enabled',
+    DISABLED = 'disabled',
+}
