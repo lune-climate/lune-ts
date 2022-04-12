@@ -4,5 +4,12 @@
 
 export type Area = {
     amount: string
-    unit: 'square_meters' | 'square_feet'
+    unit: Area.unit
+}
+
+export namespace Area {
+    export enum unit {
+        SQUARE_METERS = 'square_meters',
+        SQUARE_FEET = 'square_feet',
+    }
 }

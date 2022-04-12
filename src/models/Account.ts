@@ -41,7 +41,7 @@ export type Account = {
      * See the <a href="#section/Live-and-test-accounts">Live and test accounts section</a> for details.
      *
      */
-    type: 'live' | 'test'
+    type: Account.type
     /**
      * Offset link logo URL
      *
@@ -57,4 +57,17 @@ export type Account = {
      *
      */
     beneficiary?: string
+}
+
+export namespace Account {
+    /**
+     * The account's type.
+     *
+     * See the <a href="#section/Live-and-test-accounts">Live and test accounts section</a> for details.
+     *
+     */
+    export enum type {
+        LIVE = 'live',
+        TEST = 'test',
+    }
 }

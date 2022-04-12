@@ -5,4 +5,10 @@
 /**
  * The identifier of a cloud provider.
  */
-export type CloudProvider = 'aws' | 'gcp' | 'azure' | 'ovh' | 'other'
+export enum CloudProvider {
+    AWS = 'aws',
+    GCP = 'gcp',
+    AZURE = 'azure',
+    OVH = 'ovh',
+    OTHER = 'other',
+}

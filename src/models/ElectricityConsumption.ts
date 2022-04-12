@@ -7,5 +7,16 @@ export type ElectricityConsumption = {
     /**
      * Unit, `kWh` for kilowatt-hours, `MWh` for megawatt-hours, `GWh` for gigawatt-hours
      */
-    unit: 'kWh' | 'MWh' | 'GWh'
+    unit: ElectricityConsumption.unit
+}
+
+export namespace ElectricityConsumption {
+    /**
+     * Unit, `kWh` for kilowatt-hours, `MWh` for megawatt-hours, `GWh` for gigawatt-hours
+     */
+    export enum unit {
+        K_WH = 'kWh',
+        MWH = 'MWh',
+        GWH = 'GWh',
+    }
 }

@@ -3,13 +3,23 @@
 /* eslint-disable */
 
 export type VariableFuelSeaShippingMethod = {
-    vesselType:
-        | 'sea_oil_tanker_small'
-        | 'sea_oil_tanker_medium'
-        | 'sea_oil_tanker_large'
-        | 'sea_general_cargo_small'
-        | 'sea_general_cargo_large'
-        | 'sea_bulk_carrier_small'
-        | 'sea_ropax'
-    fuel?: 'HFO' | 'MGO'
+    vesselType: VariableFuelSeaShippingMethod.vessel_type
+    fuel?: VariableFuelSeaShippingMethod.fuel
+}
+
+export namespace VariableFuelSeaShippingMethod {
+    export enum vessel_type {
+        SEA_OIL_TANKER_SMALL = 'sea_oil_tanker_small',
+        SEA_OIL_TANKER_MEDIUM = 'sea_oil_tanker_medium',
+        SEA_OIL_TANKER_LARGE = 'sea_oil_tanker_large',
+        SEA_GENERAL_CARGO_SMALL = 'sea_general_cargo_small',
+        SEA_GENERAL_CARGO_LARGE = 'sea_general_cargo_large',
+        SEA_BULK_CARRIER_SMALL = 'sea_bulk_carrier_small',
+        SEA_ROPAX = 'sea_ropax',
+    }
+
+    export enum fuel {
+        HFO = 'HFO',
+        MGO = 'MGO',
+    }
 }
