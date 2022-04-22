@@ -5,3 +5,8 @@ services:
     command: bash
     volumes:
       - .:/lune-ts
+  local_model_rebuild:
+    build: .
+    command: bash -c "cd /lune-ts && make development-build-from-schema"
+    volumes:
+      - .:/lune-ts

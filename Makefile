@@ -30,6 +30,10 @@ build-final-client: move-client
 # Full build of the client from the openapi schema. Use this whenever the openapi schema is updated
 build-from-schema: install api-schema build-final-client fix-linting build
 
+# Fast build of the client from the openapi schema. Used for development purposes when installing
+# dependencies and linting isn't necessary. Currently used on dashboard to speed regeneration of models.
+development-build-from-schema: api-schema build-final-client build
+
 # Build from source. This makes sure code is acceptable and working
 build-from-source: install check-linting build
 
