@@ -2,20 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { MassUnit } from './MassUnit'
+
 export type Mass = {
     amount: string
-    /**
-     * Unit, `t` for tonne, `kg` for kilogram
-     */
-    unit: Mass.unit
-}
-
-export namespace Mass {
-    /**
-     * Unit, `t` for tonne, `kg` for kilogram
-     */
-    export enum unit {
-        KG = 'kg',
-        T = 't',
-    }
+    unit: MassUnit
 }
