@@ -16,6 +16,10 @@ export type Account = {
      */
     organisationId: string
     /**
+     * Account id of the pair account. This field is not populated on client accounts.
+     */
+    siblingId?: string
+    /**
      * The Account's currency
      */
     currency: string
