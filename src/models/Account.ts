@@ -2,6 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AccountScope } from './AccountScope'
+import type { AccountType } from './AccountType'
+
 export type Account = {
     /**
      * The Account's unique identifier
@@ -39,20 +42,8 @@ export type Account = {
      *
      */
     balanceOutstanding: string
-    /**
-     * The account's type.
-     *
-     * See the <a href="#section/Live-and-test-accounts">Live and test accounts section</a> for details.
-     *
-     */
-    type: Account.type
-    /**
-     * The account's scope.
-     *
-     * Determines if the account is a client account or a standard account that comes in pairs (live and test).
-     *
-     */
-    scope: Account.scope
+    type: AccountType
+    scope: AccountScope
     /**
      * Offset link logo URL
      *
@@ -68,28 +59,4 @@ export type Account = {
      *
      */
     beneficiary?: string
-}
-
-export namespace Account {
-    /**
-     * The account's type.
-     *
-     * See the <a href="#section/Live-and-test-accounts">Live and test accounts section</a> for details.
-     *
-     */
-    export enum type {
-        LIVE = 'live',
-        TEST = 'test',
-    }
-
-    /**
-     * The account's scope.
-     *
-     * Determines if the account is a client account or a standard account that comes in pairs (live and test).
-     *
-     */
-    export enum scope {
-        STANDARD = 'standard',
-        CLIENT = 'client',
-    }
 }

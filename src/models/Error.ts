@@ -43,5 +43,7 @@ export namespace Error {
         INVALID_TIME_RANGE = 'invalid_time_range',
         EXCHANGE_RATE_NOT_FOUND = 'exchange_rate_not_found',
         LIVE_ACCOUNT_REQUIRED = 'live_account_required',
+        ORGANISATION_NOT_FOUND = 'organisation_not_found',
+        UNAUTHORISED = 'unauthorised',
     }
 }
