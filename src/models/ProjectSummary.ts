@@ -56,6 +56,10 @@ export type ProjectSummary = {
      */
     region?: string
     /**
+     * A project logo image URL
+     */
+    logo?: string
+    /**
      * A project image URL
      */
     primaryImage?: string

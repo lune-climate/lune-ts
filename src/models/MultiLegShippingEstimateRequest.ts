@@ -10,9 +10,11 @@ import type { ShippingRoute } from './ShippingRoute'
 /**
  * Parameters for estimating shipping emissions
  */
-export type ShippingEstimateRequest = {
+export type MultiLegShippingEstimateRequest = {
     shipment: Shipment
-    route: ShippingRoute
-    method: ShippingMethod
-    countryCode?: ShippingCountryCode
+    legs: Array<{
+        route: ShippingRoute
+        method: ShippingMethod
+        countryCode?: ShippingCountryCode
+    }>
 }
