@@ -26,6 +26,10 @@ export type BundleSummary = {
      */
     currency: string
     /**
+     * A bundle's background colour in hexadecimal format
+     */
+    backgroundColour?: string
+    /**
      * A bundle's image URL
      */
     primaryImage?: string
