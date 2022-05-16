@@ -7,6 +7,8 @@ import type { ElectricityEstimateRequest } from '../models/ElectricityEstimateRe
 import type { EmissionEstimate } from '../models/EmissionEstimate.js'
 import type { FlightEstimateRequest } from '../models/FlightEstimateRequest.js'
 import type { IndividualEstimateRequest } from '../models/IndividualEstimateRequest.js'
+import type { MultiLegShippingEmissionEstimate } from '../models/MultiLegShippingEmissionEstimate.js'
+import type { MultiLegShippingEstimateRequest } from '../models/MultiLegShippingEstimateRequest.js'
 import type { ShippingEstimateRequest } from '../models/ShippingEstimateRequest.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
@@ -163,6 +165,33 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/shipping',
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                415: `The request is not an application/json encoded request`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
+     * Estimate shipping emissions for multi-leg journeys (a track and a plane, for example).
+     *
+     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
+     *
+     * @param requestBody
+     * @returns MultiLegShippingEmissionEstimate Estimation calculated successfully.
+     *
+     */
+    public getMultiLegShippingEstimate(
+        requestBody: MultiLegShippingEstimateRequest,
+    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'POST',
+            url: '/estimates/shipping/multi-leg',
             body: requestBody,
             mediaType: 'application/json',
             errors: {
