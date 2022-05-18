@@ -10,6 +10,7 @@ import type { IndividualEstimateRequest } from '../models/IndividualEstimateRequ
 import type { MultiLegShippingEmissionEstimate } from '../models/MultiLegShippingEmissionEstimate.js'
 import type { MultiLegShippingEstimateRequest } from '../models/MultiLegShippingEstimateRequest.js'
 import type { ShippingEstimateRequest } from '../models/ShippingEstimateRequest.js'
+import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -156,12 +157,12 @@ export abstract class EmissionEstimatesService {
      * ```
      *
      * @param requestBody
-     * @returns EmissionEstimate Estimation calculated successfully.
+     * @returns SingleShippingEmissionEstimate Estimation calculated successfully.
      *
      */
     public getShippingEstimate(
         requestBody: ShippingEstimateRequest,
-    ): Promise<Result<EmissionEstimate, ApiError>> {
+    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/shipping',

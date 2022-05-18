@@ -166,6 +166,7 @@ export type { ShippingEstimateRequest } from './models/ShippingEstimateRequest.j
 export type { ShippingMethod } from './models/ShippingMethod.js'
 export type { ShippingRoute } from './models/ShippingRoute.js'
 export { SimpleShippingMethod } from './models/SimpleShippingMethod.js'
+export type { SingleShippingEmissionEstimate } from './models/SingleShippingEmissionEstimate.js'
 export type { SourceDestination } from './models/SourceDestination.js'
 export type { StandardAccountPair } from './models/StandardAccountPair.js'
 export type { Timestamp } from './models/Timestamp.js'
