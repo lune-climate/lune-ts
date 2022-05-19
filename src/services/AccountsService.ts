@@ -85,7 +85,7 @@ export abstract class AccountsService {
      * Keep in mind the value itself can appear at the beggining, middle or end on the actual account name.
      * @returns PaginatedAccounts The response returns paginated accounts
      */
-    public getClientAccounts(
+    public getAccounts(
         limit?: string,
         after?: string,
         scope?: AccountScope,
