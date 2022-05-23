@@ -5,6 +5,7 @@ import { ClientConfig } from './core/ClientConfig'
 import { AccountsService } from './services/AccountsService.js'
 import { ActivityService } from './services/ActivityService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
+import { BundleMixesService } from './services/BundleMixesService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
 import { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
 import { OffsetLinksService } from './services/OffsetLinksService.js'
@@ -58,6 +59,7 @@ applyMixins(LuneClient, [
     AccountsService,
     ActivityService,
     AnalyticsService,
+    BundleMixesService,
     BundleSelectionsService,
     EmissionEstimatesService,
     OffsetLinksService,
@@ -72,6 +74,7 @@ export interface LuneClient
     extends AccountsService,
         ActivityService,
         AnalyticsService,
+        BundleMixesService,
         BundleSelectionsService,
         EmissionEstimatesService,
         OffsetLinksService,
@@ -90,6 +93,7 @@ export type { AirportSourceDestination } from './models/AirportSourceDestination
 export type { Analytics } from './models/Analytics.js'
 export { Area } from './models/Area.js'
 export type { Bundle } from './models/Bundle.js'
+export type { BundleMix } from './models/BundleMix.js'
 export type { BundlePercentage } from './models/BundlePercentage.js'
 export type { BundlePercentageRequest } from './models/BundlePercentageRequest.js'
 export type { BundleSelection } from './models/BundleSelection.js'
@@ -184,6 +188,7 @@ export type { WebhookRequest } from './models/WebhookRequest.js'
 export { AccountsService } from './services/AccountsService.js'
 export { ActivityService } from './services/ActivityService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'
+export { BundleMixesService } from './services/BundleMixesService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
 export { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
 export { OffsetLinksService } from './services/OffsetLinksService.js'
