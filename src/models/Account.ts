@@ -59,4 +59,8 @@ export type Account = {
      *
      */
     beneficiary?: string
+    /**
+     * Bundle mix id tied to the account.
+     */
+    bundleMixId?: string
 }
