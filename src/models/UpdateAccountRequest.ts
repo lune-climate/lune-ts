@@ -14,4 +14,8 @@ export type UpdateAccountRequest = {
      * The account beneficiary.
      */
     beneficiary: string
+    /**
+     * The bundle mix unique identifier.
+     */
+    bundleMixId?: string
 }
