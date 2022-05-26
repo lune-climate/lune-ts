@@ -38,6 +38,10 @@ export type BundleSummary = {
      */
     primaryImageHires?: string
     /**
+     * A bundle's small thumbnail image URL
+     */
+    smallThumbnail?: string
+    /**
      * The bundle's description
      */
     description?: string
