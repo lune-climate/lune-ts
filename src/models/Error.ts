@@ -38,7 +38,6 @@ export namespace Error {
         ADDRESS_NOT_FOUND = 'address_not_found',
         AT_LEAST_ONE_CONSTRAINT_REQUIRED = 'at_least_one_constraint_required',
         BUNDLES_SIZE_NOT_SUPPORTED = 'bundles_size_not_supported',
-        UNKNOWN_IMO_NUMBER = 'unknown_imo_number',
         WEBHOOK_LIMIT_REACHED = 'webhook_limit_reached',
         INVALID_TIME_RANGE = 'invalid_time_range',
         EXCHANGE_RATE_NOT_FOUND = 'exchange_rate_not_found',

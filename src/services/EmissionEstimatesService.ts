@@ -179,9 +179,11 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Estimate shipping emissions for multi-leg journeys (a track and a plane, for example).
+     * Estimate shipping emissions for multi-leg journeys
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
+     *
+     * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
      *
      * @param requestBody
      * @returns MultiLegShippingEmissionEstimate Estimation calculated successfully.
