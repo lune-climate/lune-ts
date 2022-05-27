@@ -2,8 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { BundleSelectionRequest } from './BundleSelectionRequest'
 import type { Diet } from './Diet'
 import type { Distance } from './Distance'
+import type { MassUnit } from './MassUnit'
 import type { MonetaryAmount } from './MonetaryAmount'
 
 /**
@@ -78,6 +80,12 @@ export type IndividualEstimateRequest = {
      * Annual natural gas consumption in cubic meters
      */
     gasConsumption: number
+    bundleSelection?: BundleSelectionRequest
+    /**
+     * This property represents the level of precision used to truncate quantities assigned to each bundle.
+     *
+     */
+    quantityTrunc?: MassUnit
 }
 
 export namespace IndividualEstimateRequest {

@@ -2,10 +2,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EmissionEstimate } from './EmissionEstimate'
+import type { EmissionEstimateResponse } from './EmissionEstimateResponse'
 import type { Mass } from './Mass'
 
-export type CompanyEmissionEstimate = EmissionEstimate & {
+export type CompanyEmissionEstimate = EmissionEstimateResponse & {
     /**
      * Scope 1 emissions. Direct emissions from owned or controlled sources.
      */

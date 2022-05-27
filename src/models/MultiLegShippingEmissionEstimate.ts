@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
 import type { SingleShippingEmissionEstimate } from './SingleShippingEmissionEstimate'
 
 /**
@@ -17,5 +18,5 @@ import type { SingleShippingEmissionEstimate } from './SingleShippingEmissionEst
  *
  */
 export type MultiLegShippingEmissionEstimate = {
-    legs: Array<SingleShippingEmissionEstimate>
+    legs: Array<ShippingLegEmissionEstimate>
 } & SingleShippingEmissionEstimate
