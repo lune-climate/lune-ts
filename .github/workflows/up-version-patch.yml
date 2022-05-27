@@ -24,11 +24,11 @@ jobs:
              git commit -am "Automated version bump (patch)"
              git push
       - name: Setup release information
-         # get version number
-         run: |
-             versionName=`npm pkg get version | sed 's/"//g'`
-             export VERSION_NAME=$versionName
-             echo "::set-env name=VERSION_NAME::$VERSION_NAME"
+        # get version number
+        run: |
+            versionName=`npm pkg get version | sed 's/"//g'`
+            export VERSION_NAME=$versionName
+            echo "::set-env name=VERSION_NAME::$VERSION_NAME"
       - name: Extract release notes
         id: extract_release_notes
         uses: ffurrer2/extract-release-notes@v1
