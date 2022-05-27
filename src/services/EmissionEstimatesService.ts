@@ -4,7 +4,7 @@
 import type { CompanyEmissionEstimate } from '../models/CompanyEmissionEstimate.js'
 import type { CompanyEstimateRequest } from '../models/CompanyEstimateRequest.js'
 import type { ElectricityEstimateRequest } from '../models/ElectricityEstimateRequest.js'
-import type { EmissionEstimate } from '../models/EmissionEstimate.js'
+import type { EmissionEstimateResponse } from '../models/EmissionEstimateResponse.js'
 import type { FlightEstimateRequest } from '../models/FlightEstimateRequest.js'
 import type { IndividualEstimateRequest } from '../models/IndividualEstimateRequest.js'
 import type { MultiLegShippingEmissionEstimate } from '../models/MultiLegShippingEmissionEstimate.js'
@@ -30,12 +30,12 @@ export abstract class EmissionEstimatesService {
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
      * @param requestBody
-     * @returns EmissionEstimate Estimation calculated successfully.
+     * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public getElectricityEstimate(
         requestBody: ElectricityEstimateRequest,
-    ): Promise<Result<EmissionEstimate, ApiError>> {
+    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/electricity',
@@ -44,6 +44,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,
@@ -58,12 +59,12 @@ export abstract class EmissionEstimatesService {
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
      * @param requestBody
-     * @returns EmissionEstimate Estimation calculated successfully.
+     * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public getFlightEstimate(
         requestBody: FlightEstimateRequest,
-    ): Promise<Result<EmissionEstimate, ApiError>> {
+    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/flight',
@@ -72,6 +73,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,
@@ -171,6 +173,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,
@@ -200,6 +203,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,
@@ -220,12 +224,12 @@ export abstract class EmissionEstimatesService {
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
      * @param requestBody
-     * @returns EmissionEstimate Estimation calculated successfully.
+     * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public getTransactionEstimate(
         requestBody: TransactionEstimateRequest,
-    ): Promise<Result<EmissionEstimate, ApiError>> {
+    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/transactions',
@@ -234,6 +238,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,
@@ -264,6 +269,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,
@@ -278,12 +284,12 @@ export abstract class EmissionEstimatesService {
      * The result is an estimate of a year-worth of emissions.
      *
      * @param requestBody
-     * @returns EmissionEstimate Estimation calculated successfully.
+     * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public getIndividualEstimate(
         requestBody: IndividualEstimateRequest,
-    ): Promise<Result<EmissionEstimate, ApiError>> {
+    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/estimates/individual',
@@ -292,6 +298,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,

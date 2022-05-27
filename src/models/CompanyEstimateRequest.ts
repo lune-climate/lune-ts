@@ -3,10 +3,12 @@
 /* eslint-disable */
 
 import type { Area } from './Area'
+import type { BundleSelectionRequest } from './BundleSelectionRequest'
 import type { CompanyCloudUse } from './CompanyCloudUse'
 import type { CompanyOnPremiseUse } from './CompanyOnPremiseUse'
 import type { Distance } from './Distance'
 import type { IntegerPercentage } from './IntegerPercentage'
+import type { MassUnit } from './MassUnit'
 import type { MonetaryAmount } from './MonetaryAmount'
 
 /**
@@ -101,4 +103,10 @@ export type CompanyEstimateRequest = {
         onPremise?: CompanyOnPremiseUse
         cloud?: CompanyCloudUse
     }
+    bundleSelection?: BundleSelectionRequest
+    /**
+     * This property represents the level of precision used to truncate quantities assigned to each bundle.
+     *
+     */
+    quantityTrunc?: MassUnit
 }
