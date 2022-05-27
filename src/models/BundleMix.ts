@@ -9,6 +9,10 @@ import type { BundleSelection } from './BundleSelection'
  */
 export type BundleMix = {
     /**
+     * Id of the bundle mix.
+     */
+    id: string
+    /**
      * Identifier of the bundle mix.
      */
     identifier: string
