@@ -19,10 +19,10 @@ jobs:
         run: make patch-version
       - name: Commit version change to master
         run: |
-          git config --global user.name "${{ github.actor }}"
-          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
-          git commit -am "Automated version bump (patch)"
-          git push
+             git config --global user.name "${{ github.actor }}"
+             git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+             git commit -am "Automated version bump (patch)"
+             git push
       - name: Setup release information
          # get version number
          run: |
@@ -36,10 +36,10 @@ jobs:
         id: create_release
         uses: actions/create-release@v1
         env:
-          GITHUB_TOKEN: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
+             GITHUB_TOKEN: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
         with:
-          tag_name: v${{ env.VERSION_NAME }}
-          release_name: ${{ env.VERSION_NAME }}
-          body: ${{ steps.extract_release_notes.outputs.release_notes }}
-          draft: false
-          prerelease: false
+             tag_name: v${{ env.VERSION_NAME }}
+             release_name: ${{ env.VERSION_NAME }}
+             body: ${{ steps.extract_release_notes.outputs.release_notes }}
+             draft: false
+             prerelease: false
