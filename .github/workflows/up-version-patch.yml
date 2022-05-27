@@ -19,8 +19,8 @@ jobs:
         run: make patch-version
       - name: Commit version change to master
         run: |
-          git config --global user.name ${{ github.actor }}
-          git config --global user.email ${{ github.actor }}@users.noreply.github.com
+          git config --global user.name "${{ github.actor }}"
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
           git commit -am "Automated version bump (patch)"
           git push
       - name: Setup release information
