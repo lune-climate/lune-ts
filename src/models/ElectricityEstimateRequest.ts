@@ -2,7 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { BundleSelectionRequest } from './BundleSelectionRequest'
 import type { ElectricityConsumption } from './ElectricityConsumption'
+import type { MassUnit } from './MassUnit'
 
 /**
  * Parameters for estimating electricity emissions
@@ -17,4 +19,10 @@ export type ElectricityEstimateRequest = {
      *
      */
     countryCode?: string
+    bundleSelection?: BundleSelectionRequest
+    /**
+     * This property represents the level of precision used to truncate quantities assigned to each bundle.
+     *
+     */
+    quantityTrunc?: MassUnit
 }

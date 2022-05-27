@@ -2,16 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Distance } from './Distance'
-import type { EmissionEstimate } from './EmissionEstimate'
+import type { OrderQuoteByQuantity } from './OrderQuoteByQuantity'
+import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
 
-export type SingleShippingEmissionEstimate = EmissionEstimate & {
-    distance: Distance
-    /**
-     * Summary of the methodology used to calculate emissions or any value which is a prerequisite.
-     *
-     * `imo_unavailable_container_ship_fallback`: the vessel IMO was not found, therefore a generic container ship emission factor has been used.
-     *
-     */
-    methodology?: Array<'imo_unavailable_container_ship_fallback'>
+export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
+    quote: OrderQuoteByQuantity
 }
