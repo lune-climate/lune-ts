@@ -110,4 +110,4 @@ For this, use the `Makefile` commands `patch|minor|major-version` accordingly an
 - Rich types on data (Big on Mass instead of string for example)
 - Add advanced functionalities like HMAC verification etc.
 - Improve core code. It is still highly similar to original code and I believe a better approach could be made.
-- Verify example usage and improve README
+- Verify example usage and improve README.
