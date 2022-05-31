@@ -44,5 +44,6 @@ export namespace Error {
         LIVE_ACCOUNT_REQUIRED = 'live_account_required',
         ORGANISATION_NOT_FOUND = 'organisation_not_found',
         UNAUTHORISED = 'unauthorised',
+        ESTIMATE_NOT_FOUND = 'estimate_not_found',
     }
 }

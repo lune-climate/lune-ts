@@ -1,9 +1,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { CreateOrderByEstimateRequest } from '../models/CreateOrderByEstimateRequest.js'
 import type { CreateOrderByQuantityRequest } from '../models/CreateOrderByQuantityRequest.js'
 import type { CreateOrderByValueRequest } from '../models/CreateOrderByValueRequest.js'
 import type { Order } from '../models/Order.js'
+import type { OrderByEstimate } from '../models/OrderByEstimate.js'
 import type { OrderByQuantity } from '../models/OrderByQuantity.js'
 import type { OrderByValue } from '../models/OrderByValue.js'
 import type { OrderQuoteByQuantity } from '../models/OrderQuoteByQuantity.js'
@@ -67,6 +69,37 @@ export abstract class OrdersService {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/orders/by-value',
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict
+
+                Examples:
+                1. account is suspended
+                2. order idempotency failure: an order with the same idempotency_key has already by created
+                `,
+                415: `The request is not an application/json encoded request`,
+                429: `Rate limit exceeded`,
+            },
+        })
+    }
+
+    /**
+     * Create an order from an emission estimate
+     * Create an order to purchase carbon offset by specifying an estimate id
+     * @param requestBody
+     * @returns OrderByEstimate Order created successfully.
+     * The response returns an Order object.
+     *
+     */
+    public createOrderByEstimate(
+        requestBody: CreateOrderByEstimateRequest,
+    ): Promise<Result<OrderByEstimate, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'POST',
+            url: '/orders/by-estimate',
             body: requestBody,
             mediaType: 'application/json',
             errors: {
