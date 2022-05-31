@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest'
+import type { MassUnit } from './MassUnit'
 import type { Metadata } from './Metadata'
 
 /**
@@ -24,4 +25,9 @@ export type CreateOrderByValueRequest = {
     idempotencyKey?: string
     bundleSelection?: BundleSelectionRequest
     metadata?: Metadata
+    /**
+     * This property represents the level of precision used to truncate quantities assigned to each bundle.
+     *
+     */
+    quantityTrunc?: MassUnit
 }
