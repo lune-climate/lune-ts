@@ -110,6 +110,7 @@ export abstract class OrdersService {
                 Examples:
                 1. account is suspended
                 2. order idempotency failure: an order with the same idempotency_key has already by created
+                3. order for this emission estimate has already been placed
                 `,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,

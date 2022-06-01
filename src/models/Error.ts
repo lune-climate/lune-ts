@@ -45,5 +45,6 @@ export namespace Error {
         ORGANISATION_NOT_FOUND = 'organisation_not_found',
         UNAUTHORISED = 'unauthorised',
         ESTIMATE_NOT_FOUND = 'estimate_not_found',
+        ESTIMATE_ORDER_ALREADY_PLACED = 'estimate_order_already_placed',
     }
 }
