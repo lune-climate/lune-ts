@@ -53,6 +53,28 @@ export class LuneClient {
     public setAccount(accountId: string) {
         this.config.ACCOUNT = accountId
     }
+
+    /**
+     * Perform an action with the current account being set to a desired one.
+     *
+     * The account will only be overridden for the duration of the action and will be restored
+     * to the previous value at the end (when the result of withAccount() is awaited). The
+     * account is also restored in case of an exception.
+     *
+     * This method modifies the internal state of LuneClient. Calling withAccount() or
+     * setAccount() concurrently from multiple contexts at the same time is not supported and
+     * will result in undefined behavior.
+     */
+    public async withAccount<T>(accountId: string, action: () => Promise<T>): Promise<T> {
+        const previousAccountId = this.config.ACCOUNT
+        try {
+            this.config.ACCOUNT = accountId
+            return await action()
+        }
+        finally {
+            this.config.ACCOUNT = previousAccountId
+        }
+    }
 }
 
 applyMixins(LuneClient, [
