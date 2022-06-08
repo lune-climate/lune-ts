@@ -7,7 +7,11 @@ shell: build-image
 	docker compose run --service-ports --rm client
 
 install:
+	echo before install
+	ls -lah /root
 	npm ci
+	echo after install
+	ls -lah /root
 
 check-linting:
 	whoami
