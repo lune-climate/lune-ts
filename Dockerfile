@@ -5,7 +5,6 @@ RUN apt-get update && apt-get install -y \
       software-properties-common \
       build-essential \
       wget \
-      python3 \
       strace \
       && rm -rf /var/lib/apt/lists/*
 
