@@ -7,10 +7,10 @@ shell: build-image
 	docker compose run --service-ports --rm client
 
 install:
-	npm ci
+	#npm ci
 
 check-linting:
-	id && mount && ls -lah /root && npm run check-format
+	env && ls -lah $(which node) && ls -lah $(which npm) && pwd && id && mount && ls -lah /root && gdb -q -batch -ex 'set follow-fork-mode child' -ex "set args /usr/bin/npm -- run check-format" -ex "catch syscall setuid" -ex run -ex backtrace node
 
 fix-linting:
 	npm run fix-format
