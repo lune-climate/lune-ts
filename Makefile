@@ -10,12 +10,7 @@ install:
 	npm ci
 
 check-linting:
-	echo 1
-	npm run eslint 
-	echo 2
-	npm run prettier
-	echo 3
-	strace -f -s 256 -y -yy -tt npm run check-format
+	strace -f -s 256 -y -yy -tt npm run check-format || ( ls -lah /root/.npm/_logs/ && cat /root/.npm/_logs/* && exit 1)
 
 fix-linting:
 	npm run fix-format
