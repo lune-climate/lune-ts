@@ -11,7 +11,7 @@ install:
 
 check-linting:
 	ls -lah /root
-	strace -f -s 256 -y -yy -tt npm run check-format || ( ls -lah /root/.npm/_logs/ && cat /root/.npm/_logs/* && exit 1)
+	strace -f -s 256 -y -yy -tt npm run check-format || ( ls -lah /root/.npm/_logs/ && cat /root/.npm/_logs/* && ls -lah /root && exit 1)
 
 fix-linting:
 	npm run fix-format
