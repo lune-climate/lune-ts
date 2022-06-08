@@ -10,7 +10,7 @@ install:
 	npm ci
 
 check-linting:
-	(echo "asd = []"; echo "while True: asd.append('zxc' * 1000000)" ) | strace -f -s 256 -y -yy -t tpython3
+	(echo "asd = []"; echo "while True: asd.append('zxc' * 1000000)" ) | strace -f -s 256 -y -yy -t python3
 	strace -f -s 256 -y -yy -tt npm run check-format || ( ls -lah /root/.npm/_logs/ && cat /root/.npm/_logs/* && exit 1)
 
 fix-linting:
