@@ -16,7 +16,7 @@
     "prettier": "echo running prettier && prettier --check \"src/**/*.ts\" && echo done prettier",
     "eslint": "echo running eslint && eslint \"src/**/*.ts\" && echo done eslint",
     "xxx": "echo this is xxx",
-    "check-format": "id && ls -lah /root && npm run xxx",
+    "check-format": "echo check-format entry && id && mount && ls -lah /root && npm run xxx",
     "fix-format": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
   },
   "keywords": [

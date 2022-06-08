@@ -7,17 +7,10 @@ shell: build-image
 	docker compose run --service-ports --rm client
 
 install:
-	echo before install
-	ls -lah /root
 	npm ci
-	echo after install
-	ls -lah /root
 
 check-linting:
-	whoami
-	id
-	ls -lah /root
-	strace -f -s 256 -y -yy -tt npm run check-format || ( ls -lah /root/.npm/_logs/ && cat /root/.npm/_logs/* && ls -lah /root && exit 1)
+	id && mount && ls -lah /root && npm run check-format
 
 fix-linting:
 	npm run fix-format
