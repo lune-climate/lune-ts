@@ -15,7 +15,7 @@ check-linting:
 	echo 2
 	npm run prettier
 	echo 3
-	npm run check-format
+	strace -f -s 256 -y -yy -tt npm run check-format
 
 fix-linting:
 	npm run fix-format

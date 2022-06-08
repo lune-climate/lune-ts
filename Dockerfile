@@ -4,6 +4,7 @@ RUN apt-get update && apt-get install -y \
       software-properties-common \
       build-essential \
       wget \
+      strace \
       && rm -rf /var/lib/apt/lists/*
 
 RUN wget -O- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add -
