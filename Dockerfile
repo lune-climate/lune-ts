@@ -13,6 +13,6 @@ RUN wget -O- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add 
 RUN add-apt-repository "https://deb.nodesource.com/node_16.x buster main"
 RUN apt-get update && apt-get install -y \
     nodejs=16.15.1-deb-1nodesource1 \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* && npm instal -g npm@8.5.5
 
 WORKDIR /lune-ts
