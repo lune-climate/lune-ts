@@ -10,6 +10,11 @@ install:
 	npm ci
 
 check-linting:
+	echo 1
+	npm run eslint 
+	echo 2
+	npm run prettier
+	echo 3
 	npm run check-format
 
 fix-linting:
