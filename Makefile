@@ -10,7 +10,7 @@ install:
 	#npm ci
 
 check-linting:
-	env && ls -lah $(which node) && ls -lah $(which npm) && pwd && id && mount && ls -lah /root && gdb -q -batch -ex 'set follow-fork-mode child' -ex "set args /usr/bin/npm -- run check-format" -ex "catch syscall setuid" -ex run -ex backtrace node
+	env && ls -lah /usr/bin/node && ls -lah /usr/bin/npm && ls -lah /usr/lib/node_modules/npm/bin/npm-cli.js && pwd && id && mount && ls -lah /root && gdb -q -batch -ex 'set follow-fork-mode child' -ex "set args /usr/bin/npm -- run check-format" -ex "catch syscall setuid" -ex run -ex backtrace node
 
 fix-linting:
 	npm run fix-format
