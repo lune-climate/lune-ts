@@ -15,7 +15,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "echo running prettier && prettier --check \"src/**/*.ts\" && echo done prettier",
     "eslint": "echo running eslint && eslint \"src/**/*.ts\" && echo done eslint",
-    "check-format": "echo a && npm run eslint && echo 2 && npm run prettier",
+    "xxx": "echo this is xxx",
+    "check-format": "npm run xxx",
     "fix-format": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
   },
   "keywords": [
