@@ -13,4 +13,5 @@ RUN wget -O- https://deb.nodesource.com/gpgkey/nodesource.gpg.key | apt-key add 
 RUN add-apt-repository "https://deb.nodesource.com/node_16.x buster main"
 RUN wget https://deb.nodesource.com/node_16.x/pool/main/n/nodejs/nodejs_16.15.0-deb-1nodesource1_amd64.deb && dpkg -i nodejs_16.15.0-deb-1nodesource1_amd64.deb
 RUN mkdir /lune-ts && ls -lah /
+VOLUME /lune-ts
 WORKDIR /lune-ts
