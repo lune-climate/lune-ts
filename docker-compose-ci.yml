@@ -22,12 +22,12 @@ services:
     # to code 243 somewhere along the way (-13 signed u8 is 243 unsigned, 256 - 13 = 243;
     # I'm not up to speed regarding the range of exit codes, I imagine they're just
     # limited to 8 bits unsigned (Jakub)).
-    command: bash -c "cd /lune-ts && make build-from-schema"
+    command: bash -c "chown -R root /lune-ts && cd /lune-ts && make build-from-schema"
     volumes:
       - .:/lune-ts
   build_from_source:
     build: .
     # See the update_from_remote_schema chown comment above for some context.
-    command: bash -c "cd /lune-ts && make build-from-source"
+    command: bash -c "chown -R root /lune-ts && cd /lune-ts && make build-from-source"
     volumes:
       - .:/lune-ts
