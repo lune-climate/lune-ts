@@ -16,7 +16,7 @@ fix-linting:
 	npm run fix-format
 
 build:
-	npm run build
+	ls -lah / && npm run build
 
 api-schema:
 	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --exportCore false --exportServices true --exportSchemas false
