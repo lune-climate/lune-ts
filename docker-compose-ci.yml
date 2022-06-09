@@ -1,13 +1,11 @@
 version: "3.9"
 services:
   update_from_remote_schema:
-    user: "${UID:-0}:${GID:-0}"
     build: .
     command: bash -c "cd /lune-ts && make build-from-schema"
     volumes:
       - .:/lune-ts
   build_from_source:
-    user: "${UID:-0}:${GID:-0}"
     build: .
     command: bash -c "cd /lune-ts && make build-from-source"
     volumes:
