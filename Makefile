@@ -10,7 +10,7 @@ install:
 	#npm ci
 
 check-linting:
-	id && echo ${HOME} && npm run check-format
+	id && ls -lah / && echo ${HOME} && npm run check-format
 
 fix-linting:
 	npm run fix-format
