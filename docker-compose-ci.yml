@@ -2,11 +2,11 @@ version: "3.9"
 services:
   update_from_remote_schema:
     build: .
-    # The chown call below is a hack to keep this working in GitHub Actions.
-    # I (Jakub) believe some time between 2022-06-01 and 2022-06-08 running docker
-    # compose in GH Actions started resulting in the /lune-ts volume to be mounted
-    # not as root but as a different user (UID 1001, in GH Actions it's the user
-    # called runner).
+    # The chown call below is a hack to keep this working in GitHub Actions with npm
+    # 8.11.1. Why is this needed?
+    #
+    # In GH Actions the /lune-ts volume is mounted not under root but using a different
+    # user (UID 1001).
     #
     # This wouldn't be an issue if npm didn't have a very annoying behavior: if the
     # current user is root (which it is in the container we run) but the current
@@ -14,15 +14,14 @@ services:
     # current directory owner being the process' UID. When that happens anything that
     # tries to access /root (the home directory of the original user we're running
     # as, the home directory of the current user is not modified by npm when spawning
-    # processes) will get the EACCES/13 error from the operating system and in our case
-    # this results in npm exiting with code -13 (negative EACCES/13), which gets translated
+    # processes) will get the EACCES/13 error from the operating system.
+    #
+    # The aboe *still* wouldn't be an issue: npm 8.5.5 just logs a warning in this case
+    # and moves on. Unfortunately npm 8.11.1 which is bundled with Node 16.15.1 just dies and
+    # exits with code -13 (negative EACCES/13) without printing anything. -13 gets translated
     # to code 243 somewhere along the way (-13 signed u8 is 243 unsigned, 256 - 13 = 243;
     # I'm not up to speed regarding the range of exit codes, I imagine they're just
     # limited to 8 bits unsigned (Jakub)).
-    #
-    # What makes things worse is while npm 8.5.5 at least prints somethiing to stdout
-    # when the above happens npm 8.11.1 seems to just silently die – keep this in mind
-    # in case the issue reappers.
     command: bash -c "cd /lune-ts && make build-from-schema"
     volumes:
       - .:/lune-ts
