@@ -13,10 +13,9 @@
     "build:copy": "cp README_DIST.md dist/README.md && cp LICENSE dist && cp src/package.json dist && cp package-cjs.json dist/cjs/package.json && cp package-esm.json dist/esm/package.json",
     "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "prettier": "echo running prettier && prettier --check \"src/**/*.ts\" && echo done prettier",
-    "eslint": "echo running eslint && eslint \"src/**/*.ts\" && echo done eslint",
-    "xxx": "echo this is xxx",
-    "check-format": "echo check-format entry && id && ls -lah /root && npm run xxx",
+    "prettier": "prettier --check \"src/**/*.ts\"",
+    "eslint": "eslint \"src/**/*.ts\"",
+    "check-format": "npm run eslint && npm run prettier",
     "fix-format": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
   },
   "keywords": [

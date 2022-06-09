@@ -10,4 +10,4 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Build schema from source
-        run: env && docker-compose -f docker-compose-ci.yml run build_from_source
+        run: docker-compose -f docker-compose-ci.yml run build_from_source

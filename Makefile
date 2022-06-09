@@ -10,13 +10,13 @@ install:
 	npm ci
 
 check-linting:
-	id && ls -lah / && echo ${HOME} && npm run check-format
+	npm run check-format
 
 fix-linting:
 	npm run fix-format
 
 build:
-	ls -lah / && npm run build
+	npm run build
 
 api-schema:
 	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --exportCore false --exportServices true --exportSchemas false
