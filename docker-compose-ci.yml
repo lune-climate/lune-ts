@@ -22,6 +22,12 @@ services:
     # to code 243 somewhere along the way (-13 signed u8 is 243 unsigned, 256 - 13 = 243;
     # I'm not up to speed regarding the range of exit codes, I imagine they're just
     # limited to 8 bits unsigned (Jakub)).
+    #
+    # npm issues to keep track of:
+    #
+    # * https://github.com/npm/cli/issues/4996
+    # * https://github.com/npm/cli/issues/4838
+    # * https://github.com/npm/cli/issues/4769
     command: bash -c "chown -R root /lune-ts && cd /lune-ts && make build-from-schema"
     volumes:
       - .:/lune-ts
