@@ -7,7 +7,7 @@ shell: build-image
 	docker compose run --service-ports --rm client
 
 install:
-	#npm ci
+	npm ci
 
 check-linting:
 	id && ls -lah / && echo ${HOME} && npm run check-format
