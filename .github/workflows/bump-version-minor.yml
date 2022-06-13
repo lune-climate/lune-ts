@@ -1,0 +1,39 @@
+name: Create PR with bump minor version
+
+# Perform workflow based on human approval
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    name: Bump version (minor) and create PR.
+    runs-on: ubuntu-latest
+    # The environment is used to guarantee that a manual approval is required.
+    environment: bump_version_minor
+
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Bump version (minor)
+        run: docker-compose -f docker-compose-ci.yml run bump_version_minor
+      - name: Create PR with changes
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
+          commit-message: Client auto update
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          base: master
+          branch: auto-version-update-minor
+          delete-branch: true
+          title: 'Bump version (minor)'
+          body: |
+            Action to bump version (minor) was triggered. Check changes and approve accordingly.
+          labels: |
+            Bump version (minor)
+            Automated PR
+          reviewers: lune-eng
+          draft: false
