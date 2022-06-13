@@ -2,8 +2,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Account } from './Account'
+import type { AccountBase } from './AccountBase'
 
-export type ClientAccount = {
-    clientAccount: Account
+export type ClientAccount = AccountBase & {
+    scope: ClientAccount.scope
+}
+
+export namespace ClientAccount {
+    export enum scope {
+        CLIENT = 'client',
+    }
 }
