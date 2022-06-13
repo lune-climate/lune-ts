@@ -7,6 +7,7 @@ import { ActivityService } from './services/ActivityService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
 import { BundleMixesService } from './services/BundleMixesService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
+import { ClientAccountsService } from './services/ClientAccountsService.js'
 import { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
 import { OffsetLinksService } from './services/OffsetLinksService.js'
 import { OrdersService } from './services/OrdersService.js'
@@ -84,6 +85,7 @@ applyMixins(LuneClient, [
     AnalyticsService,
     BundleMixesService,
     BundleSelectionsService,
+    ClientAccountsService,
     EmissionEstimatesService,
     OffsetLinksService,
     OrdersService,
@@ -99,6 +101,7 @@ export interface LuneClient
         AnalyticsService,
         BundleMixesService,
         BundleSelectionsService,
+        ClientAccountsService,
         EmissionEstimatesService,
         OffsetLinksService,
         OrdersService,
@@ -107,6 +110,7 @@ export interface LuneClient
         WebhooksService {}
 
 export type { Account } from './models/Account.js'
+export type { AccountBase } from './models/AccountBase.js'
 export { AccountScope } from './models/AccountScope.js'
 export { AccountType } from './models/AccountType.js'
 export { Activity } from './models/Activity.js'
@@ -123,7 +127,7 @@ export type { BundleSelection } from './models/BundleSelection.js'
 export type { BundleSelectionRequest } from './models/BundleSelectionRequest.js'
 export { BundleSummary } from './models/BundleSummary.js'
 export { CabinClass } from './models/CabinClass.js'
-export type { ClientAccount } from './models/ClientAccount.js'
+export { ClientAccount } from './models/ClientAccount.js'
 export { CloudProvider } from './models/CloudProvider.js'
 export type { CompanyCloudUse } from './models/CompanyCloudUse.js'
 export type { CompanyEmissionEstimate } from './models/CompanyEmissionEstimate.js'
@@ -131,6 +135,7 @@ export type { CompanyEstimateRequest } from './models/CompanyEstimateRequest.js'
 export type { CompanyOnPremiseUse } from './models/CompanyOnPremiseUse.js'
 export { ContainerShippingMethod } from './models/ContainerShippingMethod.js'
 export type { CreateAccountRequest } from './models/CreateAccountRequest.js'
+export type { CreateClientAccountRequest } from './models/CreateClientAccountRequest.js'
 export type { CreateOrderByEstimateRequest } from './models/CreateOrderByEstimateRequest.js'
 export type { CreateOrderByQuantityRequest } from './models/CreateOrderByQuantityRequest.js'
 export type { CreateOrderByValueRequest } from './models/CreateOrderByValueRequest.js'
@@ -184,6 +189,7 @@ export type { PaginatedAccounts } from './models/PaginatedAccounts.js'
 export type { PaginatedActivity } from './models/PaginatedActivity.js'
 export type { PaginatedBase } from './models/PaginatedBase.js'
 export type { PaginatedBundles } from './models/PaginatedBundles.js'
+export type { PaginatedClientAccounts } from './models/PaginatedClientAccounts.js'
 export type { PaginatedOffsetLinks } from './models/PaginatedOffsetLinks.js'
 export type { PaginatedOrders } from './models/PaginatedOrders.js'
 export type { PaginatedProjects } from './models/PaginatedProjects.js'
@@ -200,6 +206,7 @@ export type { ShippingRoute } from './models/ShippingRoute.js'
 export { SimpleShippingMethod } from './models/SimpleShippingMethod.js'
 export type { SingleShippingEmissionEstimate } from './models/SingleShippingEmissionEstimate.js'
 export type { SourceDestination } from './models/SourceDestination.js'
+export { StandardAccount } from './models/StandardAccount.js'
 export type { StandardAccountPair } from './models/StandardAccountPair.js'
 export type { Timestamp } from './models/Timestamp.js'
 export type { TransactionEstimateRequest } from './models/TransactionEstimateRequest.js'
@@ -217,6 +224,7 @@ export { ActivityService } from './services/ActivityService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'
 export { BundleMixesService } from './services/BundleMixesService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
+export { ClientAccountsService } from './services/ClientAccountsService.js'
 export { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
 export { OffsetLinksService } from './services/OffsetLinksService.js'
 export { OrdersService } from './services/OrdersService.js'
