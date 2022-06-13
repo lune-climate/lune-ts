@@ -2,9 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Account } from './Account'
+import type { StandardAccount } from './StandardAccount'
 
 export type StandardAccountPair = {
-    liveAccount: Account
-    testAccount: Account
+    live: StandardAccount
+    test: StandardAccount
 }
