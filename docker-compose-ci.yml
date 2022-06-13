@@ -14,6 +14,6 @@ services:
   bump_version_patch:
     build: .
     # See the update_from_remote_schema chown comment above for some context.
-    command: bash -c "chown -R root /lune-ts && cd /lune-ts && make patch-version"
+    command: bash -c "cd /lune-ts && make patch-version"
     volumes:
       - .:/lune-ts
