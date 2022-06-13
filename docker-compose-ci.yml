@@ -13,19 +13,16 @@ services:
       - .:/lune-ts
   bump_version_patch:
     build: .
-    # See the update_from_remote_schema chown comment above for some context.
     command: bash -c "cd /lune-ts && make patch-version"
     volumes:
       - .:/lune-ts
   bump_version_minor:
     build: .
-    # See the update_from_remote_schema chown comment above for some context.
     command: bash -c "cd /lune-ts && make minor-version"
     volumes:
       - .:/lune-ts
   bump_version_major:
     build: .
-    # See the update_from_remote_schema chown comment above for some context.
     command: bash -c "cd /lune-ts && make major-version"
     volumes:
       - .:/lune-ts
