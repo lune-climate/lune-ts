@@ -76,6 +76,41 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Update electricity emission estimate
+     * Update emission estimate produced by electricity consumption.
+     *
+     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
+     *
+     * @param id The estimate unique identifier
+     * @param requestBody
+     * @returns EmissionEstimateResponse Estimation updated successfully.
+     *
+     */
+    public updateElectricityEstimate(
+        id: string,
+        requestBody: ElectricityEstimateRequest,
+    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'PUT',
+            url: '/estimates/electricity/{id}',
+            path: {
+                id: id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                404: `The estimate does not exist`,
+                409: `Conflict`,
+                415: `The request is not an application/json encoded request`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
      * Estimate flight emissions
      * Estimate emissions produced by passengers in a commercial airflight.
      *
