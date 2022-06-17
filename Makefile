@@ -1,3 +1,5 @@
+SHELL := /bin/bash # Required for the publish ignoring same version error
+
 .PHONY: build-image
 build-image:
 	docker compose build
