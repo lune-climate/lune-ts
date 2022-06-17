@@ -53,6 +53,29 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Get an electricity emission estimate
+     * @param id The estimate unique identifier
+     * @returns EmissionEstimateResponse Estimation retrieved succesfully
+     */
+    public retrieveElectricityEstimate(
+        id: string,
+    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'GET',
+            url: '/estimates/electricity/{id}',
+            path: {
+                id: id,
+            },
+            errors: {
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                404: `The offset link does not exist`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
      * Estimate flight emissions
      * Estimate emissions produced by passengers in a commercial airflight.
      *
