@@ -11,3 +11,18 @@ services:
     command: bash -c "cd /lune-ts && make build-from-source"
     volumes:
       - .:/lune-ts
+  bump_version_patch:
+    build: .
+    command: bash -c "cd /lune-ts && make patch-version"
+    volumes:
+      - .:/lune-ts
+  bump_version_minor:
+    build: .
+    command: bash -c "cd /lune-ts && make minor-version"
+    volumes:
+      - .:/lune-ts
+  bump_version_major:
+    build: .
+    command: bash -c "cd /lune-ts && make major-version"
+    volumes:
+      - .:/lune-ts

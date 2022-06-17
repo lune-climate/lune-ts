@@ -54,3 +54,12 @@ major-version:
 
 publish:
 	cd dist && npm publish --access public
+
+# Publishing over the same version error is ignored and that line of the error log is shown. On any other
+# error or success behaviour is the same.
+ERROR_FILE = ./publish_error.log
+publish-ignore-same-version-error:
+	make publish 2>$(ERROR_FILE) ; true
+	if [[ -f "$(ERROR_FILE)" ]]; then \
+		grep "You cannot publish over the previously published versions:" $(ERROR_FILE) || cat $(ERROR_FILE); \
+	fi;

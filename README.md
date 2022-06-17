@@ -96,13 +96,13 @@ If all you want is to check if code is valid and building
 
 ## Publish
 
-Publishing is currently done by creating a new release on Github. The current way is to:
-- Create a new git tag (v<number>).
-- Title of the release should be the release <number>.
-- Body of the release is free form, but you can try and use the auto generated one.
+Publishing is currently done automatically whenever changes happen in `package.json`. To increase the
+version, use the provided github workflow to increase the version (patch). This will create a PR that
+just needs to be approved and merged. Alternatively, a PR with the version increase can be made manually
+in case the version change is different.
 
-Prior to publish step though, it is required to actually update the version as intended in the code.
-For this, use the `Makefile` commands `patch|minor|major-version` accordingly and commit the changes as usual.
+To aid in upping the versions, use the `make` commands: `patch|minor|major-version` depending on the
+wanted version increase.
 
 ## Future work
 

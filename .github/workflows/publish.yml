@@ -1,8 +1,11 @@
 name: Publish new version
 
 on:
-  release:
-    types: [published]
+  push:
+    branches:
+      - master
+    paths:
+      - 'package.json'
 
 jobs:
   build:
@@ -16,6 +19,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: make publish
+      - run: make publish-ignore-same-version-error
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
