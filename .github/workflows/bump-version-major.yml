@@ -11,7 +11,7 @@ jobs:
     name: Bump version (major) and create PR.
     runs-on: ubuntu-latest
     # The environment is used to guarantee that a manual approval is required.
-    environment: bump_version_major
+    environment: bump_version
 
     steps:
       - name: Checkout the code
