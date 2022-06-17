@@ -1,3 +1,5 @@
+SHELL := /bin/bash # Use bash syntax
+
 .PHONY: build-image
 build-image:
 	docker compose build
