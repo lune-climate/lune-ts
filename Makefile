@@ -1,4 +1,4 @@
-SHELL := /bin/bash # Use bash syntax
+SHELL := /bin/bash # Required for the publish ignoring same version error
 
 .PHONY: build-image
 build-image:
