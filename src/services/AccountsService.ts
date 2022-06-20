@@ -153,7 +153,9 @@ export abstract class AccountsService {
 
     /**
      * Update an account.
-     * Its sibling account will also be updated.
+     * Update a standard account. If targeting a test account, the name field needs to match the current
+     * account name. If targeting a live account, the name field change will be replicated to its
+     * sibling account.
      *
      * @param id The account id
      * @param requestBody

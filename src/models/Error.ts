@@ -33,6 +33,7 @@ export namespace Error {
         ORDER_LOW_VOLUME_NO_SPLIT = 'order_low_volume_no_split',
         INVALID_BUNDLE_ID = 'invalid_bundle_id',
         INVALID_ID = 'invalid_id',
+        STANDARD_TEST_ACCOUNT_NAME_UPDATE_DISALLOWED = 'standard_test_account_name_update_disallowed',
         VALIDATION_ERROR = 'validation_error',
         PERCENTAGE_ALL_OR_NONE = 'percentage_all_or_none',
         ADDRESS_NOT_FOUND = 'address_not_found',
