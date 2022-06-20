@@ -73,14 +73,14 @@ export type OrderBase = {
      */
     createdAt: string
     /**
-     * bundles are set when the order's status is `placed`, `paid`, `allocated` or `complete`.
+     * bundles are set when the order's status is `placed`, `paid`, `retiring` or `complete`.
      *
      * Represents the bundles associated with the order including their relative quantity and cost breakdown.
      *
      */
     bundles?: Array<OrderBundle>
     /**
-     * Projects are set when the order's status is `allocated` or `complete`.
+     * Projects are set when the order's status is `retiring` or `complete`.
      *
      * Represents the projects associated with the order including their relative quantity and cost breakdown.
      *
@@ -127,7 +127,7 @@ export namespace OrderBase {
         RECEIVED = 'received',
         PLACED = 'placed',
         PAID = 'paid',
-        ALLOCATED = 'allocated',
+        RETIRING = 'retiring',
         CANCELLED = 'cancelled',
         COMPLETE = 'complete',
         FAILED = 'failed',
