@@ -22,7 +22,7 @@ export type Activity = {
      * * `order_received` The account has placed an order and Lune has received it.
      * * `order_placed` An order has been matched to bundles. Quantites and costs are known and have been set.
      * * `order_paid` The order has been paid for.
-     * * `order_allocated` The order has been allocated to projects.
+     * * `order_retiring` Lune has started retiring the order's carbon offsets.
      * * `order_cancelled` The order has been cancelled
      * * `order_allocation_retired` Carbon credits linked to a specific project have been retired
      * * `order_complete` All carbon credits linked to the order have been retired
@@ -93,7 +93,7 @@ export namespace Activity {
      * * `order_received` The account has placed an order and Lune has received it.
      * * `order_placed` An order has been matched to bundles. Quantites and costs are known and have been set.
      * * `order_paid` The order has been paid for.
-     * * `order_allocated` The order has been allocated to projects.
+     * * `order_retiring` Lune has started retiring the order's carbon offsets.
      * * `order_cancelled` The order has been cancelled
      * * `order_allocation_retired` Carbon credits linked to a specific project have been retired
      * * `order_complete` All carbon credits linked to the order have been retired
@@ -106,7 +106,7 @@ export namespace Activity {
         ORDER_RECEIVED = 'order_received',
         ORDER_PLACED = 'order_placed',
         ORDER_PAID = 'order_paid',
-        ORDER_ALLOCATED = 'order_allocated',
+        ORDER_RETIRING = 'order_retiring',
         ORDER_CANCELLED = 'order_cancelled',
         ORDER_ALLOCATION_RETIRED = 'order_allocation_retired',
         ORDER_COMPLETE = 'order_complete',
