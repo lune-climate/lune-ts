@@ -240,6 +240,29 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Get a shipping emission estimate
+     * @param id The estimate unique identifier
+     * @returns SingleShippingEmissionEstimate Estimation retrieved succesfully
+     */
+    public retrieveShippingEstimate(
+        id: string,
+    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'GET',
+            url: '/estimates/shipping/{id}',
+            path: {
+                id: id,
+            },
+            errors: {
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                404: `The offset link does not exist`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
      * Estimate shipping emissions for multi-leg journeys
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
