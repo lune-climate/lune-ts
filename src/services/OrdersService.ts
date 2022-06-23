@@ -244,6 +244,11 @@ export abstract class OrdersService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict
+
+                Examples:
+                1. quantity not positive: the calculated quote results in non positive quantity
+                `,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
             },
@@ -271,6 +276,11 @@ export abstract class OrdersService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                409: `Conflict
+
+                Examples:
+                1. quantity not positive: the calculated quote results in non positive quantity
+                `,
                 415: `The request is not an application/json encoded request`,
                 429: `Rate limit exceeded`,
             },

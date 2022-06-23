@@ -8,7 +8,7 @@ export type ContainerShippingMethod = {
      * A container transport is either refrigerated or "dry" (not refrigerated). Dry transports
      * result in lower emissions.
      *
-     * This parameter defaults to `true`.
+     * This parameter defaults to `false`.
      *
      */
     refrigerated?: boolean
