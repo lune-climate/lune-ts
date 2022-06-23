@@ -263,6 +263,35 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Update a shipping emission estimate
+     * @param id The estimate unique identifier
+     * @param requestBody
+     * @returns SingleShippingEmissionEstimate Estimation retrieved succesfully
+     */
+    public updateShippingEstimate(
+        id: string,
+        requestBody: ShippingEstimateRequest,
+    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'PUT',
+            url: '/estimates/shipping/{id}',
+            path: {
+                id: id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                404: `The offset link does not exist`,
+                409: `Conflict`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
      * Estimate shipping emissions for multi-leg journeys
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
@@ -286,6 +315,58 @@ export abstract class EmissionEstimatesService {
                 401: `Unauthorized. The API Key is invalid or disabled.`,
                 409: `Conflict`,
                 415: `The request is not an application/json encoded request`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
+     * Get a multi-leg shipping emission estimate
+     * @param id The estimate unique identifier
+     * @returns MultiLegShippingEmissionEstimate Estimation retrieved succesfully
+     */
+    public retrieveMultiLegShippingEstimate(
+        id: string,
+    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'GET',
+            url: '/estimates/shipping/multi-leg/{id}',
+            path: {
+                id: id,
+            },
+            errors: {
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                404: `The offset link does not exist`,
+                429: `Rate limit exceeded`,
+                503: `The service is temporarily unavailable`,
+            },
+        })
+    }
+
+    /**
+     * Update a multi-leg shipping emission estimate
+     * @param id The estimate unique identifier
+     * @param requestBody
+     * @returns MultiLegShippingEmissionEstimate Estimation retrieved succesfully
+     */
+    public updateMultiLegShippingEstimate(
+        id: string,
+        requestBody: MultiLegShippingEstimateRequest,
+    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'PUT',
+            url: '/estimates/shipping/multi-leg/{id}',
+            path: {
+                id: id,
+            },
+            body: requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized. The API Key is invalid or disabled.`,
+                404: `The offset link does not exist`,
+                409: `Conflict`,
                 429: `Rate limit exceeded`,
                 503: `The service is temporarily unavailable`,
             },
