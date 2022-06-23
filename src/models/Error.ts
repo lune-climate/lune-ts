@@ -30,7 +30,7 @@ export namespace Error {
         INVALID_SELECTED_ACCOUNT_ID = 'invalid_selected_account_id',
         BUNDLE_SELECTION_NOT_100_PCT = 'bundle_selection_not_100_pct',
         ORDER_IDEMPOTENCY_FAILURE = 'order_idempotency_failure',
-        ORDER_LOW_VOLUME_NO_SPLIT = 'order_low_volume_no_split',
+        ORDER_QUANTITY_NON_POSITIVE = 'order_quantity_non_positive',
         INVALID_BUNDLE_ID = 'invalid_bundle_id',
         INVALID_ID = 'invalid_id',
         STANDARD_TEST_ACCOUNT_NAME_UPDATE_DISALLOWED = 'standard_test_account_name_update_disallowed',
