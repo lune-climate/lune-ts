@@ -29,6 +29,7 @@ export namespace Error {
         ACCOUNT_SUSPENDED = 'account_suspended',
         INVALID_SELECTED_ACCOUNT_ID = 'invalid_selected_account_id',
         BUNDLE_SELECTION_NOT_100_PCT = 'bundle_selection_not_100_pct',
+        ALL_BUNDLES_MUST_BE_ENABLED = 'all_bundles_must_be_enabled',
         ORDER_IDEMPOTENCY_FAILURE = 'order_idempotency_failure',
         ORDER_QUANTITY_NON_POSITIVE = 'order_quantity_non_positive',
         INVALID_BUNDLE_ID = 'invalid_bundle_id',
