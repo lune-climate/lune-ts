@@ -10,6 +10,6 @@ export type ClientAccount = AccountBase & {
 
 export namespace ClientAccount {
     export enum scope {
-        CLIENT = 'client',
+        CLIENT_ACCOUNT = 'client_account',
     }
 }

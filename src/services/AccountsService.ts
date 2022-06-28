@@ -85,7 +85,7 @@ export abstract class AccountsService {
 
     /**
      * Create accounts
-     * Create a pair of standard accounts.
+     * Create a pair of accounts.
      *
      * A test and live account are returned
      *
@@ -153,7 +153,7 @@ export abstract class AccountsService {
 
     /**
      * Update an account.
-     * Update a standard account. If targeting a test account, the name field needs to match the current
+     * Update an account. If targeting a test account, the name field needs to match the current
      * account name. If targeting a live account, the name field change will be replicated to its
      * sibling account.
      *
