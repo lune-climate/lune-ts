@@ -2,12 +2,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Account } from './Account'
 import type { PaginatedBase } from './PaginatedBase'
-import type { StandardAccount } from './StandardAccount'
 
 export type PaginatedAccounts = PaginatedBase & {
     /**
      * Paginated Account objects
      */
-    data: Array<StandardAccount>
+    data: Array<Account>
 }
