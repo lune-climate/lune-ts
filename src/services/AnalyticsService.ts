@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Analytics } from '../models/Analytics.js'
+import type { CumulativeBundleAnalytics } from '../models/CumulativeBundleAnalytics.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -36,6 +37,33 @@ export abstract class AnalyticsService {
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
+                429: `Rate limit exceeded`,
+            },
+        })
+    }
+
+    /**
+     * Get cumulative analytics
+     * Calculate cumulative volume and cost analytics per bundle
+     *
+     * @param from The start date of the custom date range.
+     * @param through The to (inclusive) date of the custom date range.
+     * @returns CumulativeBundleAnalytics Cumulative analytics per bundle
+     */
+    public getCumulativeAnalyticsPerBundle(
+        from?: string,
+        through?: string,
+    ): Promise<Result<CumulativeBundleAnalytics, ApiError>> {
+        return __request(this.client, this.config, {
+            method: 'GET',
+            url: '/analytics/cumulative-per-bundle',
+            query: {
+                from: from,
+                through: through,
+            },
+            errors: {
+                400: `Bad request`,
+                401: `Unauthorized`,
                 429: `Rate limit exceeded`,
             },
         })
