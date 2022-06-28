@@ -2,12 +2,11 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Account } from '../models/Account.js'
+import type { AccountPair } from '../models/AccountPair.js'
 import type { AccountType } from '../models/AccountType.js'
 import type { CreateAccountRequest } from '../models/CreateAccountRequest.js'
 import type { PaginatedAccounts } from '../models/PaginatedAccounts.js'
 import type { PaginatedClientAccounts } from '../models/PaginatedClientAccounts.js'
-import type { StandardAccount } from '../models/StandardAccount.js'
-import type { StandardAccountPair } from '../models/StandardAccountPair.js'
 import type { UpdateAccountRequest } from '../models/UpdateAccountRequest.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -90,11 +89,11 @@ export abstract class AccountsService {
      * A test and live account are returned
      *
      * @param requestBody
-     * @returns StandardAccountPair The response returns the pair of accounts
+     * @returns AccountPair The response returns the pair of accounts
      */
     public createAccounts(
         requestBody: CreateAccountRequest,
-    ): Promise<Result<StandardAccountPair, ApiError>> {
+    ): Promise<Result<AccountPair, ApiError>> {
         return __request(this.client, this.config, {
             method: 'POST',
             url: '/accounts',
@@ -159,12 +158,12 @@ export abstract class AccountsService {
      *
      * @param id The account id
      * @param requestBody
-     * @returns StandardAccount The response returns the updated account
+     * @returns Account The response returns the updated account
      */
     public updateAccount(
         id: string,
         requestBody: UpdateAccountRequest,
-    ): Promise<Result<StandardAccount, ApiError>> {
+    ): Promise<Result<Account, ApiError>> {
         return __request(this.client, this.config, {
             method: 'PUT',
             url: '/accounts/{id}',
