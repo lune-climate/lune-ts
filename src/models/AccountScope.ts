@@ -5,10 +5,10 @@
 /**
  * The account's scope.
  *
- * Determines if the account is a client account or a standard account that comes in pairs (live and test).
+ * Determines if the resource is a regular account or a client account.
  *
  */
 export enum AccountScope {
-    STANDARD = 'standard',
-    CLIENT = 'client',
+    ACCOUNT = 'account',
+    CLIENT_ACCOUNT = 'client_account',
 }

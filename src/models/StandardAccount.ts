@@ -17,6 +17,6 @@ export type StandardAccount = AccountBase & {
 
 export namespace StandardAccount {
     export enum scope {
-        STANDARD = 'standard',
+        ACCOUNT = 'account',
     }
 }
