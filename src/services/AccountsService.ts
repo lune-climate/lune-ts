@@ -6,7 +6,6 @@ import type { AccountPair } from '../models/AccountPair.js'
 import type { AccountType } from '../models/AccountType.js'
 import type { CreateAccountRequest } from '../models/CreateAccountRequest.js'
 import type { PaginatedAccounts } from '../models/PaginatedAccounts.js'
-import type { PaginatedClientAccounts } from '../models/PaginatedClientAccounts.js'
 import type { UpdateAccountRequest } from '../models/UpdateAccountRequest.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -32,48 +31,6 @@ export abstract class AccountsService {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/accounts/me',
-            errors: {
-                400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
-            },
-        })
-    }
-
-    /**
-     * Get client accounts
-     * Returns paginated client accounts.
-     *
-     * Query parameters can be used to filter these accounts by name and/or type.
-     *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
-     * @param after A cursor for use in pagination.
-     *
-     * *after* is an object ID that defines your place in the list.
-     *
-     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
-     *
-     * @param type Used to filter the results to only include accounts of a specific type.
-     * @param name Used to filter the results to only include accounts which name contains this value (case insensitive).
-     * Keep in mind the value itself can appear at the beggining, middle or end on the actual account name.
-     * @returns PaginatedClientAccounts The response returns paginated client accounts
-     */
-    public getClientAccounts(
-        limit?: string,
-        after?: string,
-        type?: AccountType,
-        name?: string,
-    ): Promise<Result<PaginatedClientAccounts, ApiError>> {
-        return __request(this.client, this.config, {
-            method: 'GET',
-            url: '/accounts/client',
-            query: {
-                limit: limit,
-                after: after,
-                type: type,
-                name: name,
-            },
             errors: {
                 400: `Bad Request`,
                 401: `Unauthorized. The API Key is invalid or disabled.`,
