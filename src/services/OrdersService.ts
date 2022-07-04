@@ -1,17 +1,16 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CreateOrderByEstimateRequest } from '../models/CreateOrderByEstimateRequest.js'
-import type { CreateOrderByQuantityRequest } from '../models/CreateOrderByQuantityRequest.js'
-import type { CreateOrderByValueRequest } from '../models/CreateOrderByValueRequest.js'
+import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
+import type { Mass } from '../models/Mass.js'
+import type { MassUnit } from '../models/MassUnit.js'
+import type { Metadata } from '../models/Metadata.js'
 import type { Order } from '../models/Order.js'
 import type { OrderByEstimate } from '../models/OrderByEstimate.js'
 import type { OrderByQuantity } from '../models/OrderByQuantity.js'
 import type { OrderByValue } from '../models/OrderByValue.js'
 import type { OrderQuoteByQuantity } from '../models/OrderQuoteByQuantity.js'
-import type { OrderQuoteByQuantityRequest } from '../models/OrderQuoteByQuantityRequest.js'
 import type { OrderQuoteByValue } from '../models/OrderQuoteByValue.js'
-import type { OrderQuoteByValueRequest } from '../models/OrderQuoteByValueRequest.js'
 import type { PaginatedOrders } from '../models/PaginatedOrders.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -27,18 +26,52 @@ export abstract class OrdersService {
     /**
      * Create an order by mass
      * Create an order to purchase carbon offset by specifying a mass in tonnes or kilograms.
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns OrderByQuantity Order created successfully.
      * The response returns an Order object.
      *
      */
     public createOrderByMass(
-        requestBody: CreateOrderByQuantityRequest,
+        data: {
+            /**
+             * Mass of CO2 offsets to purchase
+             */
+            mass: Mass
+            /**
+             * Optional unique identifier provided by the client.
+             *
+             * `idempotency_key` has two purposes:
+             * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
+             * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
+             *
+             */
+            idempotencyKey?: string
+            bundleSelection?: BundleSelectionRequest
+            metadata?: Metadata
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<OrderByQuantity, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass',
-            body: requestBody,
+            body: {
+                mass: data?.mass,
+                idempotency_key: data?.idempotencyKey,
+                bundle_selection: data?.bundleSelection,
+                metadata: data?.metadata,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -58,18 +91,52 @@ export abstract class OrdersService {
     /**
      * Create an order by value
      * Create an order to purchase carbon offset by specifying a maximum purchase value.
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns OrderByValue Order created successfully.
      * The response returns an Order object.
      *
      */
     public createOrderByValue(
-        requestBody: CreateOrderByValueRequest,
+        data: {
+            /**
+             * Maximum price of CO2 offsets to purchase (in the account's currency)
+             */
+            value: string
+            /**
+             * Optional unique identifier provided by the client.
+             *
+             * `idempotency_key` has two purposes:
+             * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
+             * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
+             *
+             */
+            idempotencyKey?: string
+            bundleSelection?: BundleSelectionRequest
+            metadata?: Metadata
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<OrderByValue, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-value',
-            body: requestBody,
+            body: {
+                value: data?.value,
+                idempotency_key: data?.idempotencyKey,
+                bundle_selection: data?.bundleSelection,
+                metadata: data?.metadata,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -87,20 +154,54 @@ export abstract class OrdersService {
     }
 
     /**
-     * Create an order from an emission estimate
+     * Create an order by estimate id
      * Create an order to purchase carbon offset by specifying an estimate id
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns OrderByEstimate Order created successfully.
      * The response returns an Order object.
      *
      */
     public createOrderByEstimate(
-        requestBody: CreateOrderByEstimateRequest,
+        data: {
+            /**
+             * The emission calculation unique identifier
+             */
+            estimateId: string
+            /**
+             * Optional unique identifier provided by the client.
+             *
+             * `idempotency_key` has two purposes:
+             * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
+             * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
+             *
+             */
+            idempotencyKey?: string
+            bundleSelection?: BundleSelectionRequest
+            metadata?: Metadata
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<OrderByEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-estimate',
-            body: requestBody,
+            body: {
+                estimate_id: data?.estimateId,
+                idempotency_key: data?.idempotencyKey,
+                bundle_selection: data?.bundleSelection,
+                metadata: data?.metadata,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -119,39 +220,55 @@ export abstract class OrdersService {
     }
 
     /**
-     * Get orders
+     * List orders
      * Returns paginated account orders ordered by creation date descending
      *
      * The API key used to access this method affects what orders are returned: test orders for the test
      * API key, live orders for the live one.
      *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
-     * @param after A cursor for use in pagination.
-     *
-     * *after* is an object ID that defines your place in the list.
-     *
-     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
-     *
-     * @param offsetLinkId Filter orders by offset_link_id.
-     *
-     *
-     * If offset_link_id is set, the response will only include orders belonging to the particular offset link.
-     *
+     * @param data Request data
+     * @param options Additional operation options
      * @returns PaginatedOrders The response returns paginated orders
      */
-    public getOrders(
-        limit?: string,
-        after?: string,
-        offsetLinkId?: string,
+    public listOrders(
+        data?: {
+            /**
+             * Default is 10.
+             * Maximum number of resources to return, between 1 and 100.
+             */
+            limit?: string
+            /**
+             * A cursor for use in pagination.
+             *
+             * *after* is an object ID that defines your place in the list.
+             *
+             * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+             *
+             */
+            after?: string
+            /**
+             * Filter orders by offset_link_id.
+             *
+             *
+             * If offset_link_id is set, the response will only include orders belonging to the particular offset link.
+             *
+             */
+            offsetLinkId?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<PaginatedOrders, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders',
             query: {
-                limit: limit,
-                after: after,
-                offset_link_id: offsetLinkId,
+                limit: data?.limit,
+                after: data?.after,
+                offset_link_id: data?.offsetLinkId,
             },
             errors: {
                 401: `Unauthorized. The API Key is invalid or disabled.`,
@@ -165,10 +282,19 @@ export abstract class OrdersService {
      * Returns an order by id if it exists.
      *
      * @param id The order's unique identifier
+     * @param options Additional operation options
      * @returns Order The response returns an order
      */
-    public getOrderById(id: string): Promise<Result<Order, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOrder(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Order, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders/{id}',
             path: {
@@ -186,10 +312,19 @@ export abstract class OrdersService {
      * Download a Carbon Offset Certificate for a completed order.
      *
      * @param id The order's unique identifier
+     * @param options Additional operation options
      * @returns binary The response returns the Carbon Offset Certificate
      */
-    public getOrderCertificateById(id: string): Promise<Result<Blob, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOrderCertificate(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Blob, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders/{id}/certificate',
             path: {
@@ -207,10 +342,19 @@ export abstract class OrdersService {
      * Returns an order by idempotency key if it exists.
      *
      * @param idempotencyKey The order's idempotency key
+     * @param options Additional operation options
      * @returns Order The response returns an order
      */
-    public getOrderByIdempotencyKey(idempotencyKey: string): Promise<Result<Order, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOrderByIdempotencyKey(
+        idempotencyKey: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Order, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders/by-idempotency-key/{idempotencyKey}',
             path: {
@@ -229,17 +373,33 @@ export abstract class OrdersService {
      *
      * However, it processes the order as if it were placed returning estimated cost and bundles allocations.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns OrderQuoteByQuantity Order quote processed successfully.
      *
      */
     public getOrderQuoteByMass(
-        requestBody: OrderQuoteByQuantityRequest,
+        data: {
+            /**
+             * Mass of CO2 offsets to purchase
+             */
+            mass: Mass
+            bundleSelection?: BundleSelectionRequest
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<OrderQuoteByQuantity, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass/quote',
-            body: requestBody,
+            body: {
+                mass: data?.mass,
+                bundle_selection: data?.bundleSelection,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -261,17 +421,39 @@ export abstract class OrdersService {
      *
      * However, it processes the order as if it were placed returning estimated cost and bundles allocations.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns OrderQuoteByValue Order quote processed successfully.
      *
      */
     public getOrderQuoteByValue(
-        requestBody: OrderQuoteByValueRequest,
+        data: {
+            /**
+             * Maximum price of CO2 offsets to purchase (in the account's currency)
+             */
+            value: string
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<OrderQuoteByValue, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-value/quote',
-            body: requestBody,
+            body: {
+                value: data?.value,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,

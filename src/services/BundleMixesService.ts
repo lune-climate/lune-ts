@@ -14,16 +14,22 @@ export abstract class BundleMixesService {
     protected abstract config: ClientConfig
 
     /**
-     * Get bundle mixes
+     * List all bundle mixes
      * Returns bundle mixes.
      *
      * Bundle mixes are predefined bundle selections, for example following Oxford Offsetting Principles.
      * Bundle selection for a particular Bundle mix may change over time.
      *
+     * @param options Additional operation options
      * @returns BundleMix The response returns the bundle mixes
      */
-    public getBundleMixes(): Promise<Result<Array<BundleMix>, ApiError>> {
-        return __request(this.client, this.config, {
+    public listAllBundleMixes(options?: {
+        /**
+         * Account Id to be used to perform the API call
+         */
+        accountId?: string
+    }): Promise<Result<Array<BundleMix>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundle-mixes',
             errors: {

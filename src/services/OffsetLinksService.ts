@@ -1,11 +1,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { Money } from '../models/Money.js'
 import type { OffsetLink } from '../models/OffsetLink.js'
 import type { OffsetLinkAnalytics } from '../models/OffsetLinkAnalytics.js'
-import type { OffsetLinkRequest } from '../models/OffsetLinkRequest.js'
-import type { OffsetLinkUpdateRequest } from '../models/OffsetLinkUpdateRequest.js'
 import type { PaginatedOffsetLinks } from '../models/PaginatedOffsetLinks.js'
+import type { Timestamp } from '../models/Timestamp.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -18,12 +18,21 @@ export abstract class OffsetLinksService {
     protected abstract config: ClientConfig
 
     /**
-     * Get an offset link by id
+     * Get an offset link
      * @param id The offset links's unique identifier
+     * @param options Additional operation options
      * @returns OffsetLink Offset link fetched successfully.
      */
-    public getOffsetLinkById(id: string): Promise<Result<OffsetLink, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOffsetLink(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<OffsetLink, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/offset-links/{id}',
             path: {
@@ -40,20 +49,73 @@ export abstract class OffsetLinksService {
     /**
      * Update an offset link
      * @param id The offset links's unique identifier
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns OffsetLink The offset link updated successfully.
      */
-    public updateOffsetLinkById(
+    public updateOffsetLink(
         id: string,
-        requestBody: OffsetLinkUpdateRequest,
+        data: {
+            /**
+             * Offset link name.
+             *
+             * This is a human readable name to recognise and distingish different offset links.
+             *
+             */
+            name: string
+            /**
+             * Whether to include the Offset link logo (defined in Account settings) in the footer.
+             *
+             */
+            useLogo: boolean
+            /**
+             * Offset link title
+             *
+             * This is the title that appears on the first screen of the offset links flow.
+             *
+             */
+            title?: string
+            /**
+             * Offset link description
+             *
+             * This is the description that appears on the first screen of the offset links flow.
+             *
+             */
+            description?: string
+            /**
+             * The bundle ids selected for use through the particular offset link.
+             */
+            bundles?: Array<string>
+            value?: Money
+            /**
+             * The email addresses of users that are allowed to use the offset link.
+             */
+            emails?: Array<string>
+            expiresAt?: Timestamp
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<OffsetLink, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/offset-links/{id}',
             path: {
                 id: id,
             },
-            body: requestBody,
+            body: {
+                name: data?.name,
+                title: data?.title,
+                description: data?.description,
+                bundles: data?.bundles,
+                value: data?.value,
+                emails: data?.emails,
+                expires_at: data?.expiresAt,
+                use_logo: data?.useLogo,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -66,27 +128,41 @@ export abstract class OffsetLinksService {
     }
 
     /**
-     * Get the existing offset links
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
-     * @param after A cursor for use in pagination.
-     *
-     * *after* is an object ID that defines your place in the list.
-     *
-     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
-     *
+     * List offset links
+     * @param data Request data
+     * @param options Additional operation options
      * @returns PaginatedOffsetLinks Offset links fetched successfully.
      */
-    public getOffsetLinks(
-        limit?: string,
-        after?: string,
+    public listOffsetLinks(
+        data?: {
+            /**
+             * Default is 10.
+             * Maximum number of resources to return, between 1 and 100.
+             */
+            limit?: string
+            /**
+             * A cursor for use in pagination.
+             *
+             * *after* is an object ID that defines your place in the list.
+             *
+             * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+             *
+             */
+            after?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<PaginatedOffsetLinks, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/offset-links',
             query: {
-                limit: limit,
-                after: after,
+                limit: data?.limit,
+                after: data?.after,
             },
             errors: {
                 401: `Unauthorized. The API Key is invalid or disabled.`,
@@ -96,15 +172,77 @@ export abstract class OffsetLinksService {
     }
 
     /**
-     * Create a new offset link
-     * @param requestBody
+     * Create an offset link
+     * @param data Request data
+     * @param options Additional operation options
      * @returns OffsetLink The offset link created successfully.
      */
-    public createOffsetLink(requestBody: OffsetLinkRequest): Promise<Result<OffsetLink, ApiError>> {
-        return __request(this.client, this.config, {
+    public createOffsetLink(
+        data: {
+            /**
+             * Offset link name.
+             *
+             * This is a human readable name to recognise and distingish different offset links.
+             *
+             */
+            name: string
+            /**
+             * Whether to include the Offset link logo (defined in Account settings) in the footer.
+             *
+             */
+            useLogo: boolean
+            /**
+             * Offset link title
+             *
+             * This is the title that appears on the first screen of the offset links flow.
+             *
+             */
+            title?: string
+            /**
+             * Offset link description
+             *
+             * This is the description that appears on the first screen of the offset links flow.
+             *
+             */
+            description?: string
+            /**
+             * The bundle ids selected for use through the particular offset link.
+             */
+            bundles?: Array<string>
+            value?: Money
+            /**
+             * The email addresses of users that are allowed to use the offset link.
+             */
+            emails?: Array<string>
+            expiresAt?: Timestamp
+            /**
+             * If true, the user of the Offset Link is required to pay by credit/debit card.
+             * This value cannot be updated once the offset link has been created.
+             *
+             */
+            requirePayment?: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<OffsetLink, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/offset-links',
-            body: requestBody,
+            body: {
+                name: data?.name,
+                title: data?.title,
+                description: data?.description,
+                bundles: data?.bundles,
+                value: data?.value,
+                emails: data?.emails,
+                expires_at: data?.expiresAt,
+                use_logo: data?.useLogo,
+                require_payment: data?.requirePayment,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -117,12 +255,21 @@ export abstract class OffsetLinksService {
     }
 
     /**
-     * Get analytics for a given offset link
+     * Get offset link's analytics
      * @param id The offset links's unique identifier
+     * @param options Additional operation options
      * @returns OffsetLinkAnalytics Offset link analytics fetched successfully.
      */
-    public getOffsetLinkAnalyticsById(id: string): Promise<Result<OffsetLinkAnalytics, ApiError>> {
-        return __request(this.client, this.config, {
+    public getOffsetLinkAnalytics(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<OffsetLinkAnalytics, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/offset-links/{id}/analytics',
             path: {

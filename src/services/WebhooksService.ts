@@ -1,8 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CreateWebhookRequest } from '../models/CreateWebhookRequest.js'
-import type { UpdateWebhookRequest } from '../models/UpdateWebhookRequest.js'
+import type { Url } from '../models/Url.js'
 import type { Webhook } from '../models/Webhook.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -16,11 +15,17 @@ export abstract class WebhooksService {
     protected abstract config: ClientConfig
 
     /**
-     * Get existing webhooks
+     * List all webhooks
+     * @param options Additional operation options
      * @returns Webhook Existing webhooks fetched successfully
      */
-    public getWebhooks(): Promise<Result<Array<Webhook>, ApiError>> {
-        return __request(this.client, this.config, {
+    public listAllWebhooks(options?: {
+        /**
+         * Account Id to be used to perform the API call
+         */
+        accountId?: string
+    }): Promise<Result<Array<Webhook>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/webhooks',
             errors: {
@@ -31,15 +36,28 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Create a new webhook
-     * @param requestBody
+     * Create a webhook
+     * @param data Request data
+     * @param options Additional operation options
      * @returns Webhook A webhook created successfully
      */
-    public createWebhook(requestBody: CreateWebhookRequest): Promise<Result<Webhook, ApiError>> {
-        return __request(this.client, this.config, {
+    public createWebhook(
+        data: {
+            url: Url
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Webhook, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/webhooks',
-            body: requestBody,
+            body: {
+                url: data?.url,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -50,12 +68,21 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Get an existing webhook
+     * Get a webhook
      * @param id The webhooks's unique identifier
+     * @param options Additional operation options
      * @returns Webhook Existing webhook fetched successfully
      */
-    public getWebhookById(id: string): Promise<Result<Webhook, ApiError>> {
-        return __request(this.client, this.config, {
+    public getWebhook(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Webhook, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/webhooks/{id}',
             path: {
@@ -70,22 +97,41 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Update an existing webhook
+     * Update a webhook
      * @param id The webhooks's unique identifier
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns Webhook Existing webhook updated successfully
      */
     public updateWebhook(
         id: string,
-        requestBody: UpdateWebhookRequest,
+        data: {
+            url?: Url
+            /**
+             * Determines if events should be sent to the webhook or not. Defaults to `true` for newly created
+             * webhooks. When updating a webhook and the value is not explicitly specified the existing value
+             * will be used.
+             *
+             */
+            enabled?: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<Webhook, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/webhooks/{id}',
             path: {
                 id: id,
             },
-            body: requestBody,
+            body: {
+                url: data?.url,
+                enabled: data?.enabled,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -97,12 +143,21 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Delete an existing webhook
+     * Delete a webhook
      * @param id The webhooks's unique identifier
+     * @param options Additional operation options
      * @returns any Existing webhook deleted successfully
      */
-    public deleteWebhook(id: string): Promise<Result<any, ApiError>> {
-        return __request(this.client, this.config, {
+    public deleteWebhook(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<any, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'DELETE',
             url: '/webhooks/{id}',
             path: {
@@ -117,15 +172,24 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Rotate a secret of an existing webhook.
+     * Rotate a webhook secret
      * The existing secret will be invalidated immediately and subsequent webhook payloads will be
      * accompanied by HMACs using the new secret.
      *
      * @param id The webhooks's unique identifier
+     * @param options Additional operation options
      * @returns Webhook The secret was rotated successfully
      */
-    public rotateWebhookSecret(id: string): Promise<Result<Webhook, ApiError>> {
-        return __request(this.client, this.config, {
+    public rotateWebhookSecret(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Webhook, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/webhooks/{id}/rotate-secret',
             path: {

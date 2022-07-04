@@ -185,12 +185,19 @@ const getRequestBody = (options: ApiRequestOptions): any => {
 export const request = async <T>(
     client: AxiosInstance,
     config: ClientConfig,
+    luneOptions: {
+        accountId?: string
+    },
     options: ApiRequestOptions,
 ): Promise<Result<T, ApiError>> => {
     const url = getUrl(config, options)
     const formData = getFormData(options)
     const body = getRequestBody(options)
     const headers = getHeaders(config, options)
+
+    if (luneOptions.accountId) {
+        headers['Lune-Account'] = luneOptions.accountId
+    }
 
     return client({
         baseURL: url,

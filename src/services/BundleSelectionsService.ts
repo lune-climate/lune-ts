@@ -1,8 +1,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { BundlePercentageRequest } from '../models/BundlePercentageRequest.js'
 import type { BundleSelection } from '../models/BundleSelection.js'
-import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -15,7 +15,7 @@ export abstract class BundleSelectionsService {
     protected abstract config: ClientConfig
 
     /**
-     * Get account bundle selection
+     * Get an account's bundle selection
      * Returns the account's bundle selection.
      *
      * When orders are placed without explicity setting bundle selections, the account's bundle selection is used.
@@ -24,10 +24,16 @@ export abstract class BundleSelectionsService {
      *
      * Every account is created with default bundle selections.
      *
+     * @param options Additional operation options
      * @returns BundleSelection The response returns the account's bundle selections
      */
-    public getBundleSelection(): Promise<Result<BundleSelection, ApiError>> {
-        return __request(this.client, this.config, {
+    public getBundleSelection(options?: {
+        /**
+         * Account Id to be used to perform the API call
+         */
+        accountId?: string
+    }): Promise<Result<BundleSelection, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundle-selections',
             errors: {
@@ -38,21 +44,30 @@ export abstract class BundleSelectionsService {
     }
 
     /**
-     * Set account bundle selection
+     * Update an account's bundle selection
      * Set the account's bundle selection.
      *
      * Every account is created with default bundle selections. This will override default bundle selections.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns BundleSelection The response returns the new account's bundle selections
      */
     public updateBundleSelection(
-        requestBody: BundleSelectionRequest,
+        data: {
+            bundleSelectionRequest: Array<BundlePercentageRequest>
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<BundleSelection, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/bundle-selections',
-            body: requestBody,
+            body: data?.bundleSelectionRequest,
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
