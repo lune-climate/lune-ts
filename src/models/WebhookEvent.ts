@@ -2,7 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Order } from './Order'
+import type { OrderEventDetails } from './OrderEventDetails'
 
 export type WebhookEvent = {
     /**
@@ -30,7 +30,7 @@ export type WebhookEvent = {
     /**
      * Data of the event. On order.* events, this means an Order.
      */
-    data: Order
+    data: OrderEventDetails
 }
 
 export namespace WebhookEvent {
