@@ -27,6 +27,7 @@ export abstract class ProjectsService {
      * Disabled bundles are not returned unless `recently_disabled` is used.
      * Disabled bundle projects are not returned unless `recently_disabled` is used.
      *
+<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedBundles The response returns paginated bundles
@@ -60,6 +61,25 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
+=======
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
+     * @param after A cursor for use in pagination.
+     *
+     * *after* is an object ID that defines your place in the list.
+     *
+     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+     *
+     * @param recentlyDisabled When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
+     * Default is false.
+     * Omitting or setting recently_disabled to false has the same effect.
+     * @returns PaginatedBundles The response returns paginated bundles
+     */
+    public listBundles(
+        limit: string = '10',
+        after?: string,
+        recentlyDisabled?: boolean,
+>>>>>>> master
     ): Promise<Result<PaginatedBundles, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
@@ -89,6 +109,7 @@ export abstract class ProjectsService {
      * @param options Additional operation options
      * @returns Bundle The response returns a bundle
      */
+<<<<<<< HEAD
     public getBundle(
         id: string,
         options?: {
@@ -99,6 +120,10 @@ export abstract class ProjectsService {
         },
     ): Promise<Result<Bundle, ApiError>> {
         return __request(this.client, this.config, options || {}, {
+=======
+    public getBundle(id: string): Promise<Result<Bundle, ApiError>> {
+        return __request(this.client, this.config, {
+>>>>>>> master
             method: 'GET',
             url: '/bundles/{id}',
             path: {
@@ -120,6 +145,7 @@ export abstract class ProjectsService {
      *
      * Note: orders are placed against bundles not projects.
      *
+<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedProjects The response returns paginated projects
@@ -153,6 +179,25 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
+=======
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
+     * @param after A cursor for use in pagination.
+     *
+     * *after* is an object ID that defines your place in the list.
+     *
+     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+     *
+     * @param recentlyDisabled When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
+     * Default is false.
+     * Omitting or setting recently_disabled to false has the same effect.
+     * @returns PaginatedProjects The response returns paginated projects
+     */
+    public listProjects(
+        limit: string = '10',
+        after?: string,
+        recentlyDisabled?: boolean,
+>>>>>>> master
     ): Promise<Result<PaginatedProjects, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
@@ -180,6 +225,7 @@ export abstract class ProjectsService {
      * @param options Additional operation options
      * @returns Project The response returns a project
      */
+<<<<<<< HEAD
     public getProject(
         id: string,
         options?: {
@@ -190,6 +236,10 @@ export abstract class ProjectsService {
         },
     ): Promise<Result<Project, ApiError>> {
         return __request(this.client, this.config, options || {}, {
+=======
+    public getProject(id: string): Promise<Result<Project, ApiError>> {
+        return __request(this.client, this.config, {
+>>>>>>> master
             method: 'GET',
             url: '/projects/{id}',
             path: {

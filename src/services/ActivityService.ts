@@ -23,6 +23,7 @@ export abstract class ActivityService {
      * corresponding to test orders for the test API key, the rest of the rows (both activity rows
      * corresponding to live orders or not having any order associated with them) for the live API key.
      *
+<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedActivity The response returns paginated activity
@@ -50,6 +51,21 @@ export abstract class ActivityService {
              */
             accountId?: string
         },
+=======
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
+     * @param after A cursor for use in pagination.
+     *
+     * *after* is an object ID that defines your place in the list.
+     *
+     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+     *
+     * @returns PaginatedActivity The response returns paginated activity
+     */
+    public getActivity(
+        limit: string = '10',
+        after?: string,
+>>>>>>> master
     ): Promise<Result<PaginatedActivity, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',

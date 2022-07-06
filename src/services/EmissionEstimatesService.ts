@@ -45,6 +45,7 @@ export abstract class EmissionEstimatesService {
      *
      */
     public createElectricityEstimate(
+<<<<<<< HEAD
         data: {
             consumption: ElectricityConsumption
             /**
@@ -68,6 +69,9 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
+=======
+        requestBody: ElectricityEstimateRequest,
+>>>>>>> master
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
@@ -96,6 +100,7 @@ export abstract class EmissionEstimatesService {
      * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation retrieved succesfully
      */
+<<<<<<< HEAD
     public getElectricityEstimate(
         id: string,
         options?: {
@@ -106,6 +111,10 @@ export abstract class EmissionEstimatesService {
         },
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, options || {}, {
+=======
+    public getElectricityEstimate(id: string): Promise<Result<EmissionEstimateResponse, ApiError>> {
+        return __request(this.client, this.config, {
+>>>>>>> master
             method: 'GET',
             url: '/estimates/electricity/{id}',
             path: {
@@ -195,6 +204,7 @@ export abstract class EmissionEstimatesService {
      *
      */
     public createFlightEstimate(
+<<<<<<< HEAD
         data: {
             /**
              * Either the flying distance or the start/destination airport code (ICAO or IATA).
@@ -219,6 +229,9 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
+=======
+        requestBody: FlightEstimateRequest,
+>>>>>>> master
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
@@ -325,6 +338,7 @@ export abstract class EmissionEstimatesService {
      *
      */
     public createShippingEstimate(
+<<<<<<< HEAD
         data: {
             shipment: Shipment
             route: ShippingRoute
@@ -343,6 +357,9 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
+=======
+        requestBody: ShippingEstimateRequest,
+>>>>>>> master
     ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
@@ -463,6 +480,7 @@ export abstract class EmissionEstimatesService {
      *
      */
     public createMultiLegShippingEstimate(
+<<<<<<< HEAD
         data: {
             shipment: Shipment
             legs: Array<{
@@ -483,6 +501,9 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
+=======
+        requestBody: MultiLegShippingEstimateRequest,
+>>>>>>> master
     ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
@@ -607,6 +628,7 @@ export abstract class EmissionEstimatesService {
      *
      */
     public createTransactionEstimate(
+<<<<<<< HEAD
         data: {
             value: MonetaryAmount
             merchant: Merchant
@@ -624,6 +646,9 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
+=======
+        requestBody: TransactionEstimateRequest,
+>>>>>>> master
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
@@ -661,6 +686,7 @@ export abstract class EmissionEstimatesService {
      *
      */
     public createCompanyEstimate(
+<<<<<<< HEAD
         data: {
             /**
              * Number of employees
@@ -760,6 +786,9 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
+=======
+        requestBody: CompanyEstimateRequest,
+>>>>>>> master
     ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
@@ -814,6 +843,7 @@ export abstract class EmissionEstimatesService {
      *
      */
     public createIndividualEstimate(
+<<<<<<< HEAD
         data: {
             /**
              * The three-letter country code of the country where the company is located.
@@ -893,6 +923,9 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
+=======
+        requestBody: IndividualEstimateRequest,
+>>>>>>> master
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',

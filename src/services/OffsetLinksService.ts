@@ -23,6 +23,7 @@ export abstract class OffsetLinksService {
      * @param options Additional operation options
      * @returns OffsetLink Offset link fetched successfully.
      */
+<<<<<<< HEAD
     public getOffsetLink(
         id: string,
         options?: {
@@ -33,6 +34,10 @@ export abstract class OffsetLinksService {
         },
     ): Promise<Result<OffsetLink, ApiError>> {
         return __request(this.client, this.config, options || {}, {
+=======
+    public getOffsetLink(id: string): Promise<Result<OffsetLink, ApiError>> {
+        return __request(this.client, this.config, {
+>>>>>>> master
             method: 'GET',
             url: '/offset-links/{id}',
             path: {
@@ -129,6 +134,7 @@ export abstract class OffsetLinksService {
 
     /**
      * List offset links
+<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedOffsetLinks Offset links fetched successfully.
@@ -156,6 +162,21 @@ export abstract class OffsetLinksService {
              */
             accountId?: string
         },
+=======
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
+     * @param after A cursor for use in pagination.
+     *
+     * *after* is an object ID that defines your place in the list.
+     *
+     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+     *
+     * @returns PaginatedOffsetLinks Offset links fetched successfully.
+     */
+    public listOffsetLinks(
+        limit: string = '10',
+        after?: string,
+>>>>>>> master
     ): Promise<Result<PaginatedOffsetLinks, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
@@ -173,8 +194,12 @@ export abstract class OffsetLinksService {
 
     /**
      * Create an offset link
+<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
+=======
+     * @param requestBody
+>>>>>>> master
      * @returns OffsetLink The offset link created successfully.
      */
     public createOffsetLink(
@@ -260,6 +285,7 @@ export abstract class OffsetLinksService {
      * @param options Additional operation options
      * @returns OffsetLinkAnalytics Offset link analytics fetched successfully.
      */
+<<<<<<< HEAD
     public getOffsetLinkAnalytics(
         id: string,
         options?: {
@@ -270,6 +296,10 @@ export abstract class OffsetLinksService {
         },
     ): Promise<Result<OffsetLinkAnalytics, ApiError>> {
         return __request(this.client, this.config, options || {}, {
+=======
+    public getOffsetLinkAnalytics(id: string): Promise<Result<OffsetLinkAnalytics, ApiError>> {
+        return __request(this.client, this.config, {
+>>>>>>> master
             method: 'GET',
             url: '/offset-links/{id}/analytics',
             path: {

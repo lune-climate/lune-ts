@@ -74,6 +74,7 @@ export abstract class ClientAccountsService {
      *
      * Query parameters can be used to filter these accounts by name and/or type.
      *
+<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedClientAccounts The response returns paginated client accounts
@@ -110,6 +111,26 @@ export abstract class ClientAccountsService {
              */
             accountId?: string
         },
+=======
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
+     * @param after A cursor for use in pagination.
+     *
+     * *after* is an object ID that defines your place in the list.
+     *
+     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+     *
+     * @param type Used to filter the results to only include accounts of a specific type.
+     * @param name Used to filter the results to only include accounts which name contains this value (case insensitive).
+     * Keep in mind the value itself can appear at the beggining, middle or end on the actual account name.
+     * @returns PaginatedClientAccounts The response returns paginated client accounts
+     */
+    public listClientAccounts(
+        limit: string = '10',
+        after?: string,
+        type?: AccountType,
+        name?: string,
+>>>>>>> master
     ): Promise<Result<PaginatedClientAccounts, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',

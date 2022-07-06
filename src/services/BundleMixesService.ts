@@ -23,6 +23,7 @@ export abstract class BundleMixesService {
      * @param options Additional operation options
      * @returns BundleMix The response returns the bundle mixes
      */
+<<<<<<< HEAD
     public listAllBundleMixes(options?: {
         /**
          * Account Id to be used to perform the API call
@@ -30,6 +31,10 @@ export abstract class BundleMixesService {
         accountId?: string
     }): Promise<Result<Array<BundleMix>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
+=======
+    public listAllBundleMixes(): Promise<Result<Array<BundleMix>, ApiError>> {
+        return __request(this.client, this.config, {
+>>>>>>> master
             method: 'GET',
             url: '/bundle-mixes',
             errors: {
