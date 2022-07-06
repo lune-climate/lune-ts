@@ -19,7 +19,7 @@ export abstract class AccountsService {
     protected abstract config: ClientConfig
 
     /**
-     * Get account
+     * Get an account
      * Returns the active account. This is the account linked to the API key by default but is affected
      * by the `Lune-Account` header.
      *
@@ -40,7 +40,7 @@ export abstract class AccountsService {
     }
 
     /**
-     * Create accounts
+     * Create an account pair
      * Create a pair of accounts.
      *
      * A test and live account are returned
@@ -48,7 +48,7 @@ export abstract class AccountsService {
      * @param requestBody
      * @returns AccountPair The response returns the pair of accounts
      */
-    public createAccounts(
+    public createAccountPair(
         requestBody: CreateAccountRequest,
     ): Promise<Result<AccountPair, ApiError>> {
         return __request(this.client, this.config, {
@@ -66,13 +66,13 @@ export abstract class AccountsService {
     }
 
     /**
-     * Get accounts
+     * List accounts
      * Returns paginated accounts.
      *
      * Query parameters can be used to filter these accounts by name and/or scope.
      *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
      * @param after A cursor for use in pagination.
      *
      * *after* is an object ID that defines your place in the list.
@@ -84,8 +84,8 @@ export abstract class AccountsService {
      * Keep in mind the value itself can appear at the beggining, middle or end on the actual account name.
      * @returns PaginatedAccounts The response returns paginated accounts
      */
-    public getAccounts(
-        limit?: string,
+    public listAccounts(
+        limit: string = '10',
         after?: string,
         type?: AccountType,
         name?: string,
@@ -108,7 +108,7 @@ export abstract class AccountsService {
     }
 
     /**
-     * Update an account.
+     * Update an account
      * Update an account. If targeting a test account, the name field needs to match the current
      * account name. If targeting a live account, the name field change will be replicated to its
      * sibling account.

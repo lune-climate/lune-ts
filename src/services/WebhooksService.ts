@@ -16,10 +16,10 @@ export abstract class WebhooksService {
     protected abstract config: ClientConfig
 
     /**
-     * Get existing webhooks
+     * List all webhooks
      * @returns Webhook Existing webhooks fetched successfully
      */
-    public getWebhooks(): Promise<Result<Array<Webhook>, ApiError>> {
+    public listAllWebhooks(): Promise<Result<Array<Webhook>, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/webhooks',
@@ -31,7 +31,7 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Create a new webhook
+     * Create a webhook
      * @param requestBody
      * @returns Webhook A webhook created successfully
      */
@@ -50,11 +50,11 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Get an existing webhook
+     * Get a webhook
      * @param id The webhooks's unique identifier
      * @returns Webhook Existing webhook fetched successfully
      */
-    public getWebhookById(id: string): Promise<Result<Webhook, ApiError>> {
+    public getWebhook(id: string): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/webhooks/{id}',
@@ -70,7 +70,7 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Update an existing webhook
+     * Update a webhook
      * @param id The webhooks's unique identifier
      * @param requestBody
      * @returns Webhook Existing webhook updated successfully
@@ -97,7 +97,7 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Delete an existing webhook
+     * Delete a webhook
      * @param id The webhooks's unique identifier
      * @returns any Existing webhook deleted successfully
      */
@@ -117,7 +117,7 @@ export abstract class WebhooksService {
     }
 
     /**
-     * Rotate a secret of an existing webhook.
+     * Rotate a webhook secret
      * The existing secret will be invalidated immediately and subsequent webhook payloads will be
      * accompanied by HMACs using the new secret.
      *

@@ -18,11 +18,11 @@ export abstract class OffsetLinksService {
     protected abstract config: ClientConfig
 
     /**
-     * Get an offset link by id
+     * Get an offset link
      * @param id The offset links's unique identifier
      * @returns OffsetLink Offset link fetched successfully.
      */
-    public getOffsetLinkById(id: string): Promise<Result<OffsetLink, ApiError>> {
+    public getOffsetLink(id: string): Promise<Result<OffsetLink, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links/{id}',
@@ -43,7 +43,7 @@ export abstract class OffsetLinksService {
      * @param requestBody
      * @returns OffsetLink The offset link updated successfully.
      */
-    public updateOffsetLinkById(
+    public updateOffsetLink(
         id: string,
         requestBody: OffsetLinkUpdateRequest,
     ): Promise<Result<OffsetLink, ApiError>> {
@@ -66,9 +66,9 @@ export abstract class OffsetLinksService {
     }
 
     /**
-     * Get the existing offset links
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
+     * List offset links
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
      * @param after A cursor for use in pagination.
      *
      * *after* is an object ID that defines your place in the list.
@@ -77,8 +77,8 @@ export abstract class OffsetLinksService {
      *
      * @returns PaginatedOffsetLinks Offset links fetched successfully.
      */
-    public getOffsetLinks(
-        limit?: string,
+    public listOffsetLinks(
+        limit: string = '10',
         after?: string,
     ): Promise<Result<PaginatedOffsetLinks, ApiError>> {
         return __request(this.client, this.config, {
@@ -96,7 +96,7 @@ export abstract class OffsetLinksService {
     }
 
     /**
-     * Create a new offset link
+     * Create an offset link
      * @param requestBody
      * @returns OffsetLink The offset link created successfully.
      */
@@ -117,11 +117,11 @@ export abstract class OffsetLinksService {
     }
 
     /**
-     * Get analytics for a given offset link
+     * Get offset link's analytics
      * @param id The offset links's unique identifier
      * @returns OffsetLinkAnalytics Offset link analytics fetched successfully.
      */
-    public getOffsetLinkAnalyticsById(id: string): Promise<Result<OffsetLinkAnalytics, ApiError>> {
+    public getOffsetLinkAnalytics(id: string): Promise<Result<OffsetLinkAnalytics, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/offset-links/{id}/analytics',

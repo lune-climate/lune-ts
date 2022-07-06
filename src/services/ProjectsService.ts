@@ -17,7 +17,7 @@ export abstract class ProjectsService {
     protected abstract config: ClientConfig
 
     /**
-     * Get bundles
+     * List bundles
      * Returns paginated bundles.
      *
      * Bundle represent a group of projects of similar unit price and characteristics.
@@ -27,8 +27,8 @@ export abstract class ProjectsService {
      * Disabled bundles are not returned unless `recently_disabled` is used.
      * Disabled bundle projects are not returned unless `recently_disabled` is used.
      *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
      * @param after A cursor for use in pagination.
      *
      * *after* is an object ID that defines your place in the list.
@@ -40,8 +40,8 @@ export abstract class ProjectsService {
      * Omitting or setting recently_disabled to false has the same effect.
      * @returns PaginatedBundles The response returns paginated bundles
      */
-    public getBundles(
-        limit?: string,
+    public listBundles(
+        limit: string = '10',
         after?: string,
         recentlyDisabled?: boolean,
     ): Promise<Result<PaginatedBundles, ApiError>> {
@@ -72,7 +72,7 @@ export abstract class ProjectsService {
      * @param id The bundle's unique identifier
      * @returns Bundle The response returns a bundle
      */
-    public getBundleById(id: string): Promise<Result<Bundle, ApiError>> {
+    public getBundle(id: string): Promise<Result<Bundle, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/bundles/{id}',
@@ -87,7 +87,7 @@ export abstract class ProjectsService {
     }
 
     /**
-     * Get projects
+     * List projects
      * Returns paginated projects.
      *
      * Disabled projects are not returned unless `recently_disabled` is used.
@@ -95,8 +95,8 @@ export abstract class ProjectsService {
      *
      * Note: orders are placed against bundles not projects.
      *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
      * @param after A cursor for use in pagination.
      *
      * *after* is an object ID that defines your place in the list.
@@ -108,8 +108,8 @@ export abstract class ProjectsService {
      * Omitting or setting recently_disabled to false has the same effect.
      * @returns PaginatedProjects The response returns paginated projects
      */
-    public getProjects(
-        limit?: string,
+    public listProjects(
+        limit: string = '10',
         after?: string,
         recentlyDisabled?: boolean,
     ): Promise<Result<PaginatedProjects, ApiError>> {
@@ -130,7 +130,7 @@ export abstract class ProjectsService {
     }
 
     /**
-     * Get a project by id
+     * Get a project
      * Returns a project by id if it exists.
      *
      * Disabled projects are returned.
@@ -138,7 +138,7 @@ export abstract class ProjectsService {
      * @param id The project's unique identifier
      * @returns Project The response returns a project
      */
-    public getProjectById(id: string): Promise<Result<Project, ApiError>> {
+    public getProject(id: string): Promise<Result<Project, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/projects/{id}',

@@ -15,7 +15,7 @@ export abstract class AnalyticsService {
     protected abstract config: ClientConfig
 
     /**
-     * Get analytics
+     * Get an account analytics
      * Returns analytics for a specified time period for the account linked to the API Key.
      *
      * Defaults to the last 30 days if no time period is specified.

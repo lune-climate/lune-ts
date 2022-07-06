@@ -87,7 +87,7 @@ export abstract class OrdersService {
     }
 
     /**
-     * Create an order from an emission estimate
+     * Create an order by estimate id
      * Create an order to purchase carbon offset by specifying an estimate id
      * @param requestBody
      * @returns OrderByEstimate Order created successfully.
@@ -119,14 +119,14 @@ export abstract class OrdersService {
     }
 
     /**
-     * Get orders
+     * List orders
      * Returns paginated account orders ordered by creation date descending
      *
      * The API key used to access this method affects what orders are returned: test orders for the test
      * API key, live orders for the live one.
      *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
      * @param after A cursor for use in pagination.
      *
      * *after* is an object ID that defines your place in the list.
@@ -140,8 +140,8 @@ export abstract class OrdersService {
      *
      * @returns PaginatedOrders The response returns paginated orders
      */
-    public getOrders(
-        limit?: string,
+    public listOrders(
+        limit: string = '10',
         after?: string,
         offsetLinkId?: string,
     ): Promise<Result<PaginatedOrders, ApiError>> {
@@ -167,7 +167,7 @@ export abstract class OrdersService {
      * @param id The order's unique identifier
      * @returns Order The response returns an order
      */
-    public getOrderById(id: string): Promise<Result<Order, ApiError>> {
+    public getOrder(id: string): Promise<Result<Order, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/orders/{id}',
@@ -188,7 +188,7 @@ export abstract class OrdersService {
      * @param id The order's unique identifier
      * @returns binary The response returns the Carbon Offset Certificate
      */
-    public getOrderCertificateById(id: string): Promise<Result<Blob, ApiError>> {
+    public getOrderCertificate(id: string): Promise<Result<Blob, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/orders/{id}/certificate',
