@@ -16,7 +16,6 @@ export abstract class WebhooksService {
 
     /**
      * List all webhooks
-<<<<<<< HEAD
      * @param options Additional operation options
      * @returns Webhook Existing webhooks fetched successfully
      */
@@ -27,12 +26,6 @@ export abstract class WebhooksService {
         accountId?: string
     }): Promise<Result<Array<Webhook>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
-=======
-     * @returns Webhook Existing webhooks fetched successfully
-     */
-    public listAllWebhooks(): Promise<Result<Array<Webhook>, ApiError>> {
-        return __request(this.client, this.config, {
->>>>>>> master
             method: 'GET',
             url: '/webhooks',
             errors: {
@@ -44,12 +37,8 @@ export abstract class WebhooksService {
 
     /**
      * Create a webhook
-<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
-=======
-     * @param requestBody
->>>>>>> master
      * @returns Webhook A webhook created successfully
      */
     public createWebhook(
@@ -84,7 +73,6 @@ export abstract class WebhooksService {
      * @param options Additional operation options
      * @returns Webhook Existing webhook fetched successfully
      */
-<<<<<<< HEAD
     public getWebhook(
         id: string,
         options?: {
@@ -95,10 +83,6 @@ export abstract class WebhooksService {
         },
     ): Promise<Result<Webhook, ApiError>> {
         return __request(this.client, this.config, options || {}, {
-=======
-    public getWebhook(id: string): Promise<Result<Webhook, ApiError>> {
-        return __request(this.client, this.config, {
->>>>>>> master
             method: 'GET',
             url: '/webhooks/{id}',
             path: {

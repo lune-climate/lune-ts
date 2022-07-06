@@ -226,7 +226,6 @@ export abstract class OrdersService {
      * The API key used to access this method affects what orders are returned: test orders for the test
      * API key, live orders for the live one.
      *
-<<<<<<< HEAD
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedOrders The response returns paginated orders
@@ -234,10 +233,10 @@ export abstract class OrdersService {
     public listOrders(
         data?: {
             /**
-             * Default is 10.
              * Maximum number of resources to return, between 1 and 100.
+             *
              */
-            limit?: string
+            limit: string
             /**
              * A cursor for use in pagination.
              *
@@ -262,27 +261,6 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-=======
-     * @param limit Maximum number of resources to return, between 1 and 100.
-     *
-     * @param after A cursor for use in pagination.
-     *
-     * *after* is an object ID that defines your place in the list.
-     *
-     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
-     *
-     * @param offsetLinkId Filter orders by offset_link_id.
-     *
-     *
-     * If offset_link_id is set, the response will only include orders belonging to the particular offset link.
-     *
-     * @returns PaginatedOrders The response returns paginated orders
-     */
-    public listOrders(
-        limit: string = '10',
-        after?: string,
-        offsetLinkId?: string,
->>>>>>> master
     ): Promise<Result<PaginatedOrders, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
@@ -307,7 +285,6 @@ export abstract class OrdersService {
      * @param options Additional operation options
      * @returns Order The response returns an order
      */
-<<<<<<< HEAD
     public getOrder(
         id: string,
         options?: {
@@ -318,10 +295,6 @@ export abstract class OrdersService {
         },
     ): Promise<Result<Order, ApiError>> {
         return __request(this.client, this.config, options || {}, {
-=======
-    public getOrder(id: string): Promise<Result<Order, ApiError>> {
-        return __request(this.client, this.config, {
->>>>>>> master
             method: 'GET',
             url: '/orders/{id}',
             path: {
@@ -342,7 +315,6 @@ export abstract class OrdersService {
      * @param options Additional operation options
      * @returns binary The response returns the Carbon Offset Certificate
      */
-<<<<<<< HEAD
     public getOrderCertificate(
         id: string,
         options?: {
@@ -353,10 +325,6 @@ export abstract class OrdersService {
         },
     ): Promise<Result<Blob, ApiError>> {
         return __request(this.client, this.config, options || {}, {
-=======
-    public getOrderCertificate(id: string): Promise<Result<Blob, ApiError>> {
-        return __request(this.client, this.config, {
->>>>>>> master
             method: 'GET',
             url: '/orders/{id}/certificate',
             path: {
