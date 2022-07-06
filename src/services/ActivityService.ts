@@ -14,7 +14,7 @@ export abstract class ActivityService {
     protected abstract config: ClientConfig
 
     /**
-     * Get account activity
+     * Get an account's activity
      * Returns paginated activity in reverse order (most recent first).
      *
      * Activity is an immutable event log. Every single account event yields an activity object.
@@ -23,8 +23,8 @@ export abstract class ActivityService {
      * corresponding to test orders for the test API key, the rest of the rows (both activity rows
      * corresponding to live orders or not having any order associated with them) for the live API key.
      *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
      * @param after A cursor for use in pagination.
      *
      * *after* is an object ID that defines your place in the list.
@@ -34,7 +34,7 @@ export abstract class ActivityService {
      * @returns PaginatedActivity The response returns paginated activity
      */
     public getActivity(
-        limit?: string,
+        limit: string = '10',
         after?: string,
     ): Promise<Result<PaginatedActivity, ApiError>> {
         return __request(this.client, this.config, {

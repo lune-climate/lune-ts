@@ -44,13 +44,13 @@ export abstract class ClientAccountsService {
     }
 
     /**
-     * Get client accounts
+     * List client accounts
      * Returns paginated client accounts.
      *
      * Query parameters can be used to filter these accounts by name and/or type.
      *
-     * @param limit Default is 10.
-     * Maximum number of resources to return, between 1 and 100.
+     * @param limit Maximum number of resources to return, between 1 and 100.
+     *
      * @param after A cursor for use in pagination.
      *
      * *after* is an object ID that defines your place in the list.
@@ -62,8 +62,8 @@ export abstract class ClientAccountsService {
      * Keep in mind the value itself can appear at the beggining, middle or end on the actual account name.
      * @returns PaginatedClientAccounts The response returns paginated client accounts
      */
-    public getClientAccounts(
-        limit?: string,
+    public listClientAccounts(
+        limit: string = '10',
         after?: string,
         type?: AccountType,
         name?: string,
@@ -86,7 +86,7 @@ export abstract class ClientAccountsService {
     }
 
     /**
-     * Update a client account.
+     * Update a client account
      * Update a client account and return the updated account.
      *
      * @param id The account id

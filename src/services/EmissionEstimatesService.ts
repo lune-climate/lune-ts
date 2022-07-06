@@ -24,7 +24,7 @@ export abstract class EmissionEstimatesService {
     protected abstract config: ClientConfig
 
     /**
-     * Estimate electricity emissions
+     * Create an electricity emission estimate
      * Estimate emissions produced by electricity consumption.
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
@@ -33,7 +33,7 @@ export abstract class EmissionEstimatesService {
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
-    public getElectricityEstimate(
+    public createElectricityEstimate(
         requestBody: ElectricityEstimateRequest,
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
@@ -57,9 +57,7 @@ export abstract class EmissionEstimatesService {
      * @param id The estimate unique identifier
      * @returns EmissionEstimateResponse Estimation retrieved succesfully
      */
-    public retrieveElectricityEstimate(
-        id: string,
-    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+    public getElectricityEstimate(id: string): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
             method: 'GET',
             url: '/estimates/electricity/{id}',
@@ -76,7 +74,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Update electricity emission estimate
+     * Update an electricity emission estimate
      * Update emission estimate produced by electricity consumption.
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
@@ -111,7 +109,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Estimate flight emissions
+     * Create a flight emission estimate
      * Estimate emissions produced by passengers in a commercial airflight.
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
@@ -120,7 +118,7 @@ export abstract class EmissionEstimatesService {
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
-    public getFlightEstimate(
+    public createFlightEstimate(
         requestBody: FlightEstimateRequest,
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
@@ -140,7 +138,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Estimate shipping emissions
+     * Create a shipping emission estimate
      * Estimate emissions produced by shipping something from point A to point B.
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
@@ -220,7 +218,7 @@ export abstract class EmissionEstimatesService {
      * @returns SingleShippingEmissionEstimate Estimation calculated successfully.
      *
      */
-    public getShippingEstimate(
+    public createShippingEstimate(
         requestBody: ShippingEstimateRequest,
     ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
@@ -244,7 +242,7 @@ export abstract class EmissionEstimatesService {
      * @param id The estimate unique identifier
      * @returns SingleShippingEmissionEstimate Estimation retrieved succesfully
      */
-    public retrieveShippingEstimate(
+    public getShippingEstimate(
         id: string,
     ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
@@ -292,8 +290,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Estimate shipping emissions for multi-leg journeys
-     *
+     * Create a multi-leg shipping emission estimate
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
      * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
@@ -302,7 +299,7 @@ export abstract class EmissionEstimatesService {
      * @returns MultiLegShippingEmissionEstimate Estimation calculated successfully.
      *
      */
-    public getMultiLegShippingEstimate(
+    public createMultiLegShippingEstimate(
         requestBody: MultiLegShippingEstimateRequest,
     ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
@@ -326,7 +323,7 @@ export abstract class EmissionEstimatesService {
      * @param id The estimate unique identifier
      * @returns MultiLegShippingEmissionEstimate Estimation retrieved succesfully
      */
-    public retrieveMultiLegShippingEstimate(
+    public getMultiLegShippingEstimate(
         id: string,
     ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
@@ -374,7 +371,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Estimate transaction-related emissions
+     * Create a transaction emission estimate
      * Estimate emissions produced by purchasing goods or services.
      *
      * `value` and `merchant` tell us what's the value of the transaction and who the goods or services
@@ -389,7 +386,7 @@ export abstract class EmissionEstimatesService {
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
-    public getTransactionEstimate(
+    public createTransactionEstimate(
         requestBody: TransactionEstimateRequest,
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {
@@ -409,7 +406,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Estimate company-wide emissions
+     * Create a company emission estimate
      * Estimate emissions produced by a company. This includes office-related emissions,
      * employee transportation, food, drinks, electronic equipment and computing/networking
      * operations.
@@ -420,7 +417,7 @@ export abstract class EmissionEstimatesService {
      * @returns CompanyEmissionEstimate Estimation calculated successfully.
      *
      */
-    public getCompanyEstimate(
+    public createCompanyEstimate(
         requestBody: CompanyEstimateRequest,
     ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, {
@@ -440,7 +437,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Estimate individual annual emissions
+     * Create an individual's emission estimate
      * Estimate emissions produced by an individual for a year. This includes travel emissions, food, drinks, energy and shopping activities.
      *
      * The result is an estimate of a year-worth of emissions.
@@ -449,7 +446,7 @@ export abstract class EmissionEstimatesService {
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
-    public getIndividualEstimate(
+    public createIndividualEstimate(
         requestBody: IndividualEstimateRequest,
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
         return __request(this.client, this.config, {

@@ -15,7 +15,7 @@ export abstract class BundleSelectionsService {
     protected abstract config: ClientConfig
 
     /**
-     * Get account bundle selection
+     * Get an account's bundle selection
      * Returns the account's bundle selection.
      *
      * When orders are placed without explicity setting bundle selections, the account's bundle selection is used.
@@ -38,7 +38,7 @@ export abstract class BundleSelectionsService {
     }
 
     /**
-     * Set account bundle selection
+     * Update an account's bundle selection
      * Set the account's bundle selection.
      *
      * Every account is created with default bundle selections. This will override default bundle selections.
