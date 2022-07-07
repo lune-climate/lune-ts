@@ -1,17 +1,27 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AirportSourceDestination } from '../models/AirportSourceDestination.js'
+import type { Area } from '../models/Area.js'
+import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
+import type { CabinClass } from '../models/CabinClass.js'
+import type { CompanyCloudUse } from '../models/CompanyCloudUse.js'
 import type { CompanyEmissionEstimate } from '../models/CompanyEmissionEstimate.js'
-import type { CompanyEstimateRequest } from '../models/CompanyEstimateRequest.js'
-import type { ElectricityEstimateRequest } from '../models/ElectricityEstimateRequest.js'
+import type { CompanyOnPremiseUse } from '../models/CompanyOnPremiseUse.js'
+import type { Diet } from '../models/Diet.js'
+import type { Distance } from '../models/Distance.js'
+import type { ElectricityConsumption } from '../models/ElectricityConsumption.js'
 import type { EmissionEstimateResponse } from '../models/EmissionEstimateResponse.js'
-import type { FlightEstimateRequest } from '../models/FlightEstimateRequest.js'
-import type { IndividualEstimateRequest } from '../models/IndividualEstimateRequest.js'
+import type { IntegerPercentage } from '../models/IntegerPercentage.js'
+import type { MassUnit } from '../models/MassUnit.js'
+import type { Merchant } from '../models/Merchant.js'
+import type { MonetaryAmount } from '../models/MonetaryAmount.js'
 import type { MultiLegShippingEmissionEstimate } from '../models/MultiLegShippingEmissionEstimate.js'
-import type { MultiLegShippingEstimateRequest } from '../models/MultiLegShippingEstimateRequest.js'
-import type { ShippingEstimateRequest } from '../models/ShippingEstimateRequest.js'
+import type { Shipment } from '../models/Shipment.js'
+import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
+import type { ShippingMethod } from '../models/ShippingMethod.js'
+import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
-import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -29,17 +39,45 @@ export abstract class EmissionEstimatesService {
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public createElectricityEstimate(
-        requestBody: ElectricityEstimateRequest,
+        data: {
+            consumption: ElectricityConsumption
+            /**
+             * The three-letter code of the country where the consumption takes place, if applicable.
+             *
+             * Providing this value will improve the estimation process. If the value is not provided
+             * the global average will be used.
+             *
+             */
+            countryCode?: string
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/electricity',
-            body: requestBody,
+            body: {
+                consumption: data?.consumption,
+                country_code: data?.countryCode,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -55,10 +93,19 @@ export abstract class EmissionEstimatesService {
     /**
      * Get an electricity emission estimate
      * @param id The estimate unique identifier
+     * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation retrieved succesfully
      */
-    public getElectricityEstimate(id: string): Promise<Result<EmissionEstimateResponse, ApiError>> {
-        return __request(this.client, this.config, {
+    public getElectricityEstimate(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/electricity/{id}',
             path: {
@@ -80,21 +127,49 @@ export abstract class EmissionEstimatesService {
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
      * @param id The estimate unique identifier
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation updated successfully.
      *
      */
     public updateElectricityEstimate(
         id: string,
-        requestBody: ElectricityEstimateRequest,
+        data: {
+            consumption: ElectricityConsumption
+            /**
+             * The three-letter code of the country where the consumption takes place, if applicable.
+             *
+             * Providing this value will improve the estimation process. If the value is not provided
+             * the global average will be used.
+             *
+             */
+            countryCode?: string
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/electricity/{id}',
             path: {
                 id: id,
             },
-            body: requestBody,
+            body: {
+                consumption: data?.consumption,
+                country_code: data?.countryCode,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -114,17 +189,47 @@ export abstract class EmissionEstimatesService {
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public createFlightEstimate(
-        requestBody: FlightEstimateRequest,
+        data: {
+            /**
+             * Either the flying distance or the start/destination airport code (ICAO or IATA).
+             */
+            route: Distance | AirportSourceDestination
+            cabinClass?: CabinClass
+            /**
+             * Number of passengers the calculation should be applied to.
+             * This parameter defaults to 1.
+             */
+            passengers?: number
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/flight',
-            body: requestBody,
+            body: {
+                route: data?.route,
+                cabin_class: data?.cabinClass,
+                passengers: data?.passengers,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -214,17 +319,42 @@ export abstract class EmissionEstimatesService {
      * -d <PAYLOAD>
      * ```
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate Estimation calculated successfully.
      *
      */
     public createShippingEstimate(
-        requestBody: ShippingEstimateRequest,
+        data: {
+            shipment: Shipment
+            route: ShippingRoute
+            method: ShippingMethod
+            countryCode?: ShippingCountryCode
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping',
-            body: requestBody,
+            body: {
+                shipment: data?.shipment,
+                route: data?.route,
+                method: data?.method,
+                country_code: data?.countryCode,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -240,12 +370,19 @@ export abstract class EmissionEstimatesService {
     /**
      * Get a shipping emission estimate
      * @param id The estimate unique identifier
+     * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate Estimation retrieved succesfully
      */
     public getShippingEstimate(
         id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/shipping/{id}',
             path: {
@@ -263,20 +400,45 @@ export abstract class EmissionEstimatesService {
     /**
      * Update a shipping emission estimate
      * @param id The estimate unique identifier
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate Estimation retrieved succesfully
      */
     public updateShippingEstimate(
         id: string,
-        requestBody: ShippingEstimateRequest,
+        data: {
+            shipment: Shipment
+            route: ShippingRoute
+            method: ShippingMethod
+            countryCode?: ShippingCountryCode
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/shipping/{id}',
             path: {
                 id: id,
             },
-            body: requestBody,
+            body: {
+                shipment: data?.shipment,
+                route: data?.route,
+                method: data?.method,
+                country_code: data?.countryCode,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -295,17 +457,42 @@ export abstract class EmissionEstimatesService {
      *
      * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate Estimation calculated successfully.
      *
      */
     public createMultiLegShippingEstimate(
-        requestBody: MultiLegShippingEstimateRequest,
+        data: {
+            shipment: Shipment
+            legs: Array<{
+                route: ShippingRoute
+                method: ShippingMethod
+                countryCode?: ShippingCountryCode
+            }>
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping/multi-leg',
-            body: requestBody,
+            body: {
+                shipment: data?.shipment,
+                legs: data?.legs,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -321,12 +508,19 @@ export abstract class EmissionEstimatesService {
     /**
      * Get a multi-leg shipping emission estimate
      * @param id The estimate unique identifier
+     * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate Estimation retrieved succesfully
      */
     public getMultiLegShippingEstimate(
         id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/shipping/multi-leg/{id}',
             path: {
@@ -344,20 +538,45 @@ export abstract class EmissionEstimatesService {
     /**
      * Update a multi-leg shipping emission estimate
      * @param id The estimate unique identifier
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate Estimation retrieved succesfully
      */
     public updateMultiLegShippingEstimate(
         id: string,
-        requestBody: MultiLegShippingEstimateRequest,
+        data: {
+            shipment: Shipment
+            legs: Array<{
+                route: ShippingRoute
+                method: ShippingMethod
+                countryCode?: ShippingCountryCode
+            }>
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/shipping/multi-leg/{id}',
             path: {
                 id: id,
             },
-            body: requestBody,
+            body: {
+                shipment: data?.shipment,
+                legs: data?.legs,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -382,17 +601,40 @@ export abstract class EmissionEstimatesService {
      *
      * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public createTransactionEstimate(
-        requestBody: TransactionEstimateRequest,
+        data: {
+            value: MonetaryAmount
+            merchant: Merchant
+            diet?: Diet
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/transactions',
-            body: requestBody,
+            body: {
+                value: data?.value,
+                merchant: data?.merchant,
+                diet: data?.diet,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -413,17 +655,141 @@ export abstract class EmissionEstimatesService {
      *
      * The result is an estimate of a year-worth of company emissions.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns CompanyEmissionEstimate Estimation calculated successfully.
      *
      */
     public createCompanyEstimate(
-        requestBody: CompanyEstimateRequest,
+        data: {
+            /**
+             * Number of employees
+             */
+            employees: number
+            /**
+             * Share of employees working remotely (in percent)
+             */
+            remoteEmployeesPercentage: IntegerPercentage
+            /**
+             * Office area in square meters
+             */
+            officeArea: Area
+            /**
+             * The three-letter country code of the country where the company is located.
+             */
+            countryCode: string
+            /**
+             * Electricity consumption in kWh
+             */
+            electricityConsumption: number
+            /**
+             * Is the electricity provided by renewable source(s)?
+             */
+            greenElectricityUsed: boolean
+            /**
+             * Yearly natural gas consumption in cubic meters
+             */
+            gasConsumption: number
+            /**
+             * Company cars
+             */
+            companyCars: number
+            /**
+             * Average yearly distance travelled per car
+             */
+            averageCarDistanceTravelled: Distance
+            /**
+             * Number of employees commuting by public transport
+             */
+            employeesUsingPublicTransport: number
+            /**
+             * Number of short (under 3 hours) flights per year
+             */
+            shortFlights: number
+            /**
+             * Number of medium (between 3 and 6 hours) flights per year
+             */
+            mediumFlights: number
+            /**
+             * Number of long (over 6 hours) flights per year
+             */
+            longFlights: number
+            /**
+             * Share of business or first class flights, in percent
+             */
+            firstOrBusinessClassPercentage: IntegerPercentage
+            /**
+             * Amount spend on food and drinks
+             */
+            foodAndDrinksExpenses: MonetaryAmount
+            /**
+             * Share of vegetarians or vegans in the company, in percent
+             */
+            vegetarianAndVeganPercentage: IntegerPercentage
+            /**
+             * New electronic devices (laptops, monitors, etc.) expenses
+             */
+            electronicDeviceExpenses: MonetaryAmount
+            /**
+             * The amount of garbage produced, in kilograms
+             */
+            garbage: number
+            /**
+             * Share of recycled garbage, in percent
+             */
+            recycledGarbagePercentage: IntegerPercentage
+            /**
+             * The company's postal code
+             */
+            postcode?: string
+            city?: string
+            tech?: {
+                onPremise?: CompanyOnPremiseUse
+                cloud?: CompanyCloudUse
+            }
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/company',
-            body: requestBody,
+            body: {
+                employees: data?.employees,
+                remote_employees_percentage: data?.remoteEmployeesPercentage,
+                office_area: data?.officeArea,
+                country_code: data?.countryCode,
+                postcode: data?.postcode,
+                city: data?.city,
+                electricity_consumption: data?.electricityConsumption,
+                green_electricity_used: data?.greenElectricityUsed,
+                gas_consumption: data?.gasConsumption,
+                company_cars: data?.companyCars,
+                average_car_distance_travelled: data?.averageCarDistanceTravelled,
+                employees_using_public_transport: data?.employeesUsingPublicTransport,
+                short_flights: data?.shortFlights,
+                medium_flights: data?.mediumFlights,
+                long_flights: data?.longFlights,
+                first_or_business_class_percentage: data?.firstOrBusinessClassPercentage,
+                food_and_drinks_expenses: data?.foodAndDrinksExpenses,
+                vegetarian_and_vegan_percentage: data?.vegetarianAndVeganPercentage,
+                electronic_device_expenses: data?.electronicDeviceExpenses,
+                garbage: data?.garbage,
+                recycled_garbage_percentage: data?.recycledGarbagePercentage,
+                tech: data?.tech,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
@@ -442,17 +808,116 @@ export abstract class EmissionEstimatesService {
      *
      * The result is an estimate of a year-worth of emissions.
      *
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation calculated successfully.
      *
      */
     public createIndividualEstimate(
-        requestBody: IndividualEstimateRequest,
+        data: {
+            /**
+             * The three-letter country code of the country where the company is located.
+             */
+            countryCode: string
+            /**
+             * Does the individual use a car?
+             */
+            carUse: boolean
+            /**
+             * Number of short (under 3 hours) flights per year
+             */
+            shortFlights: number
+            /**
+             * Number of medium (between 3 and 6 hours) flights per year
+             */
+            mediumFlights: number
+            /**
+             * Number of long (over 6 hours) flights per year
+             */
+            longFlights: number
+            /**
+             * Number of days per week commuting by public transport
+             */
+            daysPerWeekUsingPublicTransport: number
+            diet: Diet
+            /**
+             * Food, supermarket, farmers market, fishmongers etc... expenses
+             */
+            monthlyGroceryExpenses: MonetaryAmount
+            /**
+             * Dining and take out expenses
+             */
+            monthlyRestaurantExpenses: MonetaryAmount
+            /**
+             * Clothing expenses
+             */
+            monthlyClothingExpenses: MonetaryAmount
+            /**
+             * Furniture and appliances expenses
+             */
+            monthlyFurnitureAppliancesExpenses: MonetaryAmount
+            /**
+             * Annual electricity consumption in kWh
+             */
+            electricityConsumption: number
+            /**
+             * Is the electricity provided by renewable source(s)?
+             */
+            greenElectricityUsed: boolean
+            /**
+             * Annual natural gas consumption in cubic meters
+             */
+            gasConsumption: number
+            /**
+             * How is the car powered?
+             */
+            carFuelType?: 'gasoline' | 'electric' | 'hybrid'
+            /**
+             * Average yearly distance travelled per car
+             */
+            averageCarDistanceTravelled?: Distance
+            /**
+             * Other such as phone, laptops, any other "item" you can think of.
+             */
+            monthlyOtherExpenses?: MonetaryAmount
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * This property represents the level of precision used to truncate quantities assigned to each bundle.
+             *
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<EmissionEstimateResponse, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/individual',
-            body: requestBody,
+            body: {
+                country_code: data?.countryCode,
+                car_use: data?.carUse,
+                car_fuel_type: data?.carFuelType,
+                average_car_distance_travelled: data?.averageCarDistanceTravelled,
+                short_flights: data?.shortFlights,
+                medium_flights: data?.mediumFlights,
+                long_flights: data?.longFlights,
+                days_per_week_using_public_transport: data?.daysPerWeekUsingPublicTransport,
+                diet: data?.diet,
+                monthly_grocery_expenses: data?.monthlyGroceryExpenses,
+                monthly_restaurant_expenses: data?.monthlyRestaurantExpenses,
+                monthly_clothing_expenses: data?.monthlyClothingExpenses,
+                monthly_furniture_appliances_expenses: data?.monthlyFurnitureAppliancesExpenses,
+                monthly_other_expenses: data?.monthlyOtherExpenses,
+                electricity_consumption: data?.electricityConsumption,
+                green_electricity_used: data?.greenElectricityUsed,
+                gas_consumption: data?.gasConsumption,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,

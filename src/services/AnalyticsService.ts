@@ -20,19 +20,36 @@ export abstract class AnalyticsService {
      *
      * Defaults to the last 30 days if no time period is specified.
      *
-     * @param start The start date of the custom date range.
-     * The date must be in the format YYYY-MM-DD.
-     * @param end The end date of the custom date range.
-     * The date must be in the format YYYY-MM-DD.
+     * @param data Request data
+     * @param options Additional operation options
      * @returns Analytics The response return account analytics
      */
-    public getAnalytics(start?: string, end?: string): Promise<Result<Analytics, ApiError>> {
-        return __request(this.client, this.config, {
+    public getAnalytics(
+        data?: {
+            /**
+             * The start date of the custom date range.
+             * The date must be in the format YYYY-MM-DD.
+             */
+            start?: string
+            /**
+             * The end date of the custom date range.
+             * The date must be in the format YYYY-MM-DD.
+             */
+            end?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Analytics, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics',
             query: {
-                start: start,
-                end: end,
+                start: data?.start,
+                end: data?.end,
             },
             errors: {
                 400: `Bad Request`,
@@ -46,20 +63,34 @@ export abstract class AnalyticsService {
      * Get cumulative analytics
      * Calculate cumulative volume and cost analytics per bundle
      *
-     * @param from The start date of the custom date range.
-     * @param through The to (inclusive) date of the custom date range.
+     * @param data Request data
+     * @param options Additional operation options
      * @returns CumulativeBundleAnalytics Cumulative analytics per bundle
      */
     public getCumulativeAnalyticsPerBundle(
-        from?: string,
-        through?: string,
+        data?: {
+            /**
+             * The start date of the custom date range.
+             */
+            from?: string
+            /**
+             * The to (inclusive) date of the custom date range.
+             */
+            through?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<CumulativeBundleAnalytics, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/cumulative-per-bundle',
             query: {
-                from: from,
-                through: through,
+                from: data?.from,
+                through: data?.through,
             },
             errors: {
                 400: `Bad request`,

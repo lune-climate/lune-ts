@@ -27,31 +27,47 @@ export abstract class ProjectsService {
      * Disabled bundles are not returned unless `recently_disabled` is used.
      * Disabled bundle projects are not returned unless `recently_disabled` is used.
      *
-     * @param limit Maximum number of resources to return, between 1 and 100.
-     *
-     * @param after A cursor for use in pagination.
-     *
-     * *after* is an object ID that defines your place in the list.
-     *
-     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
-     *
-     * @param recentlyDisabled When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
-     * Default is false.
-     * Omitting or setting recently_disabled to false has the same effect.
+     * @param data Request data
+     * @param options Additional operation options
      * @returns PaginatedBundles The response returns paginated bundles
      */
     public listBundles(
-        limit: string = '10',
-        after?: string,
-        recentlyDisabled?: boolean,
+        data?: {
+            /**
+             * Maximum number of resources to return, between 1 and 100.
+             *
+             */
+            limit: string
+            /**
+             * A cursor for use in pagination.
+             *
+             * *after* is an object ID that defines your place in the list.
+             *
+             * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+             *
+             */
+            after?: string
+            /**
+             * When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
+             * Default is false.
+             * Omitting or setting recently_disabled to false has the same effect.
+             */
+            recentlyDisabled?: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<PaginatedBundles, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundles',
             query: {
-                limit: limit,
-                after: after,
-                recently_disabled: recentlyDisabled,
+                limit: data?.limit,
+                after: data?.after,
+                recently_disabled: data?.recentlyDisabled,
             },
             errors: {
                 400: `Bad Request`,
@@ -70,10 +86,19 @@ export abstract class ProjectsService {
      * Orders are placed against bundles.
      *
      * @param id The bundle's unique identifier
+     * @param options Additional operation options
      * @returns Bundle The response returns a bundle
      */
-    public getBundle(id: string): Promise<Result<Bundle, ApiError>> {
-        return __request(this.client, this.config, {
+    public getBundle(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Bundle, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundles/{id}',
             path: {
@@ -95,31 +120,47 @@ export abstract class ProjectsService {
      *
      * Note: orders are placed against bundles not projects.
      *
-     * @param limit Maximum number of resources to return, between 1 and 100.
-     *
-     * @param after A cursor for use in pagination.
-     *
-     * *after* is an object ID that defines your place in the list.
-     *
-     * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
-     *
-     * @param recentlyDisabled When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
-     * Default is false.
-     * Omitting or setting recently_disabled to false has the same effect.
+     * @param data Request data
+     * @param options Additional operation options
      * @returns PaginatedProjects The response returns paginated projects
      */
     public listProjects(
-        limit: string = '10',
-        after?: string,
-        recentlyDisabled?: boolean,
+        data?: {
+            /**
+             * Maximum number of resources to return, between 1 and 100.
+             *
+             */
+            limit: string
+            /**
+             * A cursor for use in pagination.
+             *
+             * *after* is an object ID that defines your place in the list.
+             *
+             * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+             *
+             */
+            after?: string
+            /**
+             * When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
+             * Default is false.
+             * Omitting or setting recently_disabled to false has the same effect.
+             */
+            recentlyDisabled?: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
     ): Promise<Result<PaginatedProjects, ApiError>> {
-        return __request(this.client, this.config, {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects',
             query: {
-                limit: limit,
-                after: after,
-                recently_disabled: recentlyDisabled,
+                limit: data?.limit,
+                after: data?.after,
+                recently_disabled: data?.recentlyDisabled,
             },
             errors: {
                 400: `Bad Request`,
@@ -136,10 +177,19 @@ export abstract class ProjectsService {
      * Disabled projects are returned.
      *
      * @param id The project's unique identifier
+     * @param options Additional operation options
      * @returns Project The response returns a project
      */
-    public getProject(id: string): Promise<Result<Project, ApiError>> {
-        return __request(this.client, this.config, {
+    public getProject(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Project, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects/{id}',
             path: {
@@ -159,10 +209,19 @@ export abstract class ProjectsService {
      * Disabled projects are returned.
      *
      * @param slug The project's unique slug
+     * @param options Additional operation options
      * @returns Project The response returns a project
      */
-    public getProjectBySlug(slug: string): Promise<Result<Project, ApiError>> {
-        return __request(this.client, this.config, {
+    public getProjectBySlug(
+        slug: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Project, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects/by-slug/{slug}',
             path: {

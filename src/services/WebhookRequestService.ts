@@ -1,7 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { WebhookRequest } from '../models/WebhookRequest.js'
+import type { WebhookEvent } from '../models/WebhookEvent.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -15,14 +15,27 @@ export abstract class WebhookRequestService {
 
     /**
      * Webhook request
-     * @param requestBody
+     * @param data Request data
+     * @param options Additional operation options
      * @returns any The events have been successfully handled. Any status code of the `2xx` format has the same behaviour. Any header or body are ignored by Lune.
      */
-    public webhookRequest(requestBody: WebhookRequest): Promise<Result<any, ApiError>> {
-        return __request(this.client, this.config, {
+    public webhookRequest(
+        data: {
+            events: Array<WebhookEvent>
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<any, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/WebhookRequest',
-            body: requestBody,
+            body: {
+                events: data?.events,
+            },
             mediaType: 'application/json',
         })
     }
