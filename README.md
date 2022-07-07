@@ -93,7 +93,6 @@ Once inside, you have all Makefile commands at your disposal. Feel free to explo
 see all available. Here are some examples:
 - Fully rebuild from the remote openAPI schema: `make build-from-schema`
 - Build with current source code: `make build-from-source`
-- If all you want is to check if code is valid and building: `make build-from-source`
 
 ## Publish
 
