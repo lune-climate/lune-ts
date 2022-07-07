@@ -84,7 +84,7 @@ export abstract class ClientAccountsService {
              * Maximum number of resources to return, between 1 and 100.
              *
              */
-            limit: string
+            limit?: string
             /**
              * A cursor for use in pagination.
              *
