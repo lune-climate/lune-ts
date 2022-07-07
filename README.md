@@ -29,10 +29,16 @@ the base level of the client, so we do not want to address them via tagGroups.
 To accomodate for points above, these changes are made in all generated service files:
 
 - Make service class abstract and add `config` and `client` as abstract protected consts.
+- Added an `options` object parameter to every method. This object contains `accountId` which
+is used to override the `Lune-Account` header.
 - Remove all `static` modifiers from methods
-- Update method to perform the request by providing the above defined `config` and `client`
+- Update method to perform the request by providing the above defined `config`, `client` and `options`.
 - Sporadic changes to accomodate to our custom core implementation, removing unnecessary
   dependencies and renaming others (remove `CancelablePromise`, change `OpenAPI` to `ClientConfig`)
+- The way parameters are handled has been reworked. `requestBody` and `queryParams` fields are
+united under `data` object. This allows for named parameters and overall better usage for our
+users. This means our OpenAPI schema needs to make sure there are no duplicate names between
+these two fields on an endpoint but it's a compromise we've agreed to do.
 
 This allows us to do a bit of a hackish behaviour, and have our client provide the `config` and
 `client` implementations, and then add all methods of the services to it. It makes all
@@ -68,41 +74,32 @@ explicit there so not repeating it here.
 
 ## Build
 
-For a simple command that does all the building of the current source code inside docker as done on CI:
-`docker-compose -f docker-compose-ci.yml run build_from_schema`
+If you want to rebuild everything locally from the remote OpenAPI schema (as performed on CI):
+`docker-compose -f docker-compose-ci.yml run update_from_remote_schema`
 
-Keep in mind the previous command does not include any changes done to the `base_client` file.
-If you also want to build the client (useful if changes were made in `base_client`) update from the
-remote schema API, you can do:
+If you want to make sure the build is succeeding but don't want to rebuild the client from the
+remote schema nor update with possible changes in the base client generator (as performed on CI):
 `docker-compose -f docker-compose-ci.yml run build_from_source`
 
-If you want to rebuild the library based on the official openAPI schema (https://docs.lune.co/openapi.yml), you can do:
-`docker-compose -f docker-compose-ci.yml run update_from_remote_schema`
+For local builds, you can use a more lightweight version to rebuild the schema from the remote
+that doesn't make sure dependencies are installed and skips linting:
+`docker-compose -f docker-compose.yml run local_model_rebuild`
 
 If you want to get hands on inside the container, you can get in and use the make commands as much
 as you want. To get a shell inside it, just do:
-`make shell`
+`docker-compose -f docker-compose.yml run client`
 
-Once inside, you have many commands at your disposal. Here are a few with some description. Feel free to explore the `Makefile` to see all available.
-
-Fully rebuild from the remote openAPI schema
-`make build-from-schema`
-
-Build with current source code
-`make build-from-source`
-
-If all you want is to check if code is valid and building
-`make build-from-source`
+Once inside, you have all Makefile commands at your disposal. Feel free to explore the `Makefile` to
+see all available. Here are some examples:
+- Fully rebuild from the remote openAPI schema: `make build-from-schema`
+- Build with current source code: `make build-from-source`
+- If all you want is to check if code is valid and building: `make build-from-source`
 
 ## Publish
 
 Publishing is currently done automatically whenever changes happen in `package.json`. To increase the
-version, use the provided github workflow to increase the version (patch). This will create a PR that
-just needs to be approved and merged. Alternatively, a PR with the version increase can be made manually
-in case the version change is different.
-
-To aid in upping the versions, use the `make` commands: `patch|minor|major-version` depending on the
-wanted version increase.
+version, use the provided github workflow to increase the version (major, minor or patch). This will
+create a PR that just needs to be approved and merged.
 
 ## Future work
 
