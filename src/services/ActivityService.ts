@@ -25,7 +25,7 @@ export abstract class ActivityService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedActivity The response returns paginated activity
+     * @returns PaginatedActivity OK
      */
     public getActivity(
         data?: {

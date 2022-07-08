@@ -29,7 +29,7 @@ export abstract class ProjectsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedBundles The response returns paginated bundles
+     * @returns PaginatedBundles OK
      */
     public listBundles(
         data?: {
@@ -49,7 +49,6 @@ export abstract class ProjectsService {
             after?: string
             /**
              * When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
-             * Default is false.
              * Omitting or setting recently_disabled to false has the same effect.
              */
             recentlyDisabled?: boolean
@@ -71,8 +70,8 @@ export abstract class ProjectsService {
             },
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -87,7 +86,7 @@ export abstract class ProjectsService {
      *
      * @param id The bundle's unique identifier
      * @param options Additional operation options
-     * @returns Bundle The response returns a bundle
+     * @returns Bundle OK
      */
     public getBundle(
         id: string,
@@ -105,8 +104,8 @@ export abstract class ProjectsService {
                 id: id,
             },
             errors: {
-                404: `The bundle does not exist`,
-                429: `Rate limit exceeded`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -122,7 +121,7 @@ export abstract class ProjectsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedProjects The response returns paginated projects
+     * @returns PaginatedProjects OK
      */
     public listProjects(
         data?: {
@@ -142,7 +141,6 @@ export abstract class ProjectsService {
             after?: string
             /**
              * When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
-             * Default is false.
              * Omitting or setting recently_disabled to false has the same effect.
              */
             recentlyDisabled?: boolean
@@ -164,8 +162,8 @@ export abstract class ProjectsService {
             },
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -178,7 +176,7 @@ export abstract class ProjectsService {
      *
      * @param id The project's unique identifier
      * @param options Additional operation options
-     * @returns Project The response returns a project
+     * @returns Project OK
      */
     public getProject(
         id: string,
@@ -196,8 +194,8 @@ export abstract class ProjectsService {
                 id: id,
             },
             errors: {
-                404: `The project does not exist`,
-                429: `Rate limit exceeded`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -210,7 +208,7 @@ export abstract class ProjectsService {
      *
      * @param slug The project's unique slug
      * @param options Additional operation options
-     * @returns Project The response returns a project
+     * @returns Project OK
      */
     public getProjectBySlug(
         slug: string,
@@ -228,8 +226,8 @@ export abstract class ProjectsService {
                 slug: slug,
             },
             errors: {
-                404: `The project does not exist`,
-                429: `Rate limit exceeded`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }

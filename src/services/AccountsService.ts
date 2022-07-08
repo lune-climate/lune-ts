@@ -25,7 +25,7 @@ export abstract class AccountsService {
      * One account object is returned.
      *
      * @param options Additional operation options
-     * @returns Account The response returns an account
+     * @returns Account OK
      */
     public getAccount(options?: {
         /**
@@ -38,8 +38,8 @@ export abstract class AccountsService {
             url: '/accounts/me',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -52,7 +52,7 @@ export abstract class AccountsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns AccountPair The response returns the pair of accounts
+     * @returns AccountPair OK
      */
     public createAccountPair(
         data: {
@@ -102,7 +102,7 @@ export abstract class AccountsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedAccounts The response returns paginated accounts
+     * @returns PaginatedAccounts OK
      */
     public listAccounts(
         data?: {
@@ -163,7 +163,7 @@ export abstract class AccountsService {
      * @param id The account id
      * @param data Request data
      * @param options Additional operation options
-     * @returns Account The response returns the updated account
+     * @returns Account OK
      */
     public updateAccount(
         id: string,
@@ -202,8 +202,8 @@ export abstract class AccountsService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }

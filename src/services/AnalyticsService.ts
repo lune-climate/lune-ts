@@ -22,7 +22,7 @@ export abstract class AnalyticsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns Analytics The response return account analytics
+     * @returns Analytics OK
      */
     public getAnalytics(
         data?: {
@@ -53,8 +53,8 @@ export abstract class AnalyticsService {
             },
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -65,7 +65,7 @@ export abstract class AnalyticsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns CumulativeBundleAnalytics Cumulative analytics per bundle
+     * @returns CumulativeBundleAnalytics OK
      */
     public getCumulativeAnalyticsPerBundle(
         data?: {
@@ -95,7 +95,7 @@ export abstract class AnalyticsService {
             errors: {
                 400: `Bad request`,
                 401: `Unauthorized`,
-                429: `Rate limit exceeded`,
+                429: `Too Many Requests`,
             },
         })
     }

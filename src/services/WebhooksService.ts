@@ -17,7 +17,7 @@ export abstract class WebhooksService {
     /**
      * List all webhooks
      * @param options Additional operation options
-     * @returns Webhook Existing webhooks fetched successfully
+     * @returns Webhook OK
      */
     public listAllWebhooks(options?: {
         /**
@@ -29,8 +29,8 @@ export abstract class WebhooksService {
             method: 'GET',
             url: '/webhooks',
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -39,7 +39,7 @@ export abstract class WebhooksService {
      * Create a webhook
      * @param data Request data
      * @param options Additional operation options
-     * @returns Webhook A webhook created successfully
+     * @returns Webhook OK
      */
     public createWebhook(
         data: {
@@ -61,8 +61,8 @@ export abstract class WebhooksService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -71,7 +71,7 @@ export abstract class WebhooksService {
      * Get a webhook
      * @param id The webhooks's unique identifier
      * @param options Additional operation options
-     * @returns Webhook Existing webhook fetched successfully
+     * @returns Webhook OK
      */
     public getWebhook(
         id: string,
@@ -89,9 +89,9 @@ export abstract class WebhooksService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The webhook does not exist`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -101,7 +101,7 @@ export abstract class WebhooksService {
      * @param id The webhooks's unique identifier
      * @param data Request data
      * @param options Additional operation options
-     * @returns Webhook Existing webhook updated successfully
+     * @returns Webhook OK
      */
     public updateWebhook(
         id: string,
@@ -135,9 +135,9 @@ export abstract class WebhooksService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The webhook does not exist`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -146,7 +146,7 @@ export abstract class WebhooksService {
      * Delete a webhook
      * @param id The webhooks's unique identifier
      * @param options Additional operation options
-     * @returns any Existing webhook deleted successfully
+     * @returns any OK
      */
     public deleteWebhook(
         id: string,
@@ -164,9 +164,9 @@ export abstract class WebhooksService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The webhook does not exist`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }

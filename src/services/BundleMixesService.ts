@@ -21,7 +21,7 @@ export abstract class BundleMixesService {
      * Bundle selection for a particular Bundle mix may change over time.
      *
      * @param options Additional operation options
-     * @returns BundleMix The response returns the bundle mixes
+     * @returns BundleMix OK
      */
     public listAllBundleMixes(options?: {
         /**
@@ -33,8 +33,8 @@ export abstract class BundleMixesService {
             method: 'GET',
             url: '/bundle-mixes',
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
