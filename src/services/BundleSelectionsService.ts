@@ -25,7 +25,7 @@ export abstract class BundleSelectionsService {
      * Every account is created with default bundle selections.
      *
      * @param options Additional operation options
-     * @returns BundleSelection The response returns the account's bundle selections
+     * @returns BundleSelection OK
      */
     public getBundleSelection(options?: {
         /**
@@ -37,8 +37,8 @@ export abstract class BundleSelectionsService {
             method: 'GET',
             url: '/bundle-selections',
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -51,7 +51,7 @@ export abstract class BundleSelectionsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns BundleSelection The response returns the new account's bundle selections
+     * @returns BundleSelection OK
      */
     public updateBundleSelection(
         data: {
@@ -71,10 +71,10 @@ export abstract class BundleSelectionsService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                403: `Forbidden. The API Key is not authorized to perform the operation.`,
+                401: `Unauthorized`,
+                403: `Forbidden`,
                 409: `Conflict`,
-                429: `Rate limit exceeded`,
+                429: `Too Many Requests`,
             },
         })
     }

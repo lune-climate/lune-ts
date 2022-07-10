@@ -24,7 +24,7 @@ export abstract class ClientAccountsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns ClientAccount The response returns the created client account
+     * @returns ClientAccount OK
      */
     public createClientAccount(
         data: {
@@ -61,9 +61,9 @@ export abstract class ClientAccountsService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                403: `Forbidden. The API Key is not authorized to perform the operation.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -76,7 +76,7 @@ export abstract class ClientAccountsService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedClientAccounts The response returns paginated client accounts
+     * @returns PaginatedClientAccounts OK
      */
     public listClientAccounts(
         data?: {
@@ -135,7 +135,7 @@ export abstract class ClientAccountsService {
      * @param id The account id
      * @param data Request data
      * @param options Additional operation options
-     * @returns ClientAccount The response returns the updated account
+     * @returns ClientAccount OK
      */
     public updateClientAccount(
         id: string,

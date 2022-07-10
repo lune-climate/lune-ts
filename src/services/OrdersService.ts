@@ -28,9 +28,7 @@ export abstract class OrdersService {
      * Create an order to purchase carbon offset by specifying a mass in tonnes or kilograms.
      * @param data Request data
      * @param options Additional operation options
-     * @returns OrderByQuantity Order created successfully.
-     * The response returns an Order object.
-     *
+     * @returns OrderByQuantity OK
      */
     public createOrderByMass(
         data: {
@@ -75,15 +73,10 @@ export abstract class OrdersService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                409: `Conflict
-
-                Examples:
-                1. account is suspended
-                2. order idempotency failure: an order with the same idempotency_key has already by created
-                `,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                409: `Conflict`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -93,9 +86,7 @@ export abstract class OrdersService {
      * Create an order to purchase carbon offset by specifying a maximum purchase value.
      * @param data Request data
      * @param options Additional operation options
-     * @returns OrderByValue Order created successfully.
-     * The response returns an Order object.
-     *
+     * @returns OrderByValue OK
      */
     public createOrderByValue(
         data: {
@@ -140,15 +131,10 @@ export abstract class OrdersService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                409: `Conflict
-
-                Examples:
-                1. account is suspended
-                2. order idempotency failure: an order with the same idempotency_key has already by created
-                `,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                409: `Conflict`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -158,9 +144,7 @@ export abstract class OrdersService {
      * Create an order to purchase carbon offset by specifying an estimate id
      * @param data Request data
      * @param options Additional operation options
-     * @returns OrderByEstimate Order created successfully.
-     * The response returns an Order object.
-     *
+     * @returns OrderByEstimate OK
      */
     public createOrderByEstimate(
         data: {
@@ -205,16 +189,10 @@ export abstract class OrdersService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                409: `Conflict
-
-                Examples:
-                1. account is suspended
-                2. order idempotency failure: an order with the same idempotency_key has already by created
-                3. order for this emission estimate has already been placed
-                `,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                409: `Conflict`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -228,7 +206,7 @@ export abstract class OrdersService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedOrders The response returns paginated orders
+     * @returns PaginatedOrders OK
      */
     public listOrders(
         data?: {
@@ -271,8 +249,8 @@ export abstract class OrdersService {
                 offset_link_id: data?.offsetLinkId,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -283,7 +261,7 @@ export abstract class OrdersService {
      *
      * @param id The order's unique identifier
      * @param options Additional operation options
-     * @returns Order The response returns an order
+     * @returns Order OK
      */
     public getOrder(
         id: string,
@@ -301,8 +279,8 @@ export abstract class OrdersService {
                 id: id,
             },
             errors: {
-                404: `The order does not exist`,
-                429: `Rate limit exceeded`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -313,7 +291,7 @@ export abstract class OrdersService {
      *
      * @param id The order's unique identifier
      * @param options Additional operation options
-     * @returns binary The response returns the Carbon Offset Certificate
+     * @returns binary OK
      */
     public getOrderCertificate(
         id: string,
@@ -331,8 +309,8 @@ export abstract class OrdersService {
                 id: id,
             },
             errors: {
-                404: `The order or the certificate does not exist`,
-                429: `Rate limit exceeded`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -343,7 +321,7 @@ export abstract class OrdersService {
      *
      * @param idempotencyKey The order's idempotency key
      * @param options Additional operation options
-     * @returns Order The response returns an order
+     * @returns Order OK
      */
     public getOrderByIdempotencyKey(
         idempotencyKey: string,
@@ -361,8 +339,8 @@ export abstract class OrdersService {
                 idempotencyKey: idempotencyKey,
             },
             errors: {
-                404: `The order does not exist`,
-                429: `Rate limit exceeded`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -375,8 +353,7 @@ export abstract class OrdersService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns OrderQuoteByQuantity Order quote processed successfully.
-     *
+     * @returns OrderQuoteByQuantity OK
      */
     public getOrderQuoteByMass(
         data: {
@@ -403,14 +380,10 @@ export abstract class OrdersService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                409: `Conflict
-
-                Examples:
-                1. quantity not positive: the calculated quote results in non positive quantity
-                `,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                409: `Conflict`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -423,8 +396,7 @@ export abstract class OrdersService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns OrderQuoteByValue Order quote processed successfully.
-     *
+     * @returns OrderQuoteByValue OK
      */
     public getOrderQuoteByValue(
         data: {
@@ -457,14 +429,10 @@ export abstract class OrdersService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                409: `Conflict
-
-                Examples:
-                1. quantity not positive: the calculated quote results in non positive quantity
-                `,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                409: `Conflict`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
             },
         })
     }

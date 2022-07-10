@@ -21,7 +21,7 @@ export abstract class OffsetLinksService {
      * Get an offset link
      * @param id The offset links's unique identifier
      * @param options Additional operation options
-     * @returns OffsetLink Offset link fetched successfully.
+     * @returns OffsetLink OK
      */
     public getOffsetLink(
         id: string,
@@ -39,9 +39,9 @@ export abstract class OffsetLinksService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The offset link does not exist`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -51,7 +51,7 @@ export abstract class OffsetLinksService {
      * @param id The offset links's unique identifier
      * @param data Request data
      * @param options Additional operation options
-     * @returns OffsetLink The offset link updated successfully.
+     * @returns OffsetLink OK
      */
     public updateOffsetLink(
         id: string,
@@ -119,10 +119,10 @@ export abstract class OffsetLinksService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `An offset link with the specified id belonging to the authenticated account has not been found.`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -131,7 +131,7 @@ export abstract class OffsetLinksService {
      * List offset links
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedOffsetLinks Offset links fetched successfully.
+     * @returns PaginatedOffsetLinks OK
      */
     public listOffsetLinks(
         data?: {
@@ -165,8 +165,8 @@ export abstract class OffsetLinksService {
                 after: data?.after,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -175,7 +175,7 @@ export abstract class OffsetLinksService {
      * Create an offset link
      * @param data Request data
      * @param options Additional operation options
-     * @returns OffsetLink The offset link created successfully.
+     * @returns OffsetLink OK
      */
     public createOffsetLink(
         data: {
@@ -246,10 +246,10 @@ export abstract class OffsetLinksService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
             },
         })
     }
@@ -258,7 +258,7 @@ export abstract class OffsetLinksService {
      * Get offset link's analytics
      * @param id The offset links's unique identifier
      * @param options Additional operation options
-     * @returns OffsetLinkAnalytics Offset link analytics fetched successfully.
+     * @returns OffsetLinkAnalytics OK
      */
     public getOffsetLinkAnalytics(
         id: string,
@@ -276,9 +276,9 @@ export abstract class OffsetLinksService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The offset link does not exist`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }

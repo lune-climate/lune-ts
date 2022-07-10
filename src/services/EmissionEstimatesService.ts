@@ -41,8 +41,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse Estimation calculated successfully.
-     *
+     * @returns EmissionEstimateResponse OK
      */
     public createElectricityEstimate(
         data: {
@@ -81,11 +80,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -94,7 +93,7 @@ export abstract class EmissionEstimatesService {
      * Get an electricity emission estimate
      * @param id The estimate unique identifier
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse Estimation retrieved succesfully
+     * @returns EmissionEstimateResponse OK
      */
     public getElectricityEstimate(
         id: string,
@@ -112,10 +111,10 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The offset link does not exist`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -173,12 +172,12 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 404: `The estimate does not exist`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -191,8 +190,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse Estimation calculated successfully.
-     *
+     * @returns EmissionEstimateResponse OK
      */
     public createFlightEstimate(
         data: {
@@ -233,11 +231,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -321,8 +319,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns SingleShippingEmissionEstimate Estimation calculated successfully.
-     *
+     * @returns SingleShippingEmissionEstimate OK
      */
     public createShippingEstimate(
         data: {
@@ -358,11 +355,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -371,7 +368,7 @@ export abstract class EmissionEstimatesService {
      * Get a shipping emission estimate
      * @param id The estimate unique identifier
      * @param options Additional operation options
-     * @returns SingleShippingEmissionEstimate Estimation retrieved succesfully
+     * @returns SingleShippingEmissionEstimate OK
      */
     public getShippingEstimate(
         id: string,
@@ -389,10 +386,10 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The offset link does not exist`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -402,7 +399,7 @@ export abstract class EmissionEstimatesService {
      * @param id The estimate unique identifier
      * @param data Request data
      * @param options Additional operation options
-     * @returns SingleShippingEmissionEstimate Estimation retrieved succesfully
+     * @returns SingleShippingEmissionEstimate OK
      */
     public updateShippingEstimate(
         id: string,
@@ -442,11 +439,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The offset link does not exist`,
+                401: `Unauthorized`,
+                404: `Not Found`,
                 409: `Conflict`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -459,8 +456,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns MultiLegShippingEmissionEstimate Estimation calculated successfully.
-     *
+     * @returns MultiLegShippingEmissionEstimate OK
      */
     public createMultiLegShippingEstimate(
         data: {
@@ -496,11 +492,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -509,7 +505,7 @@ export abstract class EmissionEstimatesService {
      * Get a multi-leg shipping emission estimate
      * @param id The estimate unique identifier
      * @param options Additional operation options
-     * @returns MultiLegShippingEmissionEstimate Estimation retrieved succesfully
+     * @returns MultiLegShippingEmissionEstimate OK
      */
     public getMultiLegShippingEstimate(
         id: string,
@@ -527,10 +523,10 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The offset link does not exist`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -540,7 +536,7 @@ export abstract class EmissionEstimatesService {
      * @param id The estimate unique identifier
      * @param data Request data
      * @param options Additional operation options
-     * @returns MultiLegShippingEmissionEstimate Estimation retrieved succesfully
+     * @returns MultiLegShippingEmissionEstimate OK
      */
     public updateMultiLegShippingEstimate(
         id: string,
@@ -580,11 +576,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The offset link does not exist`,
+                401: `Unauthorized`,
+                404: `Not Found`,
                 409: `Conflict`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -603,8 +599,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse Estimation calculated successfully.
-     *
+     * @returns EmissionEstimateResponse OK
      */
     public createTransactionEstimate(
         data: {
@@ -638,11 +633,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -657,8 +652,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns CompanyEmissionEstimate Estimation calculated successfully.
-     *
+     * @returns CompanyEmissionEstimate OK
      */
     public createCompanyEstimate(
         data: {
@@ -793,11 +787,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
@@ -810,8 +804,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse Estimation calculated successfully.
-     *
+     * @returns EmissionEstimateResponse OK
      */
     public createIndividualEstimate(
         data: {
@@ -921,11 +914,11 @@ export abstract class EmissionEstimatesService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
+                401: `Unauthorized`,
                 409: `Conflict`,
-                415: `The request is not an application/json encoded request`,
-                429: `Rate limit exceeded`,
-                503: `The service is temporarily unavailable`,
+                415: `Unsupported Media Type`,
+                429: `Too Many Requests`,
+                503: `Service Unavailable`,
             },
         })
     }
