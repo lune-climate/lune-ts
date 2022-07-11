@@ -16,14 +16,6 @@ export abstract class BundleSelectionsService {
 
     /**
      * Get an account's bundle selection
-     * Returns the account's bundle selection.
-     *
-     * When orders are placed without explicity setting bundle selections, the account's bundle selection is used.
-     *
-     * Account bundle selections can be set via the API or Dashboard.
-     *
-     * Every account is created with default bundle selections.
-     *
      * @param options Additional operation options
      * @returns BundleSelection OK
      */
@@ -45,10 +37,6 @@ export abstract class BundleSelectionsService {
 
     /**
      * Update an account's bundle selection
-     * Set the account's bundle selection.
-     *
-     * Every account is created with default bundle selections. This will override default bundle selections.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns BundleSelection OK

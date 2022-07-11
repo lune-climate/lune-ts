@@ -5,11 +5,13 @@
 import type { BundleSelection } from './BundleSelection'
 
 /**
- * Bundle mix information.
+ * Predefined bundle selections, for example following Oxford Offsetting Principles.
+ * Bundle selection for a particular Bundle mix may change over time.
+ *
  */
 export type BundleMix = {
     /**
-     * Id of the bundle mix.
+     * Bundle mix unique identifier.
      */
     id: string
     /**

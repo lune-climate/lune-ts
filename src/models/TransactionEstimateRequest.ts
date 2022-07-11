@@ -12,13 +12,21 @@ import type { MonetaryAmount } from './MonetaryAmount'
  * Parameters for estimating emissions associated with purchasing goods or services.
  */
 export type TransactionEstimateRequest = {
+    /**
+     * Monetary value of the transaction. This should exclude shipping and taxes.
+     */
     value: MonetaryAmount
+    /**
+     * Merchant from whom the goods or services the purchase was made
+     */
     merchant: Merchant
+    /**
+     * Individual diet. Used to better estimate  food-related purchases.
+     */
     diet?: Diet
     bundleSelection?: BundleSelectionRequest
     /**
-     * This property represents the level of precision used to truncate quantities assigned to each bundle.
-     *
+     * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
 }

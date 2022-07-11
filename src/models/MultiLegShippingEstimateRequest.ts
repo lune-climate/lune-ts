@@ -10,7 +10,7 @@ import type { ShippingMethod } from './ShippingMethod'
 import type { ShippingRoute } from './ShippingRoute'
 
 /**
- * Parameters for estimating shipping emissions
+ * Parameters for estimating multi-leg shipping emissions
  */
 export type MultiLegShippingEstimateRequest = {
     shipment: Shipment
@@ -21,8 +21,7 @@ export type MultiLegShippingEstimateRequest = {
     }>
     bundleSelection?: BundleSelectionRequest
     /**
-     * This property represents the level of precision used to truncate quantities assigned to each bundle.
-     *
+     * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
 }

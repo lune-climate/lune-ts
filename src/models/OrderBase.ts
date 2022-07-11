@@ -15,7 +15,7 @@ export type OrderBase = {
      */
     id: string
     /**
-     * Optional unique identifier provided by the client.
+     * Account-unique identifier provided by the client.
      *
      * `idempotency_key` has two purposes:
      * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
@@ -36,12 +36,9 @@ export type OrderBase = {
      */
     currency: string
     /**
-     * Represents the net cost of offsets purchased by the order. May be lower than `requested_value`.
+     * The net offset cost being purchased. May be lower than `requested_value`.
      *
-     * This field is set when the order is linked to Bundles.
-     *
-     * This field is set the order's status transitions from `received` to `placed`.
-     *
+     * This property is set when bundles are assigned to the order.
      * Unit: order currency
      *
      */
@@ -54,12 +51,9 @@ export type OrderBase = {
      */
     totalCost?: string
     /**
-     * Represents Lune's fee.
+     * Lune's fee.
      *
-     * This field is set when the order is linked to Bundles.
-     *
-     * This field is set the order's status transitions from `received` to `placed`.
-     *
+     * This property is set when bundles are assigned to the order.
      * Unit: order currency
      *
      */
@@ -75,25 +69,25 @@ export type OrderBase = {
     /**
      * bundles are set when the order's status is `placed`, `paid`, `retiring` or `complete`.
      *
-     * Represents the bundles associated with the order including their relative quantity and cost breakdown.
+     * The bundles associated with the order including their relative quantity and cost breakdown.
      *
      */
     bundles?: Array<OrderBundle>
     /**
      * Projects are set when the order's status is `retiring` or `complete`.
      *
-     * Represents the projects associated with the order including their relative quantity and cost breakdown.
+     * The projects associated with the order including their relative quantity and cost breakdown.
      *
      * Orders are placed against bundles, not projects. Projects in a bundle may change based on supply.
      *
-     * This field is set as soon as we can guarantee project supply.
+     * This property is set as soon as we can guarantee project supply.
      *
      */
     projects?: Array<OrderProject>
     /**
      * Carbon credits certificate URL.
      *
-     * This field is set when an order in 'complete' status
+     * This property is set when an order has state 'complete'
      *
      */
     certificate?: string
@@ -105,7 +99,7 @@ export type OrderBase = {
     /**
      * End-user email.
      *
-     * This field is currently populated on orders placed through offset links.
+     * This property is currently populated on orders placed through offset links.
      *
      */
     email?: string

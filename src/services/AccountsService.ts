@@ -19,11 +19,6 @@ export abstract class AccountsService {
 
     /**
      * Get an account
-     * Returns the active account. This is the account linked to the API key by default but is affected
-     * by the `Lune-Account` header.
-     *
-     * One account object is returned.
-     *
      * @param options Additional operation options
      * @returns Account OK
      */
@@ -46,9 +41,7 @@ export abstract class AccountsService {
 
     /**
      * Create an account pair
-     * Create a pair of accounts.
-     *
-     * A test and live account are returned
+     * Create a pair of live and test accounts. The accounts are linked via the `sibling_id` property.
      *
      * @param data Request data
      * @param options Additional operation options
@@ -87,19 +80,15 @@ export abstract class AccountsService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                403: `Forbidden. The API Key is not authorized to perform the operation.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                403: `Forbidden`,
+                429: `Too Many Requests`,
             },
         })
     }
 
     /**
      * List accounts
-     * Returns paginated accounts.
-     *
-     * Query parameters can be used to filter these accounts by name and/or scope.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedAccounts OK
@@ -121,12 +110,12 @@ export abstract class AccountsService {
              */
             after?: string
             /**
-             * Used to filter the results to only include accounts of a specific type.
+             * Filter accounts based on type.
              */
             type?: AccountType
             /**
-             * Used to filter the results to only include accounts which name contains this value (case insensitive).
-             * Keep in mind the value itself can appear at the beggining, middle or end on the actual account name.
+             * Filter accounts based on name (case insensitive).
+             * The value can appear at the beggining, middle or end on the actual account name.
              */
             name?: string
         },
@@ -148,19 +137,17 @@ export abstract class AccountsService {
             },
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
 
     /**
      * Update an account
-     * Update an account. If targeting a test account, the name field needs to match the current
-     * account name. If targeting a live account, the name field change will be replicated to its
-     * sibling account.
+     * Update an account. Live accounts will replicate a name change to its sibling account. Test accounts name updates are disallowed (name property must match the current account name).
      *
-     * @param id The account id
+     * @param id The account's unique identifier
      * @param data Request data
      * @param options Additional operation options
      * @returns Account OK

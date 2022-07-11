@@ -4,6 +4,9 @@
 
 import type { AccountBase } from './AccountBase'
 
+/**
+ * Account used when you operate an account on behalf of a third party.
+ */
 export type ClientAccount = AccountBase & {
     scope: ClientAccount.scope
 }

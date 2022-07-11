@@ -5,9 +5,9 @@
 import type { BundlePercentageRequest } from './BundlePercentageRequest'
 
 /**
- * Optional allocation ratios by bundle.
+ * Bundle selection percentages.
  *
- * The sum of all allocation ratios must equal 100.
+ * The sum of all percentages must equal 100.
  *
  * If not specified, the preconfigured allocation ratios are going to be used.
  *

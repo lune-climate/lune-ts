@@ -6,7 +6,7 @@ import type { Url } from './Url'
 
 export type Webhook = {
     /**
-     * The webhook's identifier
+     * The webhook's unique identifier
      */
     id: string
     url: Url

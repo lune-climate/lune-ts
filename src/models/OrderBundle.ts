@@ -30,7 +30,7 @@ export type OrderBundle = {
      */
     grossUnitPrice: string
     /**
-     * Represents the net cost of offsets purchased by the order for this bundle.
+     * The bundle's net offset cost being purchased.
      *
      * Unit: order currency
      *

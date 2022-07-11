@@ -5,7 +5,7 @@
 import type { BundlePercentage } from './BundlePercentage'
 
 /**
- * Optional allocation ratios by bundle.
+ * Allocation ratios by bundle.
  *
  * The sum of all allocation ratios must equal 100.
  *

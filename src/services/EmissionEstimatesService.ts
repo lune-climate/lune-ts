@@ -36,9 +36,6 @@ export abstract class EmissionEstimatesService {
     /**
      * Create an electricity emission estimate
      * Estimate emissions produced by electricity consumption.
-     *
-     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns EmissionEstimateResponse OK
@@ -56,8 +53,7 @@ export abstract class EmissionEstimatesService {
             countryCode?: string
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -91,7 +87,7 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Get an electricity emission estimate
-     * @param id The estimate unique identifier
+     * @param id The estimate's unique identifier
      * @param options Additional operation options
      * @returns EmissionEstimateResponse OK
      */
@@ -121,11 +117,8 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Update an electricity emission estimate
-     * Update emission estimate produced by electricity consumption.
-     *
-     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
-     *
-     * @param id The estimate unique identifier
+     * Estimate emissions produced by electricity consumption.
+     * @param id The estimate's unique identifier
      * @param data Request data
      * @param options Additional operation options
      * @returns EmissionEstimateResponse Estimation updated successfully.
@@ -145,8 +138,7 @@ export abstract class EmissionEstimatesService {
             countryCode?: string
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -185,9 +177,6 @@ export abstract class EmissionEstimatesService {
     /**
      * Create a flight emission estimate
      * Estimate emissions produced by passengers in a commercial airflight.
-     *
-     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns EmissionEstimateResponse OK
@@ -206,8 +195,7 @@ export abstract class EmissionEstimatesService {
             passengers?: number
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -242,81 +230,6 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Create a shipping emission estimate
-     * Estimate emissions produced by shipping something from point A to point B.
-     *
-     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
-     *
-     * Some examples of the input payload:
-     *
-     * * Source/destination addresses, 10 tonnes transported by a diesel truck:
-     *
-     * ```json
-     * {
-     * "shipment": { "mass": { "amount": "10.0", "unit": "t" } },
-     * "route": {
-     * "source": {
-     * "street_line1": "Karl-Liebknecht-Str. 13",
-     * "country_code": "DEU",
-     * "city": "Berlin",
-     * "postcode": "10178"
-     * },
-     * "destination": {
-     * "street_line1": "62 Great Russell St",
-     * "country_code": "GBR",
-     * "city": "London",
-     * "postcode": "WC1B 3BG"
-     * }
-     * },
-     * "method": "diesel_truck"
-     * }
-     * ```
-     * * 1 tonne transported 2000 km by a small general cargo ship with Marine Gasoil (MGO) fuel used:
-     *
-     * ```json
-     * {
-     * "shipment": { "mass": { "amount": "1.0", "unit": "t" } },
-     * "route": { "amount": "2000.0", "unit": "km" },
-     * "method": { "vessel_type": "sea_general_cargo_small", "fuel": "MGO" }
-     * }
-     * ```
-     *
-     * * 3 containers (TEUs) transported 5000 km by a refrigerated container ship over an
-     * Europe/South America trade lane:
-     *
-     * ```json
-     * {
-     * "shipment": { "containers": "3.0" },
-     * "route": { "amount": "5000.0", "unit": "km" },
-     * "method": {
-     * "vessel_type": "container_ship",
-     * "refrigerated": true,
-     * "trade_lane": "disaggregated_europe_to_south_america"
-     * }
-     * }
-     * ```
-     *
-     * * 10 tonnes transported 4000 km by a vessel with IMO number 9745225:
-     *
-     * ```json
-     * {
-     * "shipment": { "mass": { "amount": "10.0", "unit": "t" } },
-     * "route": { "amount": "4000.0", "unit": "km" },
-     * "method": { "vessel_imo_number": "9745225" }
-     * }
-     * ```
-     *
-     *
-     *
-     * You can plug those payloads in the following command:
-     *
-     * ```
-     * curl https://api.lune.co/v1/estimates/shipping \
-     * -H 'Authorization: Bearer <API_KEY>' \
-     * -H 'Content-Type: application/json' \
-     * -X POST \
-     * -d <PAYLOAD>
-     * ```
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate OK
@@ -329,8 +242,7 @@ export abstract class EmissionEstimatesService {
             countryCode?: ShippingCountryCode
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -366,7 +278,7 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Get a shipping emission estimate
-     * @param id The estimate unique identifier
+     * @param id The estimate's unique identifier
      * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate OK
      */
@@ -396,7 +308,7 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Update a shipping emission estimate
-     * @param id The estimate unique identifier
+     * @param id The estimate's unique identifier
      * @param data Request data
      * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate OK
@@ -410,8 +322,7 @@ export abstract class EmissionEstimatesService {
             countryCode?: ShippingCountryCode
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -450,10 +361,7 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Create a multi-leg shipping emission estimate
-     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
-     *
      * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate OK
@@ -468,8 +376,7 @@ export abstract class EmissionEstimatesService {
             }>
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -503,7 +410,7 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Get a multi-leg shipping emission estimate
-     * @param id The estimate unique identifier
+     * @param id The estimate's unique identifier
      * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate OK
      */
@@ -533,7 +440,7 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Update a multi-leg shipping emission estimate
-     * @param id The estimate unique identifier
+     * @param id The estimate's unique identifier
      * @param data Request data
      * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate OK
@@ -549,8 +456,7 @@ export abstract class EmissionEstimatesService {
             }>
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -587,29 +493,27 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Create a transaction emission estimate
-     * Estimate emissions produced by purchasing goods or services.
-     *
-     * `value` and `merchant` tell us what's the value of the transaction and who the goods or services
-     * have been purchased from. `value` should exclude shipping and taxes – if it doesn't, then the
-     * results are likely to be higher than they should be.
-     *
-     * `diet`, if provided, will affect the estimates for purchases we determine are food-related.
-     *
-     * The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns EmissionEstimateResponse OK
      */
     public createTransactionEstimate(
         data: {
+            /**
+             * Monetary value of the transaction. This should exclude shipping and taxes.
+             */
             value: MonetaryAmount
+            /**
+             * Merchant from whom the goods or services the purchase was made
+             */
             merchant: Merchant
+            /**
+             * Individual diet. Used to better estimate  food-related purchases.
+             */
             diet?: Diet
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -743,8 +647,7 @@ export abstract class EmissionEstimatesService {
             }
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -875,8 +778,7 @@ export abstract class EmissionEstimatesService {
             monthlyOtherExpenses?: MonetaryAmount
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },

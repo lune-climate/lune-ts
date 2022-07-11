@@ -18,10 +18,6 @@ export abstract class ClientAccountsService {
 
     /**
      * Create a client account
-     * Create a client account
-     *
-     * A client account can be of type test or live.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns ClientAccount OK
@@ -70,10 +66,6 @@ export abstract class ClientAccountsService {
 
     /**
      * List client accounts
-     * Returns paginated client accounts.
-     *
-     * Query parameters can be used to filter these accounts by name and/or type.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedClientAccounts OK
@@ -95,12 +87,14 @@ export abstract class ClientAccountsService {
              */
             after?: string
             /**
-             * Used to filter the results to only include accounts of a specific type.
+             * Filter accounts based on type.
              */
             type?: AccountType
             /**
-             * Used to filter the results to only include accounts which name contains this value (case insensitive).
-             * Keep in mind the value itself can appear at the beggining, middle or end on the actual account name.
+             * Filter accounts based on name (case insensitive).
+             *
+             * The value can appear at the beggining, middle or end on the actual account name.
+             *
              */
             name?: string
         },
@@ -122,17 +116,15 @@ export abstract class ClientAccountsService {
             },
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
 
     /**
      * Update a client account
-     * Update a client account and return the updated account.
-     *
-     * @param id The account id
+     * @param id The account's unique identifier
      * @param data Request data
      * @param options Additional operation options
      * @returns ClientAccount OK
@@ -174,8 +166,8 @@ export abstract class ClientAccountsService {
             mediaType: 'application/json',
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }

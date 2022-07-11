@@ -4,6 +4,9 @@
 
 import type { AccountBase } from './AccountBase'
 
+/**
+ * Account used for your regular operations.
+ */
 export type Account = AccountBase & {
     scope: Account.scope
     /**

@@ -6,16 +6,13 @@ import type { BundleSelectionRequest } from './BundleSelectionRequest'
 import type { MassUnit } from './MassUnit'
 import type { Metadata } from './Metadata'
 
-/**
- * Order by Value details
- */
 export type CreateOrderByValueRequest = {
     /**
      * Maximum price of CO2 offsets to purchase (in the account's currency)
      */
     value: string
     /**
-     * Optional unique identifier provided by the client.
+     * Account-unique identifier provided by the client.
      *
      * `idempotency_key` has two purposes:
      * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
@@ -23,11 +20,15 @@ export type CreateOrderByValueRequest = {
      *
      */
     idempotencyKey?: string
+    /**
+     * Bundle selection to be used for the order.
+     * For the order, this property overrides the account's bundle selection.
+     *
+     */
     bundleSelection?: BundleSelectionRequest
     metadata?: Metadata
     /**
-     * This property represents the level of precision used to truncate quantities assigned to each bundle.
-     *
+     * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
 }

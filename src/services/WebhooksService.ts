@@ -178,7 +178,7 @@ export abstract class WebhooksService {
      *
      * @param id The webhooks's unique identifier
      * @param options Additional operation options
-     * @returns Webhook The secret was rotated successfully
+     * @returns Webhook OK
      */
     public rotateWebhookSecret(
         id: string,
@@ -196,9 +196,9 @@ export abstract class WebhooksService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                404: `The webhook does not exist`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized`,
+                404: `Not Found`,
+                429: `Too Many Requests`,
             },
         })
     }

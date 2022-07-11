@@ -6,10 +6,7 @@ import type { OrderBase } from './OrderBase'
 
 export type OrderByValue = OrderBase & {
     /**
-     * Represents the requested value of CO2 offsets to purchase.
-     *
-     * Unit: order currency
-     *
+     * Requested value of CO2 offsets to purchase in the account's currency.
      */
     requestedValue: string
 }
