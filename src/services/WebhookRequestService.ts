@@ -15,6 +15,8 @@ export abstract class WebhookRequestService {
 
     /**
      * Webhook request
+     * The endpoint describes the request that you will receive in your webhook receiver and the responses the Lune webhook infrastructure expects.
+     *
      * @param data Request data
      * @param options Additional operation options
      * @returns any The events have been successfully handled. Any status code of the `2xx` format has the same behaviour. Any header or body are ignored by Lune.

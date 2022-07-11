@@ -5,8 +5,7 @@
 /**
  * It's only possible to edit the name and beneficiary of an account.
  *
- * Not providing the `beneficiary` field will result in clearing the existing value
- * (if present).
+ * Not providing the `beneficiary` property will result in clearing the existing value (if present).
  *
  */
 export type UpdateAccountRequest = {

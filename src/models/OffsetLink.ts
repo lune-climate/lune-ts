@@ -10,7 +10,7 @@ import type { Timestamp } from './Timestamp'
 
 export type OffsetLink = {
     /**
-     * The offset link identifier
+     * The offset link unique identifier
      */
     id: string
     /**

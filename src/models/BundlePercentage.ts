@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 /**
- * Maps a bundle id to an allocation ratio
+ * Maps a bundle's unique identifier to an allocation ratio
  */
 export type BundlePercentage = {
     /**

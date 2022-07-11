@@ -15,14 +15,6 @@ export abstract class ActivityService {
 
     /**
      * Get an account's activity
-     * Returns paginated activity in reverse order (most recent first).
-     *
-     * Activity is an immutable event log. Every single account event yields an activity object.
-     *
-     * The API key used to access this method affects what activity rows are returned: activity rows
-     * corresponding to test orders for the test API key, the rest of the rows (both activity rows
-     * corresponding to live orders or not having any order associated with them) for the live API key.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedActivity OK
@@ -60,8 +52,8 @@ export abstract class ActivityService {
             },
             errors: {
                 400: `Bad Request`,
-                401: `Unauthorized. The API Key is invalid or disabled.`,
-                429: `Rate limit exceeded`,
+                401: `Unauthorized.`,
+                429: `Too Many Requests`,
             },
         })
     }

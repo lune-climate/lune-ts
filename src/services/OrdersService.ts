@@ -25,7 +25,6 @@ export abstract class OrdersService {
 
     /**
      * Create an order by mass
-     * Create an order to purchase carbon offset by specifying a mass in tonnes or kilograms.
      * @param data Request data
      * @param options Additional operation options
      * @returns OrderByQuantity OK
@@ -37,7 +36,7 @@ export abstract class OrdersService {
              */
             mass: Mass
             /**
-             * Optional unique identifier provided by the client.
+             * Account-unique identifier provided by the client.
              *
              * `idempotency_key` has two purposes:
              * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
@@ -45,11 +44,15 @@ export abstract class OrdersService {
              *
              */
             idempotencyKey?: string
+            /**
+             * Bundle selection to be used for the order.
+             * For the order, this property overrides the account's bundle selection.
+             *
+             */
             bundleSelection?: BundleSelectionRequest
             metadata?: Metadata
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -83,7 +86,6 @@ export abstract class OrdersService {
 
     /**
      * Create an order by value
-     * Create an order to purchase carbon offset by specifying a maximum purchase value.
      * @param data Request data
      * @param options Additional operation options
      * @returns OrderByValue OK
@@ -95,7 +97,7 @@ export abstract class OrdersService {
              */
             value: string
             /**
-             * Optional unique identifier provided by the client.
+             * Account-unique identifier provided by the client.
              *
              * `idempotency_key` has two purposes:
              * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
@@ -103,11 +105,15 @@ export abstract class OrdersService {
              *
              */
             idempotencyKey?: string
+            /**
+             * Bundle selection to be used for the order.
+             * For the order, this property overrides the account's bundle selection.
+             *
+             */
             bundleSelection?: BundleSelectionRequest
             metadata?: Metadata
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -141,7 +147,6 @@ export abstract class OrdersService {
 
     /**
      * Create an order by estimate id
-     * Create an order to purchase carbon offset by specifying an estimate id
      * @param data Request data
      * @param options Additional operation options
      * @returns OrderByEstimate OK
@@ -153,7 +158,7 @@ export abstract class OrdersService {
              */
             estimateId: string
             /**
-             * Optional unique identifier provided by the client.
+             * Account-unique identifier provided by the client.
              *
              * `idempotency_key` has two purposes:
              * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
@@ -164,8 +169,7 @@ export abstract class OrdersService {
             bundleSelection?: BundleSelectionRequest
             metadata?: Metadata
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },
@@ -199,11 +203,7 @@ export abstract class OrdersService {
 
     /**
      * List orders
-     * Returns paginated account orders ordered by creation date descending
-     *
-     * The API key used to access this method affects what orders are returned: test orders for the test
-     * API key, live orders for the live one.
-     *
+     * Returns the account's paginated orders in reverse order (most recent first).
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedOrders OK
@@ -226,7 +226,6 @@ export abstract class OrdersService {
             after?: string
             /**
              * Filter orders by offset_link_id.
-             *
              *
              * If offset_link_id is set, the response will only include orders belonging to the particular offset link.
              *
@@ -257,8 +256,6 @@ export abstract class OrdersService {
 
     /**
      * Get an order
-     * Returns an order by id if it exists.
-     *
      * @param id The order's unique identifier
      * @param options Additional operation options
      * @returns Order OK
@@ -287,8 +284,6 @@ export abstract class OrdersService {
 
     /**
      * Get a carbon offset certificate
-     * Download a Carbon Offset Certificate for a completed order.
-     *
      * @param id The order's unique identifier
      * @param options Additional operation options
      * @returns binary OK
@@ -317,9 +312,10 @@ export abstract class OrdersService {
 
     /**
      * Get an order by idempotency key
-     * Returns an order by idempotency key if it exists.
+     * @param idempotencyKey The order's idempotency key.
      *
-     * @param idempotencyKey The order's idempotency key
+     * Order idempotency keys must be unique per account.
+     *
      * @param options Additional operation options
      * @returns Order OK
      */
@@ -349,7 +345,7 @@ export abstract class OrdersService {
      * Calculate an order quote by mass
      * This endpoint does not create an order.
      *
-     * However, it processes the order as if it were placed returning estimated cost and bundles allocations.
+     * It processes the order as if it were placed, returning estimated cost and bundles allocations.
      *
      * @param data Request data
      * @param options Additional operation options
@@ -392,7 +388,7 @@ export abstract class OrdersService {
      * Calculate an order quote by value
      * This endpoint does not create an order.
      *
-     * However, it processes the order as if it were placed returning estimated cost and bundles allocations.
+     * It processes the order as if it were placed, returning estimated cost and bundles allocations.
      *
      * @param data Request data
      * @param options Additional operation options
@@ -406,8 +402,7 @@ export abstract class OrdersService {
             value: string
             bundleSelection?: BundleSelectionRequest
             /**
-             * This property represents the level of precision used to truncate quantities assigned to each bundle.
-             *
+             * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
         },

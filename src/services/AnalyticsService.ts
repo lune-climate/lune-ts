@@ -16,10 +16,6 @@ export abstract class AnalyticsService {
 
     /**
      * Get an account analytics
-     * Returns analytics for a specified time period for the account linked to the API Key.
-     *
-     * Defaults to the last 30 days if no time period is specified.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns Analytics OK
@@ -28,12 +24,12 @@ export abstract class AnalyticsService {
         data?: {
             /**
              * The start date of the custom date range.
-             * The date must be in the format YYYY-MM-DD.
+             * Defaults to 30 days ago if not specified.
              */
             start?: string
             /**
              * The end date of the custom date range.
-             * The date must be in the format YYYY-MM-DD.
+             * Defaults to the current date if not specified.
              */
             end?: string
         },
@@ -61,8 +57,6 @@ export abstract class AnalyticsService {
 
     /**
      * Get cumulative analytics
-     * Calculate cumulative volume and cost analytics per bundle
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns CumulativeBundleAnalytics OK
@@ -71,10 +65,12 @@ export abstract class AnalyticsService {
         data?: {
             /**
              * The start date of the custom date range.
+             * Defaults to 30 days ago if not specified.
              */
             from?: string
             /**
              * The to (inclusive) date of the custom date range.
+             * Defaults to the current date if not specified.
              */
             through?: string
         },

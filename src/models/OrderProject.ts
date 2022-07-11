@@ -31,7 +31,7 @@ export type OrderProject = {
      */
     unitPrice: string
     /**
-     * Represents the net cost of offsets purchased by the order for this project.
+     * The net offset cost being purchased.
      *
      * Unit: order currency
      *

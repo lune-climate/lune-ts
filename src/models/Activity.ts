@@ -2,6 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+/**
+ * Immutable event log entry. Some account events yield an activity object.
+ */
 export type Activity = {
     /**
      * The activity's unique identifier

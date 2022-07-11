@@ -24,8 +24,7 @@ export type FlightEstimateRequest = {
     passengers?: number
     bundleSelection?: BundleSelectionRequest
     /**
-     * This property represents the level of precision used to truncate quantities assigned to each bundle.
-     *
+     * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
 }

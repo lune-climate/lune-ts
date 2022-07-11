@@ -15,11 +15,6 @@ export abstract class BundleMixesService {
 
     /**
      * List all bundle mixes
-     * Returns bundle mixes.
-     *
-     * Bundle mixes are predefined bundle selections, for example following Oxford Offsetting Principles.
-     * Bundle selection for a particular Bundle mix may change over time.
-     *
      * @param options Additional operation options
      * @returns BundleMix OK
      */

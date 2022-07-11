@@ -18,15 +18,6 @@ export abstract class ProjectsService {
 
     /**
      * List bundles
-     * Returns paginated bundles.
-     *
-     * Bundle represent a group of projects of similar unit price and characteristics.
-     *
-     * Orders are placed against bundles.
-     *
-     * Disabled bundles are not returned unless `recently_disabled` is used.
-     * Disabled bundle projects are not returned unless `recently_disabled` is used.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedBundles OK
@@ -49,7 +40,6 @@ export abstract class ProjectsService {
             after?: string
             /**
              * When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
-             * Omitting or setting recently_disabled to false has the same effect.
              */
             recentlyDisabled?: boolean
         },
@@ -78,12 +68,6 @@ export abstract class ProjectsService {
 
     /**
      * Get a bundle
-     * Returns a bundle by id if it exists.
-     *
-     * Bundle represent a group of projects of similar unit price and characteristics.
-     *
-     * Orders are placed against bundles.
-     *
      * @param id The bundle's unique identifier
      * @param options Additional operation options
      * @returns Bundle OK
@@ -112,13 +96,6 @@ export abstract class ProjectsService {
 
     /**
      * List projects
-     * Returns paginated projects.
-     *
-     * Disabled projects are not returned unless `recently_disabled` is used.
-     * Disabled project bundles are not returned unless `recently_disabled` is used.
-     *
-     * Note: orders are placed against bundles not projects.
-     *
      * @param data Request data
      * @param options Additional operation options
      * @returns PaginatedProjects OK
@@ -140,8 +117,7 @@ export abstract class ProjectsService {
              */
             after?: string
             /**
-             * When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
-             * Omitting or setting recently_disabled to false has the same effect.
+             * When `recently_disabled` is set to true, the response will also include projects which have been disabled in the last 30 days.
              */
             recentlyDisabled?: boolean
         },
@@ -170,10 +146,6 @@ export abstract class ProjectsService {
 
     /**
      * Get a project
-     * Returns a project by id if it exists.
-     *
-     * Disabled projects are returned.
-     *
      * @param id The project's unique identifier
      * @param options Additional operation options
      * @returns Project OK
@@ -202,10 +174,6 @@ export abstract class ProjectsService {
 
     /**
      * Get a project by slug
-     * Returns a project by slug if it exists.
-     *
-     * Disabled projects are returned.
-     *
      * @param slug The project's unique slug
      * @param options Additional operation options
      * @returns Project OK
