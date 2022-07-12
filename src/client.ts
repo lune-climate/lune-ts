@@ -140,6 +140,7 @@ export { IndividualEstimateRequest } from './models/IndividualEstimateRequest.js
 export type { IntegerPercentage } from './models/IntegerPercentage.js'
 export type { Mass } from './models/Mass.js'
 export { MassUnit } from './models/MassUnit.js'
+export { Media } from './models/Media.js'
 export type { Merchant } from './models/Merchant.js'
 export type { Metadata } from './models/Metadata.js'
 export type { MonetaryAmount } from './models/MonetaryAmount.js'

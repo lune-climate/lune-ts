@@ -2,6 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Media } from './Media'
+
 export type ProjectSummary = {
     /**
      * The projects's unique identifier
@@ -83,4 +85,8 @@ export type ProjectSummary = {
      *
      */
     disabled: boolean
+    /**
+     * A list of images and videos belonging to the project.
+     */
+    media?: Array<Media>
 }

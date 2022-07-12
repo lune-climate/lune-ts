@@ -59,9 +59,9 @@ export abstract class ProjectsService {
                 recently_disabled: data?.recentlyDisabled,
             },
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -88,8 +88,8 @@ export abstract class ProjectsService {
                 id: id,
             },
             errors: {
-                404: `Not Found`,
-                429: `Too Many Requests`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -137,9 +137,9 @@ export abstract class ProjectsService {
                 recently_disabled: data?.recentlyDisabled,
             },
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -166,8 +166,8 @@ export abstract class ProjectsService {
                 id: id,
             },
             errors: {
-                404: `Not Found`,
-                429: `Too Many Requests`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -194,8 +194,8 @@ export abstract class ProjectsService {
                 slug: slug,
             },
             errors: {
-                404: `Not Found`,
-                429: `Too Many Requests`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }

@@ -75,12 +75,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -107,10 +107,10 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized`,
-                404: `Not Found`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -163,13 +163,13 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                404: `The estimate does not exist`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -218,12 +218,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -266,12 +266,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -298,10 +298,10 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized`,
-                404: `Not Found`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -349,12 +349,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                404: `Not Found`,
-                409: `Conflict`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -398,12 +398,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -430,10 +430,10 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             errors: {
-                401: `Unauthorized`,
-                404: `Not Found`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -481,12 +481,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                404: `Not Found`,
-                409: `Conflict`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -536,12 +536,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -689,12 +689,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
@@ -815,12 +815,12 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
-                503: `Service Unavailable`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
