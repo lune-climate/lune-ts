@@ -32,9 +32,9 @@ export abstract class AccountsService {
             method: 'GET',
             url: '/accounts/me',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -79,10 +79,10 @@ export abstract class AccountsService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -136,9 +136,9 @@ export abstract class AccountsService {
                 name: data?.name,
             },
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -188,9 +188,9 @@ export abstract class AccountsService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }

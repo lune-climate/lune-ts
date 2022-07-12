@@ -75,11 +75,11 @@ export abstract class OrdersService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -136,11 +136,11 @@ export abstract class OrdersService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -192,11 +192,11 @@ export abstract class OrdersService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -248,8 +248,8 @@ export abstract class OrdersService {
                 offset_link_id: data?.offsetLinkId,
             },
             errors: {
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -276,8 +276,8 @@ export abstract class OrdersService {
                 id: id,
             },
             errors: {
-                404: `Not Found`,
-                429: `Too Many Requests`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -304,8 +304,8 @@ export abstract class OrdersService {
                 id: id,
             },
             errors: {
-                404: `Not Found`,
-                429: `Too Many Requests`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -335,8 +335,8 @@ export abstract class OrdersService {
                 idempotencyKey: idempotencyKey,
             },
             errors: {
-                404: `Not Found`,
-                429: `Too Many Requests`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -375,11 +375,11 @@ export abstract class OrdersService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -423,11 +423,11 @@ export abstract class OrdersService {
             },
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                409: `Conflict`,
-                415: `Unsupported Media Type`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }

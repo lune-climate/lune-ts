@@ -51,9 +51,9 @@ export abstract class ActivityService {
                 after: data?.after,
             },
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized.`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }

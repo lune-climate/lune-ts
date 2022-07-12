@@ -28,8 +28,8 @@ export abstract class BundleMixesService {
             method: 'GET',
             url: '/bundle-mixes',
             errors: {
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }

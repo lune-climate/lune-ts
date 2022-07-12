@@ -29,8 +29,8 @@ export abstract class BundleSelectionsService {
             method: 'GET',
             url: '/bundle-selections',
             errors: {
-                401: `Unauthorized`,
-                429: `Too Many Requests`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
@@ -58,11 +58,11 @@ export abstract class BundleSelectionsService {
             body: data?.bundleSelectionRequest,
             mediaType: 'application/json',
             errors: {
-                400: `Bad Request`,
-                401: `Unauthorized`,
-                403: `Forbidden`,
-                409: `Conflict`,
-                429: `Too Many Requests`,
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
