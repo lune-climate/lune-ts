@@ -358,6 +358,10 @@ export abstract class OrdersService {
              */
             mass: Mass
             bundleSelection?: BundleSelectionRequest
+            /**
+             * Selects to which precision to truncate the quantities assigned to each bundle.
+             */
+            quantityTrunc?: MassUnit
         },
         options?: {
             /**
@@ -372,6 +376,7 @@ export abstract class OrdersService {
             body: {
                 mass: data?.mass,
                 bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
             },
             mediaType: 'application/json',
             errors: {

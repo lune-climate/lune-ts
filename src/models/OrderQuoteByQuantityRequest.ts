@@ -4,6 +4,7 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest'
 import type { Mass } from './Mass'
+import type { MassUnit } from './MassUnit'
 
 /**
  * Order by Quantity details
@@ -14,4 +15,8 @@ export type OrderQuoteByQuantityRequest = {
      */
     mass: Mass
     bundleSelection?: BundleSelectionRequest
+    /**
+     * Selects to which precision to truncate the quantities assigned to each bundle.
+     */
+    quantityTrunc?: MassUnit
 }
