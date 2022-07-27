@@ -32,7 +32,7 @@ export type ProjectSummary = {
     /**
      * The project's Verification Standard Entity name or equivalent organization.
      */
-    registryName: string
+    registryName: ProjectSummary.registry_name
     /**
      * A link to the registry's project details page.
      */
@@ -89,4 +89,18 @@ export type ProjectSummary = {
      * A list of images and videos belonging to the project.
      */
     media?: Array<Media>
+}
+
+export namespace ProjectSummary {
+    /**
+     * The project's Verification Standard Entity name or equivalent organization.
+     */
+    export enum registry_name {
+        AMERICAN_CARBON_REGISTRY = 'American Carbon Registry',
+        VERRA = 'Verra',
+        PURO_EARTH = 'Puro.Earth',
+        GOLD_STANDARD = 'Gold Standard',
+        CLIMATE_ACTION_RESERVE = 'Climate Action Reserve',
+        WOODLAND_CARBON_CODE = 'Woodland Carbon Code',
+    }
 }
