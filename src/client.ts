@@ -12,6 +12,7 @@ import { EmissionEstimatesService } from './services/EmissionEstimatesService.js
 import { OffsetLinksService } from './services/OffsetLinksService.js'
 import { OrdersService } from './services/OrdersService.js'
 import { ProjectsService } from './services/ProjectsService.js'
+import { SustainabilityPageService } from './services/SustainabilityPageService.js'
 import { WebhookRequestService } from './services/WebhookRequestService.js'
 import { WebhooksService } from './services/WebhooksService.js'
 
@@ -67,6 +68,7 @@ applyMixins(LuneClient, [
     OffsetLinksService,
     OrdersService,
     ProjectsService,
+    SustainabilityPageService,
     WebhookRequestService,
     WebhooksService,
 ])
@@ -83,6 +85,7 @@ export interface LuneClient
         OffsetLinksService,
         OrdersService,
         ProjectsService,
+        SustainabilityPageService,
         WebhookRequestService,
         WebhooksService {}
 
@@ -177,7 +180,7 @@ export type { PaginatedOffsetLinks } from './models/PaginatedOffsetLinks.js'
 export type { PaginatedOrders } from './models/PaginatedOrders.js'
 export type { PaginatedProjects } from './models/PaginatedProjects.js'
 export type { Project } from './models/Project.js'
-export type { ProjectSummary } from './models/ProjectSummary.js'
+export { ProjectSummary } from './models/ProjectSummary.js'
 export type { QuantityAndValueTimeseries } from './models/QuantityAndValueTimeseries.js'
 export { RoRoSeaShippingMethod } from './models/RoRoSeaShippingMethod.js'
 export type { SeaShippingMethod } from './models/SeaShippingMethod.js'
@@ -190,6 +193,8 @@ export type { ShippingRoute } from './models/ShippingRoute.js'
 export { SimpleShippingMethod } from './models/SimpleShippingMethod.js'
 export type { SingleShippingEmissionEstimate } from './models/SingleShippingEmissionEstimate.js'
 export type { SourceDestination } from './models/SourceDestination.js'
+export { SustainabilityPage } from './models/SustainabilityPage.js'
+export { SustainabilityPageSection } from './models/SustainabilityPageSection.js'
 export type { Timestamp } from './models/Timestamp.js'
 export type { TransactionEstimateRequest } from './models/TransactionEstimateRequest.js'
 export type { UpdateAccountRequest } from './models/UpdateAccountRequest.js'
@@ -211,5 +216,6 @@ export { EmissionEstimatesService } from './services/EmissionEstimatesService.js
 export { OffsetLinksService } from './services/OffsetLinksService.js'
 export { OrdersService } from './services/OrdersService.js'
 export { ProjectsService } from './services/ProjectsService.js'
+export { SustainabilityPageService } from './services/SustainabilityPageService.js'
 export { WebhookRequestService } from './services/WebhookRequestService.js'
 export { WebhooksService } from './services/WebhooksService.js'

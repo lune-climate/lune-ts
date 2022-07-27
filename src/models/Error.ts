@@ -47,5 +47,8 @@ export namespace Error {
         UNAUTHORISED = 'unauthorised',
         ESTIMATE_NOT_FOUND = 'estimate_not_found',
         ESTIMATE_ORDER_ALREADY_PLACED = 'estimate_order_already_placed',
+        SUSTAINABILITY_PAGE_SLUG_NOT_UNIQUE = 'sustainability_page_slug_not_unique',
+        SUSTAINABILITY_PAGE_EXISTS = 'sustainability_page_exists',
+        PAGINATION_LIMIT_INVALID = 'pagination_limit_invalid',
     }
 }
