@@ -102,6 +102,6 @@ export namespace ProjectSummary {
         GOLD_STANDARD = 'Gold Standard',
         CLIMATE_ACTION_RESERVE = 'Climate Action Reserve',
         WOODLAND_CARBON_CODE = 'Woodland Carbon Code',
-        '' = '',
+        __EMPTY__ = '',
     }
 }
