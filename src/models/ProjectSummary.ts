@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { Media } from './Media'
+import type { Registry } from './Registry'
 
 export type ProjectSummary = {
     /**
@@ -29,10 +30,7 @@ export type ProjectSummary = {
      * The project's offset type, eg Forest conservation, Afforestation, Direct Air Capture
      */
     projectType: string
-    /**
-     * The project's Verification Standard Entity name or equivalent organization.
-     */
-    registryName: ProjectSummary.registry_name
+    registryName: Registry
     /**
      * A link to the registry's project details page.
      */
@@ -89,19 +87,4 @@ export type ProjectSummary = {
      * A list of images and videos belonging to the project.
      */
     media?: Array<Media>
-}
-
-export namespace ProjectSummary {
-    /**
-     * The project's Verification Standard Entity name or equivalent organization.
-     */
-    export enum registry_name {
-        AMERICAN_CARBON_REGISTRY = 'American Carbon Registry',
-        VERRA = 'Verra',
-        PURO_EARTH = 'Puro.Earth',
-        GOLD_STANDARD = 'Gold Standard',
-        CLIMATE_ACTION_RESERVE = 'Climate Action Reserve',
-        WOODLAND_CARBON_CODE = 'Woodland Carbon Code',
-        __EMPTY__ = '',
-    }
 }
