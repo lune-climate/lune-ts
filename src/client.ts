@@ -47,8 +47,15 @@ export class LuneClient {
         this.client = axios.create()
 
         // Convert to camelCase when receiving request
-        this.client.interceptors.response.use((response) => {
-            return { ...response, data: camelCaseKeys(response.data, { deep: true }) }
+        const camelCaseResponse = (response) => ({
+            ...response,
+            data: camelCaseKeys(response.data, { deep: true }),
+        })
+        this.client.interceptors.response.use(camelCaseResponse, (error) => {
+            // There's a separate, slightly different callback for errors.
+            error.response = camelCaseResponse(error.response)
+            // We need to return a rejected promise for it to work nice with axios.
+            return Promise.reject(error)
         })
     }
 
@@ -162,7 +169,9 @@ export { OrderBase } from './models/OrderBase.js'
 export type { OrderBundle } from './models/OrderBundle.js'
 export type { OrderByEstimate } from './models/OrderByEstimate.js'
 export type { OrderByQuantity } from './models/OrderByQuantity.js'
+export type { OrderByQuantityProperties } from './models/OrderByQuantityProperties.js'
 export type { OrderByValue } from './models/OrderByValue.js'
+export type { OrderByValueProperties } from './models/OrderByValueProperties.js'
 export type { OrderEventDetails } from './models/OrderEventDetails.js'
 export type { OrderProject } from './models/OrderProject.js'
 export type { OrderQuoteBase } from './models/OrderQuoteBase.js'
