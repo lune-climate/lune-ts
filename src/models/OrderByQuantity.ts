@@ -3,10 +3,6 @@
 /* eslint-disable */
 
 import type { OrderBase } from './OrderBase'
+import type { OrderByQuantityProperties } from './OrderByQuantityProperties'
 
-export type OrderByQuantity = OrderBase & {
-    /**
-     * Requested quantity of CO2 offsets to purchase in tonnes.
-     */
-    requestedQuantity: string
-}
+export type OrderByQuantity = OrderBase & OrderByQuantityProperties
