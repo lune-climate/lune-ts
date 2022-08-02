@@ -2,7 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { OrderByQuantity } from './OrderByQuantity'
-import type { OrderByValue } from './OrderByValue'
+import type { OrderBase } from './OrderBase'
+import type { OrderByQuantityProperties } from './OrderByQuantityProperties'
+import type { OrderByValueProperties } from './OrderByValueProperties'
 
-export type Order = OrderByQuantity | OrderByValue
+export type Order = OrderBase & (OrderByQuantityProperties | OrderByValueProperties)
