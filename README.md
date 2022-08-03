@@ -98,7 +98,7 @@ see all available. Here are some examples:
 
 Publishing is currently done automatically whenever changes happen in `package.json`. This is usually not done manually. Rather we use one of the provided github workflows to increase the version (major, minor or patch). This will create a PR that bumps the version in package.json and the PR then just needs to be approved and merged.
 
-Commonly you want to publish the client after making changes to the API (adding a new endpoint) etc. After the docs are update with your changes, this should automatically create a PR in **lune-ts** repo. After merging that PR, you should be able to proceed with the rest of the publishing workflow described above:
+Commonly you want to publish the client after making changes to the API (adding a new endpoint) etc. After the docs are updateд with your changes, this should automatically create a PR in **lune-ts** repo. After merging that PR, you should be able to proceed with the rest of the publishing workflow described above:
 <img width="1493" alt="image" src="https://user-images.githubusercontent.com/3956723/182634194-0d55a2e0-3832-4e60-8029-38194f4f5ee5.png">
 
 ## Future work
