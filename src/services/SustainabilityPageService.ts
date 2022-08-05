@@ -139,4 +139,28 @@ export abstract class SustainabilityPageService {
             },
         })
     }
+
+    /**
+     * Get the current account's sustainability page
+     * Get the configuration of the current account's sustainability page.
+     * @param options Additional operation options
+     * @returns SustainabilityPage OK
+     */
+    public getSustainabilityPage(options?: {
+        /**
+         * Account Id to be used to perform the API call
+         */
+        accountId?: string
+    }): Promise<Result<SustainabilityPage, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/sustainability-pages/current-account',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
 }
