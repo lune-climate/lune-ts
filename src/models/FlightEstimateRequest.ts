@@ -13,7 +13,7 @@ import type { MassUnit } from './MassUnit'
  */
 export type FlightEstimateRequest = {
     /**
-     * Either the flying distance or the start/destination airport code (ICAO or IATA).
+     * Either the flight distance or the start/destination airport code (ICAO or IATA).
      */
     route: Distance | AirportSourceDestination
     cabinClass?: CabinClass

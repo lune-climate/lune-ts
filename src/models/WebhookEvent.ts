@@ -26,7 +26,7 @@ export type WebhookEvent = {
      * (in particular you can't depend on them being valid timestamps).
      *
      */
-    sequence?: string
+    sequence: string
     /**
      * Data of the event. On order.* events, this means an Order.
      */

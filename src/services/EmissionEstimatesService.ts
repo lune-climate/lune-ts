@@ -17,6 +17,10 @@ import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
 import type { MultiLegShippingEmissionEstimate } from '../models/MultiLegShippingEmissionEstimate.js'
+import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEstimateRequest.js'
+import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstimateRequest.js'
+import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
+import type { PassengerTransportationEmissionEstimate } from '../models/PassengerTransportationEmissionEstimate.js'
 import type { Shipment } from '../models/Shipment.js'
 import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
 import type { ShippingMethod } from '../models/ShippingMethod.js'
@@ -184,7 +188,7 @@ export abstract class EmissionEstimatesService {
     public createFlightEstimate(
         data: {
             /**
-             * Either the flying distance or the start/destination airport code (ICAO or IATA).
+             * Either the flight distance or the start/destination airport code (ICAO or IATA).
              */
             route: Distance | AirportSourceDestination
             cabinClass?: CabinClass
@@ -213,6 +217,58 @@ export abstract class EmissionEstimatesService {
                 route: data?.route,
                 cabin_class: data?.cabinClass,
                 passengers: data?.passengers,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Create a passenger transportation emission estimate
+     * Estimate emissions produced by passenger transportation, for instance commercial flight, rail, road.
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns PassengerTransportationEmissionEstimate OK
+     */
+    public createPassengerTransportationEstimate(
+        data: {
+            legs: Array<
+                | PassengerRoadEstimateRequest
+                | PassengerRailEstimateRequest
+                | PassengerFlightEstimateRequest
+            >
+            /**
+             * Number of passengers the calculation should be applied to.
+             */
+            passengers?: number
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * Selects to which precision to truncate the quantities assigned to each bundle.
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<PassengerTransportationEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/estimates/passenger-transporation',
+            body: {
+                passengers: data?.passengers,
+                legs: data?.legs,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
             },
@@ -753,6 +809,10 @@ export abstract class EmissionEstimatesService {
              */
             monthlyFurnitureAppliancesExpenses: MonetaryAmount
             /**
+             * Other such as phone, laptops, any other "item" you can think of.
+             */
+            monthlyOtherExpenses: MonetaryAmount
+            /**
              * Annual electricity consumption in kWh
              */
             electricityConsumption: number
@@ -772,10 +832,6 @@ export abstract class EmissionEstimatesService {
              * Average yearly distance travelled per car
              */
             averageCarDistanceTravelled?: Distance
-            /**
-             * Other such as phone, laptops, any other "item" you can think of.
-             */
-            monthlyOtherExpenses?: MonetaryAmount
             bundleSelection?: BundleSelectionRequest
             /**
              * Selects to which precision to truncate the quantities assigned to each bundle.
