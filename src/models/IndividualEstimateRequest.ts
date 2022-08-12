@@ -67,7 +67,7 @@ export type IndividualEstimateRequest = {
     /**
      * Other such as phone, laptops, any other "item" you can think of.
      */
-    monthlyOtherExpenses?: MonetaryAmount
+    monthlyOtherExpenses: MonetaryAmount
     /**
      * Annual electricity consumption in kWh
      */
