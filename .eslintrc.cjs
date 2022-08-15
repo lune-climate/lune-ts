@@ -12,7 +12,7 @@ module.exports = {
     // These are needed for some of the typescript-eslint type-based linting rules like
     // no-unnecessary-condition.
     "tsconfigRootDir": __dirname,
-    "project": ["./tsconfig.json"],
+    "project": ["./tsconfig-esm.json"],
   },
   plugins: ["@typescript-eslint", "simple-import-sort"],
   rules: {
