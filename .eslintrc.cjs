@@ -8,6 +8,11 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 12,
     sourceType: "module",
+
+    // These are needed for some of the typescript-eslint type-based linting rules like
+    // no-unnecessary-condition.
+    "tsconfigRootDir": __dirname,
+    "project": ["./tsconfig-esm.json"],
   },
   plugins: ["@typescript-eslint", "simple-import-sort"],
   rules: {
@@ -22,6 +27,7 @@ module.exports = {
     ],
     "no-useless-constructor": "off",
     "no-unused-vars": "off",
+    '@typescript-eslint/no-unnecessary-condition': ['error'],
     "@typescript-eslint/no-useless-constructor": ["error"],
     "@typescript-eslint/no-unused-vars": [
       "error",
