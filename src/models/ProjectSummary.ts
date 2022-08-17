@@ -86,5 +86,5 @@ export type ProjectSummary = {
     /**
      * A list of images and videos belonging to the project.
      */
-    media?: Array<Media>
+    media: Array<Media>
 }
