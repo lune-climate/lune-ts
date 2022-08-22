@@ -1,6 +1,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AccountType } from '../models/AccountType.js'
+import type { PublicSustainabilityPage } from '../models/PublicSustainabilityPage.js'
 import type { SustainabilityPage } from '../models/SustainabilityPage.js'
 import type { SustainabilityPageSection } from '../models/SustainabilityPageSection.js'
 
@@ -158,6 +160,39 @@ export abstract class SustainabilityPageService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get a sustainability page
+     * Get the current account's public sustainability summary info.
+     * @param type The type of the sustainability page.
+     * @param slug The slug of the sustainability page.
+     * @param options Additional operation options
+     * @returns PublicSustainabilityPage OK
+     */
+    public getPublicSustainabilityPage(
+        type: AccountType,
+        slug: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<PublicSustainabilityPage, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/sustainability-pages/{type}/{slug}',
+            path: {
+                type: type,
+                slug: slug,
+            },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
                 404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
             },

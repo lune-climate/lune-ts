@@ -3,11 +3,9 @@
 /* eslint-disable */
 
 import type { CurrencyCode } from './CurrencyCode'
+import type { MonetaryAmountValue } from './MonetaryAmountValue'
 
 export type MonetaryAmount = {
-    /**
-     * An amount of money (the fractional part is optional)
-     */
-    value: string
+    value: MonetaryAmountValue
     currency: CurrencyCode
 }
