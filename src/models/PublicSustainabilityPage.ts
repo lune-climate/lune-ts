@@ -92,6 +92,15 @@ export type PublicSustainabilityPage = {
              * The bundle's description
              */
             description?: string
+            /**
+             * Offset type classification
+             *
+             */
+            offsetType?: 'emissions_reduction' | 'carbon_removal'
+            /**
+             * The bundle's carbon storage permanence.
+             */
+            carbonPermanence?: 'long_term' | 'short_term'
         }
     }>
     /**
