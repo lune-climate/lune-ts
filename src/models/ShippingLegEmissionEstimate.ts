@@ -13,5 +13,5 @@ export type ShippingLegEmissionEstimate = EmissionEstimate & {
      * `imo_unavailable_container_ship_fallback`: the vessel IMO was not found, therefore a generic container ship emission factor has been used.
      *
      */
-    methodology?: Array<'imo_unavailable_container_ship_fallback'>
+    methodology: Array<'imo_unavailable_container_ship_fallback'>
 }
