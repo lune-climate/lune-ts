@@ -2,8 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Distance } from './Distance'
+import type { EmissionEstimateResponse } from './EmissionEstimateResponse'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
-import type { SingleShippingEmissionEstimate } from './SingleShippingEmissionEstimate'
 
 /**
  * An emission estimate result for a transport involving multiple legs.
@@ -19,4 +20,5 @@ import type { SingleShippingEmissionEstimate } from './SingleShippingEmissionEst
  */
 export type MultiLegShippingEmissionEstimate = {
     legs: Array<ShippingLegEmissionEstimate>
-} & SingleShippingEmissionEstimate
+    distance: Distance
+} & EmissionEstimateResponse
