@@ -14,27 +14,27 @@ export type PublicSustainabilityPage = {
      */
     title:
         | {
-              format?: PublicSustainabilityPage.format
-              currency?: CurrencyCode
-              value?: MonetaryAmountValue
+              format: PublicSustainabilityPage.format
+              currency: CurrencyCode
+              value: MonetaryAmountValue
           }
         | {
-              format?: PublicSustainabilityPage.format
+              format: PublicSustainabilityPage.format
               /**
                * The total quantity of tCO2 offset by all completed orders.
                */
-              quantity?: string
+              quantity: string
           }
     description?:
         | {
-              format?: PublicSustainabilityPage.format
+              format: PublicSustainabilityPage.format
               /**
                * The number of one-way flights from NYC to London the emissions of which are an equivalent to the CO2 reduction.
                */
-              flightsNycToLondon?: number
+              flightsNycToLondon: number
           }
         | {
-              format?: PublicSustainabilityPage.format
+              format: PublicSustainabilityPage.format
               /**
                * The number of supported UN Sustainable Development Goals (SDGs).
                */
@@ -42,15 +42,23 @@ export type PublicSustainabilityPage = {
               /**
                * The number of supported carbon offset projects.
                */
-              numberOfProjects?: number
+              numberOfProjects: number
           }
         | {
-              format?: PublicSustainabilityPage.format
+              format: PublicSustainabilityPage.format
               /**
                * The custom description of the sustainability page provided in the configuration.
                */
-              customDescription?: string
+              customDescription: string
           }
+    /**
+     * The sustainability page logo URL.
+     */
+    logo?: string
+    /**
+     * The name of the account for which the sustainability page is generated.
+     */
+    accountName: string
     /**
      * Whether to include the certificates section in the sustainability page.
      */
