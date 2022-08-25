@@ -38,7 +38,7 @@ export type PublicSustainabilityPage = {
               /**
                * The number of supported UN Sustainable Development Goals (SDGs).
                */
-              numberOfUnSdgs?: number
+              numberOfUnSdgs: number
               /**
                * The number of supported carbon offset projects.
                */
