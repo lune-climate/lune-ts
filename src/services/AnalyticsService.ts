@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Analytics } from '../models/Analytics.js'
+import type { AnalyticsMetrics } from '../models/AnalyticsMetrics.js'
 import type { CumulativeBundleAnalytics } from '../models/CumulativeBundleAnalytics.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -88,6 +89,28 @@ export abstract class AnalyticsService {
                 from: data?.from,
                 through: data?.through,
             },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get metrics
+     * @param options Additional operation options
+     * @returns AnalyticsMetrics OK
+     */
+    public getMetrics(options?: {
+        /**
+         * Account Id to be used to perform the API call
+         */
+        accountId?: string
+    }): Promise<Result<AnalyticsMetrics, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/analytics/metrics',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
