@@ -2,15 +2,33 @@
   "name": "@lune-climate/lune",
   "version": "2.1.0",
   "description": "Lune Typescript Client",
-  "main": "dist/client.js",
-  "types": "dist/client.d.ts",
+  "main": "cjs/client.js",
+  "module": "esm/client.js",
+  "types": "esm/client.d.ts",
+  "exports": {
+    ".": {
+      "import": "./esm/client.js",
+      "require": "./cjs/client.js"
+    }
+  },
+  "keywords": [
+    "Lune"
+  ],
+  "author": "Lune Climate",
+  "license": "MIT",
+  "homepage": "https://docs.lune.co/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lune-climate/lune-ts"
+  },
+  "readme": "README.md",
   "scripts": {
     "build": "npm run clean && npm run build:ts && npm run build:copy",
     "build:ts": "npm run build:ts:esm && npm run build:ts:cjs",
     "build:ts:reverse": "npm run build:ts:esm && npm run build:ts:cjs",
     "build:ts:cjs": "tsc -p tsconfig-cjs.json",
     "build:ts:esm": "tsc -p tsconfig-esm.json",
-    "build:copy": "cp README_DIST.md dist/README.md && cp LICENSE dist && cp src/package.json dist && cp package-cjs.json dist/cjs/package.json && cp package-esm.json dist/esm/package.json",
+    "build:copy": "cp README_DIST.md dist/README.md && cp LICENSE dist && cp package.json dist && cp package-cjs.json dist/cjs/package.json && cp package-esm.json dist/esm/package.json",
     "clean": "rm -rf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "prettier": "prettier --check \"src/**/*.ts\"",
@@ -18,11 +36,6 @@
     "check-format": "npm run eslint && npm run prettier",
     "fix-format": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
   },
-  "keywords": [
-    "Lune"
-  ],
-  "author": "Lune Climate",
-  "license": "MIT",
   "dependencies": {
     "axios": "^0.21.1",
     "camelcase-keys": "^6.2.2",
