@@ -22,7 +22,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
-          commit-message: Client auto update
+          commit-message: Bump version (minor)
           committer: GitHub <noreply@github.com>
           author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
           signoff: false
