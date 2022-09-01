@@ -34,7 +34,7 @@ export type ProjectSummary = {
     /**
      * A link to the registry's project details page.
      */
-    registryLink?: string
+    registryLink: string | null
     /**
      * Latitude
      */
@@ -54,30 +54,30 @@ export type ProjectSummary = {
     /**
      * The project's region
      */
-    region?: string
+    region: string | null
     /**
      * A project logo image URL
      */
-    logo?: string
+    logo: string | null
     /**
      * A project image URL
      */
-    primaryImage?: string
+    primaryImage: string | null
     /**
      * A project thumbnail image URL
      */
-    thumbnailImage?: string
+    thumbnailImage: string | null
     /**
      * Project results
      */
-    results?: Array<string>
+    results: Array<string> | null
     /**
      * UN Sustainable Development Goals.
      *
      * Each number in the array represent one UN Sustainable Development Goal. See https://sdgs.un.org/goals.
      *
      */
-    unSdg?: Array<number>
+    unSdg: Array<number> | null
     /**
      * Disabled projects do not get allocated to orders
      *

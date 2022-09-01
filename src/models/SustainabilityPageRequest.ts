@@ -9,11 +9,11 @@ import type { SustainabilityPageSlug } from './SustainabilityPageSlug'
 import type { SustainabilityPageStatus } from './SustainabilityPageStatus'
 import type { SustainabilityPageTitle } from './SustainabilityPageTitle'
 
-export type SustainabilityPage = {
+export type SustainabilityPageRequest = {
     status: SustainabilityPageStatus
     slug: SustainabilityPageSlug
     title: SustainabilityPageTitle
-    description: SustainabilityPageDescription | string | null
-    customDescription: SustainabilityPageCustomDescription | null
-    sections: SustainabilityPageSections | null
+    description?: SustainabilityPageDescription
+    customDescription?: SustainabilityPageCustomDescription
+    sections: SustainabilityPageSections
 }

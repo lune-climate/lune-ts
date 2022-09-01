@@ -14,11 +14,11 @@ export type Media = {
     /**
      * A short description of where the image or video was sourced
      */
-    attributionText?: string
+    attributionText: string | null
     /**
      * A URL pointing to where the image or video was sourced
      */
-    attributionUrl?: string
+    attributionUrl: string | null
 }
 
 export namespace Media {

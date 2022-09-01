@@ -3,7 +3,6 @@
 /* eslint-disable */
 import type { Account } from '../models/Account.js'
 import type { AccountPair } from '../models/AccountPair.js'
-import type { AccountType } from '../models/AccountType.js'
 import type { CurrencyCode } from '../models/CurrencyCode.js'
 import type { PaginatedAccounts } from '../models/PaginatedAccounts.js'
 
@@ -110,10 +109,6 @@ export abstract class AccountsService {
              */
             after?: string
             /**
-             * Filter accounts based on type.
-             */
-            type?: AccountType
-            /**
              * Filter accounts based on name (case insensitive).
              * The value can appear at the beggining, middle or end on the actual account name.
              */
@@ -132,7 +127,6 @@ export abstract class AccountsService {
             query: {
                 limit: data?.limit,
                 after: data?.after,
-                type: data?.type,
                 name: data?.name,
             },
             errors: {

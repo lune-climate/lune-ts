@@ -4,7 +4,12 @@
 import type { AccountType } from '../models/AccountType.js'
 import type { PublicSustainabilityPage } from '../models/PublicSustainabilityPage.js'
 import type { SustainabilityPage } from '../models/SustainabilityPage.js'
-import type { SustainabilityPageSection } from '../models/SustainabilityPageSection.js'
+import type { SustainabilityPageCustomDescription } from '../models/SustainabilityPageCustomDescription.js'
+import type { SustainabilityPageDescription } from '../models/SustainabilityPageDescription.js'
+import type { SustainabilityPageSections } from '../models/SustainabilityPageSections.js'
+import type { SustainabilityPageSlug } from '../models/SustainabilityPageSlug.js'
+import type { SustainabilityPageStatus } from '../models/SustainabilityPageStatus.js'
+import type { SustainabilityPageTitle } from '../models/SustainabilityPageTitle.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -25,30 +30,12 @@ export abstract class SustainabilityPageService {
      */
     public createSustainabilityPage(
         data: {
-            /**
-             * The sustainability page status which determines whether it is visible to the public.
-             */
-            status: 'enabled' | 'disabled'
-            /**
-             * The sustainability page slug. The slug is used to identify the page publicly and should be unique.
-             */
-            slug: string
-            /**
-             * The sustainability page title stat format.
-             */
-            title: 'by_volume' | 'by_price'
-            /**
-             * The sustainability page sections that will be displayed in the page. Only a single instance of each section type is allowed and the order is irrelevant.
-             */
-            sections: Array<SustainabilityPageSection>
-            /**
-             * The sustainability page description format consisting of stat equivalents or a custom description.
-             */
-            description?: 'by_equivalent' | 'by_supported_goals' | 'by_custom_description'
-            /**
-             * The sustainability page custom description. Only displayed when `description` is set to `by_custom_description`.
-             */
-            customDescription?: string
+            status: SustainabilityPageStatus
+            slug: SustainabilityPageSlug
+            title: SustainabilityPageTitle
+            sections: SustainabilityPageSections
+            description?: SustainabilityPageDescription
+            customDescription?: SustainabilityPageCustomDescription
         },
         options?: {
             /**
@@ -88,30 +75,12 @@ export abstract class SustainabilityPageService {
      */
     public updateSustainabilityPage(
         data: {
-            /**
-             * The sustainability page status which determines whether it is visible to the public.
-             */
-            status: 'enabled' | 'disabled'
-            /**
-             * The sustainability page slug. The slug is used to identify the page publicly and should be unique.
-             */
-            slug: string
-            /**
-             * The sustainability page title stat format.
-             */
-            title: 'by_volume' | 'by_price'
-            /**
-             * The sustainability page sections that will be displayed in the page. Only a single instance of each section type is allowed and the order is irrelevant.
-             */
-            sections: Array<SustainabilityPageSection>
-            /**
-             * The sustainability page description format consisting of stat equivalents or a custom description.
-             */
-            description?: 'by_equivalent' | 'by_supported_goals' | 'by_custom_description'
-            /**
-             * The sustainability page custom description. Only displayed when `description` is set to `by_custom_description`.
-             */
-            customDescription?: string
+            status: SustainabilityPageStatus
+            slug: SustainabilityPageSlug
+            title: SustainabilityPageTitle
+            sections: SustainabilityPageSections
+            description?: SustainabilityPageDescription
+            customDescription?: SustainabilityPageCustomDescription
         },
         options?: {
             /**

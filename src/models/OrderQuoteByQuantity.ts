@@ -12,4 +12,8 @@ export type OrderQuoteByQuantity = OrderQuoteBase & {
      *
      */
     requestedQuantity: string
+    /**
+     * Requested value of CO2 offsets to purchase in the account's currency.
+     */
+    requestedValue: string | null
 }

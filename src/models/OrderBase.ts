@@ -22,7 +22,7 @@ export type OrderBase = {
      * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
      *
      */
-    idempotencyKey?: string
+    idempotencyKey: string | null
     /**
      * Identifies whether the order has been placed by quantity (kg CO2) or value (monetary amount)
      */
@@ -42,14 +42,14 @@ export type OrderBase = {
      * Unit: order currency
      *
      */
-    offsetCost?: string
+    offsetCost: string | null
     /**
      * The total cost for the order inclusive of fees.
      *
      * Unit: order currency
      *
      */
-    totalCost?: string
+    totalCost: string | null
     /**
      * Lune's fee.
      *
@@ -57,11 +57,11 @@ export type OrderBase = {
      * Unit: order currency
      *
      */
-    commission?: string
+    commission: string | null
     /**
      * Quantity of CO2 offsets purchased in tonnes.
      */
-    quantity?: string
+    quantity: string | null
     /**
      * Order creation timestamp
      */
@@ -72,7 +72,7 @@ export type OrderBase = {
      * The bundles associated with the order including their relative quantity and cost breakdown.
      *
      */
-    bundles?: Array<OrderBundle>
+    bundles: Array<OrderBundle> | null
     /**
      * Projects are set when the order's status is `retiring` or `complete`.
      *
@@ -83,26 +83,26 @@ export type OrderBase = {
      * This property is set as soon as we can guarantee project supply.
      *
      */
-    projects?: Array<OrderProject>
+    projects: Array<OrderProject> | null
     /**
      * Carbon credits certificate URL.
      *
      * This property is set when an order has state 'complete'
      *
      */
-    certificate?: string
+    certificate: string | null
     metadata: Metadata
     /**
      * The offset link identifier, if the order was placed through an offset link
      */
-    offsetLinkId?: string
+    offsetLinkId: string | null
     /**
      * End-user email.
      *
      * This property is currently populated on orders placed through offset links.
      *
      */
-    email?: string
+    email: string | null
 }
 
 export namespace OrderBase {
