@@ -25,36 +25,39 @@ export type PublicSustainabilityPage = {
                */
               quantity: string
           }
-    description?:
-        | {
-              format: PublicSustainabilityPage.format
-              /**
-               * The number of one-way flights from NYC to London the emissions of which are an equivalent to the CO2 reduction.
-               */
-              flightsNycToLondon: number
-          }
-        | {
-              format: PublicSustainabilityPage.format
-              /**
-               * The number of supported UN Sustainable Development Goals (SDGs).
-               */
-              numberOfUnSdgs: number
-              /**
-               * The number of supported carbon offset projects.
-               */
-              numberOfProjects: number
-          }
-        | {
-              format: PublicSustainabilityPage.format
-              /**
-               * The custom description of the sustainability page provided in the configuration.
-               */
-              customDescription: string
-          }
+    description:
+        | (
+              | {
+                    format: PublicSustainabilityPage.format
+                    /**
+                     * The number of one-way flights from NYC to London the emissions of which are an equivalent to the CO2 reduction.
+                     */
+                    flightsNycToLondon: number
+                }
+              | {
+                    format: PublicSustainabilityPage.format
+                    /**
+                     * The number of supported UN Sustainable Development Goals (SDGs).
+                     */
+                    numberOfUnSdgs: number
+                    /**
+                     * The number of supported carbon offset projects.
+                     */
+                    numberOfProjects: number
+                }
+              | {
+                    format: PublicSustainabilityPage.format
+                    /**
+                     * The custom description of the sustainability page provided in the configuration.
+                     */
+                    customDescription: string
+                }
+          )
+        | null
     /**
      * The sustainability page logo URL.
      */
-    logo?: string
+    logo: string | null
     /**
      * The name of the account for which the sustainability page is generated.
      */
@@ -66,7 +69,7 @@ export type PublicSustainabilityPage = {
     /**
      * The sustainability page bundle percentages and details.
      */
-    bundles?: Array<{
+    bundles: Array<{
         /**
          * The volume of emissions offset via this bundle as a percentage of all offset emissions.
          */
@@ -83,38 +86,38 @@ export type PublicSustainabilityPage = {
             /**
              * A bundle's background colour in hexadecimal format
              */
-            backgroundColour?: string
+            backgroundColour: string | null
             /**
              * A bundle's image URL
              */
-            primaryImage?: string
+            primaryImage: string | null
             /**
              * A bundle's high resolution image URL
              */
-            primaryImageHires?: string
+            primaryImageHires: string | null
             /**
              * A bundle's small thumbnail image URL
              */
-            smallThumbnail?: string
+            smallThumbnail: string | null
             /**
              * The bundle's description
              */
-            description?: string
+            description: string | null
             /**
              * Offset type classification
              *
              */
-            offsetType?: 'emissions_reduction' | 'carbon_removal'
+            offsetType: 'emissions_reduction' | 'carbon_removal' | null
             /**
              * The bundle's carbon storage permanence.
              */
-            carbonPermanence?: 'long_term' | 'short_term'
+            carbonPermanence: 'long_term' | 'short_term' | null
         }
-    }>
+    }> | null
     /**
      * The list of UN Sustainable Development Goals (SDGs) supported by various projects.
      */
-    unSdg?: Array<{
+    unSdg: Array<{
         /**
          * The number which identifies the specific UN SDG.
          */
@@ -123,7 +126,7 @@ export type PublicSustainabilityPage = {
          * The total number of projects supporting this UN SDG.
          */
         occurrences: number
-    }>
+    }> | null
 }
 
 export namespace PublicSustainabilityPage {

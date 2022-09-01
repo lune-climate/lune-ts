@@ -44,7 +44,7 @@ export type AccountBase = {
      * This is the logo URL that appears on the first screen of the offset links flow.
      *
      */
-    logo?: string
+    logo: string | null
     /**
      * Retirement beneficiary
      *
@@ -52,9 +52,9 @@ export type AccountBase = {
      * If none is present, the organisation beneficiary will be used instead.
      *
      */
-    beneficiary?: string
+    beneficiary: string | null
     /**
      * Bundle mix id tied to the account.
      */
-    bundleMixId?: string
+    bundleMixId: string | null
 }

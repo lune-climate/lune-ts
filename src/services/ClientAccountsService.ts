@@ -87,10 +87,6 @@ export abstract class ClientAccountsService {
              */
             after?: string
             /**
-             * Filter accounts based on type.
-             */
-            type?: AccountType
-            /**
              * Filter accounts based on name (case insensitive).
              *
              * The value can appear at the beggining, middle or end on the actual account name.
@@ -111,7 +107,6 @@ export abstract class ClientAccountsService {
             query: {
                 limit: data?.limit,
                 after: data?.after,
-                type: data?.type,
                 name: data?.name,
             },
             errors: {

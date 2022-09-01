@@ -40,5 +40,5 @@ export type OrderBundle = {
      * If true, there is no inventory necessary to fully satisfy the order for this bundle.
      *
      */
-    insufficientAvailableQuantity?: boolean
+    insufficientAvailableQuantity: boolean | null
 }

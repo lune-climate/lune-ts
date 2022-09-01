@@ -28,23 +28,23 @@ export type BundleSummary = {
     /**
      * A bundle's background colour in hexadecimal format
      */
-    backgroundColour?: string
+    backgroundColour: string | null
     /**
      * A bundle's image URL
      */
-    primaryImage?: string
+    primaryImage: string | null
     /**
      * A bundle's high resolution image URL
      */
-    primaryImageHires?: string
+    primaryImageHires: string | null
     /**
      * A bundle's small thumbnail image URL
      */
-    smallThumbnail?: string
+    smallThumbnail: string | null
     /**
      * The bundle's description
      */
-    description?: string
+    description: string | null
     /**
      * Disabled bundles do not accept orders
      *
@@ -56,16 +56,16 @@ export type BundleSummary = {
      * If available_quantity is not set, assume there is an unlimited amount of offsets to purchase.
      *
      */
-    availableQuantity?: string
+    availableQuantity: string | null
     /**
      * Offset type classification
      *
      */
-    offsetType?: BundleSummary.offset_type
+    offsetType: BundleSummary.offset_type | null
     /**
      * The bundle's carbon storage permanence.
      */
-    carbonPermanence?: BundleSummary.carbon_permanence
+    carbonPermanence: BundleSummary.carbon_permanence | null
 }
 
 export namespace BundleSummary {
