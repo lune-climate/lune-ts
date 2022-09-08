@@ -41,17 +41,14 @@ build-from-source: install check-linting build
 
 patch-version:
 	npm --no-git-tag-version version patch
-	cd src && npm --no-git-tag-version version patch
 	npm ci
 
 minor-version:
 	npm --no-git-tag-version version minor
-	cd src && npm --no-git-tag-version version minor
 	npm ci
 
 major-version:
 	npm --no-git-tag-version version major
-	cd src && npm --no-git-tag-version version major
 	npm ci
 
 publish:
