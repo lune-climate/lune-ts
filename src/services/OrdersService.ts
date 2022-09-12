@@ -225,30 +225,6 @@ export abstract class OrdersService {
              */
             after?: string
             /**
-             * Account ids used to filter the orders.
-             *
-             * When omitted, the API Key's default account or Lune-Account's header is used.
-             *
-             */
-            accountId?: Array<string>
-            /**
-             * Return orders created on or after `from`.
-             *
-             */
-            from?: string
-            /**
-             * Return orders created on or before `through`.
-             *
-             */
-            through?: string
-            /**
-             * Order statuses used to filter the orders.
-             *
-             */
-            status?: Array<
-                'received' | 'placed' | 'paid' | 'retiring' | 'cancelled' | 'complete' | 'failed'
-            >
-            /**
              * Filter orders by offset_link_id.
              *
              * If offset_link_id is set, the response will only include orders belonging to the particular offset link.
@@ -269,10 +245,6 @@ export abstract class OrdersService {
             query: {
                 limit: data?.limit,
                 after: data?.after,
-                account_id: data?.accountId,
-                from: data?.from,
-                through: data?.through,
-                status: data?.status,
                 offset_link_id: data?.offsetLinkId,
             },
             errors: {
