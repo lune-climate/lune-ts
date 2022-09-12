@@ -27,7 +27,6 @@ export namespace Error {
      */
     export enum error_code {
         ACCOUNT_SUSPENDED = 'account_suspended',
-        INVALID_SELECTED_ACCOUNT_ID = 'invalid_selected_account_id',
         BUNDLE_SELECTION_RATIOS_INVALID = 'bundle_selection_ratios_invalid',
         BUNDLE_SELECTION_BUNDLE_INVALID = 'bundle_selection_bundle_invalid',
         ORDER_IDEMPOTENCY_ALREADY_EXISTS = 'order_idempotency_already_exists',
