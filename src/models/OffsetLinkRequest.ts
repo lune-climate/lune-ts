@@ -30,7 +30,7 @@ export type OffsetLinkRequest = {
     /**
      * The bundle ids selected for use through the particular offset link.
      */
-    bundles?: Array<string>
+    bundles: Array<string>
     value?: Money
     /**
      * The email addresses of users that are allowed to use the offset link.
