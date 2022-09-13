@@ -187,6 +187,10 @@ export abstract class OffsetLinksService {
              */
             name: string
             /**
+             * The bundle ids selected for use through the particular offset link.
+             */
+            bundles: Array<string>
+            /**
              * Whether to include the Offset link logo (defined in Account settings) in the footer.
              *
              */
@@ -205,10 +209,6 @@ export abstract class OffsetLinksService {
              *
              */
             description?: string
-            /**
-             * The bundle ids selected for use through the particular offset link.
-             */
-            bundles?: Array<string>
             value?: Money
             /**
              * The email addresses of users that are allowed to use the offset link.

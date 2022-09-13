@@ -265,7 +265,7 @@ export abstract class EmissionEstimatesService {
     ): Promise<Result<PassengerTransportationEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
-            url: '/estimates/passenger-transporation',
+            url: '/estimates/passenger-transportation',
             body: {
                 passengers: data?.passengers,
                 legs: data?.legs,
