@@ -166,6 +166,7 @@ export abstract class OffsetLinksService {
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
