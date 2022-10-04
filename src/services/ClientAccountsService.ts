@@ -1,7 +1,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { AccountType } from '../models/AccountType.js'
 import type { ClientAccount } from '../models/ClientAccount.js'
 import type { CurrencyCode } from '../models/CurrencyCode.js'
 import type { PaginatedClientAccounts } from '../models/PaginatedClientAccounts.js'
@@ -32,7 +31,6 @@ export abstract class ClientAccountsService {
              * The account currency.
              */
             currency: CurrencyCode
-            type: AccountType
             /**
              * The account beneficiary.
              */
@@ -51,7 +49,6 @@ export abstract class ClientAccountsService {
             body: {
                 name: data?.name,
                 currency: data?.currency,
-                type: data?.type,
                 beneficiary: data?.beneficiary,
             },
             mediaType: 'application/json',
