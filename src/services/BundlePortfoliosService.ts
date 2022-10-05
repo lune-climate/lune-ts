@@ -9,16 +9,16 @@ import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
-export abstract class BundleMixesService {
+export abstract class BundlePortfoliosService {
     protected abstract client: AxiosInstance
     protected abstract config: ClientConfig
 
     /**
-     * List all bundle mixes
+     * List all bundle portfolios
      * @param options Additional operation options
      * @returns BundlePortfolio OK
      */
-    public listAllBundleMixes(options?: {
+    public listAllBundlePortfolios(options?: {
         /**
          * Account Id to be used to perform the API call
          */
@@ -26,7 +26,7 @@ export abstract class BundleMixesService {
     }): Promise<Result<Array<BundlePortfolio>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
-            url: '/bundle-mixes',
+            url: '/bundle-portfolios',
             errors: {
                 401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,

@@ -9,17 +9,17 @@ import type { BundleSelection } from './BundleSelection'
  * Bundle selection for a particular Bundle mix may change over time.
  *
  */
-export type BundleMix = {
+export type BundlePortfolio = {
     /**
      * Bundle mix unique identifier.
      */
     id: string
     /**
-     * Identifier of the bundle mix.
+     * Identifier of the bundle portfolio.
      */
     identifier: string
     /**
-     * Human readable name of the bundle mix.
+     * Human readable name of the bundle portfolio.
      */
     label: string
     bundleSelection: BundleSelection

@@ -6,6 +6,7 @@ import { AccountsService } from './services/AccountsService.js'
 import { ActivityService } from './services/ActivityService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
 import { BundleMixesService } from './services/BundleMixesService.js'
+import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
 import { ClientAccountsService } from './services/ClientAccountsService.js'
 import { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
@@ -62,6 +63,7 @@ applyMixins(LuneClient, [
     ActivityService,
     AnalyticsService,
     BundleMixesService,
+    BundlePortfoliosService,
     BundleSelectionsService,
     ClientAccountsService,
     EmissionEstimatesService,
@@ -79,6 +81,7 @@ export interface LuneClient
         ActivityService,
         AnalyticsService,
         BundleMixesService,
+        BundlePortfoliosService,
         BundleSelectionsService,
         ClientAccountsService,
         EmissionEstimatesService,
@@ -103,9 +106,9 @@ export type { AnalyticsByBundle } from './models/AnalyticsByBundle.js'
 export type { AnalyticsMetrics } from './models/AnalyticsMetrics.js'
 export { Area } from './models/Area.js'
 export type { Bundle } from './models/Bundle.js'
-export type { BundleMix } from './models/BundleMix.js'
 export type { BundlePercentage } from './models/BundlePercentage.js'
 export type { BundlePercentageRequest } from './models/BundlePercentageRequest.js'
+export type { BundlePortfolio } from './models/BundlePortfolio.js'
 export type { BundleSelection } from './models/BundleSelection.js'
 export type { BundleSelectionRequest } from './models/BundleSelectionRequest.js'
 export { BundleSummary } from './models/BundleSummary.js'
@@ -227,6 +230,7 @@ export { AccountsService } from './services/AccountsService.js'
 export { ActivityService } from './services/ActivityService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'
 export { BundleMixesService } from './services/BundleMixesService.js'
+export { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
 export { ClientAccountsService } from './services/ClientAccountsService.js'
 export { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
