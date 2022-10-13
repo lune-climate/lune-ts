@@ -11,7 +11,9 @@ import type { CompanyOnPremiseUse } from '../models/CompanyOnPremiseUse.js'
 import type { Diet } from '../models/Diet.js'
 import type { Distance } from '../models/Distance.js'
 import type { ElectricityConsumption } from '../models/ElectricityConsumption.js'
-import type { EmissionEstimateResponse } from '../models/EmissionEstimateResponse.js'
+import type { ElectricityEmissionEstimate } from '../models/ElectricityEmissionEstimate.js'
+import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
+import type { IndividualEmissionEstimate } from '../models/IndividualEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
 import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
@@ -26,6 +28,7 @@ import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
 import type { ShippingMethod } from '../models/ShippingMethod.js'
 import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
+import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -42,7 +45,7 @@ export abstract class EmissionEstimatesService {
      * Estimate emissions produced by electricity consumption.
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse OK
+     * @returns ElectricityEmissionEstimate OK
      */
     public createElectricityEstimate(
         data: {
@@ -67,7 +70,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+    ): Promise<Result<ElectricityEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/electricity',
@@ -93,7 +96,7 @@ export abstract class EmissionEstimatesService {
      * Get an electricity emission estimate
      * @param id The estimate's unique identifier
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse OK
+     * @returns ElectricityEmissionEstimate OK
      */
     public getElectricityEstimate(
         id: string,
@@ -103,7 +106,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+    ): Promise<Result<ElectricityEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/electricity/{id}',
@@ -125,7 +128,7 @@ export abstract class EmissionEstimatesService {
      * @param id The estimate's unique identifier
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse Estimation updated successfully.
+     * @returns ElectricityEmissionEstimate Estimation updated successfully.
      *
      */
     public updateElectricityEstimate(
@@ -152,7 +155,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+    ): Promise<Result<ElectricityEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/electricity/{id}',
@@ -183,7 +186,7 @@ export abstract class EmissionEstimatesService {
      * Estimate emissions produced by passengers in a commercial airflight.
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse OK
+     * @returns FlightEmissionEstimate OK
      */
     public createFlightEstimate(
         data: {
@@ -209,7 +212,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+    ): Promise<Result<FlightEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/flight',
@@ -551,7 +554,7 @@ export abstract class EmissionEstimatesService {
      * Create a transaction emission estimate
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse OK
+     * @returns TransactionEmissionEstimate OK
      */
     public createTransactionEstimate(
         data: {
@@ -579,7 +582,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+    ): Promise<Result<TransactionEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/transactions',
@@ -763,7 +766,7 @@ export abstract class EmissionEstimatesService {
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns EmissionEstimateResponse OK
+     * @returns IndividualEmissionEstimate OK
      */
     public createIndividualEstimate(
         data: {
@@ -844,7 +847,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionEstimateResponse, ApiError>> {
+    ): Promise<Result<IndividualEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/individual',

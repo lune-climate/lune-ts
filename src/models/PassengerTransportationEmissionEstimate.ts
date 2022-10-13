@@ -4,6 +4,7 @@
 
 import type { EmissionEstimate } from './EmissionEstimate'
 import type { OrderQuoteByQuantity } from './OrderQuoteByQuantity'
+import type { PassengerTransportationEstimateRequest } from './PassengerTransportationEstimateRequest'
 
 /**
  * An emission estimate result for passenger transport involving multiple legs.
@@ -24,4 +25,5 @@ export type PassengerTransportationEmissionEstimate = EmissionEstimate & {
     id: string
     legs: Array<EmissionEstimate>
     quote: OrderQuoteByQuantity
+    request: PassengerTransportationEstimateRequest
 }

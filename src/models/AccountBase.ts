@@ -54,7 +54,7 @@ export type AccountBase = {
      */
     beneficiary: string | null
     /**
-     * Bundle mix id tied to the account.
+     * Bundle portfolio id tied to the account.
      */
-    bundleMixId: string | null
+    bundlePortfolioId: string | null
 }

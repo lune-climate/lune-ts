@@ -33,4 +33,36 @@ export abstract class BundlePortfoliosService {
             },
         })
     }
+
+    /**
+     * Update an account's bundle portfolio
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns BundlePortfolio OK
+     */
+    public updateBundlePortfolio(
+        data: {
+            bundlePortfolioId: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<BundlePortfolio, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PUT',
+            url: '/bundle-portfolios',
+            body: {
+                bundle_portfolio_id: data?.bundlePortfolioId,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
 }

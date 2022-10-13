@@ -5,7 +5,6 @@ import { ClientConfig } from './core/ClientConfig'
 import { AccountsService } from './services/AccountsService.js'
 import { ActivityService } from './services/ActivityService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
-import { BundleMixesService } from './services/BundleMixesService.js'
 import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
 import { ClientAccountsService } from './services/ClientAccountsService.js'
@@ -62,7 +61,6 @@ applyMixins(LuneClient, [
     AccountsService,
     ActivityService,
     AnalyticsService,
-    BundleMixesService,
     BundlePortfoliosService,
     BundleSelectionsService,
     ClientAccountsService,
@@ -80,7 +78,6 @@ export interface LuneClient
     extends AccountsService,
         ActivityService,
         AnalyticsService,
-        BundleMixesService,
         BundlePortfoliosService,
         BundleSelectionsService,
         ClientAccountsService,
@@ -131,17 +128,20 @@ export type { CurrencyCode } from './models/CurrencyCode.js'
 export { Diet } from './models/Diet.js'
 export { Distance } from './models/Distance.js'
 export { ElectricityConsumption } from './models/ElectricityConsumption.js'
+export type { ElectricityEmissionEstimate } from './models/ElectricityEmissionEstimate.js'
 export type { ElectricityEstimateRequest } from './models/ElectricityEstimateRequest.js'
 export type { EmissionEstimate } from './models/EmissionEstimate.js'
 export type { EmissionEstimateResponse } from './models/EmissionEstimateResponse.js'
 export { Error } from './models/Error.js'
 export type { Errors } from './models/Errors.js'
+export type { FlightEmissionEstimate } from './models/FlightEmissionEstimate.js'
 export type { FlightEstimateRequest } from './models/FlightEstimateRequest.js'
 export type { GeographicCoordinates } from './models/GeographicCoordinates.js'
 export { HugeOilTankerSeaShippingMethod } from './models/HugeOilTankerSeaShippingMethod.js'
 export type { IATACode } from './models/IATACode.js'
 export type { ICAOCode } from './models/ICAOCode.js'
 export type { IdentifiedVesselShippingMethod } from './models/IdentifiedVesselShippingMethod.js'
+export type { IndividualEmissionEstimate } from './models/IndividualEmissionEstimate.js'
 export { IndividualEstimateRequest } from './models/IndividualEstimateRequest.js'
 export type { IntegerPercentage } from './models/IntegerPercentage.js'
 export type { Mass } from './models/Mass.js'
@@ -197,6 +197,7 @@ export type { QuantityAndValueTimeseries } from './models/QuantityAndValueTimese
 export { Registry } from './models/Registry.js'
 export { RoRoSeaShippingMethod } from './models/RoRoSeaShippingMethod.js'
 export type { SeaShippingMethod } from './models/SeaShippingMethod.js'
+export type { SetBundlePortfolioRequest } from './models/SetBundlePortfolioRequest.js'
 export { Shipment } from './models/Shipment.js'
 export type { ShippingCountryCode } from './models/ShippingCountryCode.js'
 export type { ShippingEstimateRequest } from './models/ShippingEstimateRequest.js'
@@ -216,6 +217,7 @@ export type { SustainabilityPageSlug } from './models/SustainabilityPageSlug.js'
 export { SustainabilityPageStatus } from './models/SustainabilityPageStatus.js'
 export { SustainabilityPageTitle } from './models/SustainabilityPageTitle.js'
 export type { Timestamp } from './models/Timestamp.js'
+export type { TransactionEmissionEstimate } from './models/TransactionEmissionEstimate.js'
 export type { TransactionEstimateRequest } from './models/TransactionEstimateRequest.js'
 export type { UpdateAccountRequest } from './models/UpdateAccountRequest.js'
 export type { UpdateWebhookRequest } from './models/UpdateWebhookRequest.js'
@@ -229,7 +231,6 @@ export type { WebhookRequest } from './models/WebhookRequest.js'
 export { AccountsService } from './services/AccountsService.js'
 export { ActivityService } from './services/ActivityService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'
-export { BundleMixesService } from './services/BundleMixesService.js'
 export { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
 export { ClientAccountsService } from './services/ClientAccountsService.js'
