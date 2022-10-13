@@ -2,10 +2,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { CompanyEstimateRequest } from './CompanyEstimateRequest'
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse'
 import type { Mass } from './Mass'
 
 export type CompanyEmissionEstimate = EmissionEstimateResponse & {
+    request: CompanyEstimateRequest
     /**
      * Scope 1 emissions. Direct emissions from owned or controlled sources.
      */
@@ -39,5 +41,9 @@ export type CompanyEmissionEstimate = EmissionEstimateResponse & {
          * Emissions associated with operating computer systems.
          */
         tech: Mass
+        /**
+         * Emissions associated with remote employees (electricity, heating etc.)
+         */
+        remoteEmployee: Mass
     }
 }

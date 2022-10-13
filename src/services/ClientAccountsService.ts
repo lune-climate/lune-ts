@@ -133,9 +133,9 @@ export abstract class ClientAccountsService {
              */
             beneficiary?: string
             /**
-             * The bundle mix unique identifier.
+             * The bundle portfolio unique identifier.
              */
-            bundleMixId?: string
+            bundlePortfolioId?: string
         },
         options?: {
             /**
@@ -153,7 +153,7 @@ export abstract class ClientAccountsService {
             body: {
                 name: data?.name,
                 beneficiary: data?.beneficiary,
-                bundle_mix_id: data?.bundleMixId,
+                bundle_portfolio_id: data?.bundlePortfolioId,
             },
             mediaType: 'application/json',
             errors: {

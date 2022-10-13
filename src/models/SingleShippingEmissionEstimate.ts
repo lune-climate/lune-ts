@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { OrderQuoteByQuantity } from './OrderQuoteByQuantity'
+import type { ShippingEstimateRequest } from './ShippingEstimateRequest'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
 
 export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
@@ -11,4 +12,5 @@ export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
      */
     id: string
     quote: OrderQuoteByQuantity
+    request: ShippingEstimateRequest
 }

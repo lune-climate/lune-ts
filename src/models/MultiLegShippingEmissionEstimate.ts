@@ -4,6 +4,7 @@
 
 import type { Distance } from './Distance'
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse'
+import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
 
 /**
@@ -21,4 +22,5 @@ import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
 export type MultiLegShippingEmissionEstimate = {
     legs: Array<ShippingLegEmissionEstimate>
     distance: Distance
+    request: MultiLegShippingEstimateRequest
 } & EmissionEstimateResponse
