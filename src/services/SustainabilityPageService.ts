@@ -34,7 +34,7 @@ export abstract class SustainabilityPageService {
             slug: SustainabilityPageSlug
             title: SustainabilityPageTitle
             sections: SustainabilityPageSections
-            description?: SustainabilityPageDescription
+            description?: SustainabilityPageDescription | string | null
             customDescription?: SustainabilityPageCustomDescription
         },
         options?: {
@@ -79,7 +79,7 @@ export abstract class SustainabilityPageService {
             slug: SustainabilityPageSlug
             title: SustainabilityPageTitle
             sections: SustainabilityPageSections
-            description?: SustainabilityPageDescription
+            description?: SustainabilityPageDescription | string | null
             customDescription?: SustainabilityPageCustomDescription
         },
         options?: {

@@ -17,6 +17,10 @@ export type ShippingEstimateRequest = {
     route: ShippingRoute
     method: ShippingMethod
     countryCode?: ShippingCountryCode
+    /**
+     * A name to reference this calculation.
+     */
+    name?: string
     bundleSelection?: BundleSelectionRequest
     /**
      * Selects to which precision to truncate the quantities assigned to each bundle.

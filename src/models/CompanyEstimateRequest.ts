@@ -19,6 +19,10 @@ import type { MonetaryAmount } from './MonetaryAmount'
  */
 export type CompanyEstimateRequest = {
     /**
+     * Number of months covered by the emission estimate
+     */
+    months: number
+    /**
      * Number of employees
      */
     employees: number
@@ -108,4 +112,8 @@ export type CompanyEstimateRequest = {
      * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
+    /**
+     * A name to reference this calculation.
+     */
+    name?: string
 }
