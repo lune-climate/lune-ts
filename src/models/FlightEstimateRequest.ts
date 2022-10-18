@@ -27,4 +27,8 @@ export type FlightEstimateRequest = {
      * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
+    /**
+     * A name used to reference this calculation.
+     */
+    name?: string
 }

@@ -16,6 +16,10 @@ import type { MonetaryAmount } from './MonetaryAmount'
  */
 export type IndividualEstimateRequest = {
     /**
+     * A name to reference this calculation.
+     */
+    name?: string
+    /**
      * The three-letter country code of the country where the company is located.
      */
     countryCode: string

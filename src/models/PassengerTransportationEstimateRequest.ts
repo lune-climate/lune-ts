@@ -24,4 +24,8 @@ export type PassengerTransportationEstimateRequest = {
      * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
+    /**
+     * A name to reference this calculation.
+     */
+    name?: string
 }

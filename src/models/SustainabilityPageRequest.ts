@@ -13,7 +13,7 @@ export type SustainabilityPageRequest = {
     status: SustainabilityPageStatus
     slug: SustainabilityPageSlug
     title: SustainabilityPageTitle
-    description?: SustainabilityPageDescription
+    description?: SustainabilityPageDescription | string | null
     customDescription?: SustainabilityPageCustomDescription
     sections: SustainabilityPageSections
 }
