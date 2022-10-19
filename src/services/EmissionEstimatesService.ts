@@ -51,6 +51,10 @@ export abstract class EmissionEstimatesService {
         data: {
             consumption: ElectricityConsumption
             /**
+             * A name to reference this calculation.
+             */
+            name?: string
+            /**
              * The three-letter code of the country where the consumption takes place, if applicable.
              *
              * Providing this value will improve the estimation process. If the value is not provided
@@ -75,6 +79,7 @@ export abstract class EmissionEstimatesService {
             method: 'POST',
             url: '/estimates/electricity',
             body: {
+                name: data?.name,
                 consumption: data?.consumption,
                 country_code: data?.countryCode,
                 bundle_selection: data?.bundleSelection,
@@ -136,6 +141,10 @@ export abstract class EmissionEstimatesService {
         data: {
             consumption: ElectricityConsumption
             /**
+             * A name to reference this calculation.
+             */
+            name?: string
+            /**
              * The three-letter code of the country where the consumption takes place, if applicable.
              *
              * Providing this value will improve the estimation process. If the value is not provided
@@ -163,6 +172,7 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             body: {
+                name: data?.name,
                 consumption: data?.consumption,
                 country_code: data?.countryCode,
                 bundle_selection: data?.bundleSelection,
@@ -597,6 +607,10 @@ export abstract class EmissionEstimatesService {
              */
             merchant: Merchant
             /**
+             * A name to reference this calculation.
+             */
+            name?: string
+            /**
              * Individual diet. Used to better estimate  food-related purchases.
              */
             diet?: Diet
@@ -617,6 +631,7 @@ export abstract class EmissionEstimatesService {
             method: 'POST',
             url: '/estimates/transactions',
             body: {
+                name: data?.name,
                 value: data?.value,
                 merchant: data?.merchant,
                 diet: data?.diet,
@@ -684,6 +699,10 @@ export abstract class EmissionEstimatesService {
              */
             merchant: Merchant
             /**
+             * A name to reference this calculation.
+             */
+            name?: string
+            /**
              * Individual diet. Used to better estimate  food-related purchases.
              */
             diet?: Diet
@@ -707,6 +726,7 @@ export abstract class EmissionEstimatesService {
                 id: id,
             },
             body: {
+                name: data?.name,
                 value: data?.value,
                 merchant: data?.merchant,
                 diet: data?.diet,

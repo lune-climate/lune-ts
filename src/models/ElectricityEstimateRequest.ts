@@ -10,6 +10,10 @@ import type { MassUnit } from './MassUnit'
  * Parameters for estimating electricity emissions
  */
 export type ElectricityEstimateRequest = {
+    /**
+     * A name to reference this calculation.
+     */
+    name?: string
     consumption: ElectricityConsumption
     /**
      * The three-letter code of the country where the consumption takes place, if applicable.
