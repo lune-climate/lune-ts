@@ -13,6 +13,10 @@ import type { MonetaryAmount } from './MonetaryAmount'
  */
 export type TransactionEstimateRequest = {
     /**
+     * A name to reference this calculation.
+     */
+    name?: string
+    /**
      * Monetary value of the transaction. This should exclude shipping and taxes.
      */
     value: MonetaryAmount
