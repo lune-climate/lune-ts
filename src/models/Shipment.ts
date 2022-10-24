@@ -19,6 +19,7 @@ export type Shipment =
     | {
           containers: string
           cargoType?: Shipment.cargo_type
+          mass?: Mass
       }
 
 export namespace Shipment {
