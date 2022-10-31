@@ -3,6 +3,7 @@
 /* eslint-disable */
 import type { AirportSourceDestination } from '../models/AirportSourceDestination.js'
 import type { Area } from '../models/Area.js'
+import type { BatchTransactionEmissionEstimate } from '../models/BatchTransactionEmissionEstimate.js'
 import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
 import type { CabinClass } from '../models/CabinClass.js'
 import type { CompanyCloudUse } from '../models/CompanyCloudUse.js'
@@ -29,6 +30,7 @@ import type { ShippingMethod } from '../models/ShippingMethod.js'
 import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
+import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -638,6 +640,45 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
             },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Create a batch transaction emission estimate
+     * Perform multiple transaction emissions estimate in one request.
+     *
+     * Each estimate is handled individually.
+     *
+     * The response contains estimates or errors in the same orders as the request.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns BatchTransactionEmissionEstimate OK
+     */
+    public createBatchTransactionEstimate(
+        data: {
+            batchTransactionEstimateRequest: Array<TransactionEstimateRequest>
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<BatchTransactionEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/estimates/transactions/batch',
+            body: data?.batchTransactionEstimateRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
