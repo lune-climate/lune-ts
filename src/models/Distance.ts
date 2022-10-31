@@ -17,5 +17,6 @@ export namespace Distance {
     export enum unit {
         KM = 'km',
         MI = 'mi',
+        NM = 'nm',
     }
 }

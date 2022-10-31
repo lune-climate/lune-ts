@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import type { Distance } from './Distance'
-import type { SourceDestination } from './SourceDestination'
+import type { ShippingSourceDestination } from './ShippingSourceDestination'
 
 /**
  * Either the shipping distance or the start/destination address pair.
@@ -17,4 +17,4 @@ import type { SourceDestination } from './SourceDestination'
  * to provide us the distance directly to ensure better calculations.
  *
  */
-export type ShippingRoute = Distance | SourceDestination
+export type ShippingRoute = Distance | ShippingSourceDestination
