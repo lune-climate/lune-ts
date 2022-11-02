@@ -801,10 +801,6 @@ export abstract class EmissionEstimatesService {
     public createCompanyEstimate(
         data: {
             /**
-             * Number of months covered by the emission estimate
-             */
-            months: number
-            /**
              * Number of employees
              */
             employees: number
@@ -880,6 +876,10 @@ export abstract class EmissionEstimatesService {
              * Share of recycled garbage, in percent
              */
             recycledGarbagePercentage: IntegerPercentage
+            /**
+             * Number of months covered by the emission estimate
+             */
+            months?: number
             /**
              * The company's postal code
              */
@@ -990,10 +990,6 @@ export abstract class EmissionEstimatesService {
         id: string,
         data: {
             /**
-             * Number of months covered by the emission estimate
-             */
-            months: number
-            /**
              * Number of employees
              */
             employees: number
@@ -1069,6 +1065,10 @@ export abstract class EmissionEstimatesService {
              * Share of recycled garbage, in percent
              */
             recycledGarbagePercentage: IntegerPercentage
+            /**
+             * Number of months covered by the emission estimate
+             */
+            months?: number
             /**
              * The company's postal code
              */
