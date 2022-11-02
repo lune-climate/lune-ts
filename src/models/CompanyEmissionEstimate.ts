@@ -44,6 +44,6 @@ export type CompanyEmissionEstimate = EmissionEstimateResponse & {
         /**
          * Emissions associated with remote employees (electricity, heating etc.)
          */
-        remoteEmployee: Mass
+        remoteEmployee?: Mass
     }
 }

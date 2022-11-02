@@ -21,7 +21,7 @@ export type CompanyEstimateRequest = {
     /**
      * Number of months covered by the emission estimate
      */
-    months: number
+    months?: number
     /**
      * Number of employees
      */
