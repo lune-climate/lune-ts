@@ -34,6 +34,10 @@ export type BundleSummary = {
      */
     primaryImage: string | null
     /**
+     * A bundle's larger image URL
+     */
+    largeImage?: string | null
+    /**
      * A bundle's high resolution image URL
      */
     primaryImageHires: string | null
