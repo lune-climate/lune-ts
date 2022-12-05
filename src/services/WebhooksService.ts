@@ -3,6 +3,7 @@
 /* eslint-disable */
 import type { Url } from '../models/Url.js'
 import type { Webhook } from '../models/Webhook.js'
+import type { WebhookFullSecret } from '../models/WebhookFullSecret.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -39,7 +40,7 @@ export abstract class WebhooksService {
      * Create a webhook
      * @param data Request data
      * @param options Additional operation options
-     * @returns Webhook OK
+     * @returns WebhookFullSecret OK
      */
     public createWebhook(
         data: {
@@ -51,7 +52,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<Webhook, ApiError>> {
+    ): Promise<Result<WebhookFullSecret, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/webhooks',
@@ -178,7 +179,7 @@ export abstract class WebhooksService {
      *
      * @param id The webhooks's unique identifier
      * @param options Additional operation options
-     * @returns Webhook OK
+     * @returns WebhookFullSecret OK
      */
     public rotateWebhookSecret(
         id: string,
@@ -188,7 +189,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<Webhook, ApiError>> {
+    ): Promise<Result<WebhookFullSecret, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/webhooks/{id}/rotate-secret',

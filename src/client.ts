@@ -11,6 +11,7 @@ import { ClientAccountsService } from './services/ClientAccountsService.js'
 import { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
 import { OffsetLinksService } from './services/OffsetLinksService.js'
 import { OrdersService } from './services/OrdersService.js'
+import { PaymentsService } from './services/PaymentsService.js'
 import { ProjectsService } from './services/ProjectsService.js'
 import { SustainabilityPageService } from './services/SustainabilityPageService.js'
 import { WebhookRequestService } from './services/WebhookRequestService.js'
@@ -74,6 +75,7 @@ applyMixins(LuneClient, [
     EmissionEstimatesService,
     OffsetLinksService,
     OrdersService,
+    PaymentsService,
     ProjectsService,
     SustainabilityPageService,
     WebhookRequestService,
@@ -91,6 +93,7 @@ export interface LuneClient
         EmissionEstimatesService,
         OffsetLinksService,
         OrdersService,
+        PaymentsService,
         ProjectsService,
         SustainabilityPageService,
         WebhookRequestService,
@@ -181,6 +184,7 @@ export type { OrderByQuantityProperties } from './models/OrderByQuantityProperti
 export type { OrderByValue } from './models/OrderByValue.js'
 export type { OrderByValueProperties } from './models/OrderByValueProperties.js'
 export type { OrderEventDetails } from './models/OrderEventDetails.js'
+export type { OrderPayment } from './models/OrderPayment.js'
 export type { OrderProject } from './models/OrderProject.js'
 export type { OrderQuoteBase } from './models/OrderQuoteBase.js'
 export type { OrderQuoteByQuantity } from './models/OrderQuoteByQuantity.js'
@@ -200,6 +204,7 @@ export { PassengerRailEstimateRequest } from './models/PassengerRailEstimateRequ
 export { PassengerRoadEstimateRequest } from './models/PassengerRoadEstimateRequest.js'
 export type { PassengerTransportationEmissionEstimate } from './models/PassengerTransportationEmissionEstimate.js'
 export type { PassengerTransportationEstimateRequest } from './models/PassengerTransportationEstimateRequest.js'
+export type { Payment } from './models/Payment.js'
 export type { Project } from './models/Project.js'
 export type { ProjectSummary } from './models/ProjectSummary.js'
 export { PublicSustainabilityPage } from './models/PublicSustainabilityPage.js'
@@ -237,7 +242,9 @@ export type { Url } from './models/Url.js'
 export { VariableFuelSeaShippingMethod } from './models/VariableFuelSeaShippingMethod.js'
 export { VariableFuelVariableLoadSeaShippingMethod } from './models/VariableFuelVariableLoadSeaShippingMethod.js'
 export type { Webhook } from './models/Webhook.js'
+export type { WebhookBase } from './models/WebhookBase.js'
 export { WebhookEvent } from './models/WebhookEvent.js'
+export type { WebhookFullSecret } from './models/WebhookFullSecret.js'
 export type { WebhookRequest } from './models/WebhookRequest.js'
 
 export { AccountsService } from './services/AccountsService.js'
@@ -249,6 +256,7 @@ export { ClientAccountsService } from './services/ClientAccountsService.js'
 export { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
 export { OffsetLinksService } from './services/OffsetLinksService.js'
 export { OrdersService } from './services/OrdersService.js'
+export { PaymentsService } from './services/PaymentsService.js'
 export { ProjectsService } from './services/ProjectsService.js'
 export { SustainabilityPageService } from './services/SustainabilityPageService.js'
 export { WebhookRequestService } from './services/WebhookRequestService.js'
