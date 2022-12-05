@@ -3,7 +3,7 @@
 /* eslint-disable */
 
 import type { EmissionEstimate } from './EmissionEstimate'
-import type { OrderQuoteByQuantity } from './OrderQuoteByQuantity'
+import type { EstimateQuote } from './EstimateQuote'
 import type { PassengerTransportationEstimateRequest } from './PassengerTransportationEstimateRequest'
 
 /**
@@ -24,6 +24,6 @@ export type PassengerTransportationEmissionEstimate = EmissionEstimate & {
      */
     id: string
     legs: Array<EmissionEstimate>
-    quote: OrderQuoteByQuantity
+    quote: EstimateQuote
     request: PassengerTransportationEstimateRequest
 }
