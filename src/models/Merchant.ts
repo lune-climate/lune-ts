@@ -36,4 +36,13 @@ export type Merchant = {
            */
           coicopCode: string
       }
+    | {
+          /**
+           * The search term to query.
+           *
+           * Search is resolved using fuzzy matching.
+           *
+           */
+          fuzzySearchTerm: string
+      }
 )

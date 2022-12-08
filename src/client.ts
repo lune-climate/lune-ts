@@ -144,6 +144,7 @@ export type { ElectricityEmissionEstimate } from './models/ElectricityEmissionEs
 export type { ElectricityEstimateRequest } from './models/ElectricityEstimateRequest.js'
 export type { EmissionEstimate } from './models/EmissionEstimate.js'
 export type { EmissionEstimateResponse } from './models/EmissionEstimateResponse.js'
+export type { EmptyObject } from './models/EmptyObject.js'
 export { Error } from './models/Error.js'
 export type { Errors } from './models/Errors.js'
 export type { EstimateQuote } from './models/EstimateQuote.js'

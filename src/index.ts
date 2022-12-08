@@ -47,6 +47,7 @@ export type { ElectricityEmissionEstimate } from './models/ElectricityEmissionEs
 export type { ElectricityEstimateRequest } from './models/ElectricityEstimateRequest'
 export type { EmissionEstimate } from './models/EmissionEstimate'
 export type { EmissionEstimateResponse } from './models/EmissionEstimateResponse'
+export type { EmptyObject } from './models/EmptyObject'
 export { Error } from './models/Error'
 export type { Errors } from './models/Errors'
 export type { EstimateQuote } from './models/EstimateQuote'
