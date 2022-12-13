@@ -24,20 +24,6 @@ export type Merchant = {
       }
     | {
           /**
-           * A Classification of Individual Consumption According to Purpose
-           * (https://en.wikipedia.org/wiki/Classification_of_Individual_Consumption_According_to_Purpose)
-           * code indicating the type of goods or services purchased.
-           *
-           * It is the responsibility of the API user to provide a valid code here. We validate only
-           * the top level identifier (the number before the first dot). If an invalid code is provided
-           * we fall back to the division-level emission defaults (so for example 14.999999 will fall
-           * back to 14).
-           *
-           */
-          coicopCode: string
-      }
-    | {
-          /**
            * The search term to query.
            *
            * Search is resolved using fuzzy matching.
