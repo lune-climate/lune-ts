@@ -17,18 +17,31 @@ export abstract class WebhooksService {
 
     /**
      * List all webhooks
+     * @param data Request data
      * @param options Additional operation options
      * @returns Webhook OK
      */
-    public listAllWebhooks(options?: {
-        /**
-         * Account Id to be used to perform the API call
-         */
-        accountId?: string
-    }): Promise<Result<Array<Webhook>, ApiError>> {
+    public listAllWebhooks(
+        data?: {
+            /**
+             * Filter by account identifiers: return webhooks which push events for the given account identifiers.
+             *
+             */
+            accountId?: Array<string>
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<Array<Webhook>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/webhooks',
+            query: {
+                account_id: data?.accountId,
+            },
             errors: {
                 401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,
@@ -45,6 +58,13 @@ export abstract class WebhooksService {
     public createWebhook(
         data: {
             url: Url
+            /**
+             * The created webhook will exclusively push events which belong to the given account identifiers.
+             *
+             * Act as a filter: if not set, events belonging to all the organisation's accounts are pushed.
+             *
+             */
+            accountIds?: Array<string>
         },
         options?: {
             /**
@@ -58,6 +78,7 @@ export abstract class WebhooksService {
             url: '/webhooks',
             body: {
                 url: data?.url,
+                account_ids: data?.accountIds,
             },
             mediaType: 'application/json',
             errors: {
@@ -115,6 +136,13 @@ export abstract class WebhooksService {
              *
              */
             enabled: boolean
+            /**
+             * The updated webhook will exclusively push events which belong to the given account identifiers.
+             *
+             * If not set, the previous account identifiers filter remains unchanged.
+             *
+             */
+            accountIds?: Array<string>
         },
         options?: {
             /**
@@ -132,6 +160,7 @@ export abstract class WebhooksService {
             body: {
                 url: data?.url,
                 enabled: data?.enabled,
+                account_ids: data?.accountIds,
             },
             mediaType: 'application/json',
             errors: {

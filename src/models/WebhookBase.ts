@@ -24,6 +24,13 @@ export type WebhookBase = {
      */
     accountType: AccountType
     /**
+     * The webhook will exclusively push events which belong to account identifiers.
+     *
+     * Acts as a filter: if not set, events belonging to all the organisation's accounts are pushed.
+     *
+     */
+    accountIds?: Array<string>
+    /**
      * The webhook's creation timestamp.
      */
     createdAt: Timestamp
