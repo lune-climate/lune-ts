@@ -13,4 +13,11 @@ export type UpdateWebhookRequest = {
      *
      */
     enabled: boolean
+    /**
+     * The updated webhook will exclusively push events which belong to the given account identifiers.
+     *
+     * If not set, the previous account identifiers filter remains unchanged.
+     *
+     */
+    accountIds?: Array<string>
 }
