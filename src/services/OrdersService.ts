@@ -2,7 +2,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
-import type { Mass } from '../models/Mass.js'
+import type { CreateOrderByQuantityWithBundleMass } from '../models/CreateOrderByQuantityWithBundleMass.js'
+import type { CreateOrderByQuantityWithBundlePercentage } from '../models/CreateOrderByQuantityWithBundlePercentage.js'
 import type { MassUnit } from '../models/MassUnit.js'
 import type { Metadata } from '../models/Metadata.js'
 import type { Order } from '../models/Order.js'
@@ -10,6 +11,8 @@ import type { OrderByEstimate } from '../models/OrderByEstimate.js'
 import type { OrderByQuantity } from '../models/OrderByQuantity.js'
 import type { OrderByValue } from '../models/OrderByValue.js'
 import type { OrderQuoteByQuantity } from '../models/OrderQuoteByQuantity.js'
+import type { OrderQuoteByQuantityWithBundleMass } from '../models/OrderQuoteByQuantityWithBundleMass.js'
+import type { OrderQuoteByQuantityWithBundlePercentage } from '../models/OrderQuoteByQuantityWithBundlePercentage.js'
 import type { OrderQuoteByValue } from '../models/OrderQuoteByValue.js'
 import type { PaginatedOrders } from '../models/PaginatedOrders.js'
 
@@ -30,32 +33,7 @@ export abstract class OrdersService {
      * @returns OrderByQuantity OK
      */
     public createOrderByMass(
-        data: {
-            /**
-             * Mass of CO2 offsets to purchase
-             */
-            mass: Mass
-            /**
-             * Account-unique identifier provided by the client.
-             *
-             * `idempotency_key` has two purposes:
-             * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
-             * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
-             *
-             */
-            idempotencyKey?: string
-            /**
-             * Bundle selection to be used for the order.
-             * For the order, this property overrides the account's bundle selection.
-             *
-             */
-            bundleSelection?: BundleSelectionRequest
-            metadata?: Metadata
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
-        },
+        data: CreateOrderByQuantityWithBundlePercentage | CreateOrderByQuantityWithBundleMass,
         options?: {
             /**
              * Account Id to be used to perform the API call
@@ -66,13 +44,7 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass',
-            body: {
-                mass: data?.mass,
-                idempotency_key: data?.idempotencyKey,
-                bundle_selection: data?.bundleSelection,
-                metadata: data?.metadata,
-                quantity_trunc: data?.quantityTrunc,
-            },
+            body: data,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -353,17 +325,7 @@ export abstract class OrdersService {
      * @returns OrderQuoteByQuantity OK
      */
     public getOrderQuoteByMass(
-        data: {
-            /**
-             * Mass of CO2 offsets to purchase
-             */
-            mass: Mass
-            bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
-        },
+        data: OrderQuoteByQuantityWithBundlePercentage | OrderQuoteByQuantityWithBundleMass,
         options?: {
             /**
              * Account Id to be used to perform the API call
@@ -374,11 +336,7 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass/quote',
-            body: {
-                mass: data?.mass,
-                bundle_selection: data?.bundleSelection,
-                quantity_trunc: data?.quantityTrunc,
-            },
+            body: data,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
