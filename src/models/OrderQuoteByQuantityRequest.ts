@@ -2,21 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { BundleSelectionRequest } from './BundleSelectionRequest'
-import type { Mass } from './Mass'
-import type { MassUnit } from './MassUnit'
+import type { OrderQuoteByQuantityWithBundleMass } from './OrderQuoteByQuantityWithBundleMass'
+import type { OrderQuoteByQuantityWithBundlePercentage } from './OrderQuoteByQuantityWithBundlePercentage'
 
-/**
- * Order by Quantity details
- */
-export type OrderQuoteByQuantityRequest = {
-    /**
-     * Mass of CO2 offsets to purchase
-     */
-    mass: Mass
-    bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
-}
+export type OrderQuoteByQuantityRequest =
+    | OrderQuoteByQuantityWithBundlePercentage
+    | OrderQuoteByQuantityWithBundleMass
