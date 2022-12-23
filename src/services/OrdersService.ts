@@ -33,7 +33,11 @@ export abstract class OrdersService {
      * @returns OrderByQuantity OK
      */
     public createOrderByMass(
-        data: CreateOrderByQuantityWithBundlePercentage | CreateOrderByQuantityWithBundleMass,
+        data: {
+            createOrderByQuantityRequest:
+                | CreateOrderByQuantityWithBundlePercentage
+                | CreateOrderByQuantityWithBundleMass
+        },
         options?: {
             /**
              * Account Id to be used to perform the API call
@@ -44,7 +48,7 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass',
-            body: data,
+            body: data?.createOrderByQuantityRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -325,7 +329,11 @@ export abstract class OrdersService {
      * @returns OrderQuoteByQuantity OK
      */
     public getOrderQuoteByMass(
-        data: OrderQuoteByQuantityWithBundlePercentage | OrderQuoteByQuantityWithBundleMass,
+        data: {
+            orderQuoteByQuantityRequest:
+                | OrderQuoteByQuantityWithBundlePercentage
+                | OrderQuoteByQuantityWithBundleMass
+        },
         options?: {
             /**
              * Account Id to be used to perform the API call
@@ -336,7 +344,7 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass/quote',
-            body: data,
+            body: data?.orderQuoteByQuantityRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
