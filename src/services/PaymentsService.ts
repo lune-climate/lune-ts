@@ -14,7 +14,7 @@ export abstract class PaymentsService {
     protected abstract config: ClientConfig
 
     /**
-     * Get a payment by a temporary id.
+     * Get a payment by a temporary id
      * Get a specific payment by a temporary id.
      *
      * The temporary id will remain valid for 15min from the payment's creation after which the endpoint will return a 404.
