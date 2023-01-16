@@ -310,7 +310,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Create a shipping emission estimate
+     * Create a shipping emission estimate (single)
      * @param data Request data
      * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate OK
@@ -363,7 +363,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Get a shipping emission estimate
+     * Get a shipping emission estimate (single)
      * @param id The estimate's unique identifier
      * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate OK
@@ -393,7 +393,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Update a shipping emission estimate
+     * Update a shipping emission estimate (single)
      * @param id The estimate's unique identifier
      * @param data Request data
      * @param options Additional operation options
@@ -451,7 +451,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Create a multi-leg shipping emission estimate
+     * Create a shipping emission estimate (multi-leg)
      * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
      * @param data Request data
      * @param options Additional operation options
@@ -505,7 +505,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Get a multi-leg shipping emission estimate
+     * Get a shipping emission estimate (multi-leg)
      * @param id The estimate's unique identifier
      * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate OK
@@ -535,7 +535,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Update a multi-leg shipping emission estimate
+     * Update a shipping emission estimate (multi-leg)
      * @param id The estimate's unique identifier
      * @param data Request data
      * @param options Additional operation options
@@ -593,7 +593,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Create a transaction emission estimate
+     * Create a transaction emission estimate (single)
      * @param data Request data
      * @param options Additional operation options
      * @returns TransactionEmissionEstimate OK
@@ -653,7 +653,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Create a batch transaction emission estimate
+     * Create a transaction emission estimate (batch)
      * Perform multiple transaction emissions estimate in one request.
      *
      * Each estimate is handled individually.
