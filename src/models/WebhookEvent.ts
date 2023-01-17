@@ -11,6 +11,10 @@ export type WebhookEvent = {
      */
     apiVersion: string
     /**
+     * The account identifier the event belongs to.
+     */
+    accountId?: string
+    /**
      * The event’s id. The id can be used for idempotency behaviour if stored on the client side.
      */
     eventId: string
