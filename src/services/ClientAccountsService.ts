@@ -4,6 +4,7 @@
 import type { ClientAccount } from '../models/ClientAccount.js'
 import type { CurrencyCode } from '../models/CurrencyCode.js'
 import type { PaginatedClientAccounts } from '../models/PaginatedClientAccounts.js'
+import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -56,6 +57,7 @@ export abstract class ClientAccountsService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
+                415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
@@ -159,6 +161,100 @@ export abstract class ClientAccountsService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation`,
+                404: `The specified resource was not found`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Partially update a client account
+     * @param id The account's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns ClientAccount OK
+     */
+    public partialUpdateClientAccount(
+        id: string,
+        data: {
+            /**
+             * The account name.
+             */
+            name?: string
+            /**
+             * The account beneficiary.
+             */
+            beneficiary?: string | null
+            /**
+             * The bundle portfolio unique identifier.
+             */
+            bundlePortfolioId?: string | null
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<ClientAccount, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PATCH',
+            url: '/accounts/client/{id}',
+            path: {
+                id: id,
+            },
+            body: {
+                name: data?.name,
+                beneficiary: data?.beneficiary,
+                bundle_portfolio_id: data?.bundlePortfolioId,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation`,
+                404: `The specified resource was not found`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Update a client account logo
+     * @param id The account's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns UploadLogoResponse OK
+     */
+    public updateClientAccountLogo(
+        id: string,
+        data: {
+            logo: Blob
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<UploadLogoResponse, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/accounts/client/{id}/logo',
+            path: {
+                id: id,
+            },
+            formData: data,
+            mediaType: 'multipart/form-data',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation`,
+                404: `The specified resource was not found`,
+                415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
