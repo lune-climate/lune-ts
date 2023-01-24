@@ -62,6 +62,7 @@ export abstract class BundleSelectionsService {
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })

@@ -51,5 +51,6 @@ export namespace Error {
         SUSTAINABILITY_PAGE_SLUG_NOT_UNIQUE = 'sustainability_page_slug_not_unique',
         SUSTAINABILITY_PAGE_EXISTS = 'sustainability_page_exists',
         PAGINATION_LIMIT_INVALID = 'pagination_limit_invalid',
+        UNSUPPORTED_IMAGE_FORMAT = 'unsupported_image_format',
     }
 }

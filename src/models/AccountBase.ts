@@ -39,10 +39,7 @@ export type AccountBase = {
     balanceOutstanding: string
     type: AccountType
     /**
-     * Offset link logo URL
-     *
-     * This is the logo URL that appears on the first screen of the offset links flow.
-     *
+     * The account logo
      */
     logo: string | null
     /**
