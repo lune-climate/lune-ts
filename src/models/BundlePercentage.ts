@@ -10,8 +10,5 @@ export type BundlePercentage = {
      * The bundle's unique identifier
      */
     bundleId: string
-    /**
-     * Selection percentage
-     */
-    percentage: number
+    percentage: number | string
 }
