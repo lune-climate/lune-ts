@@ -8,4 +8,13 @@
  * Note: Lune does not support all currency codes.
  *
  */
-export type CurrencyCode = string
+export enum CurrencyCode {
+    GBP = 'GBP',
+    EUR = 'EUR',
+    USD = 'USD',
+    SEK = 'SEK',
+    CHF = 'CHF',
+    PLN = 'PLN',
+    DKK = 'DKK',
+    NOK = 'NOK',
+}
