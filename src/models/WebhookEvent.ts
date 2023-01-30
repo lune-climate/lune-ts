@@ -44,8 +44,8 @@ export namespace WebhookEvent {
     export enum event_type {
         ORDER_RECEIVED = 'order.received',
         ORDER_PLACED = 'order.placed',
-        ORDER_ALLOCATED = 'order.allocated',
         ORDER_PAID = 'order.paid',
+        ORDER_RETIRING = 'order.retiring',
         ORDER_CANCELLED = 'order.cancelled',
         ORDER_FAILED = 'order.failed',
         ORDER_COMPLETED = 'order.completed',
