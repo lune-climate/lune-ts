@@ -20,6 +20,10 @@ export type OrderProject = {
      */
     projectSlug: string
     /**
+     * URL to the project's logo
+     */
+    projectLogo?: string
+    /**
      * Carbon offset purchased (tonnes CO2)
      */
     quantity: string
