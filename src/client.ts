@@ -9,7 +9,6 @@ import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
 import { ClientAccountsService } from './services/ClientAccountsService.js'
 import { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
-import { OffsetLinksService } from './services/OffsetLinksService.js'
 import { OrdersService } from './services/OrdersService.js'
 import { PaymentsService } from './services/PaymentsService.js'
 import { ProjectsService } from './services/ProjectsService.js'
@@ -73,7 +72,6 @@ applyMixins(LuneClient, [
     BundleSelectionsService,
     ClientAccountsService,
     EmissionEstimatesService,
-    OffsetLinksService,
     OrdersService,
     PaymentsService,
     ProjectsService,
@@ -91,7 +89,6 @@ export interface LuneClient
         BundleSelectionsService,
         ClientAccountsService,
         EmissionEstimatesService,
-        OffsetLinksService,
         OrdersService,
         PaymentsService,
         ProjectsService,
@@ -171,12 +168,6 @@ export type { MonetaryAmountValue } from './models/MonetaryAmountValue.js'
 export type { Money } from './models/Money.js'
 export type { MultiLegShippingEmissionEstimate } from './models/MultiLegShippingEmissionEstimate.js'
 export type { MultiLegShippingEstimateRequest } from './models/MultiLegShippingEstimateRequest.js'
-export type { OffsetLink } from './models/OffsetLink.js'
-export type { OffsetLinkAnalytics } from './models/OffsetLinkAnalytics.js'
-export type { OffsetLinkOrder } from './models/OffsetLinkOrder.js'
-export type { OffsetLinkRequest } from './models/OffsetLinkRequest.js'
-export { OffsetLinkStatus } from './models/OffsetLinkStatus.js'
-export type { OffsetLinkUpdateRequest } from './models/OffsetLinkUpdateRequest.js'
 export type { OffsetQuantitySeriesItem } from './models/OffsetQuantitySeriesItem.js'
 export type { OffsetValueSeriesItem } from './models/OffsetValueSeriesItem.js'
 export type { Order } from './models/Order.js'
@@ -202,7 +193,6 @@ export type { PaginatedActivity } from './models/PaginatedActivity.js'
 export type { PaginatedBase } from './models/PaginatedBase.js'
 export type { PaginatedBundles } from './models/PaginatedBundles.js'
 export type { PaginatedClientAccounts } from './models/PaginatedClientAccounts.js'
-export type { PaginatedOffsetLinks } from './models/PaginatedOffsetLinks.js'
 export type { PaginatedOrders } from './models/PaginatedOrders.js'
 export type { PaginatedProjects } from './models/PaginatedProjects.js'
 export type { PartialUpdateAccountRequest } from './models/PartialUpdateAccountRequest.js'
@@ -263,7 +253,6 @@ export { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
 export { ClientAccountsService } from './services/ClientAccountsService.js'
 export { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
-export { OffsetLinksService } from './services/OffsetLinksService.js'
 export { OrdersService } from './services/OrdersService.js'
 export { PaymentsService } from './services/PaymentsService.js'
 export { ProjectsService } from './services/ProjectsService.js'
