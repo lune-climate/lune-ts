@@ -12,6 +12,10 @@ export type OrderBundle = {
      */
     bundleName: string
     /**
+     * A bundle's image URL
+     */
+    primaryImage?: string
+    /**
      * Quantity for the specific bundle (tonnes CO2)
      */
     quantity: string
