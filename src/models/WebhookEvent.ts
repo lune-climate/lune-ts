@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AllocationEventDetails } from './AllocationEventDetails'
 import type { OrderEventDetails } from './OrderEventDetails'
 
 export type WebhookEvent = {
@@ -32,9 +33,9 @@ export type WebhookEvent = {
      */
     sequence: string
     /**
-     * Data of the event. On order.* events, this means an Order.
+     * Data of the event. On order.* events, this means an Order. On allocation.* events, this mean an allocation.
      */
-    data: OrderEventDetails
+    data: OrderEventDetails | AllocationEventDetails
 }
 
 export namespace WebhookEvent {
@@ -49,5 +50,7 @@ export namespace WebhookEvent {
         ORDER_CANCELLED = 'order.cancelled',
         ORDER_FAILED = 'order.failed',
         ORDER_COMPLETED = 'order.completed',
+        ALLOCATION_NEW = 'allocation.new',
+        ALLOCATION_RETIRED = 'allocation.retired',
     }
 }
