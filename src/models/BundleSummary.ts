@@ -57,7 +57,7 @@ export type BundleSummary = {
     /**
      * Quantity of CO2 offsets available to purchase (in tonnes).
      *
-     * If available_quantity is not set, assume there is an unlimited amount of offsets to purchase.
+     * If available_quantity is null, assume there is an unlimited amount of offsets to purchase.
      *
      */
     availableQuantity: string | null
