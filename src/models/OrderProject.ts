@@ -41,4 +41,20 @@ export type OrderProject = {
      *
      */
     offsetCost: string
+    /**
+     * Describes whether credits for a project have been allocated to an order or retired
+     *
+     */
+    status: OrderProject.status
+}
+
+export namespace OrderProject {
+    /**
+     * Describes whether credits for a project have been allocated to an order or retired
+     *
+     */
+    export enum status {
+        ALLOCATED = 'allocated',
+        RETIRED = 'retired',
+    }
 }
