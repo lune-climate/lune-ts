@@ -124,9 +124,9 @@ export type Project = ProjectSummary & {
 
 export namespace Project {
     export enum offset_delivery {
-        EX_POST = 'ex-post',
-        EX_ANTE = 'ex-ante',
-        PRE_PURCHASE = 'pre-purchase',
+        EX_POST = 'ex_post',
+        EX_ANTE = 'ex_ante',
+        PRE_PURCHASE = 'pre_purchase',
     }
 
     export enum retirement_timeframe {
