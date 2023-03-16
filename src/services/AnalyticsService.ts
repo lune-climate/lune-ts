@@ -1,7 +1,6 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { Analytics } from '../models/Analytics.js'
 import type { AnalyticsMetrics } from '../models/AnalyticsMetrics.js'
 import type { CumulativeBundleAnalytics } from '../models/CumulativeBundleAnalytics.js'
 
@@ -14,47 +13,6 @@ import { Result } from 'ts-results-es'
 export abstract class AnalyticsService {
     protected abstract client: AxiosInstance
     protected abstract config: ClientConfig
-
-    /**
-     * Get an account analytics
-     * @param data Request data
-     * @param options Additional operation options
-     * @returns Analytics OK
-     */
-    public getAnalytics(
-        data?: {
-            /**
-             * The start date of the custom date range.
-             * Defaults to 30 days ago if not specified.
-             */
-            start?: string
-            /**
-             * The end date of the custom date range.
-             * Defaults to the current date if not specified.
-             */
-            end?: string
-        },
-        options?: {
-            /**
-             * Account Id to be used to perform the API call
-             */
-            accountId?: string
-        },
-    ): Promise<Result<Analytics, ApiError>> {
-        return __request(this.client, this.config, options || {}, {
-            method: 'GET',
-            url: '/analytics',
-            query: {
-                start: data?.start,
-                end: data?.end,
-            },
-            errors: {
-                400: `The request is invalid. Parameters may be missing or are invalid`,
-                401: `The API Key is missing or is invalid`,
-                429: `Too many requests have been made in a short period of time`,
-            },
-        })
-    }
 
     /**
      * Get cumulative analytics
