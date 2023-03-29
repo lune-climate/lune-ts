@@ -91,6 +91,14 @@ export type OrderBase = {
      *
      */
     certificate: string | null
+    /**
+     * The Carbon credits certificate public URL.
+     *
+     * Once the Sustainability page of the associated account is enabled and configured to include the
+     * certificate section, and the order is set to 'complete', this URL will link to the publicly accessible certificate.
+     *
+     */
+    publicCertificate: string | null
     metadata: Metadata
     /**
      * The offset link identifier, if the order was placed through an offset link
