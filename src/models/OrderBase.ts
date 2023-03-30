@@ -98,7 +98,7 @@ export type OrderBase = {
      * certificate section, and the order is set to 'complete', this URL will link to the publicly accessible certificate.
      *
      */
-    publicCertificate: string | null
+    publicCertificateUrl: string | null
     metadata: Metadata
     /**
      * The offset link identifier, if the order was placed through an offset link
