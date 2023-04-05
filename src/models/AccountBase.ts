@@ -21,22 +21,6 @@ export type AccountBase = {
      * The Account's currency
      */
     currency: string
-    /**
-     * Account's cash balance.
-     *
-     * Unit: Account currency
-     *
-     */
-    balance: string
-    /**
-     * The Account's outstanding balance. It is the sum of placed and unpaid orders.
-     *
-     * The outstanding balance is mostly negative.
-     *
-     * Unit: Account currency
-     *
-     */
-    balanceOutstanding: string
     type: AccountType
     /**
      * The account logo
