@@ -67,6 +67,10 @@ export type BundleSummary = {
      */
     offsetType: BundleSummary.offset_type | null
     /**
+     * Bundle approach
+     */
+    approach: BundleSummary.approach | null
+    /**
      * The bundle's carbon storage permanence.
      */
     carbonPermanence: BundleSummary.carbon_permanence | null
@@ -80,6 +84,14 @@ export namespace BundleSummary {
     export enum offset_type {
         EMISSIONS_REDUCTION = 'emissions_reduction',
         CARBON_REMOVAL = 'carbon_removal',
+    }
+
+    /**
+     * Bundle approach
+     */
+    export enum approach {
+        TRADITIONAL = 'traditional',
+        INNOVATIVE = 'innovative',
     }
 
     /**
