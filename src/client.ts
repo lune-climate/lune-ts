@@ -3,7 +3,6 @@ import camelCaseKeys from 'camelcase-keys'
 
 import { ClientConfig } from './core/ClientConfig'
 import { AccountsService } from './services/AccountsService.js'
-import { ActivityService } from './services/ActivityService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
 import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
@@ -66,7 +65,6 @@ export class LuneClient {
 
 applyMixins(LuneClient, [
     AccountsService,
-    ActivityService,
     AnalyticsService,
     BundlePortfoliosService,
     BundleSelectionsService,
@@ -83,7 +81,6 @@ applyMixins(LuneClient, [
 // eslint-disable-next-line no-redeclare -- mixins require same name
 export interface LuneClient
     extends AccountsService,
-        ActivityService,
         AnalyticsService,
         BundlePortfoliosService,
         BundleSelectionsService,
@@ -101,7 +98,6 @@ export type { AccountBase } from './models/AccountBase.js'
 export type { AccountPair } from './models/AccountPair.js'
 export { AccountScope } from './models/AccountScope.js'
 export { AccountType } from './models/AccountType.js'
-export { Activity } from './models/Activity.js'
 export type { Address } from './models/Address.js'
 export type { AirportCode } from './models/AirportCode.js'
 export type { AirportSourceDestination } from './models/AirportSourceDestination.js'
@@ -189,7 +185,6 @@ export type { OrderQuoteByQuantityWithBundlePercentage } from './models/OrderQuo
 export type { OrderQuoteByValue } from './models/OrderQuoteByValue.js'
 export type { OrderQuoteByValueRequest } from './models/OrderQuoteByValueRequest.js'
 export type { PaginatedAccounts } from './models/PaginatedAccounts.js'
-export type { PaginatedActivity } from './models/PaginatedActivity.js'
 export type { PaginatedBase } from './models/PaginatedBase.js'
 export type { PaginatedBundles } from './models/PaginatedBundles.js'
 export type { PaginatedClientAccounts } from './models/PaginatedClientAccounts.js'
@@ -248,7 +243,6 @@ export type { WebhookFullSecret } from './models/WebhookFullSecret.js'
 export type { WebhookRequest } from './models/WebhookRequest.js'
 
 export { AccountsService } from './services/AccountsService.js'
-export { ActivityService } from './services/ActivityService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'
 export { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
