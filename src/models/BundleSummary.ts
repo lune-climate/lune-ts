@@ -100,5 +100,6 @@ export namespace BundleSummary {
     export enum carbon_permanence {
         LONG_TERM = 'long_term',
         SHORT_TERM = 'short_term',
+        NO_STORAGE = 'no_storage',
     }
 }
