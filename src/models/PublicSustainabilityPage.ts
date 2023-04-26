@@ -111,7 +111,7 @@ export type PublicSustainabilityPage = {
             /**
              * The bundle's carbon storage permanence.
              */
-            carbonPermanence: 'long_term' | 'short_term' | null
+            carbonPermanence: 'long_term' | 'short_term' | 'no_storage' | null
         }
     }> | null
     /**
