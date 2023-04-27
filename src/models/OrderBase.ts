@@ -63,6 +63,11 @@ export type OrderBase = {
      */
     quantity: string | null
     /**
+     * How the order will be paid.
+     * When `card`, Lune will attempt to charge the card and pay this order. When `invoice`, Lune will email an invoice with payment instructions.
+     */
+    paymentMethod: OrderBase.payment_method | null
+    /**
      * Order creation timestamp
      */
     createdAt: string
@@ -133,5 +138,14 @@ export namespace OrderBase {
         CANCELLED = 'cancelled',
         COMPLETE = 'complete',
         FAILED = 'failed',
+    }
+
+    /**
+     * How the order will be paid.
+     * When `card`, Lune will attempt to charge the card and pay this order. When `invoice`, Lune will email an invoice with payment instructions.
+     */
+    export enum payment_method {
+        INVOICE = 'invoice',
+        CARD = 'card',
     }
 }
