@@ -1,6 +1,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AggregatedAnalyticsByProperty } from '../models/AggregatedAnalyticsByProperty.js'
 import type { AnalyticsMetrics } from '../models/AnalyticsMetrics.js'
 import type { CumulativeBundleAnalytics } from '../models/CumulativeBundleAnalytics.js'
 
@@ -69,6 +70,47 @@ export abstract class AnalyticsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/metrics',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get aggregated analytics by property
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns AggregatedAnalyticsByProperty OK
+     */
+    public getAggregatedAnalyticsByProperty(
+        data?: {
+            /**
+             * The start date of the custom date range.
+             * Defaults to 30 days ago if not specified.
+             */
+            from?: string
+            /**
+             * The to (inclusive) date of the custom date range.
+             * Defaults to the current date if not specified.
+             */
+            through?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<AggregatedAnalyticsByProperty, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/analytics/aggregated-by-property',
+            query: {
+                from: data?.from,
+                through: data?.through,
+            },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
