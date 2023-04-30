@@ -5,9 +5,9 @@
 import type { Address } from './Address'
 import type { AirportCode } from './AirportCode'
 import type { GeographicCoordinates } from './GeographicCoordinates'
-import type { SeaportCode } from './SeaportCode'
+import type { Locode } from './Locode'
 
 export type ShippingSourceDestination = {
-    source: Address | GeographicCoordinates | SeaportCode | AirportCode
-    destination: Address | GeographicCoordinates | SeaportCode | AirportCode
+    source: Address | GeographicCoordinates | Locode | AirportCode
+    destination: Address | GeographicCoordinates | Locode | AirportCode
 }

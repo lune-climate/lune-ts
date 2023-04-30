@@ -38,6 +38,7 @@ export namespace Error {
         BUNDLE_SELECTION_RATIOS_INVALID_FORMAT = 'bundle_selection_ratios_invalid_format',
         ADDRESS_NOT_FOUND = 'address_not_found',
         PORT_NOT_FOUND = 'port_not_found',
+        LOCODE_NOT_FOUND = 'locode_not_found',
         AIRPORT_INVALID = 'airport_invalid',
         OFFSET_LINK_CONSTRAINT_REQUIRED = 'offset_link_constraint_required',
         OFFSET_LINK_BUNDLES_SIZE_INVALID = 'offset_link_bundles_size_invalid',
