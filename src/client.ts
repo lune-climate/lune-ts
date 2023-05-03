@@ -8,6 +8,7 @@ import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
 import { ClientAccountsService } from './services/ClientAccountsService.js'
 import { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
+import { EmissionFactorsService } from './services/EmissionFactorsService.js'
 import { OrdersService } from './services/OrdersService.js'
 import { PaymentsService } from './services/PaymentsService.js'
 import { ProjectsService } from './services/ProjectsService.js'
@@ -70,6 +71,7 @@ applyMixins(LuneClient, [
     BundleSelectionsService,
     ClientAccountsService,
     EmissionEstimatesService,
+    EmissionFactorsService,
     OrdersService,
     PaymentsService,
     ProjectsService,
@@ -86,6 +88,7 @@ export interface LuneClient
         BundleSelectionsService,
         ClientAccountsService,
         EmissionEstimatesService,
+        EmissionFactorsService,
         OrdersService,
         PaymentsService,
         ProjectsService,
@@ -141,12 +144,18 @@ export type { ElectricityEmissionEstimate } from './models/ElectricityEmissionEs
 export type { ElectricityEstimateRequest } from './models/ElectricityEstimateRequest.js'
 export type { EmissionEstimate } from './models/EmissionEstimate.js'
 export type { EmissionEstimateResponse } from './models/EmissionEstimateResponse.js'
+export type { EmissionFactor } from './models/EmissionFactor.js'
+export { EmissionFactorDenominatorUnit } from './models/EmissionFactorDenominatorUnit.js'
+export { EmissionFactorLogicalUnit } from './models/EmissionFactorLogicalUnit.js'
+export type { EmissionFactorRegions } from './models/EmissionFactorRegions.js'
+export { EmissionFactorSource } from './models/EmissionFactorSource.js'
 export type { EmptyObject } from './models/EmptyObject.js'
 export { Error } from './models/Error.js'
 export type { Errors } from './models/Errors.js'
 export type { EstimateQuote } from './models/EstimateQuote.js'
 export type { FlightEmissionEstimate } from './models/FlightEmissionEstimate.js'
 export type { FlightEstimateRequest } from './models/FlightEstimateRequest.js'
+export type { GasEmissions } from './models/GasEmissions.js'
 export type { GeographicCoordinates } from './models/GeographicCoordinates.js'
 export { HugeOilTankerSeaShippingMethod } from './models/HugeOilTankerSeaShippingMethod.js'
 export type { IATACode } from './models/IATACode.js'
@@ -191,6 +200,7 @@ export type { PaginatedAccounts } from './models/PaginatedAccounts.js'
 export type { PaginatedBase } from './models/PaginatedBase.js'
 export type { PaginatedBundles } from './models/PaginatedBundles.js'
 export type { PaginatedClientAccounts } from './models/PaginatedClientAccounts.js'
+export type { PaginatedEmissionFactors } from './models/PaginatedEmissionFactors.js'
 export type { PaginatedOrders } from './models/PaginatedOrders.js'
 export type { PaginatedProjects } from './models/PaginatedProjects.js'
 export type { PartialUpdateAccountRequest } from './models/PartialUpdateAccountRequest.js'
@@ -250,6 +260,7 @@ export { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
 export { ClientAccountsService } from './services/ClientAccountsService.js'
 export { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
+export { EmissionFactorsService } from './services/EmissionFactorsService.js'
 export { OrdersService } from './services/OrdersService.js'
 export { PaymentsService } from './services/PaymentsService.js'
 export { ProjectsService } from './services/ProjectsService.js'
