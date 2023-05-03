@@ -4,6 +4,7 @@
 
 import type { CurrencyCode } from './CurrencyCode'
 import type { MonetaryAmountValue } from './MonetaryAmountValue'
+import type { SupportedUNSdg } from './SupportedUNSdg'
 
 /**
  * The public sustainability summary page for a given account.
@@ -114,19 +115,7 @@ export type PublicSustainabilityPage = {
             carbonPermanence: 'long_term' | 'short_term' | 'no_storage' | null
         }
     }> | null
-    /**
-     * The list of UN Sustainable Development Goals (SDGs) supported by various projects.
-     */
-    unSdg: Array<{
-        /**
-         * The number which identifies the specific UN SDG.
-         */
-        unSdgNumber: number
-        /**
-         * The total number of projects supporting this UN SDG.
-         */
-        occurrences: number
-    }> | null
+    unSdg: SupportedUNSdg
 }
 
 export namespace PublicSustainabilityPage {
