@@ -228,6 +228,7 @@ export type { ShippingSourceDestination } from './models/ShippingSourceDestinati
 export { SimpleShippingMethod } from './models/SimpleShippingMethod.js'
 export type { SingleShippingEmissionEstimate } from './models/SingleShippingEmissionEstimate.js'
 export type { SourceDestination } from './models/SourceDestination.js'
+export type { SupportedUNSdg } from './models/SupportedUNSdg.js'
 export type { SustainabilityPage } from './models/SustainabilityPage.js'
 export type { SustainabilityPageCustomDescription } from './models/SustainabilityPageCustomDescription.js'
 export { SustainabilityPageDescription } from './models/SustainabilityPageDescription.js'
