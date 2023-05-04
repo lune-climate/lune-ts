@@ -58,18 +58,37 @@ export abstract class AnalyticsService {
 
     /**
      * Get metrics
+     * @param data Request data
      * @param options Additional operation options
      * @returns AnalyticsMetrics OK
      */
-    public getMetrics(options?: {
-        /**
-         * Account Id to be used to perform the API call
-         */
-        accountId?: string
-    }): Promise<Result<AnalyticsMetrics, ApiError>> {
+    public getMetrics(
+        data?: {
+            /**
+             * The start date of the custom date range.
+             * Defaults to 30 days ago if not specified.
+             */
+            from?: string
+            /**
+             * The to (inclusive) date of the custom date range.
+             * Defaults to the current date if not specified.
+             */
+            through?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<AnalyticsMetrics, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/metrics',
+            query: {
+                from: data?.from,
+                through: data?.through,
+            },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
