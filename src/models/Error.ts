@@ -57,5 +57,6 @@ export namespace Error {
         DESTINATION_LOCATION_CODE_INVALID = 'destination_location_code_invalid',
         EMISSION_FACTOR_ID_INVALID = 'emission_factor_id_invalid',
         EMISSION_FACTOR_UNIT_MISMATCH = 'emission_factor_unit_mismatch',
+        EMISSION_FACTOR_GATED = 'emission_factor_gated',
     }
 }
