@@ -2,11 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export enum EmissionFactorDenominatorUnit {
-    EUR = 'EUR',
-    USD = 'USD',
-    KM = 'km',
-    MI = 'mi',
-    NM = 'nm',
-    ITEM = 'item',
-}
+import type { CurrencyCode } from './CurrencyCode'
+import type { DistanceUnit } from './DistanceUnit'
+
+export type EmissionFactorDenominatorUnit = CurrencyCode | DistanceUnit | 'item'

@@ -13,6 +13,8 @@ import type { Diet } from '../models/Diet.js'
 import type { Distance } from '../models/Distance.js'
 import type { ElectricityConsumption } from '../models/ElectricityConsumption.js'
 import type { ElectricityEmissionEstimate } from '../models/ElectricityEmissionEstimate.js'
+import type { EmissionFactorActivity } from '../models/EmissionFactorActivity.js'
+import type { EmissionFactorEstimate } from '../models/EmissionFactorEstimate.js'
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IndividualEmissionEstimate } from '../models/IndividualEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
@@ -1272,6 +1274,58 @@ export abstract class EmissionEstimatesService {
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
                 503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Create an estimate using a specific emission factor
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns EmissionFactorEstimate OK
+     */
+    public createEmissionFactorEstimate(
+        data: {
+            /**
+             * The emission factor unique identifier
+             */
+            emissionFactorId: string
+            /**
+             * A measure of the activity being estimated
+             */
+            activity: EmissionFactorActivity
+            /**
+             * A name to reference this calculation.
+             */
+            name?: string
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * Selects to which precision to truncate the quantities assigned to each bundle.
+             */
+            quantityTrunc?: MassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<EmissionFactorEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/estimates/emission-factor',
+            body: {
+                emission_factor_id: data?.emissionFactorId,
+                activity: data?.activity,
+                name: data?.name,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `Bad Request`,
+                401: `Unauthorized`,
+                429: `Too Many Requests`,
             },
         })
     }
