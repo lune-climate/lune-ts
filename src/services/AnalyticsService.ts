@@ -161,7 +161,7 @@ export abstract class AnalyticsService {
              * The time interval over which metrics should be aggregated.
              * Defaults to day if not specified.
              */
-            interval?: 'day' | 'week' | 'month'
+            interval?: 'day' | 'month'
             /**
              * When true, metrics will include data from all accounts in the organisation. When false, metrics will only include data from the API Key's default account.
              * Defaults to false.
