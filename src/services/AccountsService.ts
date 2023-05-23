@@ -34,6 +34,7 @@ export abstract class AccountsService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
