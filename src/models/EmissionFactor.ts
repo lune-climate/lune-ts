@@ -4,8 +4,6 @@
 
 import type { EmissionFactorDenominatorUnit } from './EmissionFactorDenominatorUnit'
 import type { EmissionFactorSource } from './EmissionFactorSource'
-import type { GasEmissions } from './GasEmissions'
-import type { GatedGasEmissions } from './GatedGasEmissions'
 import type { MassUnit } from './MassUnit'
 
 export type EmissionFactor = {
@@ -22,10 +20,6 @@ export type EmissionFactor = {
      * Publication year of the emission factor
      */
     publicationYear: number
-    /**
-     * Detailed information about the gas emissions
-     */
-    gasEmissions: GasEmissions | GatedGasEmissions
     /**
      * Numerator unit of the emission factor
      */
