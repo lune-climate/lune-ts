@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest'
+import type { LogisticsSiteMethod } from './LogisticsSiteMethod'
 import type { MassUnit } from './MassUnit'
 import type { Shipment } from './Shipment'
 import type { ShippingCountryCode } from './ShippingCountryCode'
@@ -14,11 +15,16 @@ import type { ShippingRoute } from './ShippingRoute'
  */
 export type MultiLegShippingEstimateRequest = {
     shipment: Shipment
-    legs: Array<{
-        route: ShippingRoute
-        method: ShippingMethod
-        countryCode?: ShippingCountryCode
-    }>
+    legs: Array<
+        | {
+              route: ShippingRoute
+              method: ShippingMethod
+              countryCode?: ShippingCountryCode
+          }
+        | {
+              method: LogisticsSiteMethod
+          }
+    >
     /**
      * A name to reference this calculation.
      */

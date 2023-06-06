@@ -3,6 +3,7 @@
 /* eslint-disable */
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest'
+import type { LogisticsSiteMethod } from './LogisticsSiteMethod'
 import type { MassUnit } from './MassUnit'
 import type { Shipment } from './Shipment'
 import type { ShippingCountryCode } from './ShippingCountryCode'
@@ -14,9 +15,6 @@ import type { ShippingRoute } from './ShippingRoute'
  */
 export type ShippingEstimateRequest = {
     shipment: Shipment
-    route: ShippingRoute
-    method: ShippingMethod
-    countryCode?: ShippingCountryCode
     /**
      * A name to reference this calculation.
      */
@@ -26,4 +24,13 @@ export type ShippingEstimateRequest = {
      * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
-}
+} & (
+    | {
+          route: ShippingRoute
+          method: ShippingMethod
+          countryCode?: ShippingCountryCode
+      }
+    | {
+          method: LogisticsSiteMethod
+      }
+)

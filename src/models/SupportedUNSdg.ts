@@ -3,7 +3,10 @@
 /* eslint-disable */
 
 /**
- * The list of supported UN Sustainable Development Goals (SDGs)
+ * The list of supported UN Sustainable Development Goals (SDGs).
+ *
+ * The array is sorted by the goal number (the `un_sdg_number` field), ascending.
+ *
  */
 export type SupportedUNSdg = Array<{
     /**

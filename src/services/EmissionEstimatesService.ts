@@ -18,6 +18,7 @@ import type { EmissionFactorEstimate } from '../models/EmissionFactorEstimate.js
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IndividualEmissionEstimate } from '../models/IndividualEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
+import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
 import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
@@ -319,19 +320,27 @@ export abstract class EmissionEstimatesService {
      */
     public createShippingEstimate(
         data: {
-            shipment: Shipment
-            route: ShippingRoute
-            method: ShippingMethod
-            countryCode?: ShippingCountryCode
-            /**
-             * A name to reference this calculation.
-             */
-            name?: string
-            bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            shippingEstimateRequest: {
+                shipment: Shipment
+                /**
+                 * A name to reference this calculation.
+                 */
+                name?: string
+                bundleSelection?: BundleSelectionRequest
+                /**
+                 * Selects to which precision to truncate the quantities assigned to each bundle.
+                 */
+                quantityTrunc?: MassUnit
+            } & (
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            )
         },
         options?: {
             /**
@@ -343,15 +352,7 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping',
-            body: {
-                shipment: data?.shipment,
-                route: data?.route,
-                method: data?.method,
-                country_code: data?.countryCode,
-                name: data?.name,
-                bundle_selection: data?.bundleSelection,
-                quantity_trunc: data?.quantityTrunc,
-            },
+            body: data?.shippingEstimateRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -404,19 +405,27 @@ export abstract class EmissionEstimatesService {
     public updateShippingEstimate(
         id: string,
         data: {
-            shipment: Shipment
-            route: ShippingRoute
-            method: ShippingMethod
-            countryCode?: ShippingCountryCode
-            /**
-             * A name to reference this calculation.
-             */
-            name?: string
-            bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            shippingEstimateRequest: {
+                shipment: Shipment
+                /**
+                 * A name to reference this calculation.
+                 */
+                name?: string
+                bundleSelection?: BundleSelectionRequest
+                /**
+                 * Selects to which precision to truncate the quantities assigned to each bundle.
+                 */
+                quantityTrunc?: MassUnit
+            } & (
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            )
         },
         options?: {
             /**
@@ -431,15 +440,7 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
-            body: {
-                shipment: data?.shipment,
-                route: data?.route,
-                method: data?.method,
-                country_code: data?.countryCode,
-                name: data?.name,
-                bundle_selection: data?.bundleSelection,
-                quantity_trunc: data?.quantityTrunc,
-            },
+            body: data?.shippingEstimateRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -463,11 +464,16 @@ export abstract class EmissionEstimatesService {
     public createMultiLegShippingEstimate(
         data: {
             shipment: Shipment
-            legs: Array<{
-                route: ShippingRoute
-                method: ShippingMethod
-                countryCode?: ShippingCountryCode
-            }>
+            legs: Array<
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            >
             /**
              * A name to reference this calculation.
              */
@@ -548,11 +554,16 @@ export abstract class EmissionEstimatesService {
         id: string,
         data: {
             shipment: Shipment
-            legs: Array<{
-                route: ShippingRoute
-                method: ShippingMethod
-                countryCode?: ShippingCountryCode
-            }>
+            legs: Array<
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            >
             /**
              * A name to reference this calculation.
              */

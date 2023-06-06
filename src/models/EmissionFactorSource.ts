@@ -6,4 +6,5 @@ export enum EmissionFactorSource {
     EPA = 'epa',
     EXIOBASE = 'exiobase',
     ECOINVENT = 'ecoinvent',
+    BEIS = 'beis',
 }
