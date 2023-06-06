@@ -172,6 +172,7 @@ export type { IndividualEmissionEstimate } from './models/IndividualEmissionEsti
 export { IndividualEstimateRequest } from './models/IndividualEstimateRequest.js'
 export type { IntegerPercentage } from './models/IntegerPercentage.js'
 export type { Locode } from './models/Locode.js'
+export { LogisticsSiteMethod } from './models/LogisticsSiteMethod.js'
 export type { Mass } from './models/Mass.js'
 export { MassUnit } from './models/MassUnit.js'
 export { Media } from './models/Media.js'

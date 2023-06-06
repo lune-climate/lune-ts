@@ -21,6 +21,6 @@ import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
  */
 export type MultiLegShippingEmissionEstimate = {
     legs: Array<ShippingLegEmissionEstimate>
-    distance: Distance
+    distance?: Distance
     request: MultiLegShippingEstimateRequest
 } & EmissionEstimateResponse
