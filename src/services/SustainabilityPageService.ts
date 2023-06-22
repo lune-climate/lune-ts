@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { AccountType } from '../models/AccountType.js'
+import type { NullEnum } from '../models/NullEnum.js'
 import type { PublicSustainabilityPage } from '../models/PublicSustainabilityPage.js'
 import type { SustainabilityPage } from '../models/SustainabilityPage.js'
 import type { SustainabilityPageCustomDescription } from '../models/SustainabilityPageCustomDescription.js'
@@ -34,7 +35,7 @@ export abstract class SustainabilityPageService {
             slug: SustainabilityPageSlug
             title: SustainabilityPageTitle
             sections: SustainabilityPageSections
-            description?: SustainabilityPageDescription | string | null
+            description?: SustainabilityPageDescription | NullEnum
             customDescription?: SustainabilityPageCustomDescription
         },
         options?: {
@@ -79,7 +80,7 @@ export abstract class SustainabilityPageService {
             slug: SustainabilityPageSlug
             title: SustainabilityPageTitle
             sections: SustainabilityPageSections
-            description?: SustainabilityPageDescription | string | null
+            description?: SustainabilityPageDescription | NullEnum
             customDescription?: SustainabilityPageCustomDescription
         },
         options?: {

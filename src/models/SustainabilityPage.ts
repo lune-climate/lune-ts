@@ -2,6 +2,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { NullEnum } from './NullEnum'
 import type { SustainabilityPageCustomDescription } from './SustainabilityPageCustomDescription'
 import type { SustainabilityPageDescription } from './SustainabilityPageDescription'
 import type { SustainabilityPageSections } from './SustainabilityPageSections'
@@ -13,7 +14,7 @@ export type SustainabilityPage = {
     status: SustainabilityPageStatus
     slug: SustainabilityPageSlug
     title: SustainabilityPageTitle
-    description: SustainabilityPageDescription | string | null
+    description: SustainabilityPageDescription | NullEnum
     customDescription: SustainabilityPageCustomDescription | null
     sections: SustainabilityPageSections | null
 }
