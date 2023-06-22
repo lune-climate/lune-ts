@@ -40,8 +40,6 @@ export namespace Error {
         PORT_NOT_FOUND = 'port_not_found',
         LOCODE_NOT_FOUND = 'locode_not_found',
         AIRPORT_INVALID = 'airport_invalid',
-        OFFSET_LINK_CONSTRAINT_REQUIRED = 'offset_link_constraint_required',
-        OFFSET_LINK_BUNDLES_SIZE_INVALID = 'offset_link_bundles_size_invalid',
         WEBHOOK_LIMIT_REACHED = 'webhook_limit_reached',
         TIME_RANGE_INVALID = 'time_range_invalid',
         EXCHANGE_RATE_NOT_FOUND = 'exchange_rate_not_found',
