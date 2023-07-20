@@ -73,7 +73,7 @@ export type BundleSummary = {
     /**
      * The bundle's carbon storage permanence.
      */
-    carbonPermanence: BundleSummary.carbon_permanence | null
+    carbonPermanence: BundleSummary.carbon_permanence
 }
 
 export namespace BundleSummary {
