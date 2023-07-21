@@ -5,11 +5,11 @@
 import type { BundlePercentage } from './BundlePercentage'
 
 /**
- * Allocation ratios by bundle.
+ * A Bundle Selection represents an account's default project bundle ratios that are used when an order is placed without specifying project bundles.
  *
- * The sum of all allocation ratios must equal 100.
- *
- * If not specified, the preconfigured allocation ratios are going to be used.
+ * An account initial project bundle selection is
+ * * Conserving forests in Asia - 95%
+ * * Ocean Carbon Removal - 5%
  *
  */
 export type BundleSelection = Array<BundlePercentage>

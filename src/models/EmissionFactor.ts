@@ -6,6 +6,12 @@ import type { EmissionFactorDenominatorUnit } from './EmissionFactorDenominatorU
 import type { EmissionFactorSource } from './EmissionFactorSource'
 import type { MassUnit } from './MassUnit'
 
+/**
+ * An emission factors is a coefficient representing the amount of emissions per unit of activity, eg 0.354kgCO₂/USD.
+ *
+ * The `source` property describes what database the emission factor has been ingested from.
+ *
+ */
 export type EmissionFactor = {
     /**
      * The emission factor unique identifier

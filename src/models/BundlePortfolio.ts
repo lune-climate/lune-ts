@@ -5,8 +5,9 @@
 import type { BundleSelection } from './BundleSelection'
 
 /**
- * Predefined bundle selections, for example following Oxford Offsetting Principles.
- * Bundle selection for a particular Bundle portfolio may change over time.
+ * A curated group of predefined project bundles., e.g., Oxford Offsetting Principles.
+ *
+ * Project bundles for a particular Bundle portfolio may change over time.
  *
  */
 export type BundlePortfolio = {

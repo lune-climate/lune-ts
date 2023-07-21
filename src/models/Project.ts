@@ -8,6 +8,13 @@ import type { MuiIcon } from './MuiIcon'
 import type { ProjectSummary } from './ProjectSummary'
 import type { TitleAndDescription } from './TitleAndDescription'
 
+/**
+ * A Project represents the entity which issues carbon credits because of its environmental activity which reduces, avoids, or removes emissions from the atmosphere.
+ *
+ * Clients cannot purchase a specific Project's credits by creating an order.
+ * A Project's credits are allocated to an order if the order has purchased a project bundle the project belongs to.
+ *
+ */
 export type Project = ProjectSummary & {
     /**
      * Array of bundles the project is part of
