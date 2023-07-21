@@ -106,6 +106,7 @@ export type { AggregatedAnalyticsByProperty } from './models/AggregatedAnalytics
 export type { AirportCode } from './models/AirportCode.js'
 export type { AirportSourceDestination } from './models/AirportSourceDestination.js'
 export type { AllocationEventDetails } from './models/AllocationEventDetails.js'
+export type { Analytics } from './models/Analytics.js'
 export type { AnalyticsByBundle } from './models/AnalyticsByBundle.js'
 export type { AnalyticsMetrics } from './models/AnalyticsMetrics.js'
 export { Area } from './models/Area.js'

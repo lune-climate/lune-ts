@@ -5,7 +5,10 @@
 import type { AccountBase } from './AccountBase'
 
 /**
- * Account used for your regular operations.
+ * An Account represents the entity which performs API operations.
+ *
+ * Each API operation like creating an order or creating an emission estimate is ring-fenced within an Account.
+ *
  */
 export type Account = AccountBase & {
     scope: Account.scope
