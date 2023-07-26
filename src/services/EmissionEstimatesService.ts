@@ -264,6 +264,10 @@ export abstract class EmissionEstimatesService {
      */
     public createPassengerTransportationEstimate(
         data: {
+            /**
+             * An array representing all passenger travel legs.
+             *
+             */
             legs: Array<
                 | PassengerRoadEstimateRequest
                 | PassengerRailEstimateRequest
@@ -464,6 +468,9 @@ export abstract class EmissionEstimatesService {
     public createMultiLegShippingEstimate(
         data: {
             shipment: Shipment
+            /**
+             * An array representing all the legs of a shipment.
+             */
             legs: Array<
                 | {
                       route: ShippingRoute
@@ -554,6 +561,9 @@ export abstract class EmissionEstimatesService {
         id: string,
         data: {
             shipment: Shipment
+            /**
+             * An array representing all the legs of a shipment.
+             */
             legs: Array<
                 | {
                       route: ShippingRoute

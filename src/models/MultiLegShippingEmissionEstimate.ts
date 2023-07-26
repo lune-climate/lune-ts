@@ -20,6 +20,12 @@ import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate'
  *
  */
 export type MultiLegShippingEmissionEstimate = {
+    /**
+     * An array representing a leg's emission estimate.
+     *
+     * Returned in the same order as the request.
+     *
+     */
     legs: Array<ShippingLegEmissionEstimate>
     distance: Distance
     request: MultiLegShippingEstimateRequest

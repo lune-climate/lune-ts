@@ -4,7 +4,12 @@
 
 export type PaginatedBase = {
     /**
-     * Whether or not there are more elements available after this set. If false, this set comprises the end of the array.
+     * Whether or not there are more elements available after this set.
+     *
+     * If false, this set comprises the end of the array.
+     *
+     * Part of a paginated response.
+     *
      */
     hasMore: boolean
 }

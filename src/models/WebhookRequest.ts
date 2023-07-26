@@ -9,5 +9,8 @@ import type { WebhookEvent } from './WebhookEvent'
  *
  */
 export type WebhookRequest = {
+    /**
+     * An array of WebhookEvent objects.
+     */
     events: Array<WebhookEvent>
 }

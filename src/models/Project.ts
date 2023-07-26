@@ -17,7 +17,7 @@ import type { TitleAndDescription } from './TitleAndDescription'
  */
 export type Project = ProjectSummary & {
     /**
-     * Array of bundles the project is part of
+     * An array of Bundle objects the project is part of.
      */
     bundles: Array<BundleSummary>
     /**
