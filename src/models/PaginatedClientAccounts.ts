@@ -7,7 +7,10 @@ import type { PaginatedBase } from './PaginatedBase'
 
 export type PaginatedClientAccounts = PaginatedBase & {
     /**
-     * Paginated Client Account objects
+     * An array of Client Account objects
+     *
+     * Part of a paginated response.
+     *
      */
     data: Array<ClientAccount>
 }

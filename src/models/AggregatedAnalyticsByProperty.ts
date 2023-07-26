@@ -6,6 +6,9 @@ import type { OffsetType } from './OffsetType'
 import type { Registry } from './Registry'
 
 export type AggregatedAnalyticsByProperty = {
+    /**
+     * An array of objects describing a bundle's aggregated orders.
+     */
     bundle: Array<{
         /**
          * The bundle's unique identifier.
@@ -24,6 +27,9 @@ export type AggregatedAnalyticsByProperty = {
          */
         value: string
     }>
+    /**
+     * An array of objects describing a location's aggregated orders.
+     */
     location: Array<{
         /**
          * Project location (continent).
@@ -38,6 +44,9 @@ export type AggregatedAnalyticsByProperty = {
          */
         value: string
     }>
+    /**
+     * An array of objects describing a registry's aggregated orders.
+     */
     registry: Array<{
         registryName: Registry
         /**
@@ -49,6 +58,9 @@ export type AggregatedAnalyticsByProperty = {
          */
         value: string
     }>
+    /**
+     * An array of objects describing aggregated orders for each Oxford Offsetting Principle's type.
+     */
     oxfordOffsettingPrinciples: Array<{
         /**
          * Oxford Offsetting Principles' type.
@@ -66,6 +78,9 @@ export type AggregatedAnalyticsByProperty = {
          */
         value: string
     }>
+    /**
+     * An array of objects describing aggregated orders by offset type.
+     */
     offsetType: Array<{
         offsetType: OffsetType
         /**

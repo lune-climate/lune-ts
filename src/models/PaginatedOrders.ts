@@ -7,7 +7,10 @@ import type { PaginatedBase } from './PaginatedBase'
 
 export type PaginatedOrders = PaginatedBase & {
     /**
-     * Paginated Order objects ordered by creation date descending.
+     * An array of Order objects ordered by creation date descending.
+     *
+     * Part of a paginated response.
+     *
      */
     data: Array<Order>
 }

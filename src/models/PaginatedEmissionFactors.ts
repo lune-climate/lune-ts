@@ -7,7 +7,10 @@ import type { PaginatedBase } from './PaginatedBase'
 
 export type PaginatedEmissionFactors = PaginatedBase & {
     /**
-     * Paginated emission factor objects ordered by match probability.
+     * An array of Emission Factor objects, ordered by best match.
+     *
+     * Part of a paginated response.
+     *
      */
     data: Array<EmissionFactor>
 }

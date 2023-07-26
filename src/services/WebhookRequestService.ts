@@ -23,6 +23,9 @@ export abstract class WebhookRequestService {
      */
     public webhookRequest(
         data: {
+            /**
+             * An array of WebhookEvent objects.
+             */
             events: Array<WebhookEvent>
         },
         options?: {

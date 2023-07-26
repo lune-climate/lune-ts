@@ -15,6 +15,9 @@ import type { ShippingRoute } from './ShippingRoute'
  */
 export type MultiLegShippingEstimateRequest = {
     shipment: Shipment
+    /**
+     * An array representing all the legs of a shipment.
+     */
     legs: Array<
         | {
               route: ShippingRoute

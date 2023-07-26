@@ -4,4 +4,7 @@
 
 import type { AnalyticsByBundle } from './AnalyticsByBundle'
 
+/**
+ * An array of analytics by bundle objects.
+ */
 export type CumulativeBundleAnalytics = Array<AnalyticsByBundle>

@@ -16,6 +16,10 @@ export type PassengerTransportationEstimateRequest = {
      * Number of passengers the calculation should be applied to.
      */
     passengers?: number
+    /**
+     * An array representing all passenger travel legs.
+     *
+     */
     legs: Array<
         PassengerRoadEstimateRequest | PassengerRailEstimateRequest | PassengerFlightEstimateRequest
     >

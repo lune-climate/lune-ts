@@ -2,6 +2,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+/**
+ * A timeseries of quantities and values.
+ */
 export type QuantityAndValueTimeseries = Array<{
     date: string
     value: string
