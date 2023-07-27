@@ -99,6 +99,7 @@ export abstract class EmissionFactorsService {
 
     /**
      * List all emission factor regions
+     * You may use emission factor regions as a filter when you list emission factors.
      * @param options Additional operation options
      * @returns EmissionFactorRegions OK
      */
