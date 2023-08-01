@@ -47,6 +47,7 @@ export type { CumulativeBundleAnalytics } from './models/CumulativeBundleAnalyti
 export { CurrencyCode } from './models/CurrencyCode'
 export { Diet } from './models/Diet'
 export { Distance } from './models/Distance'
+export { DistanceCalculationMethod } from './models/DistanceCalculationMethod'
 export { DistanceUnit } from './models/DistanceUnit'
 export { ElectricityConsumption } from './models/ElectricityConsumption'
 export type { ElectricityEmissionEstimate } from './models/ElectricityEmissionEstimate'

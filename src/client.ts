@@ -141,6 +141,7 @@ export type { CumulativeBundleAnalytics } from './models/CumulativeBundleAnalyti
 export { CurrencyCode } from './models/CurrencyCode.js'
 export { Diet } from './models/Diet.js'
 export { Distance } from './models/Distance.js'
+export { DistanceCalculationMethod } from './models/DistanceCalculationMethod.js'
 export { DistanceUnit } from './models/DistanceUnit.js'
 export { ElectricityConsumption } from './models/ElectricityConsumption.js'
 export type { ElectricityEmissionEstimate } from './models/ElectricityEmissionEstimate.js'
