@@ -1,4 +1,4 @@
-import { AxiosError, AxiosInstance } from 'axios'
+import { AxiosInstance, isAxiosError } from 'axios'
 import snakeCaseKeys from 'snakecase-keys'
 import { Err, Ok, Result } from 'ts-results-es'
 
@@ -209,7 +209,10 @@ export const request = async <T>(
         .then((response) => {
             return Ok(response.data as T)
         })
-        .catch((error: AxiosError) => {
+        .catch((error: unknown) => {
+            if (!isAxiosError(error)) {
+                throw error
+            }
             return Err(new ApiError(error, options))
         })
 }
