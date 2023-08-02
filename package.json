@@ -37,7 +37,7 @@
     "fix-format": "eslint --fix \"src/**/*.ts\" && prettier --write \"src/**/*.ts\""
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.4.0",
     "camelcase-keys": "^6.2.2",
     "snakecase-keys": "^5.0.0",
     "ts-results-es": "^3.4.0"
