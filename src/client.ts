@@ -1,4 +1,4 @@
-import axios, { AxiosInstance } from 'axios'
+import axios, { AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
 import camelCaseKeys from 'camelcase-keys'
 
 import { ClientConfig } from './core/ClientConfig'
@@ -47,13 +47,24 @@ export class LuneClient {
         this.client = axios.create()
 
         // Convert to camelCase when receiving request
-        const camelCaseResponse = (response) => ({
+        const camelCaseResponse = (response: AxiosResponse<unknown, unknown>) => ({
             ...response,
-            data: camelCaseKeys(response.data, { deep: true }),
+            // SAFETY: The camelcase-keys type definitions are overly restrictive. The function
+            // handles all kinds of values just fine: arrays, numbers, strings, null etc.
+            //
+            // Instead of writing a bunch of type-detecting conditional code to satisfy the
+            // TS compiler let's just wholesale ignore this type mismatch – we don't know what
+            // value do we actually deal with here but the library will handle it.
+            data: camelCaseKeys(response.data as any, { deep: true }),
         })
-        this.client.interceptors.response.use(camelCaseResponse, (error) => {
+        this.client.interceptors.response.use(camelCaseResponse, (error: unknown) => {
             // There's a separate, slightly different callback for errors.
-            error.response = camelCaseResponse(error.response)
+            if (!isAxiosError(error)) {
+                throw error
+            }
+            if (error.response) {
+                error.response = camelCaseResponse(error.response)
+            }
             // We need to return a rejected promise for it to work nice with axios.
             return Promise.reject(error)
         })
