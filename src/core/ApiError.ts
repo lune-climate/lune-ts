@@ -47,7 +47,7 @@ export function constructApiError(error: AxiosError, options: ApiRequestOptions)
         // http.ClientRequest in node.js
         return {
             description:
-                'Something went wrong communicating with Lune. Please contact support if this happens again.',
+                `Something went wrong communicating with Lune: ${error.message}. Please contact support if this happens again.`,
         }
     } else {
         throw new Error(
