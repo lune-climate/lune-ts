@@ -3,10 +3,12 @@
 /* eslint-disable */
 
 import type { Distance } from './Distance'
+import type { DistanceCalculationMethod } from './DistanceCalculationMethod'
 import type { EmissionEstimate } from './EmissionEstimate'
 
 export type ShippingLegEmissionEstimate = EmissionEstimate & {
     distance?: Distance
+    distanceCalculationMethod?: DistanceCalculationMethod
     /**
      * Summary of the methodology used to calculate emissions or any value which is a prerequisite.
      *
