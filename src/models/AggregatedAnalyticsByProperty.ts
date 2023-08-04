@@ -32,7 +32,7 @@ export type AggregatedAnalyticsByProperty = {
      */
     location: Array<{
         /**
-         * Project location (continent).
+         * Project location (continent). If a project has yet to be assigned 'Not yet allocated' is returned instead.
          */
         location: string
         /**
