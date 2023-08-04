@@ -42,7 +42,8 @@ export class ApiError {
             this.description =
                 'Something went wrong communicating with Lune. Please contact support if this happens again.'
         } else {
-            throw new Error(`Programming error (to be resolved by Lune). Underlying error: ${error.message}`)
+            // Something happened in setting up the request that triggered an Error
+            this.description = error.message
         }
     }
 }
