@@ -1,7 +1,7 @@
 import axios, { AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
 import camelCaseKeys from 'camelcase-keys'
 
-import { ClientConfig } from './core/ClientConfig'
+import { ClientConfig } from './core/ClientConfig.js'
 import { AccountsService } from './services/AccountsService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
 import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
