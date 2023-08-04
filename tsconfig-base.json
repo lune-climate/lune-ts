@@ -12,7 +12,6 @@
     "strict": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
-    "noImplicitAny": false,
     "baseUrl": "./",
     "target": "ES2019",
     "esModuleInterop": true,
