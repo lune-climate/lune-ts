@@ -46,8 +46,7 @@ export function constructApiError(error: AxiosError, options: ApiRequestOptions)
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
         return {
-            description:
-                'Something went wrong communicating with Lune. Please contact support if this happens again.',
+            description: `Something went wrong communicating with Lune: ${error.message}. Please contact support if this happens again.`,
         }
     } else {
         throw new Error(
