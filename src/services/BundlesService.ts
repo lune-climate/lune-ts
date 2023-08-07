@@ -9,8 +9,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { PaginatedProjects } from '../models/PaginatedProjects.js'
-import type { Project } from '../models/Project.js'
+import type { Bundle } from '../models/Bundle.js'
+import type { PaginatedBundles } from '../models/PaginatedBundles.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -18,17 +18,17 @@ import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
 
-export abstract class ProjectsService {
+export abstract class BundlesService {
     protected abstract client: AxiosInstance
     protected abstract config: ClientConfig
 
     /**
-     * List projects
+     * List bundles
      * @param data Request data
      * @param options Additional operation options
-     * @returns PaginatedProjects OK
+     * @returns PaginatedBundles OK
      */
-    public listProjects(
+    public listBundles(
         data?: {
             /**
              * Maximum number of resources to return, between 1 and 100.
@@ -45,7 +45,7 @@ export abstract class ProjectsService {
              */
             after?: string
             /**
-             * When `recently_disabled` is set to true, the response will also include projects which have been disabled in the last 30 days.
+             * When `recently_disabled` is set to true, the response will also include bundles which have been disabled in the last 30 days.
              */
             recentlyDisabled?: boolean
         },
@@ -55,10 +55,10 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
-    ): Promise<Result<PaginatedProjects, ApiError>> {
+    ): Promise<Result<PaginatedBundles, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
-            url: '/projects',
+            url: '/bundles',
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -73,12 +73,12 @@ export abstract class ProjectsService {
     }
 
     /**
-     * Get a project
-     * @param id The project's unique identifier
+     * Get a bundle
+     * @param id The bundle's unique identifier
      * @param options Additional operation options
-     * @returns Project OK
+     * @returns Bundle OK
      */
-    public getProject(
+    public getBundle(
         id: string,
         options?: {
             /**
@@ -86,40 +86,12 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
-    ): Promise<Result<Project, ApiError>> {
+    ): Promise<Result<Bundle, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
-            url: '/projects/{id}',
+            url: '/bundles/{id}',
             path: {
                 id: id,
-            },
-            errors: {
-                404: `The specified resource was not found`,
-                429: `Too many requests have been made in a short period of time`,
-            },
-        })
-    }
-
-    /**
-     * Get a project by slug
-     * @param slug The project's unique slug
-     * @param options Additional operation options
-     * @returns Project OK
-     */
-    public getProjectBySlug(
-        slug: string,
-        options?: {
-            /**
-             * Account Id to be used to perform the API call
-             */
-            accountId?: string
-        },
-    ): Promise<Result<Project, ApiError>> {
-        return __request(this.client, this.config, options || {}, {
-            method: 'GET',
-            url: '/projects/by-slug/{slug}',
-            path: {
-                slug: slug,
             },
             errors: {
                 404: `The specified resource was not found`,

@@ -6,6 +6,7 @@ import { AccountsService } from './services/AccountsService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
 import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
 import { BundleSelectionsService } from './services/BundleSelectionsService.js'
+import { BundlesService } from './services/BundlesService.js'
 import { ClientAccountsService } from './services/ClientAccountsService.js'
 import { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
 import { EmissionFactorsService } from './services/EmissionFactorsService.js'
@@ -79,6 +80,7 @@ applyMixins(LuneClient, [
     AccountsService,
     AnalyticsService,
     BundlePortfoliosService,
+    BundlesService,
     BundleSelectionsService,
     ClientAccountsService,
     EmissionEstimatesService,
@@ -96,6 +98,7 @@ export interface LuneClient
     extends AccountsService,
         AnalyticsService,
         BundlePortfoliosService,
+        BundlesService,
         BundleSelectionsService,
         ClientAccountsService,
         EmissionEstimatesService,
@@ -280,6 +283,7 @@ export type { WebhookRequest } from './models/WebhookRequest.js'
 export { AccountsService } from './services/AccountsService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'
 export { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
+export { BundlesService } from './services/BundlesService.js'
 export { BundleSelectionsService } from './services/BundleSelectionsService.js'
 export { ClientAccountsService } from './services/ClientAccountsService.js'
 export { EmissionEstimatesService } from './services/EmissionEstimatesService.js'
