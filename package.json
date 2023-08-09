@@ -39,7 +39,7 @@
     "axios": "^1.4.0",
     "camelcase-keys": "^6.2.2",
     "snakecase-keys": "^5.0.0",
-    "ts-results-es": "^3.4.0"
+    "ts-results-es": "^4.0.0"
   },
   "devDependencies": {
     "@lune-climate/openapi-typescript-codegen": "^0.1.6",
