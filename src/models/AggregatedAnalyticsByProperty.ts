@@ -56,7 +56,10 @@ export type AggregatedAnalyticsByProperty = {
      * An array of objects describing a registry's aggregated orders.
      */
     registry: Array<{
-        registryName: Registry
+        /**
+         * The project's Verification Standard Entity name or equivalent organization. If a project has no registry, 'Not certified' is returned. If a project has yet to be assigned, 'Not yet allocated' is returned.
+         */
+        registryName: Registry | 'Not certified' | 'Not yet allocated'
         /**
          * Quantity of CO2 offsets linked to this activity (tonnes CO2).
          */
