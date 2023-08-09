@@ -13,10 +13,11 @@
 import type { Distance } from './Distance.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
 import type { EmissionEstimate } from './EmissionEstimate.js'
+import type { NullEnum } from './NullEnum.js'
 
 export type ShippingLegEmissionEstimate = EmissionEstimate & {
     distance?: Distance
-    distanceCalculationMethod?: DistanceCalculationMethod
+    distanceCalculationMethod: DistanceCalculationMethod | NullEnum
     /**
      * Summary of the methodology used to calculate emissions or any value which is a prerequisite.
      *

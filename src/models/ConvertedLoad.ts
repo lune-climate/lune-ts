@@ -10,11 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export enum DistanceCalculationMethod {
-    GREAT_CIRCLE_DISTANCE = 'great_circle_distance',
-    GREAT_CIRCLE_DISTANCE_X2 = 'great_circle_distance_x2',
-    SEA_DISTANCE_ALGORITHM = 'sea_distance_algorithm',
-    MAPBOX = 'mapbox',
-    USER_INPUT = 'user_input',
-    OSRM = 'osrm',
+import type { MassUnit } from './MassUnit.js'
+
+export type ConvertedLoad = {
+    amount: string
+    unit: MassUnit | 'TEU'
 }
