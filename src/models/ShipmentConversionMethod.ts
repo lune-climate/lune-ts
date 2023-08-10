@@ -10,7 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export enum LoadConversionMethod {
+export enum ShipmentConversionMethod {
     USER_PROVIDED_CARGO_TYPE = 'user_provided_cargo_type',
     AVERAGE_CARGO_TYPE = 'average_cargo_type',
 }

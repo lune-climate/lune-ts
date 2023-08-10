@@ -98,9 +98,14 @@ export type OrderBase = {
      */
     projects: Array<OrderProject> | null
     /**
-     * Carbon credits certificate URL.
+     * Carbon credits PDF certificate URL.
      *
      * This property is set when an order has state 'complete'
+     *
+     * The property is set (and the certificate is available) regardless of the
+     * Sustainability page configuration.
+     *
+     * The URL requires API authentication and cannot be accessed anonymously.
      *
      */
     certificate: string | null

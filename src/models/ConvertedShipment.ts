@@ -12,7 +12,7 @@
 
 import type { MassUnit } from './MassUnit.js'
 
-export type ConvertedLoad = {
+export type ConvertedShipment = {
     amount: string
     unit: MassUnit | 'TEU'
 }
