@@ -25,4 +25,5 @@ export enum CurrencyCode {
     PLN = 'PLN',
     DKK = 'DKK',
     NOK = 'NOK',
+    BGN = 'BGN',
 }
