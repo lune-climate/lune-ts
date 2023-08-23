@@ -15,4 +15,7 @@ export enum EmissionFactorSource {
     EXIOBASE = 'exiobase',
     ECOINVENT = 'ecoinvent',
     BEIS = 'beis',
+    LUNE = 'lune',
+    GLEC = 'glec',
+    EMSA = 'emsa',
 }
