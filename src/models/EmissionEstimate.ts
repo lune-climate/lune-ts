@@ -13,7 +13,7 @@
 import type { Mass } from './Mass.js'
 
 /**
- * An emission estimate result. The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
+ * An emission estimate result. The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
  */
 export type EmissionEstimate = {
     mass: Mass

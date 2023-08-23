@@ -13,16 +13,16 @@
 /**
  * Vessel sizes:
  * * `inland_waterway_motor_vessel_*`:
- * * `small` – less than 80 m / 1000 t
- * * `medium` – 85-110 m (1000-2000 t)
+ * * `small` – less than 80 m / 1000 t
+ * * `medium` – 85-110 m (1000-2000 t)
  * * `large` – 135 m (2000-3000 t)
- * * `inland_waterway_coupled_convoy` – 163-185 m
+ * * `inland_waterway_coupled_convoy` – 163-185 m
  * * `inland_waterway_pushed_convoy_*`:
- * * `small` – 2 barges
- * * `medium` – 4-5 barges
- * * `large` – 6 barges
- * * `inland_waterway_container_vessel_medium` – 110 m
- * * `inland_waterway_container_vessel_large` – 135 m
+ * * `small` – 2 barges
+ * * `medium` – 4-5 barges
+ * * `large` – 6 barges
+ * * `inland_waterway_container_vessel_medium` – 110 m
+ * * `inland_waterway_container_vessel_large` – 135 m
  *
  * # Road transport
  *
@@ -54,6 +54,19 @@
  * If you only know a rough size of the truck you'll do well can choose one of the
  * `truck_generic_*` types if outside North America.
  *
+ * ## Train emission factors
+ *
+ * You can explicitly request a US emission factor (`diesel_freight_train_us_average`)
+ * or a European one (`diesel_freight_train_eu_...`).
+ *
+ * There are multiple European emission factors for different load characteristics. There is
+ * one for when the load characteristics aren't know or are average:
+ * `diesel_freight_train_eu_average`.
+ *
+ * For `diesel_freight_train_eu_truck_and_trailer` and
+ * `diesel_freight_train_eu_truck_trailer_only` the shipment size refers to the net load
+ * within the truck.
+ *
  */
 export enum SimpleShippingMethod {
     INLAND_WATERWAY_MOTOR_VESSEL_SMALL = 'inland_waterway_motor_vessel_small',
@@ -69,6 +82,17 @@ export enum SimpleShippingMethod {
     INLAND_WATERWAY_CONTAINER_VESSEL_CONVOY = 'inland_waterway_container_vessel_convoy',
     DIESEL_FREIGHT_TRAIN = 'diesel_freight_train',
     ELECTRIC_FREIGHT_TRAIN = 'electric_freight_train',
+    DIESEL_FREIGHT_TRAIN_US_AVERAGE = 'diesel_freight_train_us_average',
+    DIESEL_FREIGHT_TRAIN_EU_AVERAGE = 'diesel_freight_train_eu_average',
+    DIESEL_FREIGHT_TRAIN_EU_CONTAINER = 'diesel_freight_train_eu_container',
+    DIESEL_FREIGHT_TRAIN_EU_CARS = 'diesel_freight_train_eu_cars',
+    DIESEL_FREIGHT_TRAIN_EU_CHEMICALS = 'diesel_freight_train_eu_chemicals',
+    DIESEL_FREIGHT_TRAIN_EU_COAL_STEEL = 'diesel_freight_train_eu_coal_steel',
+    DIESEL_FREIGHT_TRAIN_EU_BUILDING_MATERIALS = 'diesel_freight_train_eu_building_materials',
+    DIESEL_FREIGHT_TRAIN_EU_MANUFACTURED_PRODUCTS = 'diesel_freight_train_eu_manufactured_products',
+    DIESEL_FREIGHT_TRAIN_EU_CEREALS = 'diesel_freight_train_eu_cereals',
+    DIESEL_FREIGHT_TRAIN_EU_TRUCK_AND_TRAILER = 'diesel_freight_train_eu_truck_and_trailer',
+    DIESEL_FREIGHT_TRAIN_EU_TRAILER_ONLY = 'diesel_freight_train_eu_trailer_only',
     DIESEL_TRUCK = 'diesel_truck',
     TRUCK_GENERIC_VAN = 'truck_generic_van',
     TRUCK_GENERIC_URBAN = 'truck_generic_urban',
