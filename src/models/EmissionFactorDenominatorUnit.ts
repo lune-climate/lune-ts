@@ -37,3 +37,5 @@ export type EmissionFactorDenominatorUnit =
     | 'person*km'
     | 't'
     | 'fte*working_hour'
+    | 'container'
+    | 'TEU*km'
