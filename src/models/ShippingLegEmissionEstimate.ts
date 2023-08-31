@@ -23,7 +23,7 @@ export type ShippingLegEmissionEstimate = EmissionEstimate & {
     distanceCalculationMethod: DistanceCalculationMethod | NullEnum
     convertedShipment: ConvertedShipment | NullEnum
     shipmentConversionMethod: ShipmentConversionMethod | NullEnum
-    emissionFactor: EmissionFactor | NullEnum
+    emissionFactor: EmissionFactor
     /**
      * Summary of the methodology used to calculate emissions or any value which is a prerequisite.
      *
