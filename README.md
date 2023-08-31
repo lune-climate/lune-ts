@@ -94,11 +94,20 @@ see all available. Here are some examples:
 - Fully rebuild from the remote openAPI schema: `make build-from-schema`
 - Build with current source code: `make build-from-source`
 
-## Publish
+## I need the new version (Publishing for dummies)
+<img width="80" alt="image" src="https://www.shelf-awareness.com/files/1/shelf-awareness/411/pa/SA%20content%202011/dummiesguylogo.jpg">
 
-Publishing is currently done automatically whenever changes happen in `package.json`. This is usually not done manually. Rather we use one of the provided github workflows to increase the version (major, minor or patch). This will create a PR that bumps the version in package.json and the PR then just needs to be approved and merged.
+An API change was released to Production. You want to start using it via the lune-client module. 
 
-Commonly you want to publish the client after making changes to the API (adding a new endpoint) etc. After the docs are updateд with your changes, this should automatically create a PR in **lune-ts** repo. After merging that PR, you should be able to proceed with the rest of the publishing workflow described above:
+1. Backend repo: Make sure the change is actually live in the API 
+2. Docs repo: Make sure the change is published in the docs. _theortically_ this should happen automatically. Due to some vague race condition, the **Update API reference** might run without picking up the latest API verion. Go check https://docs.lune.co/ and make sure you can see your change. If your change is NOT ther - retrigger the process by going to one of the runs of that job (like https://github.com/lune-climate/lune-docs/actions/runs/5963925137) and clicking the "Re-run all jobs" button.
+3. ts-lune repo: 2. should have triggered **rebuild_schema_change** workflow https://github.com/lune-climate/lune-ts/actions/workflows/rebuild-schema.yml which in turn should have opened a PR introducing the new API stuff to the ts-cliennt. Go approve and merge that PR
+4. ts-lune repo: Kick off the **Create PR with bump patch version** workflow (there's also a minor/major version workflow) by going here https://github.com/lune-climate/lune-ts/actions/workflows/bump-version-patch.yml, manually clicking into the lastest workflow, clicking **Cancel workflow**, then **Re-run jobs**, then **Re-run all jobs**. Wait for job to finish.
+5. ts-lune repo: 4. should create a PR that bumps the ts-client to a new version. Approve and merge this.
+6. npm registry: Go to and wait until you can see that the new version was published https://www.npmjs.com/package/@lune-climate/lune (this should have happened automatically after merging new version number to MASTER as seen in step 5. but seems slow - give it a min)
+7. Bump the version of ts-client in your local repo to match the newly published npm version, run yarn/npm to install it and start using it
+
+Diagram you don't actually need to look at:
 <img width="1493" alt="image" src="https://user-images.githubusercontent.com/3956723/182634194-0d55a2e0-3832-4e60-8029-38194f4f5ee5.png">
 
 ## Future work
