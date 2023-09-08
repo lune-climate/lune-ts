@@ -20,8 +20,26 @@ import type { ShipmentConversionMethod } from './ShipmentConversionMethod.js'
 
 export type ShippingLegEmissionEstimate = EmissionEstimate & {
     distance?: Distance
+    /**
+     * The method we used to determine the shipping distance.
+     *
+     * `null` in case of logistics sites.
+     *
+     */
     distanceCalculationMethod: DistanceCalculationMethod | NullEnum
+    /**
+     * The shipment after conversion to the emission factor unit (mass to/from TEU).
+     *
+     * `null` if no conversion was necessary.
+     *
+     */
     convertedShipment: ConvertedShipment | NullEnum
+    /**
+     * The method we used to convert the shipment to the emission factor unit.
+     *
+     * `null` if no conversion was necessary.
+     *
+     */
     shipmentConversionMethod: ShipmentConversionMethod | NullEnum
     emissionFactor: EmissionFactor
     /**
