@@ -10,6 +10,13 @@
 /* tslint:disable */
 /* eslint-disable */
 
+/**
+ * * `user_provided_cargo_type` – `cargo_type` was provided and we used it to perform
+ * the conversion
+ * * `average_cargo_type` – `cargo_type` was not provided and we assumed `average` when
+ * converting
+ *
+ */
 export enum ShipmentConversionMethod {
     USER_PROVIDED_CARGO_TYPE = 'user_provided_cargo_type',
     AVERAGE_CARGO_TYPE = 'average_cargo_type',
