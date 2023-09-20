@@ -25,7 +25,7 @@ export type OrderQuoteByQuantityWithBundleMass = {
      */
     bundleMasses: Array<BundleMass>
     /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
+     * Specific to carbon offsetting, selects to which precision to truncate quantities.
      */
     quantityTrunc?: MassUnit
 }
