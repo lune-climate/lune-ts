@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { CalculatedRoute } from './CalculatedRoute.js'
 import type { ConvertedShipment } from './ConvertedShipment.js'
 import type { Distance } from './Distance.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
@@ -27,6 +28,20 @@ export type ShippingLegEmissionEstimate = EmissionEstimate & {
      *
      */
     distanceCalculationMethod: DistanceCalculationMethod | NullEnum
+    /**
+     * The shipping route.
+     *
+     * `null` in case of logistics sites and situations where the concept of
+     * a route doesn't make sense or we're unable to return the route. That
+     * includes the following situations at the moment:
+     *
+     * * Routes where source or destination is an address (or both are).
+     * * Most land and inland waterways routes.
+     * * The actual distance value was provided by the user.
+     * * The emission estimate was created before 2023-09-22.
+     *
+     */
+    route: CalculatedRoute | NullEnum
     /**
      * The shipment after conversion to the emission factor unit (mass to/from TEU).
      *
