@@ -65,5 +65,6 @@ export namespace Error {
         EMISSION_FACTOR_UNIT_MISMATCH = 'emission_factor_unit_mismatch',
         EMISSION_FACTOR_GATED = 'emission_factor_gated',
         ACCOUNT_SCOPE_INCORRECT = 'account_scope_incorrect',
+        SERVICE_UNAVAILABLE = 'service_unavailable',
     }
 }

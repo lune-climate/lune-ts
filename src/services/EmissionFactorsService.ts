@@ -47,8 +47,8 @@ export abstract class EmissionFactorsService {
              */
             after?: string
             /**
-             * Filter emission factors based on name (case insensitive).
-             * The value can appear at any position.
+             * Search for emission factors (case insensitive). A combination of semantic and keyword search
+             * is used to provide the most relevant results.
              *
              */
             name?: string
@@ -101,6 +101,7 @@ export abstract class EmissionFactorsService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
