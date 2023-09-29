@@ -33,10 +33,9 @@ export type Merchant = {
     | {
           /**
            * The search term to query.
-           *
-           * Search is resolved using fuzzy matching.
+           * Search is resolved using a combination of semantic and keyword searching.
            *
            */
-          fuzzySearchTerm: string
+          searchTerm: string
       }
 )

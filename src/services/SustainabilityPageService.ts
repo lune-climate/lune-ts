@@ -164,7 +164,7 @@ export abstract class SustainabilityPageService {
     ): Promise<Result<PublicSustainabilityPage, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
-            url: '/sustainability-pages/{type}/{slug}',
+            url: '/sustainability-pages/public/{type}/{slug}',
             path: {
                 type: type,
                 slug: slug,
