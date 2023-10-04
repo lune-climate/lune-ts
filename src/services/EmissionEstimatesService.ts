@@ -26,7 +26,6 @@ import type { EmissionFactorEstimate } from '../models/EmissionFactorEstimate.js
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IndividualEmissionEstimate } from '../models/IndividualEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
-import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
 import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
@@ -35,11 +34,9 @@ import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEs
 import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
 import type { PassengerTransportationEmissionEstimate } from '../models/PassengerTransportationEmissionEstimate.js'
-import type { Shipment } from '../models/Shipment.js'
-import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
-import type { ShippingMethod } from '../models/ShippingMethod.js'
-import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
+import type { StoredMultiLegShippingEstimateRequest } from '../models/StoredMultiLegShippingEstimateRequest.js'
+import type { StoredShippingEstimateRequest } from '../models/StoredShippingEstimateRequest.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
@@ -332,27 +329,15 @@ export abstract class EmissionEstimatesService {
      */
     public createShippingEstimate(
         data: {
-            shippingEstimateRequest: {
-                shipment: Shipment
+            shippingEstimateRequest: StoredShippingEstimateRequest & {
                 /**
-                 * A name to reference this calculation.
+                 * When true, the estimate refers to a shipment.
+                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * You can mark an estimate as shipment at any time.
+                 *
                  */
-                name?: string
-                bundleSelection?: BundleSelectionRequest
-                /**
-                 * Selects to which precision to truncate the quantities assigned to each bundle.
-                 */
-                quantityTrunc?: MassUnit
-            } & (
-                | {
-                      route: ShippingRoute
-                      method: ShippingMethod
-                      countryCode?: ShippingCountryCode
-                  }
-                | {
-                      method: LogisticsSiteMethod
-                  }
-            )
+                isShipment?: boolean
+            }
         },
         options?: {
             /**
@@ -417,27 +402,15 @@ export abstract class EmissionEstimatesService {
     public updateShippingEstimate(
         id: string,
         data: {
-            shippingEstimateRequest: {
-                shipment: Shipment
+            shippingEstimateRequest: StoredShippingEstimateRequest & {
                 /**
-                 * A name to reference this calculation.
+                 * When true, the estimate refers to a shipment.
+                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * You can mark an estimate as shipment at any time.
+                 *
                  */
-                name?: string
-                bundleSelection?: BundleSelectionRequest
-                /**
-                 * Selects to which precision to truncate the quantities assigned to each bundle.
-                 */
-                quantityTrunc?: MassUnit
-            } & (
-                | {
-                      route: ShippingRoute
-                      method: ShippingMethod
-                      countryCode?: ShippingCountryCode
-                  }
-                | {
-                      method: LogisticsSiteMethod
-                  }
-            )
+                isShipment?: boolean
+            }
         },
         options?: {
             /**
@@ -467,6 +440,47 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Updates the shipping emission estimate shipment status. Calling this endpoint will change the estimate's `is_shipment` property to the provided value
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns SingleShippingEmissionEstimate OK
+     */
+    public updateShippingEstimateIsShipment(
+        id: string,
+        data: {
+            /**
+             * Is the emission calculation referring to a shipment that was made in real life.
+             */
+            isShipment: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PUT',
+            url: '/estimates/shipping/{id}/is-shipment',
+            path: {
+                id: id,
+            },
+            body: {
+                is_shipment: data?.isShipment,
+            },
+            mediaType: 'application/json',
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
      * Create a shipping emission estimate (multi-leg)
      * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
      * @param data Request data
@@ -475,29 +489,15 @@ export abstract class EmissionEstimatesService {
      */
     public createMultiLegShippingEstimate(
         data: {
-            shipment: Shipment
-            /**
-             * An array representing all the legs of a shipment.
-             */
-            legs: Array<
-                | {
-                      route: ShippingRoute
-                      method: ShippingMethod
-                      countryCode?: ShippingCountryCode
-                  }
-                | {
-                      method: LogisticsSiteMethod
-                  }
-            >
-            /**
-             * A name to reference this calculation.
-             */
-            name?: string
-            bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            multiLegShippingEstimateRequest: StoredMultiLegShippingEstimateRequest & {
+                /**
+                 * When true, the estimate refers to a shipment.
+                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * You can mark an estimate as shipment at any time.
+                 *
+                 */
+                isShipment?: boolean
+            }
         },
         options?: {
             /**
@@ -509,13 +509,7 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping/multi-leg',
-            body: {
-                shipment: data?.shipment,
-                legs: data?.legs,
-                name: data?.name,
-                bundle_selection: data?.bundleSelection,
-                quantity_trunc: data?.quantityTrunc,
-            },
+            body: data?.multiLegShippingEstimateRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -568,29 +562,15 @@ export abstract class EmissionEstimatesService {
     public updateMultiLegShippingEstimate(
         id: string,
         data: {
-            shipment: Shipment
-            /**
-             * An array representing all the legs of a shipment.
-             */
-            legs: Array<
-                | {
-                      route: ShippingRoute
-                      method: ShippingMethod
-                      countryCode?: ShippingCountryCode
-                  }
-                | {
-                      method: LogisticsSiteMethod
-                  }
-            >
-            /**
-             * A name to reference this calculation.
-             */
-            name?: string
-            bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            multiLegShippingEstimateRequest: StoredMultiLegShippingEstimateRequest & {
+                /**
+                 * When true, the estimate refers to a shipment.
+                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * You can mark an estimate as shipment at any time.
+                 *
+                 */
+                isShipment?: boolean
+            }
         },
         options?: {
             /**
@@ -605,13 +585,7 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
-            body: {
-                shipment: data?.shipment,
-                legs: data?.legs,
-                name: data?.name,
-                bundle_selection: data?.bundleSelection,
-                quantity_trunc: data?.quantityTrunc,
-            },
+            body: data?.multiLegShippingEstimateRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -621,6 +595,47 @@ export abstract class EmissionEstimatesService {
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
                 503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Updates the multi-leg shipping emission estimate shipment status. Calling this endpoint will change the estimate's `is_shipment` property to the provided value
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns MultiLegShippingEmissionEstimate OK
+     */
+    public updateMultiLegShippingEstimateIsShipment(
+        id: string,
+        data: {
+            /**
+             * Is the emission calculation referring to a shipment that was made in real life.
+             */
+            isShipment: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PUT',
+            url: '/estimates/shipping/multi-leg/{id}/is-shipment',
+            path: {
+                id: id,
+            },
+            body: {
+                is_shipment: data?.isShipment,
+            },
+            mediaType: 'application/json',
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }

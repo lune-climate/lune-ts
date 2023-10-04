@@ -31,6 +31,7 @@ export type MultiLegShippingEmissionEstimate = {
     /**
      * When true, the estimate refers to a shipment.
      * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+     * You can mark an estimate as shipment at any time.
      *
      */
     isShipment: boolean
