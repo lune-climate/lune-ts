@@ -43,6 +43,7 @@ export type PublicSustainabilityPage = {
                      */
                     flightsNycToLondon: number
                 }
+              | null
               | {
                     format: PublicSustainabilityPage.format
                     /**
