@@ -10,39 +10,17 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
-import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
-import type { MassUnit } from './MassUnit.js'
-import type { Shipment } from './Shipment.js'
-import type { ShippingCountryCode } from './ShippingCountryCode.js'
-import type { ShippingMethod } from './ShippingMethod.js'
-import type { ShippingRoute } from './ShippingRoute.js'
+import type { StoredMultiLegShippingEstimateRequest } from './StoredMultiLegShippingEstimateRequest.js'
 
 /**
  * Parameters for estimating multi-leg shipping emissions
  */
-export type MultiLegShippingEstimateRequest = {
-    shipment: Shipment
+export type MultiLegShippingEstimateRequest = StoredMultiLegShippingEstimateRequest & {
     /**
-     * An array representing all the legs of a shipment.
+     * When true, the estimate refers to a shipment.
+     * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+     * You can mark an estimate as shipment at any time.
+     *
      */
-    legs: Array<
-        | {
-              route: ShippingRoute
-              method: ShippingMethod
-              countryCode?: ShippingCountryCode
-          }
-        | {
-              method: LogisticsSiteMethod
-          }
-    >
-    /**
-     * A name to reference this calculation.
-     */
-    name?: string
-    bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    isShipment?: boolean
 }

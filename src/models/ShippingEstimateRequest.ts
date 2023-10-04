@@ -10,35 +10,17 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
-import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
-import type { MassUnit } from './MassUnit.js'
-import type { Shipment } from './Shipment.js'
-import type { ShippingCountryCode } from './ShippingCountryCode.js'
-import type { ShippingMethod } from './ShippingMethod.js'
-import type { ShippingRoute } from './ShippingRoute.js'
+import type { StoredShippingEstimateRequest } from './StoredShippingEstimateRequest.js'
 
 /**
  * Parameters for estimating shipping emissions
  */
-export type ShippingEstimateRequest = {
-    shipment: Shipment
+export type ShippingEstimateRequest = StoredShippingEstimateRequest & {
     /**
-     * A name to reference this calculation.
+     * When true, the estimate refers to a shipment.
+     * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+     * You can mark an estimate as shipment at any time.
+     *
      */
-    name?: string
-    bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
-} & (
-    | {
-          route: ShippingRoute
-          method: ShippingMethod
-          countryCode?: ShippingCountryCode
-      }
-    | {
-          method: LogisticsSiteMethod
-      }
-)
+    isShipment?: boolean
+}
