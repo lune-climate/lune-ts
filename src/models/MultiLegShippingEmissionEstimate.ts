@@ -29,6 +29,12 @@ import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.
  */
 export type MultiLegShippingEmissionEstimate = {
     /**
+     * When true, the estimate refers to a shipment.
+     * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+     *
+     */
+    isShipment: boolean
+    /**
      * An array representing a leg's emission estimate.
      *
      * Returned in the same order as the request.
