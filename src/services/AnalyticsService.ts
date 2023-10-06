@@ -11,6 +11,7 @@
 /* eslint-disable */
 import type { AggregatedAnalyticsByProperty } from '../models/AggregatedAnalyticsByProperty.js'
 import type { AnalyticsMetrics } from '../models/AnalyticsMetrics.js'
+import type { AnalyticsShippingEstimates } from '../models/AnalyticsShippingEstimates.js'
 import type { CumulativeBundleAnalytics } from '../models/CumulativeBundleAnalytics.js'
 import type { EmissionCalculationMetrics } from '../models/EmissionCalculationMetrics.js'
 
@@ -191,6 +192,58 @@ export abstract class AnalyticsService {
                 through: data?.through,
                 interval: data?.interval,
                 all_accounts: data?.allAccounts,
+            },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get analytics for shipping estimates
+     * @param accountId The account identifier the analytics belongs to.
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns AnalyticsShippingEstimates OK
+     */
+    public getAnalyticsShippingEstimates(
+        accountId: string,
+        data?: {
+            /**
+             * The start date of the custom date range.
+             * Defaults to 30 days ago if not specified.
+             */
+            from?: string
+            /**
+             * The to (inclusive) date of the custom date range.
+             * Defaults to the current date if not specified.
+             */
+            through?: string
+            /**
+             * The time interval over which metrics should be aggregated.
+             * Defaults to day if not specified.
+             */
+            interval?: 'day' | 'month'
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<AnalyticsShippingEstimates, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/analytics/shipping/public/{account_id}',
+            path: {
+                account_id: accountId,
+            },
+            query: {
+                from: data?.from,
+                through: data?.through,
+                interval: data?.interval,
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
