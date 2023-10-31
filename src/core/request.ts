@@ -201,7 +201,7 @@ export const request = async <T>(
     return client({
         baseURL: url,
         method: options.method,
-        headers: headers,
+        headers,
         params: formData,
         data: body,
     })
