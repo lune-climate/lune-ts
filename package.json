@@ -42,14 +42,13 @@
     "ts-results-es": "^4.0.0"
   },
   "devDependencies": {
+    "@lune-climate/eslint-config": "git+https://github.com/lune-climate/eslint-config.git#master",
     "@lune-climate/openapi-typescript-codegen": "^0.1.6",
     "typescript": "^5.1.6",
     "@types/node": "^20.4.5",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.2.0",
     "eslint": "^8.0.0",
-    "eslint-config-prettier": "^9.0.0",
-    "eslint-config-standard": "^17.0.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-n": "^16.0.0",

@@ -1,9 +1,5 @@
 module.exports = {
-  env: {
-    browser: true,
-    es2021: true,
-  },
-  extends: ["standard", "prettier", "eslint:recommended"],
+  extends: ["@lune-climate"],
   parser: "@typescript-eslint/parser",
   parserOptions: {
     ecmaVersion: 12,
@@ -14,9 +10,11 @@ module.exports = {
     "tsconfigRootDir": __dirname,
     "project": ["./tsconfig-esm.json"],
   },
-  plugins: ["@typescript-eslint", "simple-import-sort"],
   rules: {
-    "comma-dangle": ["error", "always-multiline"],
+    // @lune-climate demands function statements but this repository has some function
+    // expressions, including auto-generated code, so let's disable this for now.
+    "func-style": ["off"],
+
     "space-before-function-paren": [
       "error",
       {
@@ -25,16 +23,6 @@ module.exports = {
         asyncArrow: "always",
       },
     ],
-    "no-useless-constructor": "off",
-    "no-unused-vars": "off",
-    '@typescript-eslint/no-unnecessary-condition': ['error'],
-    "@typescript-eslint/no-useless-constructor": ["error"],
-    "@typescript-eslint/no-unused-vars": [
-      "error",
-      { argsIgnorePattern: "^_", varsIgnorePattern: "^_" },
-    ],
-    "simple-import-sort/imports": "error",
-    complexity: ["error", { max: 14 }],
   },
   overrides: [
     {
