@@ -10,6 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { CarbonPermanence } from './CarbonPermanence.js'
+
 export type BundleSummary = {
     /**
      * The bundle's unique identifier
@@ -78,10 +80,7 @@ export type BundleSummary = {
      * Bundle approach
      */
     approach: BundleSummary.approach | null
-    /**
-     * The bundle's carbon storage permanence.
-     */
-    carbonPermanence: BundleSummary.carbon_permanence
+    carbonPermanence: CarbonPermanence
 }
 
 export namespace BundleSummary {
@@ -100,14 +99,5 @@ export namespace BundleSummary {
     export enum approach {
         TRADITIONAL = 'traditional',
         INNOVATIVE = 'innovative',
-    }
-
-    /**
-     * The bundle's carbon storage permanence.
-     */
-    export enum carbon_permanence {
-        LONG_TERM = 'long_term',
-        SHORT_TERM = 'short_term',
-        NO_STORAGE = 'no_storage',
     }
 }

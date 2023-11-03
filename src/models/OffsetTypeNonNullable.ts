@@ -10,11 +10,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { NullEnum } from './NullEnum.js'
-import type { OffsetTypeNonNullable } from './OffsetTypeNonNullable.js'
-
 /**
  * Offset type classification
  *
  */
-export type OffsetType = OffsetTypeNonNullable | NullEnum
+export enum OffsetTypeNonNullable {
+    EMISSIONS_REDUCTION = 'emissions_reduction',
+    CARBON_REMOVAL = 'carbon_removal',
+}

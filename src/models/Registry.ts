@@ -20,5 +20,6 @@ export enum Registry {
     GOLD_STANDARD = 'Gold Standard',
     CLIMATE_ACTION_RESERVE = 'Climate Action Reserve',
     WOODLAND_CARBON_CODE = 'Woodland Carbon Code',
+    ACCU = 'ACCU',
     __EMPTY__ = '',
 }

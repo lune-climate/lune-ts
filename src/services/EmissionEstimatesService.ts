@@ -331,8 +331,10 @@ export abstract class EmissionEstimatesService {
         data: {
             shippingEstimateRequest: StoredShippingEstimateRequest & {
                 /**
-                 * When true, the estimate refers to a shipment.
-                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                 *
+                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+                 *
                  * You can mark an estimate as shipment at any time.
                  *
                  */
@@ -404,8 +406,10 @@ export abstract class EmissionEstimatesService {
         data: {
             shippingEstimateRequest: StoredShippingEstimateRequest & {
                 /**
-                 * When true, the estimate refers to a shipment.
-                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                 *
+                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+                 *
                  * You can mark an estimate as shipment at any time.
                  *
                  */
@@ -450,7 +454,12 @@ export abstract class EmissionEstimatesService {
         id: string,
         data: {
             /**
-             * Is the emission calculation referring to a shipment that was made in real life.
+             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * You can mark an estimate as shipment at any time.
+             *
              */
             isShipment: boolean
         },
@@ -491,8 +500,10 @@ export abstract class EmissionEstimatesService {
         data: {
             multiLegShippingEstimateRequest: StoredMultiLegShippingEstimateRequest & {
                 /**
-                 * When true, the estimate refers to a shipment.
-                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                 *
+                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+                 *
                  * You can mark an estimate as shipment at any time.
                  *
                  */
@@ -564,8 +575,10 @@ export abstract class EmissionEstimatesService {
         data: {
             multiLegShippingEstimateRequest: StoredMultiLegShippingEstimateRequest & {
                 /**
-                 * When true, the estimate refers to a shipment.
-                 * This property exists in order for clients to distinguish between estimates made for informative purposes or during booking flows from estimates made for shipments where goods are moved.
+                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                 *
+                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+                 *
                  * You can mark an estimate as shipment at any time.
                  *
                  */
@@ -610,7 +623,12 @@ export abstract class EmissionEstimatesService {
         id: string,
         data: {
             /**
-             * Is the emission calculation referring to a shipment that was made in real life.
+             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * You can mark an estimate as shipment at any time.
+             *
              */
             isShipment: boolean
         },
