@@ -10,4 +10,4 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type NullEnum = string | null
+export type NullEnum = null | null
