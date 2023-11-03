@@ -13,7 +13,8 @@
 /**
  * Vessel sizes:
  * * `inland_waterway_motor_vessel_*`:
- * * `small` – less than 80 m / 1000 t
+ * * `extra_small` – less than 50 m / 650 t
+ * * `small` – 50-80 m (650-1000 t)
  * * `medium` – 85-110 m (1000-2000 t)
  * * `large` – 135 m (2000-3000 t)
  * * `inland_waterway_coupled_convoy` – 163-185 m
@@ -54,14 +55,23 @@
  * If you only know a rough size of the truck you'll do well can choose one of the
  * `truck_generic_*` types if outside North America.
  *
+ * ## Truck fuels
+ *
+ * Suffixes such as `_petrol`, `_cng`, `_lpg`, `lng`, `_bio_lng` indicate the vehicle uses a specific fuel.
+ * When no fuel is specified, assume diesel.
+ *
+ * ## Truck load characteristics
+ *
+ * Suffixes such as `_light_load`, `_heavy_load`, `_container` indicate the vehicle's load characteristics.
+ * When not specified, assume average/mixed load.
+ *
  * ## Train emission factors
  *
  * You can explicitly request a US emission factor (`diesel_freight_train_us_average`)
  * or a European one (`diesel_freight_train_eu_...`).
  *
- * There are multiple European emission factors for different load characteristics. There is
- * one for when the load characteristics aren't know or are average:
- * `diesel_freight_train_eu_average`.
+ * There are multiple European emission factors for different load characteristics or different traction.
+ * When load characteristics or traction aren't known use `diesel_freight_train_eu_average`.
  *
  * For `diesel_freight_train_eu_truck_and_trailer` and
  * `diesel_freight_train_eu_truck_trailer_only` the shipment size refers to the net load
@@ -69,6 +79,7 @@
  *
  */
 export enum SimpleShippingMethod {
+    INLAND_WATERWAY_MOTOR_VESSEL_EXTRA_SMALL = 'inland_waterway_motor_vessel_extra_small',
     INLAND_WATERWAY_MOTOR_VESSEL_SMALL = 'inland_waterway_motor_vessel_small',
     INLAND_WATERWAY_MOTOR_VESSEL_MEDIUM = 'inland_waterway_motor_vessel_medium',
     INLAND_WATERWAY_MOTOR_VESSEL_LARGE = 'inland_waterway_motor_vessel_large',
@@ -93,6 +104,16 @@ export enum SimpleShippingMethod {
     DIESEL_FREIGHT_TRAIN_EU_CEREALS = 'diesel_freight_train_eu_cereals',
     DIESEL_FREIGHT_TRAIN_EU_TRUCK_AND_TRAILER = 'diesel_freight_train_eu_truck_and_trailer',
     DIESEL_FREIGHT_TRAIN_EU_TRAILER_ONLY = 'diesel_freight_train_eu_trailer_only',
+    ELECTRIC_FREIGHT_TRAIN_EU_AVERAGE = 'electric_freight_train_eu_average',
+    ELECTRIC_FREIGHT_TRAIN_EU_CONTAINER = 'electric_freight_train_eu_container',
+    ELECTRIC_FREIGHT_TRAIN_EU_CARS = 'electric_freight_train_eu_cars',
+    ELECTRIC_FREIGHT_TRAIN_EU_CHEMICALS = 'electric_freight_train_eu_chemicals',
+    ELECTRIC_FREIGHT_TRAIN_EU_COAL_STEEL = 'electric_freight_train_eu_coal_steel',
+    ELECTRIC_FREIGHT_TRAIN_EU_BUILDING_MATERIALS = 'electric_freight_train_eu_building_materials',
+    ELECTRIC_FREIGHT_TRAIN_EU_MANUFACTURED_PRODUCTS = 'electric_freight_train_eu_manufactured_products',
+    ELECTRIC_FREIGHT_TRAIN_EU_CEREALS = 'electric_freight_train_eu_cereals',
+    ELECTRIC_FREIGHT_TRAIN_EU_TRUCK_AND_TRAILER = 'electric_freight_train_eu_truck_and_trailer',
+    ELECTRIC_FREIGHT_TRAIN_EU_TRAILER_ONLY = 'electric_freight_train_eu_trailer_only',
     DIESEL_TRUCK = 'diesel_truck',
     TRUCK_GENERIC_VAN = 'truck_generic_van',
     TRUCK_GENERIC_URBAN = 'truck_generic_urban',
@@ -108,6 +129,38 @@ export enum SimpleShippingMethod {
     TRUCK_ARTICULATED_44T = 'truck_articulated_44t',
     TRUCK_ARTICULATED_60T = 'truck_articulated_60t',
     TRUCK_ARTICULATED_72T = 'truck_articulated_72t',
+    TRUCK_GENERIC_VAN_PETROL = 'truck_generic_van_petrol',
+    TRUCK_GENERIC_VAN_CNG = 'truck_generic_van_cng',
+    TRUCK_GENERIC_VAN_LPG = 'truck_generic_van_lpg',
+    TRUCK_RIGID_7_5T_CNG = 'truck_rigid_7_5t_cng',
+    TRUCK_RIGID_12T_CNG = 'truck_rigid_12t_cng',
+    TRUCK_RIGID_20T_CNG = 'truck_rigid_20t_cng',
+    TRUCK_RIGID_26T_CNG = 'truck_rigid_26t_cng',
+    TRUCK_RIGID_26T_LNG = 'truck_rigid_26t_lng',
+    TRUCK_ARTICULATED_44T_LIGHT_LOAD = 'truck_articulated_44t_light_load',
+    TRUCK_ARTICULATED_44T_HEAVY_LOAD = 'truck_articulated_44t_heavy_load',
+    TRUCK_ARTICULATED_44T_CONTAINER = 'truck_articulated_44t_container',
+    TRUCK_ARTICULATED_60T_HEAVY_LOAD = 'truck_articulated_60t_heavy_load',
+    TRUCK_ARTICULATED_60T_CONTAINER = 'truck_articulated_60t_container',
+    TRUCK_ARTICULATED_72T_HEAVY_LOAD = 'truck_articulated_72t_heavy_load',
+    TRUCK_ARTICULATED_72T_CONTAINER = 'truck_articulated_72t_container',
+    TRUCK_ARTICULATED_40T_SI_ENGINE_LNG_CONTAINER = 'truck_articulated_40t_si_engine_lng_container',
+    TRUCK_ARTICULATED_40T_SI_ENGINE_CNG = 'truck_articulated_40t_si_engine_cng',
+    TRUCK_ARTICULATED_40T_SI_ENGINE_BIO_LNG = 'truck_articulated_40t_si_engine_bio_lng',
+    TRUCK_ARTICULATED_40T_SI_ENGINE_CNG_CONTAINER = 'truck_articulated_40t_si_engine_cng_container',
+    TRUCK_ARTICULATED_40T_SI_ENGINE_BIO_LNG_CONTAINER = 'truck_articulated_40t_si_engine_bio_lng_container',
+    TRUCK_ARTICULATED_40T_HPDI_LNG_DIESEL = 'truck_articulated_40t_hpdi_lng_diesel',
+    TRUCK_ARTICULATED_40T_HPDI_CNG_DIESEL = 'truck_articulated_40t_hpdi_cng_diesel',
+    TRUCK_ARTICULATED_40T_HPDI_BIO_LNG_DIESEL = 'truck_articulated_40t_hpdi_bio_lng_diesel',
+    TRUCK_GENERIC_VAN_ELECTRIC = 'truck_generic_van_electric',
+    TRUCK_RIGID_7_5T_ELECTRIC = 'truck_rigid_7_5t_electric',
+    TRUCK_RIGID_7_5T_ELECTRIC_LIGHT_LOAD = 'truck_rigid_7_5t_electric_light_load',
+    TRUCK_RIGID_12T_ELECTRIC = 'truck_rigid_12t_electric',
+    TRUCK_RIGID_12T_ELECTRIC_LIGHT_LOAD = 'truck_rigid_12t_electric_light_load',
+    TRUCK_RIGID_20T_ELECTRIC = 'truck_rigid_20t_electric',
+    TRUCK_RIGID_20T_ELECTRIC_LIGHT_LOAD = 'truck_rigid_20t_electric_light_load',
+    TRUCK_RIGID_40T_ELECTRIC = 'truck_rigid_40t_electric',
+    TRUCK_RIGID_40T_ELECTRIC_LIGHT_LOAD = 'truck_rigid_40t_electric_light_load',
     TRUCK_NA_VAN = 'truck_na_van',
     TRUCK_NA_GENERAL = 'truck_na_general',
     TRUCK_NA_AUTO_CARRIER = 'truck_na_auto_carrier',

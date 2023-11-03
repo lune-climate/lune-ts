@@ -18,6 +18,10 @@ export type AnalyticsShippingEstimates = {
     emissionTimeseries: ShippingEmissionTimeseries
     carbonIntensityTimeseries: ShippingCarbonIntensityTimeseries
     /**
+     * Total carbon intensity for the returned timeframe.
+     */
+    carbonIntensityTotal: number
+    /**
      * Information about the account the analytics are associated with.
      */
     account: {

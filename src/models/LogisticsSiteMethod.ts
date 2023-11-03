@@ -16,6 +16,8 @@
  */
 export enum LogisticsSiteMethod {
     MARITIME_CONTAINER_TERMINAL = 'maritime_container_terminal',
+    MARITIME_CONTAINER_TERMINAL_AMBIENT = 'maritime_container_terminal_ambient',
+    MARITIME_CONTAINER_TERMINAL_CHILLED = 'maritime_container_terminal_chilled',
     TRANSHIPMENT_SITE_AMBIENT = 'transhipment_site_ambient',
     TRANSHIPMENT_SITE_CHILLED = 'transhipment_site_chilled',
     TRANSHIPMENT_SITE_MIXED = 'transhipment_site_mixed',
@@ -25,4 +27,6 @@ export enum LogisticsSiteMethod {
     WAREHOUSE_AMBIENT = 'warehouse_ambient',
     WAREHOUSE_CHILLED = 'warehouse_chilled',
     WAREHOUSE_MIXED = 'warehouse_mixed',
+    LIQUID_BULK_TERMINALS_AMBIENT = 'liquid_bulk_terminals_ambient',
+    LIQUID_BULK_TERMINALS_MIXED = 'liquid_bulk_terminals_mixed',
 }

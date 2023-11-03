@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { CarbonPermanence } from './CarbonPermanence.js'
 import type { CurrencyCode } from './CurrencyCode.js'
 import type { MonetaryAmountValue } from './MonetaryAmountValue.js'
 import type { SupportedUNSdg } from './SupportedUNSdg.js'
@@ -118,10 +119,7 @@ export type PublicSustainabilityPage = {
              *
              */
             offsetType: 'emissions_reduction' | 'carbon_removal' | null
-            /**
-             * The bundle's carbon storage permanence.
-             */
-            carbonPermanence: 'long_term' | 'short_term' | 'no_storage'
+            carbonPermanence: CarbonPermanence
         }
     }> | null
     unSdg: SupportedUNSdg

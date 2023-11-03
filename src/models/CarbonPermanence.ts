@@ -10,11 +10,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { NullEnum } from './NullEnum.js'
-import type { OffsetTypeNonNullable } from './OffsetTypeNonNullable.js'
-
 /**
- * Offset type classification
- *
+ * The bundle's carbon storage permanence.
  */
-export type OffsetType = OffsetTypeNonNullable | NullEnum
+export enum CarbonPermanence {
+    LONG_TERM = 'long_term',
+    SHORT_TERM = 'short_term',
+    NO_STORAGE = 'no_storage',
+}
