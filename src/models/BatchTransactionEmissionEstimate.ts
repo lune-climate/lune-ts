@@ -11,7 +11,7 @@
 /* eslint-disable */
 
 import type { EmptyObject } from './EmptyObject.js'
-import type { Errors } from './Errors.js'
+import type { ErrorResponse } from './ErrorResponse.js'
 import type { TransactionEmissionEstimate } from './TransactionEmissionEstimate.js'
 
 /**
@@ -21,5 +21,5 @@ import type { TransactionEmissionEstimate } from './TransactionEmissionEstimate.
  *
  */
 export type BatchTransactionEmissionEstimate = Array<
-    TransactionEmissionEstimate | Errors | EmptyObject
+    TransactionEmissionEstimate | ErrorResponse | EmptyObject
 >
