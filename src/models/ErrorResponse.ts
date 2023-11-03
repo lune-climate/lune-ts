@@ -13,11 +13,19 @@
 import type { Error } from './Error.js'
 
 /**
- * An error container
+ * An error response containing the error details.
+ *
+ * The `error` property provides information about the type of error that occurred.
+ * Use this property for error handling.
+ *
+ * The `errors` array is present for backwards compatibility purposes. It always
+ * contains a single error element which is the same seen in the `error` property.
+ *
  */
-export type Errors = {
+export type ErrorResponse = {
     /**
      * An array containing errors
      */
     errors: Array<Error>
+    error: Error
 }

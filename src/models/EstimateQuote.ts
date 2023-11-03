@@ -10,7 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Errors } from './Errors.js'
+import type { ErrorResponse } from './ErrorResponse.js'
 import type { OrderQuoteByQuantity } from './OrderQuoteByQuantity.js'
 
-export type EstimateQuote = Errors | OrderQuoteByQuantity
+export type EstimateQuote = ErrorResponse | OrderQuoteByQuantity
