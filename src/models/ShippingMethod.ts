@@ -13,10 +13,12 @@
 import type { ContainerShippingMethod } from './ContainerShippingMethod.js'
 import type { IdentifiedVesselShippingMethod } from './IdentifiedVesselShippingMethod.js'
 import type { SeaShippingMethod } from './SeaShippingMethod.js'
+import type { SimpleSeaShippingMethod } from './SimpleSeaShippingMethod.js'
 import type { SimpleShippingMethod } from './SimpleShippingMethod.js'
 
 export type ShippingMethod =
     | SimpleShippingMethod
+    | SimpleSeaShippingMethod
     | SeaShippingMethod
     | ContainerShippingMethod
     | IdentifiedVesselShippingMethod
