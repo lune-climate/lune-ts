@@ -13,6 +13,13 @@
 export type RoRoSeaShippingMethod = {
     vesselType: RoRoSeaShippingMethod.vessel_type
     fuel?: RoRoSeaShippingMethod.fuel
+    /**
+     * Vessel sizes:
+     * * `freight_only` - Ro-Ro 5-10 dwkt
+     * * `truck_and_trailer` - Ro-Ro <5 dwkt
+     * * `trailer_only` - Ro-Ro 5-10 dwkt
+     *
+     */
     load?: RoRoSeaShippingMethod.load
 }
 
@@ -26,6 +33,13 @@ export namespace RoRoSeaShippingMethod {
         MGO = 'MGO',
     }
 
+    /**
+     * Vessel sizes:
+     * * `freight_only` - Ro-Ro 5-10 dwkt
+     * * `truck_and_trailer` - Ro-Ro <5 dwkt
+     * * `trailer_only` - Ro-Ro 5-10 dwkt
+     *
+     */
     export enum load {
         FREIGHT_ONLY = 'freight_only',
         TRUCK_AND_TRAILER = 'truck_and_trailer',

@@ -11,12 +11,26 @@
 /* eslint-disable */
 
 export type VariableFuelVariableLoadSeaShippingMethod = {
+    /**
+     * Vessel sizes:
+     * * `sea_bulk_carrier_*`
+     * * `medium` – 60-100 dwkt
+     * * `large` – 100-200 dwkt
+     *
+     */
     vesselType: VariableFuelVariableLoadSeaShippingMethod.vessel_type
     fuel?: VariableFuelVariableLoadSeaShippingMethod.fuel
     load?: VariableFuelVariableLoadSeaShippingMethod.load
 }
 
 export namespace VariableFuelVariableLoadSeaShippingMethod {
+    /**
+     * Vessel sizes:
+     * * `sea_bulk_carrier_*`
+     * * `medium` – 60-100 dwkt
+     * * `large` – 100-200 dwkt
+     *
+     */
     export enum vessel_type {
         SEA_BULK_CARRIER_MEDIUM = 'sea_bulk_carrier_medium',
         SEA_BULK_CARRIER_LARGE = 'sea_bulk_carrier_large',

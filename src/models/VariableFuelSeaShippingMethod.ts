@@ -11,11 +11,37 @@
 /* eslint-disable */
 
 export type VariableFuelSeaShippingMethod = {
+    /**
+     * Vessel sizes:
+     * * `sea_oil_tanker_*`:
+     * * `small` – <5 dwkt
+     * * `medium` – 20-60 dwkt
+     * * `large` – 112-200 dwkt
+     * * `sea_general_cargo_*`:
+     * * `small` – 5-10 dwkt
+     * * `large` – 10-20 dwkt
+     * * `sea_bulk_carrier_small` - <10 dwkt
+     * * `sea_ropax` – 2-5 dwkt
+     *
+     */
     vesselType: VariableFuelSeaShippingMethod.vessel_type
     fuel?: VariableFuelSeaShippingMethod.fuel
 }
 
 export namespace VariableFuelSeaShippingMethod {
+    /**
+     * Vessel sizes:
+     * * `sea_oil_tanker_*`:
+     * * `small` – <5 dwkt
+     * * `medium` – 20-60 dwkt
+     * * `large` – 112-200 dwkt
+     * * `sea_general_cargo_*`:
+     * * `small` – 5-10 dwkt
+     * * `large` – 10-20 dwkt
+     * * `sea_bulk_carrier_small` - <10 dwkt
+     * * `sea_ropax` – 2-5 dwkt
+     *
+     */
     export enum vessel_type {
         SEA_OIL_TANKER_SMALL = 'sea_oil_tanker_small',
         SEA_OIL_TANKER_MEDIUM = 'sea_oil_tanker_medium',
