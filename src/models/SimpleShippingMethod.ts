@@ -11,6 +11,8 @@
 /* eslint-disable */
 
 /**
+ * # Inland waterways
+ *
  * Vessel sizes:
  * * `inland_waterway_motor_vessel_*`:
  * * `extra_small` – less than 50 m / 650 t
@@ -57,7 +59,7 @@
  *
  * ## Truck fuels
  *
- * Suffixes such as `_petrol`, `_cng`, `_lpg`, `lng`, `_bio_lng` indicate the vehicle uses a specific fuel.
+ * Suffixes such as `_petrol`, `_cng`, `_lpg`, `_lng`, `_bio_lng` indicate the vehicle uses a specific fuel.
  * When no fuel is specified, assume diesel.
  *
  * ## Truck load characteristics
@@ -65,7 +67,7 @@
  * Suffixes such as `_light_load`, `_heavy_load`, `_container` indicate the vehicle's load characteristics.
  * When not specified, assume average/mixed load.
  *
- * ## Train emission factors
+ * # Rail transport
  *
  * You can explicitly request a US emission factor (`diesel_freight_train_us_average`)
  * or a European one (`diesel_freight_train_eu_...`).
@@ -76,6 +78,15 @@
  * For `diesel_freight_train_eu_truck_and_trailer` and
  * `diesel_freight_train_eu_truck_trailer_only` the shipment size refers to the net load
  * within the truck.
+ *
+ * # Air transport
+ *
+ * Lune supports two types of aircraft:
+ * * `cargo_plane` - freighter
+ * * `passenger_plane` - belly freight
+ * * `plane` - unknown
+ *
+ * `plane` uses a weighted average of cargo and passenger planes.
  *
  */
 export enum SimpleShippingMethod {

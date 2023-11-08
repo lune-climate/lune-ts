@@ -11,11 +11,17 @@
 /* eslint-disable */
 
 export type HugeOilTankerSeaShippingMethod = {
+    /**
+     * Oil tanker >200 dwkt
+     */
     vesselType: HugeOilTankerSeaShippingMethod.vessel_type
     fuel?: HugeOilTankerSeaShippingMethod.fuel
 }
 
 export namespace HugeOilTankerSeaShippingMethod {
+    /**
+     * Oil tanker >200 dwkt
+     */
     export enum vessel_type {
         SEA_OIL_TANKER_HUGE = 'sea_oil_tanker_huge',
     }
