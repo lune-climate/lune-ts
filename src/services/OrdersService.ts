@@ -315,9 +315,9 @@ export abstract class OrdersService {
     ): Promise<Result<Order, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
-            url: '/orders/by-idempotency-key/{idempotencyKey}',
+            url: '/orders/by-idempotency-key/{idempotency_key}',
             path: {
-                idempotencyKey: idempotencyKey,
+                idempotency_key: idempotencyKey,
             },
             errors: {
                 404: `The specified resource was not found`,
