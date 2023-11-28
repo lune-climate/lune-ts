@@ -26,11 +26,31 @@ export type Shipment =
       }
     | {
           containers: string
+          /**
+           * If omitted, `average` is assumed.
+           *
+           * The following conversions apply:
+           * * `lightweight`: 1 container = 6 tonnes
+           * * `average`: 1 container = 10 tonnes
+           * * `heavyweight`: 1 container = 14.5 tonnes
+           * * `container_only`: 1 container = 2 tonnes
+           *
+           */
           cargoType?: Shipment.cargo_type
           mass?: Mass
       }
 
 export namespace Shipment {
+    /**
+     * If omitted, `average` is assumed.
+     *
+     * The following conversions apply:
+     * * `lightweight`: 1 container = 6 tonnes
+     * * `average`: 1 container = 10 tonnes
+     * * `heavyweight`: 1 container = 14.5 tonnes
+     * * `container_only`: 1 container = 2 tonnes
+     *
+     */
     export enum cargo_type {
         LIGHTWEIGHT = 'lightweight',
         AVERAGE = 'average',
