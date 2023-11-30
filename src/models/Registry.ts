@@ -21,5 +21,6 @@ export enum Registry {
     CLIMATE_ACTION_RESERVE = 'Climate Action Reserve',
     WOODLAND_CARBON_CODE = 'Woodland Carbon Code',
     ACCU = 'ACCU',
+    CARBON_FUTURE = 'Carbon Future',
     __EMPTY__ = '',
 }
