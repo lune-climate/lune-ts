@@ -34,6 +34,7 @@ import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEs
 import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
 import type { PassengerTransportationEmissionEstimate } from '../models/PassengerTransportationEmissionEstimate.js'
+import type { ShippedAt } from '../models/ShippedAt.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
 import type { StoredMultiLegShippingEstimateRequest } from '../models/StoredMultiLegShippingEstimateRequest.js'
 import type { StoredShippingEstimateRequest } from '../models/StoredShippingEstimateRequest.js'
@@ -339,6 +340,7 @@ export abstract class EmissionEstimatesService {
                  *
                  */
                 isShipment?: boolean
+                shippedAt?: ShippedAt
             }
         },
         options?: {
@@ -414,6 +416,7 @@ export abstract class EmissionEstimatesService {
                  *
                  */
                 isShipment?: boolean
+                shippedAt?: ShippedAt
             }
         },
         options?: {
@@ -481,6 +484,7 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 404: `The specified resource was not found`,
                 415: `The payload format is in an unsupported format.`,
@@ -508,6 +512,7 @@ export abstract class EmissionEstimatesService {
                  *
                  */
                 isShipment?: boolean
+                shippedAt?: ShippedAt
             }
         },
         options?: {
@@ -583,6 +588,7 @@ export abstract class EmissionEstimatesService {
                  *
                  */
                 isShipment?: boolean
+                shippedAt?: ShippedAt
             }
         },
         options?: {
@@ -650,6 +656,7 @@ export abstract class EmissionEstimatesService {
             },
             mediaType: 'application/json',
             errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 404: `The specified resource was not found`,
                 415: `The payload format is in an unsupported format.`,

@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ShippedAt } from './ShippedAt.js'
 import type { StoredShippingEstimateRequest } from './StoredShippingEstimateRequest.js'
 
 /**
@@ -25,4 +26,5 @@ export type ShippingEstimateRequest = StoredShippingEstimateRequest & {
      *
      */
     isShipment?: boolean
+    shippedAt?: ShippedAt
 }
