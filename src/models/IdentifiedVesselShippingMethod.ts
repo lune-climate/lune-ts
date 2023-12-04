@@ -10,24 +10,13 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { ContainerShippingMethod } from './ContainerShippingMethod.js'
+import type { IdentifiedVesselByIMOShippingMethod } from './IdentifiedVesselByIMOShippingMethod.js'
+import type { IdentifiedVesselByNameShippingMethod } from './IdentifiedVesselByNameShippingMethod.js'
 
 /**
- * This method uses the vessel's IMO number emission factors when found, falling back to trade lane emissions factors if provided.
+ * This method uses either the vessel's IMO number or the vessel name in order to select an emission factor, falling back to trade lane emissions factors if provided.
  *
  */
 export type IdentifiedVesselShippingMethod =
-    | {
-          /**
-           * The vessel's [IMO number](https://en.wikipedia.org/wiki/IMO_number) *without* the `IMO` prefix.
-           *
-           */
-          vesselImoNumber: string
-      }
-    | ({
-          /**
-           * The vessel's [IMO number](https://en.wikipedia.org/wiki/IMO_number) *without* the `IMO` prefix.
-           *
-           */
-          vesselImoNumber: string
-      } & ContainerShippingMethod)
+    | IdentifiedVesselByIMOShippingMethod
+    | IdentifiedVesselByNameShippingMethod
