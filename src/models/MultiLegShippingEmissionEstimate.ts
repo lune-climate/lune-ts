@@ -13,6 +13,7 @@
 import type { Distance } from './Distance.js'
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
+import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.js'
 
 /**
@@ -37,6 +38,7 @@ export type MultiLegShippingEmissionEstimate = {
      *
      */
     isShipment: boolean
+    shippedAt: ShippedAt
     /**
      * An array representing a leg's emission estimate.
      *

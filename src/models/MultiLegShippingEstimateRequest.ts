@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ShippedAt } from './ShippedAt.js'
 import type { StoredMultiLegShippingEstimateRequest } from './StoredMultiLegShippingEstimateRequest.js'
 
 /**
@@ -25,4 +26,5 @@ export type MultiLegShippingEstimateRequest = StoredMultiLegShippingEstimateRequ
      *
      */
     isShipment?: boolean
+    shippedAt?: ShippedAt
 }

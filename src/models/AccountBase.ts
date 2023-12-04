@@ -26,6 +26,13 @@ export type AccountBase = {
      */
     organisationId: string
     /**
+     * `handle` is a client defined URL-friendly string that idenfies the account.
+     *
+     * The `handle` is unique per organisation and account type.
+     *
+     */
+    handle: string | null
+    /**
      * The Account's currency
      */
     currency: string

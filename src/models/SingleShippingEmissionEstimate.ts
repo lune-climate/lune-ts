@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { EstimateQuote } from './EstimateQuote.js'
+import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingEstimateRequest } from './ShippingEstimateRequest.js'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.js'
 
@@ -28,6 +29,7 @@ export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
      *
      */
     isShipment: boolean
+    shippedAt: ShippedAt
     quote: EstimateQuote
     request: ShippingEstimateRequest
 }
