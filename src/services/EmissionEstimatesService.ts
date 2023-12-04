@@ -494,6 +494,58 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Updates a shipping emission estimate's metadata.
+     * This method allows updating a selection of estimate metadata without going through
+     * a full estimate update (with all the necessary inputs).
+     *
+     * Only properties included in the input data are updated.
+     *
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns SingleShippingEmissionEstimate OK
+     */
+    public updateShippingEstimateMetadata(
+        id: string,
+        data: {
+            /**
+             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * You can mark an estimate as shipment at any time.
+             *
+             */
+            isShipment: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PATCH',
+            url: '/estimates/shipping/{id}/metadata',
+            path: {
+                id: id,
+            },
+            body: {
+                is_shipment: data?.isShipment,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
      * Create a shipping emission estimate (multi-leg)
      * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
      * @param data Request data
@@ -648,6 +700,58 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/shipping/multi-leg/{id}/is-shipment',
+            path: {
+                id: id,
+            },
+            body: {
+                is_shipment: data?.isShipment,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Updates a multi-leg shipping emission estimate's metadata.
+     * This method allows updating a selection of estimate metadata without going through
+     * a full estimate update (with all the necessary inputs).
+     *
+     * Only properties included in the input data are updated.
+     *
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns MultiLegShippingEmissionEstimate OK
+     */
+    public updateMultiLegShippingEstimateMetadata(
+        id: string,
+        data: {
+            /**
+             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * You can mark an estimate as shipment at any time.
+             *
+             */
+            isShipment: boolean
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PATCH',
+            url: '/estimates/shipping/multi-leg/{id}/metadata',
             path: {
                 id: id,
             },
