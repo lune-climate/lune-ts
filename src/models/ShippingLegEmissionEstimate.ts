@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { CalculatedRoute } from './CalculatedRoute.js'
 import type { ConvertedShipment } from './ConvertedShipment.js'
 import type { Distance } from './Distance.js'
@@ -21,6 +22,7 @@ import type { ShipmentConversionMethod } from './ShipmentConversionMethod.js'
 
 export type ShippingLegEmissionEstimate = EmissionEstimate & {
     distance?: Distance
+    adjustedDistance?: AdjustedDistance
     /**
      * The method we used to determine the shipping distance.
      *

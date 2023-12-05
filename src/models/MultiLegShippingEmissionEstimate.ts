@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { Distance } from './Distance.js'
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
@@ -47,5 +48,6 @@ export type MultiLegShippingEmissionEstimate = {
      */
     legs: Array<ShippingLegEmissionEstimate>
     distance: Distance
+    adjustedDistance: AdjustedDistance
     request: MultiLegShippingEstimateRequest
 } & EmissionEstimateResponse
