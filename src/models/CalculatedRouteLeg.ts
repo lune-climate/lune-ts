@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { CalculatedRouteLocation } from './CalculatedRouteLocation.js'
 import type { Distance } from './Distance.js'
 
@@ -24,4 +25,5 @@ import type { Distance } from './Distance.js'
 export type CalculatedRouteLeg = {
     location: CalculatedRouteLocation
     distance: Distance
+    adjustedDistance: AdjustedDistance
 }
