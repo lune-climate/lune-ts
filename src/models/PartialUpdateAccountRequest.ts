@@ -27,4 +27,11 @@ export type PartialUpdateAccountRequest = {
      * The bundle portfolio unique identifier.
      */
     bundlePortfolioId?: string | null
+    /**
+     * `handle` is a client defined URL-friendly string that identifies the account.
+     *
+     * The `handle` is unique per organisation and account type.
+     *
+     */
+    handle?: string
 }

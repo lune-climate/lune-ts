@@ -92,6 +92,13 @@ export abstract class AccountsService {
              * The account beneficiary.
              */
             beneficiary?: string
+            /**
+             * `handle` is a client defined URL-friendly string that identifies the account.
+             *
+             * The `handle` is unique per organisation and account type.
+             *
+             */
+            handle?: string
         },
         options?: {
             /**
@@ -107,6 +114,7 @@ export abstract class AccountsService {
                 name: data?.name,
                 currency: data?.currency,
                 beneficiary: data?.beneficiary,
+                handle: data?.handle,
             },
             mediaType: 'application/json',
             errors: {
@@ -194,6 +202,13 @@ export abstract class AccountsService {
              * The bundle portfolio unique identifier.
              */
             bundlePortfolioId?: string
+            /**
+             * `handle` is a client defined URL-friendly string that identifies the account.
+             *
+             * The `handle` is unique per organisation and account type.
+             *
+             */
+            handle?: string
         },
         options?: {
             /**
@@ -212,6 +227,7 @@ export abstract class AccountsService {
                 name: data?.name,
                 beneficiary: data?.beneficiary,
                 bundle_portfolio_id: data?.bundlePortfolioId,
+                handle: data?.handle,
             },
             mediaType: 'application/json',
             errors: {
@@ -249,6 +265,13 @@ export abstract class AccountsService {
              * The bundle portfolio unique identifier.
              */
             bundlePortfolioId?: string | null
+            /**
+             * `handle` is a client defined URL-friendly string that identifies the account.
+             *
+             * The `handle` is unique per organisation and account type.
+             *
+             */
+            handle?: string
         },
         options?: {
             /**
@@ -267,6 +290,7 @@ export abstract class AccountsService {
                 name: data?.name,
                 beneficiary: data?.beneficiary,
                 bundle_portfolio_id: data?.bundlePortfolioId,
+                handle: data?.handle,
             },
             mediaType: 'application/json',
             errors: {
