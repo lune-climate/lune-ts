@@ -25,4 +25,11 @@ export type CreateClientAccountRequest = {
      * The account beneficiary.
      */
     beneficiary?: string
+    /**
+     * `handle` is a client defined URL-friendly string that identifies the account.
+     *
+     * The `handle` is unique per organisation and account type.
+     *
+     */
+    handle?: string
 }
