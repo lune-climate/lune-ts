@@ -508,15 +508,22 @@ export abstract class EmissionEstimatesService {
     public updateShippingEstimateMetadata(
         id: string,
         data: {
-            /**
-             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-             *
-             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-             *
-             * You can mark an estimate as shipment at any time.
-             *
-             */
-            isShipment: boolean
+            updateShippingEstimateMetadataRequest:
+                | {
+                      /**
+                       * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                       *
+                       * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+                       *
+                       * You can mark an estimate as shipment at any time.
+                       *
+                       */
+                      isShipment: boolean
+                      shippedAt?: ShippedAt
+                  }
+                | {
+                      shippedAt: ShippedAt
+                  }
         },
         options?: {
             /**
@@ -531,9 +538,7 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
-            body: {
-                is_shipment: data?.isShipment,
-            },
+            body: data?.updateShippingEstimateMetadataRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -732,15 +737,22 @@ export abstract class EmissionEstimatesService {
     public updateMultiLegShippingEstimateMetadata(
         id: string,
         data: {
-            /**
-             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-             *
-             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-             *
-             * You can mark an estimate as shipment at any time.
-             *
-             */
-            isShipment: boolean
+            updateShippingEstimateMetadataRequest:
+                | {
+                      /**
+                       * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                       *
+                       * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+                       *
+                       * You can mark an estimate as shipment at any time.
+                       *
+                       */
+                      isShipment: boolean
+                      shippedAt?: ShippedAt
+                  }
+                | {
+                      shippedAt: ShippedAt
+                  }
         },
         options?: {
             /**
@@ -755,9 +767,7 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
-            body: {
-                is_shipment: data?.isShipment,
-            },
+            body: data?.updateShippingEstimateMetadataRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
