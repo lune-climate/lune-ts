@@ -26,4 +26,5 @@ export enum CurrencyCode {
     DKK = 'DKK',
     NOK = 'NOK',
     BGN = 'BGN',
+    INR = 'INR',
 }
