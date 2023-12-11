@@ -18,5 +18,12 @@
  * Otherwise defaults to the current time when creating estimates and remains
  * unchanged when updating estimates.
  *
+ * This property must be formatted as RFC 3339, section 5.6 timestamp.
+ *
+ * Examples:
+ * * 2023-12-01T12:30:30.000Z
+ * * 2023-12-01T12:30:30Z
+ * * 2023-12-01T11:30:30+01.00
+ *
  */
 export type ShippedAt = string
