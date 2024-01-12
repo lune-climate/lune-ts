@@ -27,4 +27,10 @@ export enum CurrencyCode {
     NOK = 'NOK',
     BGN = 'BGN',
     INR = 'INR',
+    SGD = 'SGD',
+    AED = 'AED',
+    AUD = 'AUD',
+    HUF = 'HUF',
+    ISK = 'ISK',
+    CZK = 'CZK',
 }
