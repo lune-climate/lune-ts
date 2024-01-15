@@ -33,7 +33,7 @@ export type EmissionFactor = {
     /**
      * Source version of the emission factor.
      */
-    sourceVersion?: string
+    sourceVersion: string
     /**
      * Publication year of the emission factor
      */
