@@ -11,7 +11,6 @@
 /* eslint-disable */
 import type { Account } from '../models/Account.js'
 import type { AccountPair } from '../models/AccountPair.js'
-import type { ClientAccount } from '../models/ClientAccount.js'
 import type { CurrencyCode } from '../models/CurrencyCode.js'
 import type { PaginatedAccounts } from '../models/PaginatedAccounts.js'
 import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
@@ -40,28 +39,6 @@ export abstract class AccountsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts/me',
-            errors: {
-                400: `The request is invalid. Parameters may be missing or are invalid`,
-                401: `The API Key is missing or is invalid`,
-                429: `Too many requests have been made in a short period of time`,
-            },
-        })
-    }
-
-    /**
-     * Get a client account
-     * @param options Additional operation options
-     * @returns ClientAccount OK
-     */
-    public getClientAccount(options?: {
-        /**
-         * Account Id to be used to perform the API call
-         */
-        accountId?: string
-    }): Promise<Result<ClientAccount, ApiError>> {
-        return __request(this.client, this.config, options || {}, {
-            method: 'GET',
-            url: '/accounts/client/me',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,

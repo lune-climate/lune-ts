@@ -446,7 +446,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Updates a shipping emission estimate's metadata.
+     * Update a shipping emission estimate's metadata
      * This method allows updating a selection of estimate metadata without going through
      * a full estimate update (with all the necessary inputs).
      *
@@ -628,7 +628,7 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Updates a multi-leg shipping emission estimate's metadata.
+     * Update a multi-leg shipping emission estimate's metadata
      * This method allows updating a selection of estimate metadata without going through
      * a full estimate update (with all the necessary inputs).
      *
