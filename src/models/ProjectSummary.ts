@@ -95,4 +95,48 @@ export type ProjectSummary = {
      * A list of images and videos belonging to the project.
      */
     media: Array<Media>
+    /**
+     * Project’s crediting period start date.
+     */
+    creditingStartDate: string | null
+    /**
+     * Project’s crediting period end date.
+     */
+    creditingEndDate: string | null
+    /**
+     * Date the project was registered in the registry.
+     */
+    registrationDate: string | null
+    /**
+     * The standard followed to assure that a carbon offset project delivers on carbon reduction or removal.
+     */
+    protocol: Array<string> | null
+    /**
+     * Detailed application of the broader principles set out in the protocol.
+     */
+    methodology: string | null
+    /**
+     * Expected duration of the carbon storage (carbon removal projects only).
+     */
+    durability: string | null
+    /**
+     * Any additional standards the project meets.
+     */
+    additionalStandardsMet: Array<string> | null
+    /**
+     * Independent entity assessing compliance of carbon projects with protocol and methodology.
+     */
+    verifyingBody: string | null
+    /**
+     * Mitigation plan for the risk of reversal.
+     */
+    riskOfReversal: string | null
+    /**
+     * Mitigation plan for the risk of predicted reductions or removals not occurring.
+     */
+    riskOfPredictedEmissions: string | null
+    /**
+     * Estimated average annual reductions or removals.
+     */
+    avgAnnualEmissionReductions: string | null
 }
