@@ -25,6 +25,7 @@ import type { EmissionFactorActivity } from '../models/EmissionFactorActivity.js
 import type { EmissionFactorEstimate } from '../models/EmissionFactorEstimate.js'
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
+import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
 import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
@@ -33,10 +34,12 @@ import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEs
 import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
 import type { PassengerTransportationEmissionEstimate } from '../models/PassengerTransportationEmissionEstimate.js'
+import type { Shipment } from '../models/Shipment.js'
 import type { ShippedAt } from '../models/ShippedAt.js'
+import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
+import type { ShippingMethod } from '../models/ShippingMethod.js'
+import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
-import type { StoredMultiLegShippingEstimateRequest } from '../models/StoredMultiLegShippingEstimateRequest.js'
-import type { StoredShippingEstimateRequest } from '../models/StoredShippingEstimateRequest.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 
@@ -329,7 +332,17 @@ export abstract class EmissionEstimatesService {
      */
     public createShippingEstimate(
         data: {
-            shippingEstimateRequest: StoredShippingEstimateRequest & {
+            shippingEstimateRequest: {
+                shipment: Shipment
+                /**
+                 * A name to reference this calculation.
+                 */
+                name?: string
+                bundleSelection?: BundleSelectionRequest
+                /**
+                 * Selects to which precision to truncate the quantities assigned to each bundle.
+                 */
+                quantityTrunc?: MassUnit
                 /**
                  * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
                  *
@@ -340,7 +353,16 @@ export abstract class EmissionEstimatesService {
                  */
                 isShipment?: boolean
                 shippedAt?: ShippedAt
-            }
+            } & (
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            )
         },
         options?: {
             /**
@@ -405,7 +427,17 @@ export abstract class EmissionEstimatesService {
     public updateShippingEstimate(
         id: string,
         data: {
-            shippingEstimateRequest: StoredShippingEstimateRequest & {
+            shippingEstimateRequest: {
+                shipment: Shipment
+                /**
+                 * A name to reference this calculation.
+                 */
+                name?: string
+                bundleSelection?: BundleSelectionRequest
+                /**
+                 * Selects to which precision to truncate the quantities assigned to each bundle.
+                 */
+                quantityTrunc?: MassUnit
                 /**
                  * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
                  *
@@ -416,7 +448,16 @@ export abstract class EmissionEstimatesService {
                  */
                 isShipment?: boolean
                 shippedAt?: ShippedAt
-            }
+            } & (
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            )
         },
         options?: {
             /**
@@ -511,18 +552,39 @@ export abstract class EmissionEstimatesService {
      */
     public createMultiLegShippingEstimate(
         data: {
-            multiLegShippingEstimateRequest: StoredMultiLegShippingEstimateRequest & {
-                /**
-                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                 *
-                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-                 *
-                 * You can mark an estimate as shipment at any time.
-                 *
-                 */
-                isShipment?: boolean
-                shippedAt?: ShippedAt
-            }
+            shipment: Shipment
+            /**
+             * An array representing all the legs of a shipment.
+             */
+            legs: Array<
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            >
+            /**
+             * A name to reference this calculation.
+             */
+            name?: string
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * Selects to which precision to truncate the quantities assigned to each bundle.
+             */
+            quantityTrunc?: MassUnit
+            /**
+             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * You can mark an estimate as shipment at any time.
+             *
+             */
+            isShipment?: boolean
+            shippedAt?: ShippedAt
         },
         options?: {
             /**
@@ -534,7 +596,15 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping/multi-leg',
-            body: data?.multiLegShippingEstimateRequest,
+            body: {
+                shipment: data?.shipment,
+                legs: data?.legs,
+                name: data?.name,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+                is_shipment: data?.isShipment,
+                shipped_at: data?.shippedAt,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -587,18 +657,39 @@ export abstract class EmissionEstimatesService {
     public updateMultiLegShippingEstimate(
         id: string,
         data: {
-            multiLegShippingEstimateRequest: StoredMultiLegShippingEstimateRequest & {
-                /**
-                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                 *
-                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-                 *
-                 * You can mark an estimate as shipment at any time.
-                 *
-                 */
-                isShipment?: boolean
-                shippedAt?: ShippedAt
-            }
+            shipment: Shipment
+            /**
+             * An array representing all the legs of a shipment.
+             */
+            legs: Array<
+                | {
+                      route: ShippingRoute
+                      method: ShippingMethod
+                      countryCode?: ShippingCountryCode
+                  }
+                | {
+                      method: LogisticsSiteMethod
+                  }
+            >
+            /**
+             * A name to reference this calculation.
+             */
+            name?: string
+            bundleSelection?: BundleSelectionRequest
+            /**
+             * Selects to which precision to truncate the quantities assigned to each bundle.
+             */
+            quantityTrunc?: MassUnit
+            /**
+             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * You can mark an estimate as shipment at any time.
+             *
+             */
+            isShipment?: boolean
+            shippedAt?: ShippedAt
         },
         options?: {
             /**
@@ -613,7 +704,15 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
-            body: data?.multiLegShippingEstimateRequest,
+            body: {
+                shipment: data?.shipment,
+                legs: data?.legs,
+                name: data?.name,
+                bundle_selection: data?.bundleSelection,
+                quantity_trunc: data?.quantityTrunc,
+                is_shipment: data?.isShipment,
+                shipped_at: data?.shippedAt,
+            },
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,

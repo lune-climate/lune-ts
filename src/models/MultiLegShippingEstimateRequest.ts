@@ -10,13 +10,42 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
+import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
+import type { MassUnit } from './MassUnit.js'
+import type { Shipment } from './Shipment.js'
 import type { ShippedAt } from './ShippedAt.js'
-import type { StoredMultiLegShippingEstimateRequest } from './StoredMultiLegShippingEstimateRequest.js'
+import type { ShippingCountryCode } from './ShippingCountryCode.js'
+import type { ShippingMethod } from './ShippingMethod.js'
+import type { ShippingRoute } from './ShippingRoute.js'
 
 /**
  * Parameters for estimating multi-leg shipping emissions
  */
-export type MultiLegShippingEstimateRequest = StoredMultiLegShippingEstimateRequest & {
+export type MultiLegShippingEstimateRequest = {
+    shipment: Shipment
+    /**
+     * An array representing all the legs of a shipment.
+     */
+    legs: Array<
+        | {
+              route: ShippingRoute
+              method: ShippingMethod
+              countryCode?: ShippingCountryCode
+          }
+        | {
+              method: LogisticsSiteMethod
+          }
+    >
+    /**
+     * A name to reference this calculation.
+     */
+    name?: string
+    bundleSelection?: BundleSelectionRequest
+    /**
+     * Selects to which precision to truncate the quantities assigned to each bundle.
+     */
+    quantityTrunc?: MassUnit
     /**
      * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
      *
