@@ -12,7 +12,7 @@
 
 import type { ShippedAt } from './ShippedAt.js'
 
-export type UpdateShippingEstimateMetadataRequest =
+export type UpdateShippingEstimateAnnotationsRequest =
     | {
           /**
            * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
