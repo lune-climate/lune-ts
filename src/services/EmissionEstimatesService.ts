@@ -446,8 +446,8 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Update a shipping emission estimate's metadata
-     * This method allows updating a selection of estimate metadata without going through
+     * Update a shipping emission estimate's annotations
+     * This method allows updating a selection of estimate annotations without going through
      * a full estimate update (with all the necessary inputs).
      *
      * Only properties included in the input data are updated.
@@ -457,10 +457,10 @@ export abstract class EmissionEstimatesService {
      * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate OK
      */
-    public updateShippingEstimateMetadata(
+    public updateShippingEstimateAnnotations(
         id: string,
         data: {
-            updateShippingEstimateMetadataRequest:
+            updateShippingEstimateAnnotationsRequest:
                 | {
                       /**
                        * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
@@ -486,11 +486,11 @@ export abstract class EmissionEstimatesService {
     ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PATCH',
-            url: '/estimates/shipping/{id}/metadata',
+            url: '/estimates/shipping/{id}/annotations',
             path: {
                 id: id,
             },
-            body: data?.updateShippingEstimateMetadataRequest,
+            body: data?.updateShippingEstimateAnnotationsRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -628,8 +628,8 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Update a multi-leg shipping emission estimate's metadata
-     * This method allows updating a selection of estimate metadata without going through
+     * Update a multi-leg shipping emission estimate's annotations
+     * This method allows updating a selection of estimate annotations without going through
      * a full estimate update (with all the necessary inputs).
      *
      * Only properties included in the input data are updated.
@@ -639,10 +639,10 @@ export abstract class EmissionEstimatesService {
      * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate OK
      */
-    public updateMultiLegShippingEstimateMetadata(
+    public updateMultiLegShippingEstimateAnnotations(
         id: string,
         data: {
-            updateShippingEstimateMetadataRequest:
+            updateShippingEstimateAnnotationsRequest:
                 | {
                       /**
                        * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
@@ -668,11 +668,11 @@ export abstract class EmissionEstimatesService {
     ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PATCH',
-            url: '/estimates/shipping/multi-leg/{id}/metadata',
+            url: '/estimates/shipping/multi-leg/{id}/annotations',
             path: {
                 id: id,
             },
-            body: data?.updateShippingEstimateMetadataRequest,
+            body: data?.updateShippingEstimateAnnotationsRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
