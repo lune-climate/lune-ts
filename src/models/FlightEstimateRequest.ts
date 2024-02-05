@@ -14,6 +14,7 @@ import type { AirportSourceDestination } from './AirportSourceDestination.js'
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { CabinClass } from './CabinClass.js'
 import type { Distance } from './Distance.js'
+import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
 
@@ -41,4 +42,5 @@ export type FlightEstimateRequest = {
      */
     name?: string
     metadata?: Metadata
+    idempotencyKey?: EstimateIdempotencyKey
 }

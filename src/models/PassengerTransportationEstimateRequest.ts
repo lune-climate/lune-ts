@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
+import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
 import type { PassengerFlightEstimateRequest } from './PassengerFlightEstimateRequest.js'
@@ -42,4 +43,5 @@ export type PassengerTransportationEstimateRequest = {
      */
     name?: string
     metadata?: Metadata
+    idempotencyKey?: EstimateIdempotencyKey
 }

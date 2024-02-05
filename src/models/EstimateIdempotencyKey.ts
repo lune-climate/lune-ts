@@ -10,15 +10,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { Mass } from './Mass.js'
-import type { Metadata } from './Metadata.js'
-
 /**
- * An emission estimate result. The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
+ * Account-unique identifier provided by the client.
+ *
+ * `idempotency_key` has two purposes:
+ * 1. Clients can safely retry estimate requests without accidentally performing the same operation multiple times.
+ * 2. Clients can use `idempotency_key` to reconcile estimates with entities on their system.
+ *
  */
-export type EmissionEstimate = {
-    mass: Mass
-    metadata?: Metadata
-    idempotencyKey?: EstimateIdempotencyKey
-}
+export type EstimateIdempotencyKey = string

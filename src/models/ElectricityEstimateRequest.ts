@@ -12,6 +12,7 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { ElectricityConsumption } from './ElectricityConsumption.js'
+import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
 
@@ -38,4 +39,5 @@ export type ElectricityEstimateRequest = {
      */
     quantityTrunc?: MassUnit
     metadata?: Metadata
+    idempotencyKey?: EstimateIdempotencyKey
 }

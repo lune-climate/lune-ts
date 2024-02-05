@@ -67,5 +67,6 @@ export namespace Error {
         ACCOUNT_SCOPE_INCORRECT = 'account_scope_incorrect',
         SERVICE_UNAVAILABLE = 'service_unavailable',
         HANDLE_NOT_UNIQUE = 'handle_not_unique',
+        ESTIMATE_IDEMPOTENCY_ALREADY_EXISTS = 'estimate_idempotency_already_exists',
     }
 }

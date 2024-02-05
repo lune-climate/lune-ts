@@ -23,6 +23,7 @@ import type { ElectricityConsumption } from '../models/ElectricityConsumption.js
 import type { ElectricityEmissionEstimate } from '../models/ElectricityEmissionEstimate.js'
 import type { EmissionFactorActivity } from '../models/EmissionFactorActivity.js'
 import type { EmissionFactorEstimate } from '../models/EmissionFactorEstimate.js'
+import type { EstimateIdempotencyKey } from '../models/EstimateIdempotencyKey.js'
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
 import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
@@ -82,6 +83,7 @@ export abstract class EmissionEstimatesService {
              */
             quantityTrunc?: MassUnit
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -100,6 +102,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -174,6 +177,7 @@ export abstract class EmissionEstimatesService {
              */
             quantityTrunc?: MassUnit
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -195,6 +199,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -238,6 +243,7 @@ export abstract class EmissionEstimatesService {
              */
             name?: string
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -257,6 +263,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -302,6 +309,7 @@ export abstract class EmissionEstimatesService {
              */
             name?: string
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -320,6 +328,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -363,6 +372,7 @@ export abstract class EmissionEstimatesService {
                 isShipment?: boolean
                 shippedAt?: ShippedAt
                 metadata?: Metadata
+                idempotencyKey?: EstimateIdempotencyKey
             } & (
                 | {
                       route: ShippingRoute
@@ -459,6 +469,7 @@ export abstract class EmissionEstimatesService {
                 isShipment?: boolean
                 shippedAt?: ShippedAt
                 metadata?: Metadata
+                idempotencyKey?: EstimateIdempotencyKey
             } & (
                 | {
                       route: ShippingRoute
@@ -525,13 +536,19 @@ export abstract class EmissionEstimatesService {
                       isShipment: boolean
                       shippedAt?: ShippedAt
                       metadata?: Metadata
+                      idempotencyKey?: EstimateIdempotencyKey
                   }
                 | {
                       shippedAt: ShippedAt
                       metadata?: Metadata
+                      idempotencyKey?: EstimateIdempotencyKey
                   }
                 | {
                       metadata: Metadata
+                      idempotencyKey?: EstimateIdempotencyKey
+                  }
+                | {
+                      idempotencyKey: EstimateIdempotencyKey
                   }
         },
         options?: {
@@ -602,6 +619,7 @@ export abstract class EmissionEstimatesService {
             isShipment?: boolean
             shippedAt?: ShippedAt
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -622,6 +640,7 @@ export abstract class EmissionEstimatesService {
                 is_shipment: data?.isShipment,
                 shipped_at: data?.shippedAt,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -709,6 +728,7 @@ export abstract class EmissionEstimatesService {
             isShipment?: boolean
             shippedAt?: ShippedAt
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -732,6 +752,7 @@ export abstract class EmissionEstimatesService {
                 is_shipment: data?.isShipment,
                 shipped_at: data?.shippedAt,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -774,13 +795,19 @@ export abstract class EmissionEstimatesService {
                       isShipment: boolean
                       shippedAt?: ShippedAt
                       metadata?: Metadata
+                      idempotencyKey?: EstimateIdempotencyKey
                   }
                 | {
                       shippedAt: ShippedAt
                       metadata?: Metadata
+                      idempotencyKey?: EstimateIdempotencyKey
                   }
                 | {
                       metadata: Metadata
+                      idempotencyKey?: EstimateIdempotencyKey
+                  }
+                | {
+                      idempotencyKey: EstimateIdempotencyKey
                   }
         },
         options?: {
@@ -838,6 +865,7 @@ export abstract class EmissionEstimatesService {
              */
             quantityTrunc?: MassUnit
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -857,6 +885,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -971,6 +1000,7 @@ export abstract class EmissionEstimatesService {
              */
             quantityTrunc?: MassUnit
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -993,6 +1023,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -1120,6 +1151,7 @@ export abstract class EmissionEstimatesService {
              */
             name?: string
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -1159,6 +1191,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -1311,6 +1344,7 @@ export abstract class EmissionEstimatesService {
              */
             name?: string
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -1353,6 +1387,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
@@ -1393,6 +1428,7 @@ export abstract class EmissionEstimatesService {
              */
             quantityTrunc?: MassUnit
             metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
         },
         options?: {
             /**
@@ -1411,6 +1447,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
