@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { Metadata } from './Metadata.js'
 import type { ShippedAt } from './ShippedAt.js'
 
@@ -26,11 +27,17 @@ export type UpdateShippingEstimateAnnotationsRequest =
           isShipment: boolean
           shippedAt?: ShippedAt
           metadata?: Metadata
+          idempotencyKey?: EstimateIdempotencyKey
       }
     | {
           shippedAt: ShippedAt
           metadata?: Metadata
+          idempotencyKey?: EstimateIdempotencyKey
       }
     | {
           metadata: Metadata
+          idempotencyKey?: EstimateIdempotencyKey
+      }
+    | {
+          idempotencyKey: EstimateIdempotencyKey
       }

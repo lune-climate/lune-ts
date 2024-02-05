@@ -12,6 +12,7 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { Diet } from './Diet.js'
+import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { MassUnit } from './MassUnit.js'
 import type { Merchant } from './Merchant.js'
 import type { Metadata } from './Metadata.js'
@@ -43,4 +44,5 @@ export type TransactionEstimateRequest = {
      */
     quantityTrunc?: MassUnit
     metadata?: Metadata
+    idempotencyKey?: EstimateIdempotencyKey
 }

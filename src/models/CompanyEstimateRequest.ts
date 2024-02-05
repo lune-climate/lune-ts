@@ -15,6 +15,7 @@ import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { CompanyCloudUse } from './CompanyCloudUse.js'
 import type { CompanyOnPremiseUse } from './CompanyOnPremiseUse.js'
 import type { Distance } from './Distance.js'
+import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { IntegerPercentage } from './IntegerPercentage.js'
 import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
@@ -126,4 +127,5 @@ export type CompanyEstimateRequest = {
      */
     name?: string
     metadata?: Metadata
+    idempotencyKey?: EstimateIdempotencyKey
 }

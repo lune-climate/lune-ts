@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
+import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
@@ -45,6 +46,7 @@ export type ShippingEstimateRequest = {
     isShipment?: boolean
     shippedAt?: ShippedAt
     metadata?: Metadata
+    idempotencyKey?: EstimateIdempotencyKey
 } & (
     | {
           route: ShippingRoute
