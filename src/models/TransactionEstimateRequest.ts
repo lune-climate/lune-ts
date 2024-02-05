@@ -14,6 +14,7 @@ import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { Diet } from './Diet.js'
 import type { MassUnit } from './MassUnit.js'
 import type { Merchant } from './Merchant.js'
+import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
 
 /**
@@ -41,4 +42,5 @@ export type TransactionEstimateRequest = {
      * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
+    metadata?: Metadata
 }

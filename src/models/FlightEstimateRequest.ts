@@ -15,6 +15,7 @@ import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { CabinClass } from './CabinClass.js'
 import type { Distance } from './Distance.js'
 import type { MassUnit } from './MassUnit.js'
+import type { Metadata } from './Metadata.js'
 
 /**
  * Parameters for estimating emissions for commercial plane travel
@@ -39,4 +40,5 @@ export type FlightEstimateRequest = {
      * A name used to reference this calculation.
      */
     name?: string
+    metadata?: Metadata
 }

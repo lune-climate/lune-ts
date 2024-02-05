@@ -13,6 +13,7 @@
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { MassUnit } from './MassUnit.js'
+import type { Metadata } from './Metadata.js'
 import type { Shipment } from './Shipment.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingCountryCode } from './ShippingCountryCode.js'
@@ -56,4 +57,5 @@ export type MultiLegShippingEstimateRequest = {
      */
     isShipment?: boolean
     shippedAt?: ShippedAt
+    metadata?: Metadata
 }

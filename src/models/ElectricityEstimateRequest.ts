@@ -13,6 +13,7 @@
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { ElectricityConsumption } from './ElectricityConsumption.js'
 import type { MassUnit } from './MassUnit.js'
+import type { Metadata } from './Metadata.js'
 
 /**
  * Parameters for estimating electricity emissions
@@ -36,4 +37,5 @@ export type ElectricityEstimateRequest = {
      * Selects to which precision to truncate the quantities assigned to each bundle.
      */
     quantityTrunc?: MassUnit
+    metadata?: Metadata
 }

@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Metadata } from './Metadata.js'
 import type { ShippedAt } from './ShippedAt.js'
 
 export type UpdateShippingEstimateAnnotationsRequest =
@@ -24,7 +25,12 @@ export type UpdateShippingEstimateAnnotationsRequest =
            */
           isShipment: boolean
           shippedAt?: ShippedAt
+          metadata?: Metadata
       }
     | {
           shippedAt: ShippedAt
+          metadata?: Metadata
+      }
+    | {
+          metadata: Metadata
       }

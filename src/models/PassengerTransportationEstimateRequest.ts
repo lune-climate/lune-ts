@@ -12,6 +12,7 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { MassUnit } from './MassUnit.js'
+import type { Metadata } from './Metadata.js'
 import type { PassengerFlightEstimateRequest } from './PassengerFlightEstimateRequest.js'
 import type { PassengerRailEstimateRequest } from './PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from './PassengerRoadEstimateRequest.js'
@@ -40,4 +41,5 @@ export type PassengerTransportationEstimateRequest = {
      * A name to reference this calculation.
      */
     name?: string
+    metadata?: Metadata
 }

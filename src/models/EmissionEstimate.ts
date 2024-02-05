@@ -11,10 +11,12 @@
 /* eslint-disable */
 
 import type { Mass } from './Mass.js'
+import type { Metadata } from './Metadata.js'
 
 /**
  * An emission estimate result. The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
  */
 export type EmissionEstimate = {
     mass: Mass
+    metadata?: Metadata
 }
