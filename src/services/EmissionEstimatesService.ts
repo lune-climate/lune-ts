@@ -28,6 +28,7 @@ import type { IntegerPercentage } from '../models/IntegerPercentage.js'
 import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
 import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
+import type { Metadata } from '../models/Metadata.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
 import type { MultiLegShippingEmissionEstimate } from '../models/MultiLegShippingEmissionEstimate.js'
 import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEstimateRequest.js'
@@ -80,6 +81,7 @@ export abstract class EmissionEstimatesService {
              * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -97,6 +99,7 @@ export abstract class EmissionEstimatesService {
                 country_code: data?.countryCode,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -170,6 +173,7 @@ export abstract class EmissionEstimatesService {
              * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -190,6 +194,7 @@ export abstract class EmissionEstimatesService {
                 country_code: data?.countryCode,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -232,6 +237,7 @@ export abstract class EmissionEstimatesService {
              * A name used to reference this calculation.
              */
             name?: string
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -250,6 +256,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -294,6 +301,7 @@ export abstract class EmissionEstimatesService {
              * A name to reference this calculation.
              */
             name?: string
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -311,6 +319,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -353,6 +362,7 @@ export abstract class EmissionEstimatesService {
                  */
                 isShipment?: boolean
                 shippedAt?: ShippedAt
+                metadata?: Metadata
             } & (
                 | {
                       route: ShippingRoute
@@ -448,6 +458,7 @@ export abstract class EmissionEstimatesService {
                  */
                 isShipment?: boolean
                 shippedAt?: ShippedAt
+                metadata?: Metadata
             } & (
                 | {
                       route: ShippingRoute
@@ -513,9 +524,14 @@ export abstract class EmissionEstimatesService {
                        */
                       isShipment: boolean
                       shippedAt?: ShippedAt
+                      metadata?: Metadata
                   }
                 | {
                       shippedAt: ShippedAt
+                      metadata?: Metadata
+                  }
+                | {
+                      metadata: Metadata
                   }
         },
         options?: {
@@ -585,6 +601,7 @@ export abstract class EmissionEstimatesService {
              */
             isShipment?: boolean
             shippedAt?: ShippedAt
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -604,6 +621,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 is_shipment: data?.isShipment,
                 shipped_at: data?.shippedAt,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -690,6 +708,7 @@ export abstract class EmissionEstimatesService {
              */
             isShipment?: boolean
             shippedAt?: ShippedAt
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -712,6 +731,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 is_shipment: data?.isShipment,
                 shipped_at: data?.shippedAt,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -753,9 +773,14 @@ export abstract class EmissionEstimatesService {
                        */
                       isShipment: boolean
                       shippedAt?: ShippedAt
+                      metadata?: Metadata
                   }
                 | {
                       shippedAt: ShippedAt
+                      metadata?: Metadata
+                  }
+                | {
+                      metadata: Metadata
                   }
         },
         options?: {
@@ -812,6 +837,7 @@ export abstract class EmissionEstimatesService {
              * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -830,6 +856,7 @@ export abstract class EmissionEstimatesService {
                 diet: data?.diet,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -943,6 +970,7 @@ export abstract class EmissionEstimatesService {
              * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -964,6 +992,7 @@ export abstract class EmissionEstimatesService {
                 diet: data?.diet,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -1090,6 +1119,7 @@ export abstract class EmissionEstimatesService {
              * A name to reference this calculation.
              */
             name?: string
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -1128,6 +1158,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -1279,6 +1310,7 @@ export abstract class EmissionEstimatesService {
              * A name to reference this calculation.
              */
             name?: string
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -1320,6 +1352,7 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 name: data?.name,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {
@@ -1359,6 +1392,7 @@ export abstract class EmissionEstimatesService {
              * Selects to which precision to truncate the quantities assigned to each bundle.
              */
             quantityTrunc?: MassUnit
+            metadata?: Metadata
         },
         options?: {
             /**
@@ -1376,6 +1410,7 @@ export abstract class EmissionEstimatesService {
                 name: data?.name,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
+                metadata: data?.metadata,
             },
             mediaType: 'application/json',
             errors: {

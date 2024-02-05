@@ -17,6 +17,7 @@ import type { CompanyOnPremiseUse } from './CompanyOnPremiseUse.js'
 import type { Distance } from './Distance.js'
 import type { IntegerPercentage } from './IntegerPercentage.js'
 import type { MassUnit } from './MassUnit.js'
+import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
 
 /**
@@ -124,4 +125,5 @@ export type CompanyEstimateRequest = {
      * A name to reference this calculation.
      */
     name?: string
+    metadata?: Metadata
 }
