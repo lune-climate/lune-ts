@@ -17,6 +17,7 @@
  * * `mapbox` – we used the Mapbox Matrix API
  * * `user_input` – the distance was provided to us directly
  * * `osrm` – we used Open Source Routing Machine, the OpenStreetMap Data Routing Engine
+ * * `vessel_tracking` – we used the AIS data to track the vessel's route
  *
  */
 export enum DistanceCalculationMethod {
@@ -26,4 +27,5 @@ export enum DistanceCalculationMethod {
     MAPBOX = 'mapbox',
     USER_INPUT = 'user_input',
     OSRM = 'osrm',
+    VESSEL_TRACKING = 'vessel_tracking',
 }
