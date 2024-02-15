@@ -32,6 +32,7 @@ import type { Merchant } from '../models/Merchant.js'
 import type { Metadata } from '../models/Metadata.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
 import type { MultiLegShippingEmissionEstimate } from '../models/MultiLegShippingEmissionEstimate.js'
+import type { PaginatedAnyShippingEmissionEstimates } from '../models/PaginatedAnyShippingEmissionEstimates.js'
 import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEstimateRequest.js'
 import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
@@ -336,6 +337,80 @@ export abstract class EmissionEstimatesService {
                 401: `The API Key is missing or is invalid`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * List all shipping estimates
+     * Returns single and multi-leg shipping estimates paginated in reverse order.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns PaginatedAnyShippingEmissionEstimates OK
+     */
+    public listAllShipingEstimates(
+        data?: {
+            /**
+             * Maximum number of resources to return, between 1 and 100.
+             *
+             */
+            limit?: string
+            /**
+             * A cursor for use in pagination.
+             *
+             * *after* is an object ID that defines your place in the list.
+             *
+             * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+             *
+             */
+            after?: string
+            /**
+             * When true, the emission estimate refers to an actual shipment of goods.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * By default, all estimates are returned.
+             *
+             */
+            isShipment?: boolean
+            /**
+             * When set, the result includes estimates created at or after the timestamp.
+             *
+             * Both `from` and `through` are either provided or missing.
+             *
+             */
+            from?: string
+            /**
+             * When set, the result includes estimates created at or before the timestamp.
+             *
+             * Both `from` and `through` are either provided or missing.
+             *
+             */
+            through?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<PaginatedAnyShippingEmissionEstimates, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/estimates/shipping/all',
+            query: {
+                limit: data?.limit,
+                after: data?.after,
+                is_shipment: data?.isShipment,
+                from: data?.from,
+                through: data?.through,
+            },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,
                 503: `The service is temporarily unavailable. You may retry.`,
             },
