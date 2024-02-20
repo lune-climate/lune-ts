@@ -77,7 +77,10 @@ export abstract class OrdersService {
     public createOrderByValue(
         data: {
             /**
-             * Maximum price of CO2 offsets to purchase (in the account's currency)
+             * Maximum price of CO2 offsets to purchase (in the account's currency).
+             *
+             * `value` must not be lower than the currency's minimum unit.
+             *
              */
             value: string
             /**
@@ -377,7 +380,10 @@ export abstract class OrdersService {
     public getOrderQuoteByValue(
         data: {
             /**
-             * Maximum price of CO2 offsets to purchase (in the account's currency)
+             * Maximum price of CO2 offsets to purchase (in the account's currency).
+             *
+             * `value` must not be lower than the currency's minimum unit.
+             *
              */
             value: string
             bundleSelection?: BundleSelectionRequest

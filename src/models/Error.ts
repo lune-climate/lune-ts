@@ -39,6 +39,7 @@ export namespace Error {
         BUNDLE_SELECTION_BUNDLE_INVALID = 'bundle_selection_bundle_invalid',
         ORDER_IDEMPOTENCY_ALREADY_EXISTS = 'order_idempotency_already_exists',
         ORDER_QUANTITY_INVALID = 'order_quantity_invalid',
+        ORDER_VALUE_INVALID = 'order_value_invalid',
         BUNDLE_ID_INVALID = 'bundle_id_invalid',
         ID_INVALID = 'id_invalid',
         TEST_ACCOUNT_NAME_UPDATE_DISALLOWED = 'test_account_name_update_disallowed',

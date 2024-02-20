@@ -16,7 +16,10 @@ import type { Metadata } from './Metadata.js'
 
 export type CreateOrderByValueRequest = {
     /**
-     * Maximum price of CO2 offsets to purchase (in the account's currency)
+     * Maximum price of CO2 offsets to purchase (in the account's currency).
+     *
+     * `value` must not be lower than the currency's minimum unit.
+     *
      */
     value: string
     /**
