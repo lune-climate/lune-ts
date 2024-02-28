@@ -14,6 +14,7 @@ import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { CalculatedRoute } from './CalculatedRoute.js'
 import type { ConvertedShipment } from './ConvertedShipment.js'
 import type { Distance } from './Distance.js'
+import type { DistanceCalculationDetails } from './DistanceCalculationDetails.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
 import type { EmissionEstimate } from './EmissionEstimate.js'
 import type { EmissionFactor } from './EmissionFactor.js'
@@ -69,4 +70,9 @@ export type ShippingLegEmissionEstimate = EmissionEstimate & {
         | 'imo_unavailable_container_ship_fallback'
         | 'imo_unavailable_container_ship_trade_lane_fallback'
     >
+    /**
+     * Information regarding why an alternative distance calculation method was used.
+     *
+     */
+    distanceCalculationDetails: DistanceCalculationDetails | NullEnum
 }
