@@ -249,6 +249,7 @@ export type { PassengerTransportationEmissionEstimate } from './models/Passenger
 export type { PassengerTransportationEstimateRequest } from './models/PassengerTransportationEstimateRequest.js'
 export type { Payment } from './models/Payment.js'
 export { Project } from './models/Project.js'
+export type { ProjectPerimeter } from './models/ProjectPerimeter.js'
 export type { ProjectSummary } from './models/ProjectSummary.js'
 export { PublicSustainabilityPage } from './models/PublicSustainabilityPage.js'
 export type { QuantityAndValueTimeseries } from './models/QuantityAndValueTimeseries.js'
