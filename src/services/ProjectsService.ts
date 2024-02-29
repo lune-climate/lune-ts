@@ -11,6 +11,7 @@
 /* eslint-disable */
 import type { PaginatedProjects } from '../models/PaginatedProjects.js'
 import type { Project } from '../models/Project.js'
+import type { ProjectPerimeter } from '../models/ProjectPerimeter.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -90,6 +91,34 @@ export abstract class ProjectsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects/{id}',
+            path: {
+                id: id,
+            },
+            errors: {
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get a project's perimeter
+     * @param id The project's unique identifier
+     * @param options Additional operation options
+     * @returns ProjectPerimeter OK
+     */
+    public getProjectPerimeter(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<ProjectPerimeter, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/projects/{id}/perimeter',
             path: {
                 id: id,
             },
