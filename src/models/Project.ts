@@ -45,6 +45,26 @@ export type Project = ProjectSummary & {
         imageUrl: string
     }> | null
     /**
+     * Datasets available for the project.
+     *
+     * For instance Forest loss or Biodiversity.
+     *
+     */
+    datasets: Array<{
+        /**
+         * Dataset's name.
+         */
+        dataset: string
+        /**
+         * Project specific commentary regarding the dataset.
+         */
+        description: string
+        /**
+         * Project specific thumbnail URL regarding the dataset.
+         */
+        thumbnailUrl: string
+    }> | null
+    /**
      * The way the project relates to every of the five Project Quality Assessment categories.
      *
      * A null value means there's no data or the section is disabled.
