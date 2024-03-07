@@ -17,7 +17,7 @@ import type { Distance } from './Distance.js'
 import type { DistanceCalculationDetails } from './DistanceCalculationDetails.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
 import type { EmissionEstimate } from './EmissionEstimate.js'
-import type { EmissionFactor } from './EmissionFactor.js'
+import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { NullEnum } from './NullEnum.js'
 import type { ShipmentConversionMethod } from './ShipmentConversionMethod.js'
 
@@ -59,7 +59,7 @@ export type ShippingLegEmissionEstimate = EmissionEstimate & {
      *
      */
     shipmentConversionMethod: ShipmentConversionMethod | NullEnum
-    emissionFactor: EmissionFactor
+    emissionFactor: EmissionFactorWithGasEmissions
     /**
      * Summary of the methodology used to calculate emissions or any value which is a prerequisite.
      *
