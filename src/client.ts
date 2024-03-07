@@ -181,6 +181,7 @@ export type { EmissionFactorEstimateRequest } from './models/EmissionFactorEstim
 export { EmissionFactorLogicalUnit } from './models/EmissionFactorLogicalUnit.js'
 export type { EmissionFactorRegions } from './models/EmissionFactorRegions.js'
 export { EmissionFactorSource } from './models/EmissionFactorSource.js'
+export type { EmissionFactorWithGasEmissions } from './models/EmissionFactorWithGasEmissions.js'
 export type { EmptyObject } from './models/EmptyObject.js'
 export { Error } from './models/Error.js'
 export type { ErrorResponse } from './models/ErrorResponse.js'

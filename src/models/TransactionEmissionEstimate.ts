@@ -11,7 +11,7 @@
 /* eslint-disable */
 
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
-import type { EmissionFactor } from './EmissionFactor.js'
+import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { NullEnum } from './NullEnum.js'
 import type { TransactionEstimateRequest } from './TransactionEstimateRequest.js'
 
@@ -20,7 +20,7 @@ export type TransactionEmissionEstimate = EmissionEstimateResponse & {
     /**
      * This property is `null` for any estimate created before 01/03/2024
      */
-    emissionFactor: EmissionFactor | NullEnum
+    emissionFactor: EmissionFactorWithGasEmissions | NullEnum
     /**
      * The most accurate term matching the search.
      *
