@@ -20,7 +20,7 @@ import type { ContainerShippingMethod } from './ContainerShippingMethod.js'
 export type IdentifiedVesselByNameShippingMethod =
     | {
           /**
-           * The vessel's name.
+           * The vessel's name, case-insensitive.
            *
            */
           vesselName: string
