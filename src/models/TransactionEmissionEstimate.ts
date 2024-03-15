@@ -28,4 +28,7 @@ export type TransactionEmissionEstimate = EmissionEstimateResponse & {
      *
      */
     searchTermMatch?: string
+    dietFactor: string | NullEnum
+    exchangeRate: string | NullEnum
+    exchangeRateDate: string | NullEnum
 }
