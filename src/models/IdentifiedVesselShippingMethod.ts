@@ -26,6 +26,9 @@ export type IdentifiedVesselShippingMethod = (
     vesselTracking?: {
         /**
          * The date of the departure from the source port.
+         *
+         * Vessel tracking is only available for departures within the past 3 months.
+         *
          */
         departureOn: string
         /**
