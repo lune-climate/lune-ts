@@ -66,7 +66,7 @@ export abstract class AccountsService {
              */
             currency: CurrencyCode
             /**
-             * The account beneficiary.
+             * The account beneficiary. Leading and trailing spaces are removed.
              */
             beneficiary?: string
             /**
@@ -172,7 +172,7 @@ export abstract class AccountsService {
              */
             name: string
             /**
-             * The account beneficiary.
+             * The account beneficiary. Leading and trailing spaces are removed.
              */
             beneficiary?: string
             /**
@@ -235,7 +235,7 @@ export abstract class AccountsService {
              */
             name?: string
             /**
-             * The account beneficiary.
+             * The account beneficiary. Leading and trailing spaces are removed.
              */
             beneficiary?: string | null
             /**
