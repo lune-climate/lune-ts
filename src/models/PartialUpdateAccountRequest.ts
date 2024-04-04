@@ -20,7 +20,7 @@ export type PartialUpdateAccountRequest = {
      */
     name?: string
     /**
-     * The account beneficiary.
+     * The account beneficiary. Leading and trailing spaces are removed.
      */
     beneficiary?: string | null
     /**

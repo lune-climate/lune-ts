@@ -22,7 +22,7 @@ export type UpdateAccountRequest = {
      */
     name: string
     /**
-     * The account beneficiary.
+     * The account beneficiary. Leading and trailing spaces are removed.
      */
     beneficiary?: string
     /**
