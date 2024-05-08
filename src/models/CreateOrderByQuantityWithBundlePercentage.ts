@@ -12,8 +12,8 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { Mass } from './Mass.js'
-import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
  * Order by Quantity details
@@ -39,8 +39,5 @@ export type CreateOrderByQuantityWithBundlePercentage = {
      */
     bundleSelection?: BundleSelectionRequest
     metadata?: Metadata
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
 }

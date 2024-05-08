@@ -15,8 +15,8 @@ import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { CabinClass } from './CabinClass.js'
 import type { Distance } from './Distance.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
  * Parameters for estimating emissions for commercial plane travel
@@ -33,10 +33,7 @@ export type FlightEstimateRequest = {
      */
     passengers?: number
     bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
     /**
      * A name used to reference this calculation.
      */

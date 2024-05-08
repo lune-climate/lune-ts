@@ -27,7 +27,6 @@ import type { EstimateIdempotencyKey } from '../models/EstimateIdempotencyKey.js
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
 import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
-import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { Metadata } from '../models/Metadata.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
@@ -37,6 +36,7 @@ import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEs
 import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
 import type { PassengerTransportationEmissionEstimate } from '../models/PassengerTransportationEmissionEstimate.js'
+import type { QuantityTrunc } from '../models/QuantityTrunc.js'
 import type { Shipment } from '../models/Shipment.js'
 import type { ShippedAt } from '../models/ShippedAt.js'
 import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
@@ -79,10 +79,7 @@ export abstract class EmissionEstimatesService {
              */
             countryCode?: string
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
         },
@@ -173,10 +170,7 @@ export abstract class EmissionEstimatesService {
              */
             countryCode?: string
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
         },
@@ -235,10 +229,7 @@ export abstract class EmissionEstimatesService {
              */
             passengers?: number
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             /**
              * A name used to reference this calculation.
              */
@@ -301,10 +292,7 @@ export abstract class EmissionEstimatesService {
              */
             passengers?: number
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             /**
              * A name to reference this calculation.
              */
@@ -432,10 +420,7 @@ export abstract class EmissionEstimatesService {
                  */
                 name?: string
                 bundleSelection?: BundleSelectionRequest
-                /**
-                 * Selects to which precision to truncate the quantities assigned to each bundle.
-                 */
-                quantityTrunc?: MassUnit
+                quantityTrunc?: QuantityTrunc
                 /**
                  * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
                  *
@@ -529,10 +514,7 @@ export abstract class EmissionEstimatesService {
                  */
                 name?: string
                 bundleSelection?: BundleSelectionRequest
-                /**
-                 * Selects to which precision to truncate the quantities assigned to each bundle.
-                 */
-                quantityTrunc?: MassUnit
+                quantityTrunc?: QuantityTrunc
                 /**
                  * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
                  *
@@ -679,10 +661,7 @@ export abstract class EmissionEstimatesService {
              */
             name?: string
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             /**
              * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
              *
@@ -788,10 +767,7 @@ export abstract class EmissionEstimatesService {
              */
             name?: string
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             /**
              * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
              *
@@ -935,10 +911,7 @@ export abstract class EmissionEstimatesService {
              */
             diet?: Diet
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
         },
@@ -1070,10 +1043,7 @@ export abstract class EmissionEstimatesService {
              */
             diet?: Diet
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
         },
@@ -1217,10 +1187,7 @@ export abstract class EmissionEstimatesService {
                 cloud?: CompanyCloudUse
             }
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             /**
              * A name to reference this calculation.
              */
@@ -1410,10 +1377,7 @@ export abstract class EmissionEstimatesService {
                 cloud?: CompanyCloudUse
             }
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             /**
              * A name to reference this calculation.
              */
@@ -1498,10 +1462,7 @@ export abstract class EmissionEstimatesService {
              */
             name?: string
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
         },

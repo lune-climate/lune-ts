@@ -13,8 +13,8 @@
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
-import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 import type { Shipment } from './Shipment.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingCountryCode } from './ShippingCountryCode.js'
@@ -44,10 +44,7 @@ export type MultiLegShippingEstimateRequest = {
      */
     name?: string
     bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
     /**
      * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
      *

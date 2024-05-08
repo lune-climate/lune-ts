@@ -11,7 +11,7 @@
 /* eslint-disable */
 
 import type { BundleMass } from './BundleMass.js'
-import type { MassUnit } from './MassUnit.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
  * Order by Quantity details
@@ -24,8 +24,5 @@ export type OrderQuoteByQuantityWithBundleMass = {
      *
      */
     bundleMasses: Array<BundleMass>
-    /**
-     * Specific to carbon offsetting, selects to which precision to truncate quantities.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
 }

@@ -13,8 +13,8 @@
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { EmissionFactorActivity } from './EmissionFactorActivity.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 export type EmissionFactorEstimateRequest = {
     /**
@@ -30,10 +30,7 @@ export type EmissionFactorEstimateRequest = {
      */
     name?: string
     bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
     metadata?: Metadata
     idempotencyKey?: EstimateIdempotencyKey
 }
