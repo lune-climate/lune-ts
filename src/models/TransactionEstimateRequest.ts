@@ -13,10 +13,10 @@
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { Diet } from './Diet.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { MassUnit } from './MassUnit.js'
 import type { Merchant } from './Merchant.js'
 import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
  * Parameters for estimating emissions associated with purchasing goods or services.
@@ -39,10 +39,7 @@ export type TransactionEstimateRequest = {
      */
     diet?: Diet
     bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
     metadata?: Metadata
     idempotencyKey?: EstimateIdempotencyKey
 }

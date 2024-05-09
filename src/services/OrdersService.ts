@@ -12,7 +12,6 @@
 import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
 import type { CreateOrderByQuantityWithBundleMass } from '../models/CreateOrderByQuantityWithBundleMass.js'
 import type { CreateOrderByQuantityWithBundlePercentage } from '../models/CreateOrderByQuantityWithBundlePercentage.js'
-import type { MassUnit } from '../models/MassUnit.js'
 import type { Metadata } from '../models/Metadata.js'
 import type { Order } from '../models/Order.js'
 import type { OrderByEstimate } from '../models/OrderByEstimate.js'
@@ -23,6 +22,7 @@ import type { OrderQuoteByQuantityWithBundleMass } from '../models/OrderQuoteByQ
 import type { OrderQuoteByQuantityWithBundlePercentage } from '../models/OrderQuoteByQuantityWithBundlePercentage.js'
 import type { OrderQuoteByValue } from '../models/OrderQuoteByValue.js'
 import type { PaginatedOrders } from '../models/PaginatedOrders.js'
+import type { QuantityTrunc } from '../models/QuantityTrunc.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -99,10 +99,7 @@ export abstract class OrdersService {
              */
             bundleSelection?: BundleSelectionRequest
             metadata?: Metadata
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
         },
         options?: {
             /**
@@ -155,10 +152,7 @@ export abstract class OrdersService {
             idempotencyKey?: string
             bundleSelection?: BundleSelectionRequest
             metadata?: Metadata
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
         },
         options?: {
             /**
@@ -387,10 +381,7 @@ export abstract class OrdersService {
              */
             value: string
             bundleSelection?: BundleSelectionRequest
-            /**
-             * Selects to which precision to truncate the quantities assigned to each bundle.
-             */
-            quantityTrunc?: MassUnit
+            quantityTrunc?: QuantityTrunc
         },
         options?: {
             /**

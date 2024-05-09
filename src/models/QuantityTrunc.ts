@@ -10,17 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
-import type { QuantityTrunc } from './QuantityTrunc.js'
+import type { MassUnit } from './MassUnit.js'
 
-export type OrderQuoteByValueRequest = {
-    /**
-     * Maximum price of CO2 offsets to purchase (in the account's currency).
-     *
-     * `value` must not be lower than the currency's minimum unit.
-     *
-     */
-    value: string
-    bundleSelection?: BundleSelectionRequest
-    quantityTrunc?: QuantityTrunc
-}
+/**
+ * Selects to which precision to truncate quantities specific to carbon offsetting.
+ */
+export type QuantityTrunc = MassUnit

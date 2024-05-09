@@ -12,7 +12,7 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { Mass } from './Mass.js'
-import type { MassUnit } from './MassUnit.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
  * Order by Quantity details
@@ -23,8 +23,5 @@ export type OrderQuoteByQuantityWithBundlePercentage = {
      */
     mass: Mass
     bundleSelection?: BundleSelectionRequest
-    /**
-     * Specific to carbon offsetting, selects to which precision to truncate quantities.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
 }

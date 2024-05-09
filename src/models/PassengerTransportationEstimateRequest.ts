@@ -12,11 +12,11 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
 import type { PassengerFlightEstimateRequest } from './PassengerFlightEstimateRequest.js'
 import type { PassengerRailEstimateRequest } from './PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from './PassengerRoadEstimateRequest.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
  * Parameters for estimating emissions for passenger transportation
@@ -34,10 +34,7 @@ export type PassengerTransportationEstimateRequest = {
         PassengerRoadEstimateRequest | PassengerRailEstimateRequest | PassengerFlightEstimateRequest
     >
     bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
     /**
      * A name to reference this calculation.
      */

@@ -17,9 +17,9 @@ import type { CompanyOnPremiseUse } from './CompanyOnPremiseUse.js'
 import type { Distance } from './Distance.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { IntegerPercentage } from './IntegerPercentage.js'
-import type { MassUnit } from './MassUnit.js'
 import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
+import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
  * Parameters for estimating emissions associated with operating a company.
@@ -118,10 +118,7 @@ export type CompanyEstimateRequest = {
         cloud?: CompanyCloudUse
     }
     bundleSelection?: BundleSelectionRequest
-    /**
-     * Selects to which precision to truncate the quantities assigned to each bundle.
-     */
-    quantityTrunc?: MassUnit
+    quantityTrunc?: QuantityTrunc
     /**
      * A name to reference this calculation.
      */
