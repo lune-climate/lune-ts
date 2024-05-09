@@ -18,4 +18,5 @@ export enum EmissionFactorSource {
     LUNE = 'lune',
     GLEC = 'glec',
     EMSA = 'emsa',
+    CBAM = 'cbam',
 }
