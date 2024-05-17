@@ -27,6 +27,7 @@ import type { EstimateIdempotencyKey } from '../models/EstimateIdempotencyKey.js
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
 import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
+import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { Metadata } from '../models/Metadata.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
@@ -378,6 +379,13 @@ export abstract class EmissionEstimatesService {
              *
              */
             through?: string
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: MassUnit
         },
         options?: {
             /**
@@ -395,6 +403,7 @@ export abstract class EmissionEstimatesService {
                 is_shipment: data?.isShipment,
                 from: data?.from,
                 through: data?.through,
+                estimate_mass_unit: data?.estimateMassUnit,
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -412,7 +421,7 @@ export abstract class EmissionEstimatesService {
      * @returns SingleShippingEmissionEstimate OK
      */
     public createShippingEstimate(
-        data: {
+        data?: {
             shippingEstimateRequest: {
                 shipment: Shipment
                 /**
@@ -443,6 +452,13 @@ export abstract class EmissionEstimatesService {
                       method: LogisticsSiteMethod
                   }
             )
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: MassUnit
         },
         options?: {
             /**
@@ -454,6 +470,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping',
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
+            },
             body: data?.shippingEstimateRequest,
             mediaType: 'application/json',
             errors: {
@@ -470,11 +489,21 @@ export abstract class EmissionEstimatesService {
     /**
      * Get a shipping emission estimate (single)
      * @param id The estimate's unique identifier
+     * @param data Request data
      * @param options Additional operation options
      * @returns SingleShippingEmissionEstimate OK
      */
     public getShippingEstimate(
         id: string,
+        data?: {
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: MassUnit
+        },
         options?: {
             /**
              * Account Id to be used to perform the API call
@@ -487,6 +516,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/{id}',
             path: {
                 id: id,
+            },
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -506,7 +538,7 @@ export abstract class EmissionEstimatesService {
      */
     public updateShippingEstimate(
         id: string,
-        data: {
+        data?: {
             shippingEstimateRequest: {
                 shipment: Shipment
                 /**
@@ -537,6 +569,13 @@ export abstract class EmissionEstimatesService {
                       method: LogisticsSiteMethod
                   }
             )
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: MassUnit
         },
         options?: {
             /**
@@ -550,6 +589,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/{id}',
             path: {
                 id: id,
+            },
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
             },
             body: data?.shippingEstimateRequest,
             mediaType: 'application/json',
@@ -641,7 +683,7 @@ export abstract class EmissionEstimatesService {
      * @returns MultiLegShippingEmissionEstimate OK
      */
     public createMultiLegShippingEstimate(
-        data: {
+        data?: {
             shipment: Shipment
             /**
              * An array representing all the legs of a shipment.
@@ -674,6 +716,13 @@ export abstract class EmissionEstimatesService {
             shippedAt?: ShippedAt
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: MassUnit
         },
         options?: {
             /**
@@ -685,6 +734,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping/multi-leg',
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
+            },
             body: {
                 shipment: data?.shipment,
                 legs: data?.legs,
@@ -711,11 +763,21 @@ export abstract class EmissionEstimatesService {
     /**
      * Get a shipping emission estimate (multi-leg)
      * @param id The estimate's unique identifier
+     * @param data Request data
      * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate OK
      */
     public getMultiLegShippingEstimate(
         id: string,
+        data?: {
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: MassUnit
+        },
         options?: {
             /**
              * Account Id to be used to perform the API call
@@ -728,6 +790,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/multi-leg/{id}',
             path: {
                 id: id,
+            },
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -747,7 +812,7 @@ export abstract class EmissionEstimatesService {
      */
     public updateMultiLegShippingEstimate(
         id: string,
-        data: {
+        data?: {
             shipment: Shipment
             /**
              * An array representing all the legs of a shipment.
@@ -780,6 +845,13 @@ export abstract class EmissionEstimatesService {
             shippedAt?: ShippedAt
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: MassUnit
         },
         options?: {
             /**
@@ -793,6 +865,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/multi-leg/{id}',
             path: {
                 id: id,
+            },
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
             },
             body: {
                 shipment: data?.shipment,

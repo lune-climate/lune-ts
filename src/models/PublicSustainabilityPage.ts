@@ -61,7 +61,7 @@ export type PublicSustainabilityPage = {
                     /**
                      * The custom description of the sustainability page provided in the configuration.
                      */
-                    customDescription: string
+                    customDescription: string | null
                 }
           )
         | null

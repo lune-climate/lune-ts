@@ -19,4 +19,6 @@ export enum EmissionFactorSource {
     GLEC = 'glec',
     EMSA = 'emsa',
     CBAM = 'cbam',
+    ADEME = 'ademe',
+    IDEMAT = 'idemat',
 }
