@@ -421,7 +421,7 @@ export abstract class EmissionEstimatesService {
      * @returns SingleShippingEmissionEstimate OK
      */
     public createShippingEstimate(
-        data?: {
+        data: {
             shippingEstimateRequest: {
                 shipment: Shipment
                 /**
@@ -538,7 +538,7 @@ export abstract class EmissionEstimatesService {
      */
     public updateShippingEstimate(
         id: string,
-        data?: {
+        data: {
             shippingEstimateRequest: {
                 shipment: Shipment
                 /**
@@ -683,7 +683,7 @@ export abstract class EmissionEstimatesService {
      * @returns MultiLegShippingEmissionEstimate OK
      */
     public createMultiLegShippingEstimate(
-        data?: {
+        data: {
             shipment: Shipment
             /**
              * An array representing all the legs of a shipment.
@@ -812,7 +812,7 @@ export abstract class EmissionEstimatesService {
      */
     public updateMultiLegShippingEstimate(
         id: string,
-        data?: {
+        data: {
             shipment: Shipment
             /**
              * An array representing all the legs of a shipment.
