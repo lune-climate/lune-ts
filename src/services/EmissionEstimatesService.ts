@@ -989,6 +989,15 @@ export abstract class EmissionEstimatesService {
             quantityTrunc?: QuantityTrunc
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
+            /**
+             * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
+             *
+             * You can mark an estimate as transaction at any time.
+             *
+             */
+            isTransaction?: boolean
         },
         options?: {
             /**
@@ -1009,6 +1018,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
+                is_transaction: data?.isTransaction,
             },
             mediaType: 'application/json',
             errors: {
@@ -1154,6 +1164,15 @@ export abstract class EmissionEstimatesService {
             quantityTrunc?: QuantityTrunc
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
+            /**
+             * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
+             *
+             * You can mark an estimate as transaction at any time.
+             *
+             */
+            isTransaction?: boolean
         },
         options?: {
             /**
@@ -1177,6 +1196,7 @@ export abstract class EmissionEstimatesService {
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
+                is_transaction: data?.isTransaction,
             },
             mediaType: 'application/json',
             errors: {
