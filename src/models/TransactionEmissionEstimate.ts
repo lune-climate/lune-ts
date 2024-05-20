@@ -31,4 +31,5 @@ export type TransactionEmissionEstimate = EmissionEstimateResponse & {
     dietFactor: string | NullEnum
     exchangeRate: string | NullEnum
     exchangeRateDate: string | NullEnum
+    isTransaction: boolean | NullEnum
 }
