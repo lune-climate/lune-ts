@@ -185,7 +185,7 @@ export abstract class WebhooksService {
      * Delete a webhook
      * @param id The webhooks's unique identifier
      * @param options Additional operation options
-     * @returns any OK
+     * @returns void
      */
     public deleteWebhook(
         id: string,
@@ -195,7 +195,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<any, ApiError>> {
+    ): Promise<Result<void, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'DELETE',
             url: '/webhooks/{id}',

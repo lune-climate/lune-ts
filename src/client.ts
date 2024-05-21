@@ -291,6 +291,7 @@ export type { TransactionEmissionEstimate } from './models/TransactionEmissionEs
 export type { TransactionEstimateRequest } from './models/TransactionEstimateRequest.js'
 export type { UpdateAccountRequest } from './models/UpdateAccountRequest.js'
 export type { UpdateShippingEstimateAnnotationsRequest } from './models/UpdateShippingEstimateAnnotationsRequest.js'
+export type { UpdateTransactionEstimateAnnotationsRequest } from './models/UpdateTransactionEstimateAnnotationsRequest.js'
 export type { UpdateWebhookRequest } from './models/UpdateWebhookRequest.js'
 export type { UploadLogoRequest } from './models/UploadLogoRequest.js'
 export type { UploadLogoResponse } from './models/UploadLogoResponse.js'

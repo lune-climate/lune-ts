@@ -669,6 +669,7 @@ export abstract class EmissionEstimatesService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
@@ -955,6 +956,7 @@ export abstract class EmissionEstimatesService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
@@ -1100,6 +1102,63 @@ export abstract class EmissionEstimatesService {
                 404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
                 503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Update a transaction emission estimate's annotations
+     * This method allows updating a selection of estimate annotations without going through
+     * a full estimate update (with all the necessary inputs).
+     *
+     * Only properties included in the input data are updated.
+     *
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns TransactionEmissionEstimate OK
+     */
+    public partialUpdateTransactionsEstimateAnnotations(
+        id: string,
+        data: {
+            /**
+             * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
+             *
+             * You can mark an estimate as transaction at any time.
+             *
+             */
+            isTransaction?: boolean
+            metadata?: Metadata
+            idempotencyKey?: EstimateIdempotencyKey
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<TransactionEmissionEstimate, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PATCH',
+            url: '/estimates/transactions/{id}/annotations',
+            path: {
+                id: id,
+            },
+            body: {
+                is_transaction: data?.isTransaction,
+                metadata: data?.metadata,
+                idempotency_key: data?.idempotencyKey,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
