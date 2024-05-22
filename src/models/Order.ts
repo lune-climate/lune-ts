@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { OrderBase } from './OrderBase.js'
+import type { OrderByEstimateProperties } from './OrderByEstimateProperties.js'
 import type { OrderByQuantityProperties } from './OrderByQuantityProperties.js'
 import type { OrderByValueProperties } from './OrderByValueProperties.js'
 
@@ -24,4 +25,5 @@ import type { OrderByValueProperties } from './OrderByValueProperties.js'
  * As soon as an Order has a credit retired, the Order's certificate can be downloaded.
  *
  */
-export type Order = OrderBase & (OrderByQuantityProperties | OrderByValueProperties)
+export type Order = OrderBase &
+    (OrderByQuantityProperties | OrderByEstimateProperties | OrderByValueProperties)

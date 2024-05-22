@@ -10,9 +10,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Order } from './Order.js'
+import type { OrderBase } from './OrderBase.js'
+import type { OrderByQuantityProperties } from './OrderByQuantityProperties.js'
 
 export type OrderPayment = {
-    order: Order
+    order: OrderBase & OrderByQuantityProperties
     type: 'order'
 }

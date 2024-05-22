@@ -12,17 +12,17 @@
 
 import type { NullEnum } from './NullEnum.js'
 
-export type OrderByValueProperties = {
-    /**
-     * Requested value of CO2 offsets to purchase in the account's currency.
-     */
-    requestedValue: string
-    /**
-     * Requested quantity of CO2 offsets to purchase in tonnes.
-     */
-    requestedQuantity: NullEnum
+export type OrderByEstimateProperties = {
     /**
      * The emission calculation unique identifier
      */
-    estimateId: NullEnum
+    estimateId: string
+    /**
+     * Requested value of CO2 offsets to purchase in the account's currency.
+     */
+    requestedValue: NullEnum
+    /**
+     * Requested quantity of CO2 offsets to purchase in tonnes.
+     */
+    requestedQuantity: string
 }
