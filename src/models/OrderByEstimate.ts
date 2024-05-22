@@ -11,18 +11,6 @@
 /* eslint-disable */
 
 import type { OrderBase } from './OrderBase.js'
+import type { OrderByEstimateProperties } from './OrderByEstimateProperties.js'
 
-export type OrderByEstimate = OrderBase & {
-    /**
-     * The emission calculation unique identifier
-     */
-    estimateId: string
-    /**
-     * Requested value of CO2 offsets to purchase in the account's currency.
-     */
-    requestedValue: string | null
-    /**
-     * Requested quantity of CO2 offsets to purchase in tonnes.
-     */
-    requestedQuantity: string | null
-}
+export type OrderByEstimate = OrderBase & OrderByEstimateProperties

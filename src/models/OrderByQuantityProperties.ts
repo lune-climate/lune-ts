@@ -10,6 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { NullEnum } from './NullEnum.js'
+
 export type OrderByQuantityProperties = {
     /**
      * Requested quantity of CO2 offsets to purchase in tonnes.
@@ -18,9 +20,9 @@ export type OrderByQuantityProperties = {
     /**
      * Requested value of CO2 offsets to purchase in the account's currency.
      */
-    requestedValue: string | null
+    requestedValue: NullEnum
     /**
      * The emission calculation unique identifier
      */
-    estimateId: string | null
+    estimateId: NullEnum
 }
