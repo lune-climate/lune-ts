@@ -16,6 +16,7 @@ export type DistanceCalculationDetails = {
     vesselTracking:
         | {
               message: string
+              adjustments?: Array<string>
           }
         | NullEnum
 }
