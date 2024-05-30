@@ -22,5 +22,6 @@ export enum Registry {
     WOODLAND_CARBON_CODE = 'Woodland Carbon Code',
     ACCU = 'ACCU',
     CARBON_FUTURE = 'Carbon Future',
+    ISOMETRIC = 'Isometric',
     __EMPTY__ = '',
 }
