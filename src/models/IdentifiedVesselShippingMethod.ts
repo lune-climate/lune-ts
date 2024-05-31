@@ -25,14 +25,14 @@ export type IdentifiedVesselShippingMethod = (
 ) & {
     vesselTracking?: {
         /**
-         * The date of the departure from the source port.
+         * The date of the departure from the source port in UTC time zone.
          *
          * Vessel tracking is only available for departures within the past 3 months.
          *
          */
         departureOn: string
         /**
-         * The date of the arrival to the destination port.
+         * The date of the arrival to the destination port in UTC time zone.
          *
          * We can only perform vessel tracking for shipments that finished more than
          * 24 hours ago.
