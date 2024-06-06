@@ -92,6 +92,7 @@ export abstract class WebhooksService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
@@ -176,6 +177,7 @@ export abstract class WebhooksService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 404: `The specified resource was not found`,
+                413: `The request is larger than 100kB.`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
