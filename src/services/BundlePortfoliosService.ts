@@ -70,6 +70,7 @@ export abstract class BundlePortfoliosService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
+                413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
