@@ -10,7 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { ContainerShippingMethod } from './ContainerShippingMethod.js'
+import type { TradeLane } from './TradeLane.js'
+import type { VesselTrackingMethod } from './VesselTrackingMethod.js'
 
 /**
  * This method uses the vessel's IMO number emission factors when found, falling back to trade lane emissions factors if provided.
@@ -23,11 +24,26 @@ export type IdentifiedVesselByIMOShippingMethod =
            *
            */
           vesselImoNumber: string
+          vesselTracking?: VesselTrackingMethod
       }
-    | ({
+    | {
           /**
            * The vessel's [IMO number](https://en.wikipedia.org/wiki/IMO_number) *without* the `IMO` prefix.
            *
            */
           vesselImoNumber: string
-      } & ContainerShippingMethod)
+          vesselType: IdentifiedVesselByIMOShippingMethod.vessel_type
+          /**
+           * A container transport is either refrigerated or "dry" (not refrigerated). Dry transports
+           * result in lower emissions.
+           *
+           */
+          refrigerated?: boolean
+          tradeLane?: TradeLane
+      }
+
+export namespace IdentifiedVesselByIMOShippingMethod {
+    export enum vessel_type {
+        CONTAINER_SHIP = 'container_ship',
+    }
+}

@@ -19,32 +19,6 @@ import type { IdentifiedVesselByNameShippingMethod } from './IdentifiedVesselByN
  * If vessel tracking is to be used the `vessel_tracking` data needs to be provided.
  *
  */
-export type IdentifiedVesselShippingMethod = (
+export type IdentifiedVesselShippingMethod =
     | IdentifiedVesselByIMOShippingMethod
     | IdentifiedVesselByNameShippingMethod
-) & {
-    vesselTracking?: {
-        /**
-         * The date of the departure from the source port in UTC time zone.
-         *
-         * Vessel tracking is only available for departures within the past 3 months.
-         *
-         */
-        departureOn: string
-        /**
-         * The date of the arrival to the destination port in UTC time zone.
-         *
-         * We can only perform vessel tracking for shipments that finished more than
-         * 24 hours ago.
-         *
-         */
-        arrivalOn: string
-        /**
-         * The vessel's MMSI number at the time of arrival to the destination port.
-         *
-         * Optional but can help with identifying the vessel to track if provided.
-         *
-         */
-        mmsiNumber?: string
-    }
-}
