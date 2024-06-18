@@ -23,5 +23,6 @@ export enum Registry {
     ACCU = 'ACCU',
     CARBON_FUTURE = 'Carbon Future',
     ISOMETRIC = 'Isometric',
+    TUV_NORD = 'Tuv Nord',
     __EMPTY__ = '',
 }
