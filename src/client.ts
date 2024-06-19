@@ -1,4 +1,4 @@
-import axios, { AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
+import axios, { AxiosError, AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
 import camelCaseKeys from 'camelcase-keys'
 
 import { ClientConfig } from './core/ClientConfig.js'
@@ -29,6 +29,27 @@ function applyMixins(derivedCtor: any, constructors: any[]) {
     })
 }
 
+export interface ExtendedAxiosResponse<T = any> extends AxiosResponse<T> {
+    _meta: {
+        response: any
+        request: any
+    }
+}
+
+interface ExtendedAxiosError<T = any> extends AxiosError<T> {
+    response?: ExtendedAxiosResponse<T>
+}
+
+function extractRequestDataFromResponseInterceptor(response: AxiosResponse): object | null {
+    // can be an object or string
+    const data = response.config.data
+    if (data) {
+        // JSON.parse may throw, it's unexpected
+        return typeof data === 'string' ? JSON.parse(data) : data
+    }
+    return null
+}
+
 export class LuneClient {
     protected client: AxiosInstance
     protected config: ClientConfig
@@ -48,27 +69,34 @@ export class LuneClient {
         this.client = axios.create()
 
         // Convert to camelCase when receiving request
-        const camelCaseResponse = (response: AxiosResponse<unknown, unknown>) => ({
+        const camelCaseResponse = (response: AxiosResponse): ExtendedAxiosResponse => ({
             ...response,
+            _meta: {
+                request: extractRequestDataFromResponseInterceptor(response),
+                response: response.data,
+            },
             // SAFETY: The camelcase-keys type definitions are overly restrictive. The function
             // handles all kinds of values just fine: arrays, numbers, strings, null etc.
             //
             // Instead of writing a bunch of type-detecting conditional code to satisfy the
             // TS compiler let's just wholesale ignore this type mismatch – we don't know what
             // value do we actually deal with here but the library will handle it.
-            data: camelCaseKeys(response.data as any, { deep: true }),
+            data: camelCaseKeys(response.data, { deep: true }),
         })
-        this.client.interceptors.response.use(camelCaseResponse, (error: unknown) => {
-            // There's a separate, slightly different callback for errors.
-            if (!isAxiosError(error)) {
-                throw error
-            }
-            if (error.response) {
-                error.response = camelCaseResponse(error.response)
-            }
-            // We need to return a rejected promise for it to work nice with axios.
-            return Promise.reject(error)
-        })
+        this.client.interceptors.response.use(
+            camelCaseResponse,
+            (error: ExtendedAxiosError): Promise<ExtendedAxiosError> => {
+                // There's a separate, slightly different callback for errors.
+                if (!isAxiosError(error)) {
+                    throw error
+                }
+                if (error.response) {
+                    error.response = camelCaseResponse(error.response)
+                }
+                // We need to return a rejected promise for it to work nice with axios.
+                return Promise.reject(error)
+            },
+        )
     }
 
     public setAccount(accountId: string) {
