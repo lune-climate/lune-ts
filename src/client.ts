@@ -2,6 +2,7 @@ import axios, { AxiosError, AxiosInstance, AxiosResponse, isAxiosError } from 'a
 import camelCaseKeys from 'camelcase-keys'
 
 import { ClientConfig } from './core/ClientConfig.js'
+import { Meta, Method, Methods } from './core/SuccessResponse.js'
 import { AccountsService } from './services/AccountsService.js'
 import { AnalyticsService } from './services/AnalyticsService.js'
 import { BundlePortfoliosService } from './services/BundlePortfoliosService.js'
@@ -30,24 +31,36 @@ function applyMixins(derivedCtor: any, constructors: any[]) {
 }
 
 export interface ExtendedAxiosResponse<T = any> extends AxiosResponse<T> {
-    _meta: {
-        response: any
-        request: any
-    }
+    _meta: Meta<T>
 }
 
 interface ExtendedAxiosError<T = any> extends AxiosError<T> {
     response?: ExtendedAxiosResponse<T>
 }
 
-function extractRequestDataFromResponseInterceptor(response: AxiosResponse): object | null {
-    // can be an object or string
-    const data = response.config.data
-    if (data) {
-        // JSON.parse may throw, it's unexpected
-        return typeof data === 'string' ? JSON.parse(data) : data
+function extractRequestFromResponseInterceptor(response: AxiosResponse): {
+    request: object | null
+    method: Method
+    url: string
+    requestHeaders: { contentType: string | null }
+} {
+    const req = response.config
+    const data = req.data
+
+    if (!Methods.includes((req.method ?? '').toLowerCase())) {
+        throw new Error(`Unexpected method: ${req.method}`)
     }
-    return null
+
+    return {
+        method: req.method!,
+        url: req.baseURL!,
+        request: !data ? null : typeof data === 'string' ? JSON.parse(data) : data,
+        requestHeaders: {
+            contentType: req.headers['Content-Type']
+                ? (req.headers['Content-Type'] as string)
+                : null,
+        },
+    }
 }
 
 export class LuneClient {
@@ -72,7 +85,7 @@ export class LuneClient {
         const camelCaseResponse = (response: AxiosResponse): ExtendedAxiosResponse => ({
             ...response,
             _meta: {
-                request: extractRequestDataFromResponseInterceptor(response),
+                ...extractRequestFromResponseInterceptor(response),
                 response: response.data,
             },
             // SAFETY: The camelcase-keys type definitions are overly restrictive. The function
