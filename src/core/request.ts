@@ -1,10 +1,12 @@
-import { AxiosInstance, isAxiosError } from 'axios'
+import { AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
 import snakeCaseKeys from 'snakecase-keys'
 import { Err, Ok, Result } from 'ts-results-es'
 
+import { ExtendedAxiosResponse } from '../client.js'
 import { ApiError, constructApiError } from './ApiError.js'
 import type { ApiRequestOptions } from './ApiRequestOptions.js'
 import type { ClientConfig, Headers } from './ClientConfig.js'
+import { SuccessResponse } from './SuccessResponse.js'
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null
@@ -188,7 +190,7 @@ export const request = async <T>(
         accountId?: string
     },
     options: ApiRequestOptions,
-): Promise<Result<T, ApiError>> => {
+): Promise<Result<SuccessResponse<T>, ApiError>> => {
     const url = getUrl(config, options)
     const formData = getFormData(options)
     const body = getRequestBody(options)
@@ -205,8 +207,15 @@ export const request = async <T>(
         params: formData,
         data: body,
     })
-        .then((response) => {
-            return Ok(response.data as T)
+        .then((resp: AxiosResponse<T>) => {
+            if (!('_meta' in resp)) {
+                throw new Error('_meta is expected')
+            }
+            const response = resp as ExtendedAxiosResponse<T>
+            return Ok({
+                ...response.data,
+                _meta: response._meta,
+            })
         })
         .catch((error: unknown) => {
             if (!isAxiosError(error)) {
