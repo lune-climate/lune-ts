@@ -6,7 +6,7 @@ import { ExtendedAxiosResponse } from '../client.js'
 import { ApiError, constructApiError } from './ApiError.js'
 import type { ApiRequestOptions } from './ApiRequestOptions.js'
 import type { ClientConfig, Headers } from './ClientConfig.js'
-import { SuccessResponse } from './SuccessResponse.js'
+import { asSuccessResponse, SuccessResponse } from './SuccessResponse.js'
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null
@@ -212,10 +212,7 @@ export const request = async <T>(
                 throw new Error('_meta is expected')
             }
             const response = resp as ExtendedAxiosResponse<T>
-            return Ok({
-                ...response.data,
-                _meta: response._meta,
-            })
+            return Ok(asSuccessResponse(response.data, response._meta))
         })
         .catch((error: unknown) => {
             if (!isAxiosError(error)) {
