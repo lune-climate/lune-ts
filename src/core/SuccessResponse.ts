@@ -11,10 +11,10 @@ export type Meta<T> = {
     requestHeaders: { contentType: string | null }
 }
 
-type AsObject<T> = T extends object ? (T extends any[] ? { asObject: T } : T) : { asObject: T }
+type AsObject<T> = T extends object ? (T extends any[] ? { notAnObject: T } : T) : { notAnObject: T }
 export type SuccessResponse<T> = AsObject<T> & { _meta: Meta<T> }
 
-function isNotPureObject(value: any): boolean {
+function isNotPureObject(value: unknown): boolean {
     return (
         value === null ||
         (typeof value !== 'object' && typeof value !== 'function') ||
@@ -23,7 +23,7 @@ function isNotPureObject(value: any): boolean {
 }
 
 export function asSuccessResponse<T>(value: T, meta: Meta<T>): SuccessResponse<T> {
-    const v = (isNotPureObject(value) ? { asObject: value } : value) as AsObject<T>
+    const v = (isNotPureObject(value) ? { notAnObject: value } : value) as AsObject<T>
     return {
         ...v,
         _meta: meta,
