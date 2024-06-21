@@ -15,6 +15,7 @@ import type { ProjectPerimeter } from '../models/ProjectPerimeter.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -56,7 +57,7 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
-    ): Promise<Result<PaginatedProjects, ApiError>> {
+    ): Promise<Result<SuccessResponse<PaginatedProjects>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects',
@@ -87,7 +88,7 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
-    ): Promise<Result<Project, ApiError>> {
+    ): Promise<Result<SuccessResponse<Project>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects/{id}',
@@ -115,7 +116,7 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
-    ): Promise<Result<ProjectPerimeter, ApiError>> {
+    ): Promise<Result<SuccessResponse<ProjectPerimeter>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects/{id}/perimeter',
@@ -143,7 +144,7 @@ export abstract class ProjectsService {
              */
             accountId?: string
         },
-    ): Promise<Result<Project, ApiError>> {
+    ): Promise<Result<SuccessResponse<Project>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects/by-slug/{slug}',

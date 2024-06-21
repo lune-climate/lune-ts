@@ -17,6 +17,7 @@ import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -35,7 +36,7 @@ export abstract class AccountsService {
          * Account Id to be used to perform the API call
          */
         accountId?: string
-    }): Promise<Result<Account, ApiError>> {
+    }): Promise<Result<SuccessResponse<Account>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts/me',
@@ -83,7 +84,7 @@ export abstract class AccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<AccountPair, ApiError>> {
+    ): Promise<Result<SuccessResponse<AccountPair>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/accounts',
@@ -139,7 +140,7 @@ export abstract class AccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<PaginatedAccounts, ApiError>> {
+    ): Promise<Result<SuccessResponse<PaginatedAccounts>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts',
@@ -194,7 +195,7 @@ export abstract class AccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<Account, ApiError>> {
+    ): Promise<Result<SuccessResponse<Account>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/accounts/{id}',
@@ -258,7 +259,7 @@ export abstract class AccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<Account, ApiError>> {
+    ): Promise<Result<SuccessResponse<Account>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PATCH',
             url: '/accounts/{id}',
@@ -302,7 +303,7 @@ export abstract class AccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<UploadLogoResponse, ApiError>> {
+    ): Promise<Result<SuccessResponse<UploadLogoResponse>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/accounts/{id}/logo',

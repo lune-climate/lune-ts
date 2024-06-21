@@ -14,6 +14,7 @@ import type { BundleSelection } from '../models/BundleSelection.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -32,7 +33,7 @@ export abstract class BundleSelectionsService {
          * Account Id to be used to perform the API call
          */
         accountId?: string
-    }): Promise<Result<BundleSelection, ApiError>> {
+    }): Promise<Result<SuccessResponse<BundleSelection>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundle-selections',
@@ -59,7 +60,7 @@ export abstract class BundleSelectionsService {
              */
             accountId?: string
         },
-    ): Promise<Result<BundleSelection, ApiError>> {
+    ): Promise<Result<SuccessResponse<BundleSelection>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/bundle-selections',

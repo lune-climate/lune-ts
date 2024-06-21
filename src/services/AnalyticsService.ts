@@ -17,6 +17,7 @@ import type { EmissionCalculationMetrics } from '../models/EmissionCalculationMe
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -50,7 +51,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<CumulativeBundleAnalytics, ApiError>> {
+    ): Promise<Result<SuccessResponse<CumulativeBundleAnalytics>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/cumulative-per-bundle',
@@ -91,7 +92,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<AnalyticsMetrics, ApiError>> {
+    ): Promise<Result<SuccessResponse<AnalyticsMetrics>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/metrics',
@@ -132,7 +133,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<AggregatedAnalyticsByProperty, ApiError>> {
+    ): Promise<Result<SuccessResponse<AggregatedAnalyticsByProperty>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/aggregated-by-property',
@@ -183,7 +184,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionCalculationMetrics, ApiError>> {
+    ): Promise<Result<SuccessResponse<EmissionCalculationMetrics>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/emission-calculations',
@@ -233,7 +234,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<AnalyticsShippingEstimates, ApiError>> {
+    ): Promise<Result<SuccessResponse<AnalyticsShippingEstimates>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/shipping/public/{account_id}',

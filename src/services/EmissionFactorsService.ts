@@ -16,6 +16,7 @@ import type { PaginatedEmissionFactors } from '../models/PaginatedEmissionFactor
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -84,7 +85,7 @@ export abstract class EmissionFactorsService {
              */
             accountId?: string
         },
-    ): Promise<Result<PaginatedEmissionFactors, ApiError>> {
+    ): Promise<Result<SuccessResponse<PaginatedEmissionFactors>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/emission-factors',
@@ -117,7 +118,7 @@ export abstract class EmissionFactorsService {
          * Account Id to be used to perform the API call
          */
         accountId?: string
-    }): Promise<Result<EmissionFactorRegions, ApiError>> {
+    }): Promise<Result<SuccessResponse<EmissionFactorRegions>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/emission-factors/regions',

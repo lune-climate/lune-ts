@@ -49,6 +49,7 @@ import type { TransactionEstimateRequest } from '../models/TransactionEstimateRe
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -90,7 +91,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<ElectricityEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<ElectricityEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/electricity',
@@ -130,7 +131,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<ElectricityEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<ElectricityEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/electricity/{id}',
@@ -182,7 +183,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<ElectricityEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<ElectricityEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/electricity/{id}',
@@ -246,7 +247,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<FlightEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<FlightEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/flight',
@@ -310,7 +311,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<PassengerTransportationEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<PassengerTransportationEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/passenger-transportation',
@@ -397,7 +398,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<PaginatedAnyShippingEmissionEstimates, ApiError>> {
+    ): Promise<Result<SuccessResponse<PaginatedAnyShippingEmissionEstimates>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/shipping/all',
@@ -470,7 +471,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<SingleShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping',
@@ -515,7 +516,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<SingleShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/shipping/{id}',
@@ -588,7 +589,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<SingleShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/shipping/{id}',
@@ -662,7 +663,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SingleShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<SingleShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PATCH',
             url: '/estimates/shipping/{id}/annotations',
@@ -738,7 +739,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<MultiLegShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping/multi-leg',
@@ -793,7 +794,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<MultiLegShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/shipping/multi-leg/{id}',
@@ -868,7 +869,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<MultiLegShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/shipping/multi-leg/{id}',
@@ -952,7 +953,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<MultiLegShippingEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<MultiLegShippingEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PATCH',
             url: '/estimates/shipping/multi-leg/{id}/annotations',
@@ -1017,7 +1018,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<TransactionEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<TransactionEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/transactions',
@@ -1067,7 +1068,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<BatchTransactionEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<BatchTransactionEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/transactions/batch',
@@ -1102,7 +1103,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<TransactionEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<TransactionEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/transactions/by-idempotency-key/{idempotency_key}',
@@ -1151,7 +1152,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<TransactionEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<TransactionEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PATCH',
             url: '/estimates/transactions/{id}/annotations',
@@ -1190,7 +1191,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<TransactionEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<TransactionEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/transactions/{id}',
@@ -1252,7 +1253,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<TransactionEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<TransactionEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/transactions/{id}',
@@ -1402,7 +1403,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<CompanyEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/company',
@@ -1463,7 +1464,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<CompanyEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/company/{id}',
@@ -1593,7 +1594,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<CompanyEmissionEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<CompanyEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/estimates/company/{id}',
@@ -1675,7 +1676,7 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<EmissionFactorEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<EmissionFactorEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/emission-factor',

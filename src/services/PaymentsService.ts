@@ -13,6 +13,7 @@ import type { Payment } from '../models/Payment.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -39,7 +40,7 @@ export abstract class PaymentsService {
              */
             accountId?: string
         },
-    ): Promise<Result<Payment, ApiError>> {
+    ): Promise<Result<SuccessResponse<Payment>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/payments/by-temporary-id/{temporary_id}',

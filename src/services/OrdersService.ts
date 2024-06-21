@@ -26,6 +26,7 @@ import type { QuantityTrunc } from '../models/QuantityTrunc.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -52,7 +53,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<OrderByQuantity, ApiError>> {
+    ): Promise<Result<SuccessResponse<OrderByQuantity>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass',
@@ -108,7 +109,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<OrderByValue, ApiError>> {
+    ): Promise<Result<SuccessResponse<OrderByValue>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-value',
@@ -162,7 +163,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<OrderByEstimate, ApiError>> {
+    ): Promise<Result<SuccessResponse<OrderByEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-estimate',
@@ -222,7 +223,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<PaginatedOrders, ApiError>> {
+    ): Promise<Result<SuccessResponse<PaginatedOrders>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders',
@@ -253,7 +254,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<Order, ApiError>> {
+    ): Promise<Result<SuccessResponse<Order>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders/{id}',
@@ -281,7 +282,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<Blob, ApiError>> {
+    ): Promise<Result<SuccessResponse<Blob>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders/{id}/certificate',
@@ -312,7 +313,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<Order, ApiError>> {
+    ): Promise<Result<SuccessResponse<Order>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders/by-idempotency-key/{idempotency_key}',
@@ -348,7 +349,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<OrderQuoteByQuantity, ApiError>> {
+    ): Promise<Result<SuccessResponse<OrderQuoteByQuantity>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass/quote',
@@ -393,7 +394,7 @@ export abstract class OrdersService {
              */
             accountId?: string
         },
-    ): Promise<Result<OrderQuoteByValue, ApiError>> {
+    ): Promise<Result<SuccessResponse<OrderQuoteByValue>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-value/quote',
