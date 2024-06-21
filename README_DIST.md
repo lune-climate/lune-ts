@@ -16,17 +16,27 @@ https://github.com/lune-climate/lune-ts/tree/master/example-usage
 Overview:
 
 ```javascript
-// Setup your client once in your application
 import * as lune from '@lune-climate/lune';
-var luneClient = new lune.LuneClient('your_api_key_would_go_here');
 
-// Whenever you want to use it (remember this is a Promise so it's an async operation)
-var resp = await luneClient.createOrderByMass({ mass: { amount: "123.21", unit: "t" } });
-// Handle error or success response
-if (resp.ok) {
-  var orderByQuantity = resp.val;
-  console.log(`OrderByQuantity: ${JSON.stringify(orderByQuantity)}`);
-else if (resp.err) {
-  console.log(`Error occurred: ${resp.val.description}`);
-}
+const luneClient = new lune.LuneClient('your_api_key_would_go_here');
+(async () => {
+  const resp = await luneClient.createOrderByMass({
+    createOrderByQuantityRequest: {
+      mass: { amount: '123.21', unit: lune.MassUnit.T },
+    }
+  });
+  // Handle error and success response separately
+  if (resp.isErr()) {
+      const error = resp.error
+      if ('statusCode' in error) {
+          console.log(`API status code (if available): ${JSON.stringify(error.errors)}`)
+          console.log(`API Errors (if available): ${error.statusCode}`)
+      }
+      console.log(`Human friendly error description: ${error.description}`)
+
+      return
+  }
+  const orderByQuantity = resp.value
+  console.log(`OrderByQuantity: ${JSON.stringify(orderByQuantity)}`)
+})();
 ```
