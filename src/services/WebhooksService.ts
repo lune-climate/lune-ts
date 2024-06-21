@@ -15,6 +15,7 @@ import type { WebhookFullSecret } from '../models/WebhookFullSecret.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -43,7 +44,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<Array<Webhook>, ApiError>> {
+    ): Promise<Result<SuccessResponse<Array<Webhook>>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/webhooks',
@@ -80,7 +81,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<WebhookFullSecret, ApiError>> {
+    ): Promise<Result<SuccessResponse<WebhookFullSecret>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/webhooks',
@@ -113,7 +114,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<Webhook, ApiError>> {
+    ): Promise<Result<SuccessResponse<Webhook>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/webhooks/{id}',
@@ -160,7 +161,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<Webhook, ApiError>> {
+    ): Promise<Result<SuccessResponse<Webhook>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/webhooks/{id}',
@@ -197,7 +198,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<void, ApiError>> {
+    ): Promise<Result<SuccessResponse<void>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'DELETE',
             url: '/webhooks/{id}',
@@ -229,7 +230,7 @@ export abstract class WebhooksService {
              */
             accountId?: string
         },
-    ): Promise<Result<WebhookFullSecret, ApiError>> {
+    ): Promise<Result<SuccessResponse<WebhookFullSecret>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/webhooks/{id}/rotate-secret',

@@ -14,6 +14,7 @@ import type { PaginatedBundles } from '../models/PaginatedBundles.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
+import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
 import { Result } from 'ts-results-es'
@@ -55,7 +56,7 @@ export abstract class BundlesService {
              */
             accountId?: string
         },
-    ): Promise<Result<PaginatedBundles, ApiError>> {
+    ): Promise<Result<SuccessResponse<PaginatedBundles>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundles',
@@ -86,7 +87,7 @@ export abstract class BundlesService {
              */
             accountId?: string
         },
-    ): Promise<Result<Bundle, ApiError>> {
+    ): Promise<Result<SuccessResponse<Bundle>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundles/{id}',
