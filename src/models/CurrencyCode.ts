@@ -33,4 +33,5 @@ export enum CurrencyCode {
     HUF = 'HUF',
     ISK = 'ISK',
     CZK = 'CZK',
+    CAD = 'CAD',
 }
