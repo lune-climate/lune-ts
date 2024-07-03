@@ -2,11 +2,10 @@ import { AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
 import snakeCaseKeys from 'snakecase-keys'
 import { Err, Ok, Result } from 'ts-results-es'
 
-import { ExtendedAxiosResponse } from '../client.js'
 import { ApiError, constructApiError } from './ApiError.js'
 import type { ApiRequestOptions } from './ApiRequestOptions.js'
 import type { ClientConfig, Headers } from './ClientConfig.js'
-import { asSuccessResponse, SuccessResponse } from './SuccessResponse.js'
+import { asSuccessResponse, ExtendedAxiosResponse, SuccessResponse } from './SuccessResponse.js'
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null

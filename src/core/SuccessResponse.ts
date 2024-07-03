@@ -1,4 +1,4 @@
-import { AxiosResponse } from 'axios'
+import { AxiosError, AxiosResponse } from 'axios'
 
 export const Methods = ['get', 'delete', 'head', 'options', 'post', 'put', 'patch']
 export type Method = (typeof Methods)[number]
@@ -31,5 +31,38 @@ export function asSuccessResponse<T>(value: T, meta: Meta<T>): SuccessResponse<T
     return {
         ...v,
         _meta: meta,
+    }
+}
+
+export interface ExtendedAxiosResponse<T = any> extends AxiosResponse<T> {
+    _meta: Meta<T>
+}
+
+export interface ExtendedAxiosError<T = any> extends AxiosError<T> {
+    response?: ExtendedAxiosResponse<T>
+}
+
+export function extractRequestFromResponseInterceptor(response: AxiosResponse): {
+    request: object | null
+    method: Method
+    url: string
+    requestHeaders: { contentType: string | null }
+} {
+    const req = response.config
+    const data = req.data
+
+    if (!Methods.includes((req.method ?? '').toLowerCase())) {
+        throw new Error(`Unexpected method: ${req.method}`)
+    }
+
+    return {
+        method: req.method!,
+        url: req.baseURL!,
+        request: !data ? null : typeof data === 'string' ? JSON.parse(data) : data,
+        requestHeaders: {
+            contentType: req.headers['Content-Type']
+                ? (req.headers['Content-Type'] as string)
+                : null,
+        },
     }
 }
