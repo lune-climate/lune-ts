@@ -355,9 +355,7 @@ export abstract class EmissionEstimatesService {
             /**
              * A cursor for use in pagination.
              *
-             * *after* is an object ID that defines your place in the list.
-             *
-             * For instance, if you make a list request and receive 100 objects, ending with *foo*, your subsequent call can include *after=foo* in order to fetch the next page of the list.
+             * The cursor that points to the starting item of the next page of results. If not provided, the first page of results is returned.
              *
              */
             after?: string
