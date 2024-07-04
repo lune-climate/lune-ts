@@ -20,4 +20,11 @@ export type PaginatedBase = {
      *
      */
     hasMore: boolean
+    /**
+     * The cursor value to be used as the after parameter for fetching the next page of results.
+     *
+     * `null` if `has_more` is `false`.
+     *
+     */
+    nextCursor: string | null
 }
