@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AccountCurrencyCode } from './AccountCurrencyCode.js'
 import type { AccountType } from './AccountType.js'
 
 export type AccountBase = {
@@ -32,10 +33,7 @@ export type AccountBase = {
      *
      */
     handle: string | null
-    /**
-     * The Account's currency
-     */
-    currency: string
+    currency: AccountCurrencyCode
     type: AccountType
     /**
      * The account logo
