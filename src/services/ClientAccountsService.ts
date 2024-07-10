@@ -9,8 +9,8 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { AccountCurrencyCode } from '../models/AccountCurrencyCode.js'
 import type { ClientAccount } from '../models/ClientAccount.js'
-import type { CurrencyCode } from '../models/CurrencyCode.js'
 import type { PaginatedClientAccounts } from '../models/PaginatedClientAccounts.js'
 import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
 
@@ -59,10 +59,7 @@ export abstract class ClientAccountsService {
              * The account name.
              */
             name: string
-            /**
-             * The account currency.
-             */
-            currency: CurrencyCode
+            currency: AccountCurrencyCode
             /**
              * The account beneficiary. Leading and trailing spaces are removed.
              */
