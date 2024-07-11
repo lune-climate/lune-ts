@@ -21,7 +21,7 @@ build:
 	npm run build
 
 api-schema:
-	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --exportCore false --exportServices true --exportSchemas false
+	npx @lune-climate/openapi-typescript-codegen -i ./resolved_legs_schema.yml --output src --exportCore false --exportServices true --exportSchemas false
 
 move-client:
 	mv src/luneClient.ts src/client.ts
