@@ -10,7 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { CurrencyCode } from './CurrencyCode.js'
+import type { AccountCurrencyCode } from './AccountCurrencyCode.js'
 
 export type CreateAccountRequest = {
     /**
@@ -20,7 +20,7 @@ export type CreateAccountRequest = {
     /**
      * The account currency.
      */
-    currency: CurrencyCode
+    currency: AccountCurrencyCode
     /**
      * The account beneficiary. Leading and trailing spaces are removed.
      */

@@ -124,6 +124,7 @@ export interface LuneClient
 
 export { Account } from './models/Account.js'
 export type { AccountBase } from './models/AccountBase.js'
+export { AccountCurrencyCode } from './models/AccountCurrencyCode.js'
 export type { AccountPair } from './models/AccountPair.js'
 export { AccountScope } from './models/AccountScope.js'
 export { AccountType } from './models/AccountType.js'

@@ -10,8 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { Account } from '../models/Account.js'
+import type { AccountCurrencyCode } from '../models/AccountCurrencyCode.js'
 import type { AccountPair } from '../models/AccountPair.js'
-import type { CurrencyCode } from '../models/CurrencyCode.js'
 import type { PaginatedAccounts } from '../models/PaginatedAccounts.js'
 import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
 
@@ -65,7 +65,7 @@ export abstract class AccountsService {
             /**
              * The account currency.
              */
-            currency: CurrencyCode
+            currency: AccountCurrencyCode
             /**
              * The account beneficiary. Leading and trailing spaces are removed.
              */
