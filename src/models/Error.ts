@@ -69,5 +69,7 @@ export namespace Error {
         SERVICE_UNAVAILABLE = 'service_unavailable',
         HANDLE_NOT_UNIQUE = 'handle_not_unique',
         ESTIMATE_IDEMPOTENCY_ALREADY_EXISTS = 'estimate_idempotency_already_exists',
+        AIRPORT_ROUTE_REQUIRED = 'airport_route_required',
+        FUTURE_DEPARTURE_INVALID = 'future_departure_invalid',
     }
 }
