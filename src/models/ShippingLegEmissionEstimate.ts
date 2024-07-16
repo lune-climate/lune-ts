@@ -64,11 +64,13 @@ export type ShippingLegEmissionEstimate = EmissionEstimate & {
      * Summary of the methodology used to calculate emissions or any value which is a prerequisite.
      *
      * `imo_unavailable_container_ship_fallback`: the vessel IMO was not found, therefore a generic container ship emission factor has been used.
+     * `flight_number_unavailable_fallback`: the flight number could not be found or the aircraft is currently not supported, therefore a generic plane method has been used.
      *
      */
     methodology: Array<
         | 'imo_unavailable_container_ship_fallback'
         | 'imo_unavailable_container_ship_trade_lane_fallback'
+        | 'flight_number_unavailable_fallback'
     >
     /**
      * Information regarding why an alternative distance calculation method was used.

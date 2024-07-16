@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AirShippingMethod } from './AirShippingMethod.js'
 import type { ContainerShippingMethod } from './ContainerShippingMethod.js'
 import type { IdentifiedVesselShippingMethod } from './IdentifiedVesselShippingMethod.js'
 import type { SeaShippingMethod } from './SeaShippingMethod.js'
@@ -19,6 +20,7 @@ import type { SimpleShippingMethod } from './SimpleShippingMethod.js'
 export type ShippingMethod =
     | SimpleShippingMethod
     | SimpleSeaShippingMethod
+    | AirShippingMethod
     | SeaShippingMethod
     | ContainerShippingMethod
     | IdentifiedVesselShippingMethod
