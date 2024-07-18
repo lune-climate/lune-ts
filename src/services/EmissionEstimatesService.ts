@@ -46,6 +46,7 @@ import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
+import type { TransactionProcessedAt } from '../models/TransactionProcessedAt.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -1009,6 +1010,7 @@ export abstract class EmissionEstimatesService {
              *
              */
             isTransaction?: boolean
+            transactionProcessedAt?: TransactionProcessedAt
         },
         options?: {
             /**
@@ -1030,6 +1032,7 @@ export abstract class EmissionEstimatesService {
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
                 is_transaction: data?.isTransaction,
+                transaction_processed_at: data?.transactionProcessedAt,
             },
             mediaType: 'application/json',
             errors: {
@@ -1141,6 +1144,7 @@ export abstract class EmissionEstimatesService {
              *
              */
             isTransaction?: boolean
+            transactionProcessedAt?: TransactionProcessedAt
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
         },
@@ -1159,6 +1163,7 @@ export abstract class EmissionEstimatesService {
             },
             body: {
                 is_transaction: data?.isTransaction,
+                transaction_processed_at: data?.transactionProcessedAt,
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
             },
@@ -1244,6 +1249,7 @@ export abstract class EmissionEstimatesService {
              *
              */
             isTransaction?: boolean
+            transactionProcessedAt?: TransactionProcessedAt
         },
         options?: {
             /**
@@ -1268,6 +1274,7 @@ export abstract class EmissionEstimatesService {
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
                 is_transaction: data?.isTransaction,
+                transaction_processed_at: data?.transactionProcessedAt,
             },
             mediaType: 'application/json',
             errors: {

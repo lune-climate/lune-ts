@@ -12,6 +12,7 @@
 
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { Metadata } from './Metadata.js'
+import type { TransactionProcessedAt } from './TransactionProcessedAt.js'
 
 export type UpdateTransactionEstimateAnnotationsRequest = {
     /**
@@ -23,6 +24,7 @@ export type UpdateTransactionEstimateAnnotationsRequest = {
      *
      */
     isTransaction?: boolean
+    transactionProcessedAt?: TransactionProcessedAt
     metadata?: Metadata
     idempotencyKey?: EstimateIdempotencyKey
 }

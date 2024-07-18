@@ -14,6 +14,7 @@ import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { NullEnum } from './NullEnum.js'
 import type { TransactionEstimateRequest } from './TransactionEstimateRequest.js'
+import type { TransactionProcessedAt } from './TransactionProcessedAt.js'
 
 export type TransactionEmissionEstimate = EmissionEstimateResponse & {
     request: TransactionEstimateRequest
@@ -32,4 +33,5 @@ export type TransactionEmissionEstimate = EmissionEstimateResponse & {
     exchangeRate: string | NullEnum
     exchangeRateDate: string | NullEnum
     isTransaction: boolean | NullEnum
+    transactionProcessedAt: TransactionProcessedAt | NullEnum
 }
