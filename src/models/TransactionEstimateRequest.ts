@@ -17,6 +17,7 @@ import type { Merchant } from './Merchant.js'
 import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
 import type { QuantityTrunc } from './QuantityTrunc.js'
+import type { TransactionProcessedAt } from './TransactionProcessedAt.js'
 
 /**
  * Parameters for estimating emissions associated with purchasing goods or services.
@@ -51,4 +52,5 @@ export type TransactionEstimateRequest = {
      *
      */
     isTransaction?: boolean
+    transactionProcessedAt?: TransactionProcessedAt
 }
