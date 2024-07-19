@@ -17,6 +17,7 @@ import type { DistanceCalculationDetails } from './DistanceCalculationDetails.js
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
 import type { EmissionEstimate } from './EmissionEstimate.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
+import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
 
 export type BaseShippingLegEmissionEstimate = EmissionEstimate & {
@@ -62,61 +63,5 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimate & {
      *
      */
     distanceCalculationDetails: DistanceCalculationDetails | NullEnum
-    /**
-     * Details about the parameters and calculations used in the methodology for estimating emissions.
-     */
-    methodologyDetails?: {
-        /**
-         * Freight flight methodology details.
-         */
-        flight?: {
-            /**
-             * Name of the identified aircraft
-             */
-            aircraftName: string
-            /**
-             * Configuration of the aircraft
-             */
-            aircraftConfiguration: BaseShippingLegEmissionEstimate.aircraft_configuration
-            /**
-             * Total capacity of the aircraft.
-             */
-            aircraftCapacityTonnes: {
-                passenger: number
-                cargo: number
-            }
-            /**
-             * Load factor for the provided flight. If the exact flight load factor is not
-             * known a global average from IATA will be used.
-             *
-             */
-            loadFactor: {
-                passenger: number
-                cargo: number
-            }
-            /**
-             * Estimate of the fuel consumed by the flight, measured in tonnes.
-             */
-            flightFuelConsumedTonnes: number
-            /**
-             * Value of the Distance Adjustment Factor (DAF) as specified by the GLEC.
-             */
-            distanceAdjustmentFactor: number
-            /**
-             * Fraction (ranging from 0 to 1) of total flight leg emissions for which the shipment is responsible.
-             *
-             */
-            emissionShare: number
-        }
-    }
-}
-
-export namespace BaseShippingLegEmissionEstimate {
-    /**
-     * Configuration of the aircraft
-     */
-    export enum aircraft_configuration {
-        BELLY_FREIGHT = 'belly_freight',
-        CARGO = 'cargo',
-    }
+    methodologyDetails: MethodologyDetails | NullEnum
 }

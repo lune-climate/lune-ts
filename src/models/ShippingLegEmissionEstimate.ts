@@ -13,7 +13,7 @@
 import type { BaseShippingLegEmissionEstimate } from './BaseShippingLegEmissionEstimate.js'
 import type { ConvertedShipment } from './ConvertedShipment.js'
 import type { NullEnum } from './NullEnum.js'
-import type { ResolvedShippingLegEmissionEstimate } from './ResolvedShippingLegEmissionEstimate.js'
+import type { ResolvedEmissionEstimateLegs } from './ResolvedEmissionEstimateLegs.js'
 import type { ShipmentConversionMethod } from './ShipmentConversionMethod.js'
 
 export type ShippingLegEmissionEstimate = BaseShippingLegEmissionEstimate & {
@@ -36,5 +36,5 @@ export type ShippingLegEmissionEstimate = BaseShippingLegEmissionEstimate & {
      * leg will be calculated and shown separately.
      *
      */
-    resolvedLegs?: Array<ResolvedShippingLegEmissionEstimate>
+    resolvedLegs: ResolvedEmissionEstimateLegs | NullEnum
 }
