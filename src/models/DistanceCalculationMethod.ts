@@ -18,6 +18,8 @@
  * * `user_input` – the distance was provided to us directly
  * * `osrm` – we used Open Source Routing Machine, the OpenStreetMap Data Routing Engine
  * * `vessel_tracking` – we used the AIS data to track the vessel's route
+ * * `carrier_schedule_stops` – we used the sea distance algorithm to calculate the distance
+ * between the stops reported in the carrier schedule
  *
  */
 export enum DistanceCalculationMethod {
@@ -28,4 +30,5 @@ export enum DistanceCalculationMethod {
     USER_INPUT = 'user_input',
     OSRM = 'osrm',
     VESSEL_TRACKING = 'vessel_tracking',
+    CARRIER_SCHEDULE_STOPS = 'carrier_schedule_stops',
 }

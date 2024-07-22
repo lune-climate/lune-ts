@@ -21,4 +21,17 @@ export type DistanceCalculationDetails = {
               adjustments: Array<string>
           }
         | NullEnum
+    carrierScheduleStops:
+        | {
+              /**
+               * The human-readable message describing the details of how we used or failed to use
+               * carrier schedule stops to calculate the route.
+               *
+               * The property is meant only for informational purposes and its exact format can
+               * change.
+               *
+               */
+              message: string
+          }
+        | NullEnum
 }
