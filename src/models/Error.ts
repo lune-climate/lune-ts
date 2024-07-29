@@ -42,6 +42,7 @@ export namespace Error {
         ORDER_VALUE_INVALID = 'order_value_invalid',
         BUNDLE_ID_INVALID = 'bundle_id_invalid',
         ID_INVALID = 'id_invalid',
+        DISTANCE_INVALID = 'distance_invalid',
         TEST_ACCOUNT_NAME_UPDATE_DISALLOWED = 'test_account_name_update_disallowed',
         VALIDATION_ERROR = 'validation_error',
         BUNDLE_SELECTION_RATIOS_INVALID_FORMAT = 'bundle_selection_ratios_invalid_format',
