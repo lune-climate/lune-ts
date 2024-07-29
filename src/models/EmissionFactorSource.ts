@@ -21,4 +21,5 @@ export enum EmissionFactorSource {
     CBAM = 'cbam',
     ADEME = 'ademe',
     IDEMAT = 'idemat',
+    IATA = 'iata',
 }
