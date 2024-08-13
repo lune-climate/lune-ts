@@ -75,19 +75,19 @@ explicit there so not repeating it here.
 ## Build
 
 If you want to rebuild everything locally from the remote OpenAPI schema (as performed on CI):
-`docker-compose -f docker-compose-ci.yml run update_from_remote_schema`
+`docker compose -f docker-compose-ci.yml run update_from_remote_schema`
 
 If you want to make sure the build is succeeding but don't want to rebuild the client from the
 remote schema nor update with possible changes in the base client generator (as performed on CI):
-`docker-compose -f docker-compose-ci.yml run build_from_source`
+`docker compose -f docker-compose-ci.yml run build_from_source`
 
 For local builds, you can use a more lightweight version to rebuild the schema from the remote
 that doesn't make sure dependencies are installed and skips linting:
-`docker-compose -f docker-compose.yml run local_model_rebuild`
+`docker compose -f docker-compose.yml run local_model_rebuild`
 
 If you want to get hands on inside the container, you can get in and use the make commands as much
 as you want. To get a shell inside it, just do:
-`docker-compose -f docker-compose.yml run client`
+`docker compose -f docker-compose.yml run client`
 
 Once inside, you have all Makefile commands at your disposal. Feel free to explore the `Makefile` to
 see all available. Here are some examples:
