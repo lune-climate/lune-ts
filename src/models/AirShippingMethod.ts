@@ -13,6 +13,9 @@
 export type AirShippingMethod = {
     /**
      * Flight number in either ICAO or IATA format.
+     *
+     * For generic airfreight emissions without flight number, use Simple Shipping Method.
+     *
      */
     flightNumber: string
     /**

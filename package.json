@@ -1,6 +1,6 @@
 {
   "name": "@lune-climate/lune",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Lune Typescript Client",
   "main": "cjs/client.js",
   "module": "esm/client.js",
@@ -45,14 +45,14 @@
     "@lune-climate/eslint-config": "git+https://github.com/lune-climate/eslint-config.git#master",
     "@lune-climate/openapi-typescript-codegen": "^0.1.12",
     "typescript": "^5.1.6",
-    "@types/node": "^20.4.5",
+    "@types/node": "^22.0.0",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^7.0.1",
     "eslint": "^8.0.0",
     "eslint-import-resolver-node": "^0.3.4",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-n": "^16.0.0",
-    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-promise": "^7.0.0",
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "prettier": "^3.0.1"
   }
