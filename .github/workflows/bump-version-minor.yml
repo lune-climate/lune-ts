@@ -13,7 +13,7 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Bump version (minor)
-        run: docker-compose -f docker-compose-ci.yml run bump_version_minor
+        run: docker compose -f docker-compose-ci.yml run bump_version_minor
       - name: Create PR with changes
         uses: peter-evans/create-pull-request@v3
         with:

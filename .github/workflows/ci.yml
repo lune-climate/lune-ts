@@ -10,4 +10,4 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Build schema from source
-        run: docker-compose -f docker-compose-ci.yml run update_from_remote_schema
+        run: docker compose -f docker-compose-ci.yml run update_from_remote_schema

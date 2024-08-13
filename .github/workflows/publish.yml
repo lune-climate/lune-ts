@@ -12,7 +12,7 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Build schema from source
-        run: docker-compose -f docker-compose-ci.yml run build_from_source
+        run: docker compose -f docker-compose-ci.yml run build_from_source
       - uses: actions/setup-node@v1
         with:
           node-version: 16
