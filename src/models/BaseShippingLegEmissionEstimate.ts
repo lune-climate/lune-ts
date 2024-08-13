@@ -19,8 +19,16 @@ import type { EmissionEstimate } from './EmissionEstimate.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
+import type { VesselInferenceMethod } from './VesselInferenceMethod.js'
 
 export type BaseShippingLegEmissionEstimate = EmissionEstimate & {
+    /**
+     * The method we used to infer a vessel from client provided input.
+     *
+     * `null` when vessel identifier provided by client or no vessel inference not relevant to estimation.
+     *
+     */
+    vesselInferenceDetails?: VesselInferenceMethod | NullEnum
     distance?: Distance
     adjustedDistance?: AdjustedDistance
     /**

@@ -51,4 +51,20 @@ export type AccountBase = {
      * Bundle portfolio id tied to the account.
      */
     bundlePortfolioId: string | null
+    /**
+     * Enum to control the visibility of external pages such as sustainability and analytics pages.
+     *
+     */
+    externalPagesVisibility: AccountBase.external_pages_visibility
+}
+
+export namespace AccountBase {
+    /**
+     * Enum to control the visibility of external pages such as sustainability and analytics pages.
+     *
+     */
+    export enum external_pages_visibility {
+        PUBLIC = 'public',
+        HIDDEN = 'hidden',
+    }
 }

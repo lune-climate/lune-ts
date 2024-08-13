@@ -71,6 +71,11 @@ export abstract class ClientAccountsService {
              *
              */
             handle?: string
+            /**
+             * Enum to control the visibility of external pages such as sustainability and analytics pages.
+             *
+             */
+            externalPagesVisibility?: 'public' | 'hidden'
         },
         options?: {
             /**
@@ -87,6 +92,7 @@ export abstract class ClientAccountsService {
                 currency: data?.currency,
                 beneficiary: data?.beneficiary,
                 handle: data?.handle,
+                external_pages_visibility: data?.externalPagesVisibility,
             },
             mediaType: 'application/json',
             errors: {
