@@ -29,4 +29,20 @@ export type CreateClientAccountRequest = {
      *
      */
     handle?: string
+    /**
+     * Enum to control the visibility of external pages such as sustainability and analytics pages.
+     *
+     */
+    externalPagesVisibility?: CreateClientAccountRequest.external_pages_visibility
+}
+
+export namespace CreateClientAccountRequest {
+    /**
+     * Enum to control the visibility of external pages such as sustainability and analytics pages.
+     *
+     */
+    export enum external_pages_visibility {
+        PUBLIC = 'public',
+        HIDDEN = 'hidden',
+    }
 }
