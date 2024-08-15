@@ -86,6 +86,11 @@ export class LuneClient {
     public setAccount(accountId: string) {
         this.config.ACCOUNT = accountId
     }
+
+    // TODO generate this via the base generator. This was manually added to showcase.
+    public setApiVersion(apiVersion: 'v1' | 'v2' | 'v3') {
+        this.config.API_VERSION = apiVersion
+    }
 }
 
 applyMixins(LuneClient, [

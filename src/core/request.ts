@@ -187,6 +187,7 @@ export const request = async <T>(
     config: ClientConfig,
     luneOptions: {
         accountId?: string
+        apiVersion?: string
     },
     options: ApiRequestOptions,
 ): Promise<Result<SuccessResponse<T>, ApiError>> => {
@@ -197,6 +198,9 @@ export const request = async <T>(
 
     if (luneOptions.accountId) {
         headers['Lune-Account'] = luneOptions.accountId
+    }
+    if (luneOptions.apiVersion) {
+        headers['Lune-Version'] = luneOptions.apiVersion
     }
 
     return client({

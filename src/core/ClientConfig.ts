@@ -7,5 +7,6 @@ export type ClientConfig = {
     USERNAME?: string
     PASSWORD?: string
     ACCOUNT?: string
+    API_VERSION?: string
     HEADERS?: Headers
 }
