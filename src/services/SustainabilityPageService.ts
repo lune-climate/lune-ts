@@ -155,7 +155,7 @@ export abstract class SustainabilityPageService {
      * @param options Additional operation options
      * @returns PublicSustainabilityPage OK
      */
-    public getPublicSustainabilityPage(
+    public getPublicSustainabilityPageBySlug(
         type: AccountType,
         slug: string,
         options?: {
@@ -174,6 +174,41 @@ export abstract class SustainabilityPageService {
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get a sustainability page
+     * Get the current account's public sustainability summary info.
+     * @param organisationId The unique identifier of the organisation this account belongs to
+     * @param type The type of the sustainability page.
+     * @param handle The handle of the sustainability page's account.
+     * @param options Additional operation options
+     * @returns PublicSustainabilityPage OK
+     */
+    public getPublicSustainabilityPageByHandle(
+        organisationId: string,
+        type: AccountType,
+        handle: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<PublicSustainabilityPage>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/sustainability-pages/public/{organisation_id}/{type}/{handle}',
+            path: {
+                organisation_id: organisationId,
+                type: type,
+                handle: handle,
+            },
+            errors: {
                 404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
             },

@@ -12,9 +12,11 @@
 
 import type { EstimateQuote } from './EstimateQuote.js'
 import type { Metadata } from './Metadata.js'
+import type { NullEnum } from './NullEnum.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingEstimateRequest } from './ShippingEstimateRequest.js'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.js'
+import type { Url } from './Url.js'
 
 export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
     /**
@@ -34,4 +36,8 @@ export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
     quote: EstimateQuote
     request: ShippingEstimateRequest
     metadata?: Metadata
+    /**
+     * An external accessible URL linking to a detailed page that provides complete information about the estimate.
+     */
+    externalEstimateUrl: Url | NullEnum
 }
