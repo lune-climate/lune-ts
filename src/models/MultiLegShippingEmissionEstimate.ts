@@ -14,8 +14,10 @@ import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { Distance } from './Distance.js'
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
+import type { NullEnum } from './NullEnum.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.js'
+import type { Url } from './Url.js'
 
 /**
  * An emission estimate result for a transport involving multiple legs.
@@ -50,4 +52,8 @@ export type MultiLegShippingEmissionEstimate = {
     distance: Distance
     adjustedDistance: AdjustedDistance
     request: MultiLegShippingEstimateRequest
+    /**
+     * An external accessible URL linking to a detailed page that provides complete information about the estimate.
+     */
+    externalEstimateUrl: Url | NullEnum
 } & EmissionEstimateResponse
