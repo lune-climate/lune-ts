@@ -34,6 +34,7 @@ export namespace Error {
      * Immutable string representing a specific error.
      */
     export enum error_code {
+        API_VERSION_INVALID = 'api_version_invalid',
         ACCOUNT_SUSPENDED = 'account_suspended',
         BUNDLE_SELECTION_RATIOS_INVALID = 'bundle_selection_ratios_invalid',
         BUNDLE_SELECTION_BUNDLE_INVALID = 'bundle_selection_bundle_invalid',
