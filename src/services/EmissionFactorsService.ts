@@ -63,13 +63,28 @@ export abstract class EmissionFactorsService {
             publicationYear?: Array<number>
             /**
              * Filter emission factors based on region (case insensitive).
-             * The value must be an exact match.
              * When omitted, all regions are returned.
+             *
+             * The `region_fallback` parameter controls how `region` is interpreted, by default
+             * an exact match is required.
              *
              * Countries are included in regions but there are also broader geographic regions like Europe or Asia.
              *
              */
             region?: Array<string>
+            /**
+             * Controls how `region` is interpreted and if region fallback is performed.
+             *
+             * Region fallback is looking up emission factors for regions related to the specified
+             * regions.
+             *
+             * * `never` (the default) means no region fallback is performed and only emission
+             * factors that match the specified region(s) are returned.
+             * * `always` means the emission factors for related regions are unconditionally included
+             * in the results.
+             *
+             */
+            regionFallback?: 'never' | 'always'
             /**
              * Filter emission factors based on the logical unit.
              * When omitted, all units are returned.
@@ -94,6 +109,7 @@ export abstract class EmissionFactorsService {
                 source: data?.source,
                 publication_year: data?.publicationYear,
                 region: data?.region,
+                region_fallback: data?.regionFallback,
                 unit: data?.unit,
             },
             errors: {
