@@ -36,4 +36,20 @@ export type UpdateAccountRequest = {
      *
      */
     handle?: string
+    /**
+     * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
+     *
+     */
+    externalPagesVisibility?: UpdateAccountRequest.external_pages_visibility
+}
+
+export namespace UpdateAccountRequest {
+    /**
+     * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
+     *
+     */
+    export enum external_pages_visibility {
+        PUBLIC = 'public',
+        HIDDEN = 'hidden',
+    }
 }
