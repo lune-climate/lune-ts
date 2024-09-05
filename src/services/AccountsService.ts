@@ -192,6 +192,11 @@ export abstract class AccountsService {
              *
              */
             handle?: string
+            /**
+             * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
+             *
+             */
+            externalPagesVisibility?: 'public' | 'hidden'
         },
         options?: {
             /**
@@ -211,6 +216,7 @@ export abstract class AccountsService {
                 beneficiary: data?.beneficiary,
                 bundle_portfolio_id: data?.bundlePortfolioId,
                 handle: data?.handle,
+                external_pages_visibility: data?.externalPagesVisibility,
             },
             mediaType: 'application/json',
             errors: {
@@ -256,6 +262,11 @@ export abstract class AccountsService {
              *
              */
             handle?: string
+            /**
+             * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
+             *
+             */
+            externalPagesVisibility?: 'public' | 'hidden'
         },
         options?: {
             /**
@@ -275,6 +286,7 @@ export abstract class AccountsService {
                 beneficiary: data?.beneficiary,
                 bundle_portfolio_id: data?.bundlePortfolioId,
                 handle: data?.handle,
+                external_pages_visibility: data?.externalPagesVisibility,
             },
             mediaType: 'application/json',
             errors: {

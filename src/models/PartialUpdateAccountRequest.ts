@@ -34,4 +34,20 @@ export type PartialUpdateAccountRequest = {
      *
      */
     handle?: string
+    /**
+     * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
+     *
+     */
+    externalPagesVisibility?: PartialUpdateAccountRequest.external_pages_visibility
+}
+
+export namespace PartialUpdateAccountRequest {
+    /**
+     * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
+     *
+     */
+    export enum external_pages_visibility {
+        PUBLIC = 'public',
+        HIDDEN = 'hidden',
+    }
 }
