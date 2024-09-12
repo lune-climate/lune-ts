@@ -30,8 +30,7 @@ To accomodate for points above, these changes are made in all generated service 
 
 - Make service class abstract and add `config` and `client` as abstract protected consts.
 - Added an `options` object parameter to every method. This object contains `accountId` which
-is used to override the `Lune-Account` header and `apiVersion` which is used to override the
-`Lune-Version` header.
+is used to override the `Lune-Account` header.
 - Remove all `static` modifiers from methods
 - Update method to perform the request by providing the above defined `config`, `client` and `options`.
 - Sporadic changes to accomodate to our custom core implementation, removing unnecessary
