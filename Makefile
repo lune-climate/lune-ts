@@ -21,7 +21,9 @@ build:
 	npm run build
 
 api-schema:
-	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --output src --exportCore false --exportServices true --exportSchemas false
+	# Extract the latest calendar version also via the changelog in our docs. This is not perfect but should serve quite well for our purposes.
+	$(eval VERSION :=$(shell curl -L -s https://docs.lune.co/key-concepts/changelog | grep -oP '<code>\K\d{4}-\d{2}-\d{2}(?=</code>)' | sort | tail -n 1))
+	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --apiVersion '$(VERSION)' --output src --exportCore false --exportServices true --exportSchemas false
 
 move-client:
 	mv src/luneClient.ts src/client.ts

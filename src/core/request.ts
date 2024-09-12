@@ -124,6 +124,7 @@ const getFormData = (options: ApiRequestOptions): FormData | undefined => {
 const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers => {
     const bearerToken = config.BEARER_TOKEN
     const luneAccount = config.ACCOUNT
+    const calendarVersion = config.CALENDAR_VERSION
     const username = config.USERNAME
     const password = config.PASSWORD
     const additionalHeaders = config.HEADERS
@@ -154,6 +155,8 @@ const getHeaders = (config: ClientConfig, options: ApiRequestOptions): Headers =
     if (isStringWithValue(luneAccount)) {
         headers['Lune-Account'] = luneAccount
     }
+
+    headers['Lune-Version'] = calendarVersion
 
     if (options.body) {
         if (options.mediaType) {
