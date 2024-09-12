@@ -6,7 +6,7 @@ export type Method = (typeof Methods)[number]
 export type Meta<T> = {
     method: Method
     url: string
-    request: null | unknown
+    request: unknown
     response: AxiosResponse<T, unknown>
     requestHeaders: { contentType: string | null }
 }

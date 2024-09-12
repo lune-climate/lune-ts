@@ -34,6 +34,7 @@ function applyMixins(derivedCtor: any, constructors: any[]) {
     })
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
 export class LuneClient {
     protected client: AxiosInstance
     protected config: ClientConfig
@@ -105,7 +106,7 @@ applyMixins(LuneClient, [
     WebhooksService,
 ])
 
-// eslint-disable-next-line no-redeclare -- mixins require same name
+// eslint-disable-next-line no-redeclare, @typescript-eslint/no-unsafe-declaration-merging -- mixins require same name
 export interface LuneClient
     extends AccountsService,
         AnalyticsService,
