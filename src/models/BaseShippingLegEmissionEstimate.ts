@@ -19,6 +19,7 @@ import type { EmissionEstimate } from './EmissionEstimate.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
+import type { RoadMethodologyDetails } from './RoadMethodologyDetails.js'
 import type { VesselInferenceMethod } from './VesselInferenceMethod.js'
 
 export type BaseShippingLegEmissionEstimate = EmissionEstimate & {
@@ -71,5 +72,5 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimate & {
      *
      */
     distanceCalculationDetails: DistanceCalculationDetails | NullEnum
-    methodologyDetails: MethodologyDetails | NullEnum
+    methodologyDetails: MethodologyDetails | RoadMethodologyDetails | NullEnum
 }
