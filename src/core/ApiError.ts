@@ -3,8 +3,10 @@ import { AxiosError } from 'axios'
 import { ErrorResponse } from '../models/ErrorResponse.js'
 import { ApiRequestOptions } from './ApiRequestOptions.js'
 
-export type ApiError = { readonly description: string } & (
+export type ApiError =
+    | { readonly description: string }
     | {
+          readonly description: string
           readonly statusCode: number
           readonly errors: ErrorResponse['errors'] | undefined
           /**
@@ -14,8 +16,6 @@ export type ApiError = { readonly description: string } & (
            */
           readonly requestId: string | undefined
       }
-    | {}
-)
 
 export function constructApiError(error: AxiosError, options: ApiRequestOptions): ApiError {
     // The request was made and the server responded with a status code
