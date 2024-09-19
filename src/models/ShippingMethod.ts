@@ -14,6 +14,7 @@ import type { AirShippingMethod } from './AirShippingMethod.js'
 import type { ContainerShippingMethod } from './ContainerShippingMethod.js'
 import type { IdentifiedVesselShippingMethod } from './IdentifiedVesselShippingMethod.js'
 import type { InferredVesselShippingMethod } from './InferredVesselShippingMethod.js'
+import type { RoadShippingMethod } from './RoadShippingMethod.js'
 import type { SeaShippingMethod } from './SeaShippingMethod.js'
 import type { SimpleSeaShippingMethod } from './SimpleSeaShippingMethod.js'
 import type { SimpleShippingMethod } from './SimpleShippingMethod.js'
@@ -26,3 +27,4 @@ export type ShippingMethod =
     | ContainerShippingMethod
     | IdentifiedVesselShippingMethod
     | InferredVesselShippingMethod
+    | RoadShippingMethod

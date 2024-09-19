@@ -10,17 +10,16 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type Merchant = {
-    /**
-     * The name of the merchant.
-     */
-    name?: string
-    /**
-     * The three-letter code of the merchant's country.
-     */
-    countryCode: string
-} & (
+export type Merchant =
     | {
+          /**
+           * The name of the merchant.
+           */
+          name?: string
+          /**
+           * The three-letter code of the merchant's country.
+           */
+          countryCode: string
           /**
            * An ISO 18245 Merchant Category Code (leading zeros need to be preserved) corresponding
            * to the transaction.
@@ -32,10 +31,21 @@ export type Merchant = {
       }
     | {
           /**
+           * The name of the merchant.
+           */
+          name?: string
+          /**
+           * The three-letter code of the merchant's country.
+           */
+          countryCode: string
+          /**
+           * A category the transaction belongs to.
+           */
+          category?: string
+          /**
            * The search term to query.
            * Search is resolved using a combination of semantic and keyword searching.
            *
            */
           searchTerm: string
       }
-)
