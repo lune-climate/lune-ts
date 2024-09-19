@@ -39,6 +39,10 @@ export type Merchant =
            */
           countryCode: string
           /**
+           * A category the transaction belongs to.
+           */
+          category?: string
+          /**
            * The search term to query.
            * Search is resolved using a combination of semantic and keyword searching.
            *
