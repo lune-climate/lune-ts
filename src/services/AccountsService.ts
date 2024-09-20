@@ -11,6 +11,7 @@
 /* eslint-disable */
 import type { Account } from '../models/Account.js'
 import type { AccountCurrencyCode } from '../models/AccountCurrencyCode.js'
+import type { AccountExternalPagesVisibility } from '../models/AccountExternalPagesVisibility.js'
 import type { AccountPair } from '../models/AccountPair.js'
 import type { PaginatedAccounts } from '../models/PaginatedAccounts.js'
 import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
@@ -262,11 +263,7 @@ export abstract class AccountsService {
              *
              */
             handle?: string
-            /**
-             * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
-             *
-             */
-            externalPagesVisibility?: 'public' | 'hidden'
+            externalPagesVisibility?: AccountExternalPagesVisibility
         },
         options?: {
             /**
