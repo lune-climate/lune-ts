@@ -167,6 +167,7 @@ export type { ResolvedEmissionEstimateLegs } from './models/ResolvedEmissionEsti
 export type { ResolvedShippingLegEmissionEstimate } from './models/ResolvedShippingLegEmissionEstimate.js'
 export { RoadEmissionStandard } from './models/RoadEmissionStandard.js'
 export type { RoadEmptyRunsFactor } from './models/RoadEmptyRunsFactor.js'
+export { RoadFuel } from './models/RoadFuel.js'
 export { RoadGradient } from './models/RoadGradient.js'
 export type { RoadLoadFactor } from './models/RoadLoadFactor.js'
 export { RoadMethodologyDetails } from './models/RoadMethodologyDetails.js'

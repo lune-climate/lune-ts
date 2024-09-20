@@ -12,6 +12,7 @@
 
 import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
 import type { RoadEmptyRunsFactor } from './RoadEmptyRunsFactor.js'
+import type { RoadFuel } from './RoadFuel.js'
 import type { RoadGradient } from './RoadGradient.js'
 import type { RoadLoadFactor } from './RoadLoadFactor.js'
 import type { RoadSituation } from './RoadSituation.js'
@@ -22,7 +23,7 @@ import type { RoadSituation } from './RoadSituation.js'
  */
 export type RoadShippingMethod = {
     vehicleType: RoadShippingMethod.vehicle_type
-    fuel: RoadShippingMethod.fuel
+    fuel: RoadFuel
     /**
      * Describes the road's topology.
      *
@@ -70,21 +71,5 @@ export namespace RoadShippingMethod {
         TRUCK_RIGID_32T = 'truck_rigid_32t',
         TRUCK_ARTICULATED_34T = 'truck_articulated_34t',
         TRUCK_ARTICULATED_40T = 'truck_articulated_40t',
-    }
-
-    export enum fuel {
-        GASOLINE = 'gasoline',
-        DIESEL = 'diesel',
-        _99_DIESEL_1_BIODIESEL = '99_diesel_1_biodiesel',
-        _98_DIESEL_2_BIODIESEL = '98_diesel_2_biodiesel',
-        _95_DIESEL_5_BIODIESEL = '95_diesel_5_biodiesel',
-        _93_DIESEL_7_BIODIESEL = '93_diesel_7_biodiesel',
-        _90_DIESEL_10_BIODIESEL = '90_diesel_10_biodiesel',
-        _80_DIESEL_20_BIODIESEL = '80_diesel_20_biodiesel',
-        _50_DIESEL_50_BIODIESEL = '50_diesel_50_biodiesel',
-        ETHANOL_FROM_CORN = 'ethanol_from_corn',
-        HVO_FROM_TALLOW = 'hvo_from_tallow',
-        LPG = 'lpg',
-        CNG = 'cng',
     }
 }
