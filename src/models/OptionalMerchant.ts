@@ -10,7 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { MerchantViaCategory } from './MerchantViaCategory.js'
-import type { MerchantViaSearch } from './MerchantViaSearch.js'
+import type { OptionalMerchantViaCategory } from './OptionalMerchantViaCategory.js'
+import type { OptionalMerchantViaSearch } from './OptionalMerchantViaSearch.js'
 
-export type Merchant = MerchantViaCategory | MerchantViaSearch
+export type OptionalMerchant = OptionalMerchantViaCategory | OptionalMerchantViaSearch

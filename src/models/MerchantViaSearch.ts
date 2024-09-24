@@ -10,7 +10,23 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { MerchantViaCategory } from './MerchantViaCategory.js'
-import type { MerchantViaSearch } from './MerchantViaSearch.js'
-
-export type Merchant = MerchantViaCategory | MerchantViaSearch
+export type MerchantViaSearch = {
+    /**
+     * The name of the merchant.
+     */
+    name?: string
+    /**
+     * The three-letter code of the merchant's country.
+     */
+    countryCode: string
+    /**
+     * A category the transaction belongs to.
+     */
+    category?: string
+    /**
+     * The search term to query.
+     * Search is resolved using a combination of semantic and keyword searching.
+     *
+     */
+    searchTerm: string
+}

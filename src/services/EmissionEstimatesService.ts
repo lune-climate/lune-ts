@@ -11,6 +11,7 @@
 /* eslint-disable */
 import type { AirportSourceDestination } from '../models/AirportSourceDestination.js'
 import type { Area } from '../models/Area.js'
+import type { BaseEstimateRequest } from '../models/BaseEstimateRequest.js'
 import type { BatchTransactionEmissionEstimate } from '../models/BatchTransactionEmissionEstimate.js'
 import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
 import type { CabinClass } from '../models/CabinClass.js'
@@ -44,9 +45,12 @@ import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
 import type { ShippingMethod } from '../models/ShippingMethod.js'
 import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
+import type { SmartScanEmissionEstimate } from '../models/SmartScanEmissionEstimate.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
+import type { TransactionEstimateRequestData } from '../models/TransactionEstimateRequestData.js'
 import type { TransactionProcessedAt } from '../models/TransactionProcessedAt.js'
+import type { UnstructuredKeyValue } from '../models/UnstructuredKeyValue.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -967,6 +971,46 @@ export abstract class EmissionEstimatesService {
                 404: `The specified resource was not found`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Create emission estimate(s) via receipt or invoice data.
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns SmartScanEmissionEstimate OK
+     */
+    public createSmartScanEstimate(
+        data: {
+            smartScanEstimateRequest: {
+                /**
+                 * Data to be used to create the appropriate emission estimate.
+                 */
+                unstructuredData: {
+                    keyValue?: UnstructuredKeyValue
+                }
+            } & BaseEstimateRequest &
+                TransactionEstimateRequestData
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<SmartScanEmissionEstimate>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/estimates/smart-scan',
+            body: data?.smartScanEstimateRequest,
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
             },
