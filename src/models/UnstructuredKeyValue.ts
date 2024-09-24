@@ -10,7 +10,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { MerchantViaCategory } from './MerchantViaCategory.js'
-import type { MerchantViaSearch } from './MerchantViaSearch.js'
-
-export type Merchant = MerchantViaCategory | MerchantViaSearch
+/**
+ * An arbitrary dictionary (key-value pairs).
+ *
+ * Lune attempts to extract valuable information from here.
+ *
+ */
+export type UnstructuredKeyValue = Record<string, string>

@@ -10,7 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { MerchantViaCategory } from './MerchantViaCategory.js'
-import type { MerchantViaSearch } from './MerchantViaSearch.js'
+import type { SmartScanEmissionEstimateLineItem } from './SmartScanEmissionEstimateLineItem.js'
 
-export type Merchant = MerchantViaCategory | MerchantViaSearch
+/**
+ * Line items for the smart scan estimate. At least one line item will always exist.
+ */
+export type SmartScanEmissionEstimateLineItems = Array<SmartScanEmissionEstimateLineItem>

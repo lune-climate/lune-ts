@@ -11,32 +11,19 @@
 /* eslint-disable */
 
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
-import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { NullEnum } from './NullEnum.js'
+import type { TransactionEmissionEstimateBaseFields } from './TransactionEmissionEstimateBaseFields.js'
 import type { TransactionEstimateRequest } from './TransactionEstimateRequest.js'
 import type { TransactionProcessedAt } from './TransactionProcessedAt.js'
 import type { Url } from './Url.js'
 
-export type TransactionEmissionEstimate = EmissionEstimateResponse & {
-    request: TransactionEstimateRequest
-    /**
-     * This property is `null` for any estimate created before 01/03/2024
-     */
-    emissionFactor: EmissionFactorWithGasEmissions | NullEnum
-    /**
-     * An external accessible URL linking to a detailed page that provides complete information about the estimate.
-     */
-    externalEstimateUrl: Url | NullEnum
-    /**
-     * The most accurate term matching the search.
-     *
-     * The emission factor for this term is used to compute the emission estimate.
-     *
-     */
-    searchTermMatch?: string
-    dietFactor: string | NullEnum
-    exchangeRate: string | NullEnum
-    exchangeRateDate: string | NullEnum
-    isTransaction: boolean | NullEnum
-    transactionProcessedAt: TransactionProcessedAt | NullEnum
-}
+export type TransactionEmissionEstimate = EmissionEstimateResponse &
+    TransactionEmissionEstimateBaseFields & {
+        request: TransactionEstimateRequest
+        /**
+         * An external accessible URL linking to a detailed page that provides complete information about the estimate.
+         */
+        externalEstimateUrl: Url | NullEnum
+        isTransaction: boolean | NullEnum
+        transactionProcessedAt: TransactionProcessedAt | NullEnum
+    }
