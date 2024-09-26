@@ -11,16 +11,10 @@
 /* eslint-disable */
 
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
-import type { NullEnum } from './NullEnum.js'
 import type { SmartScanEmissionEstimateLineItems } from './SmartScanEmissionEstimateLineItems.js'
 import type { SmartScanEstimateRequest } from './SmartScanEstimateRequest.js'
-import type { Url } from './Url.js'
 
 export type SmartScanEmissionEstimate = EmissionEstimateResponse & {
     request: SmartScanEstimateRequest
-    /**
-     * An external accessible URL linking to a detailed page that provides complete information about the estimate.
-     */
-    externalEstimateUrl: Url | NullEnum
     lineItems: SmartScanEmissionEstimateLineItems
 }
