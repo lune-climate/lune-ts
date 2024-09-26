@@ -14,6 +14,7 @@ import type { CurrencyCode } from './CurrencyCode.js'
 import type { Diet } from './Diet.js'
 import type { MonetaryAmountValue } from './MonetaryAmountValue.js'
 import type { OptionalMerchant } from './OptionalMerchant.js'
+import type { RegionFallback } from './RegionFallback.js'
 
 /**
  * Parameters for estimating emissions associated with purchasing goods or services.
@@ -29,4 +30,5 @@ export type TransactionEstimateRequestData = {
      * Individual diet. Used to better estimate  food-related purchases.
      */
     diet?: Diet
+    regionFallback?: RegionFallback
 }
