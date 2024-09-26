@@ -54,4 +54,8 @@ export type EmissionFactor = {
      * The name of the region that the emission factor covers.
      */
     region: string
+    /**
+     * A category that describes the emission factor.
+     */
+    category: string | null
 }
