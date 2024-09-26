@@ -71,5 +71,8 @@ export namespace RoadShippingMethod {
         TRUCK_RIGID_32T = 'truck_rigid_32t',
         TRUCK_ARTICULATED_34T = 'truck_articulated_34t',
         TRUCK_ARTICULATED_40T = 'truck_articulated_40t',
+        TRUCK_ARTICULATED_44T = 'truck_articulated_44t',
+        TRUCK_ARTICULATED_60T = 'truck_articulated_60t',
+        TRUCK_ARTICULATED_72T = 'truck_articulated_72t',
     }
 }
