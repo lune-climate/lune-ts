@@ -39,6 +39,7 @@ import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstima
 import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
 import type { PassengerTransportationEmissionEstimate } from '../models/PassengerTransportationEmissionEstimate.js'
 import type { QuantityTrunc } from '../models/QuantityTrunc.js'
+import type { RegionFallback } from '../models/RegionFallback.js'
 import type { Shipment } from '../models/Shipment.js'
 import type { ShippedAt } from '../models/ShippedAt.js'
 import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
@@ -1056,6 +1057,7 @@ export abstract class EmissionEstimatesService {
              */
             isTransaction?: boolean
             transactionProcessedAt?: TransactionProcessedAt
+            regionFallback?: RegionFallback
         },
         options?: {
             /**
@@ -1078,6 +1080,7 @@ export abstract class EmissionEstimatesService {
                 idempotency_key: data?.idempotencyKey,
                 is_transaction: data?.isTransaction,
                 transaction_processed_at: data?.transactionProcessedAt,
+                region_fallback: data?.regionFallback,
             },
             mediaType: 'application/json',
             errors: {
@@ -1295,6 +1298,7 @@ export abstract class EmissionEstimatesService {
              */
             isTransaction?: boolean
             transactionProcessedAt?: TransactionProcessedAt
+            regionFallback?: RegionFallback
         },
         options?: {
             /**
@@ -1320,6 +1324,7 @@ export abstract class EmissionEstimatesService {
                 idempotency_key: data?.idempotencyKey,
                 is_transaction: data?.isTransaction,
                 transaction_processed_at: data?.transactionProcessedAt,
+                region_fallback: data?.regionFallback,
             },
             mediaType: 'application/json',
             errors: {

@@ -17,6 +17,7 @@ import type { Merchant } from './Merchant.js'
 import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
 import type { QuantityTrunc } from './QuantityTrunc.js'
+import type { RegionFallback } from './RegionFallback.js'
 import type { TransactionProcessedAt } from './TransactionProcessedAt.js'
 
 /**
@@ -53,4 +54,5 @@ export type TransactionEstimateRequest = {
      */
     isTransaction?: boolean
     transactionProcessedAt?: TransactionProcessedAt
+    regionFallback?: RegionFallback
 }
