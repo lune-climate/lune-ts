@@ -16,4 +16,4 @@
  * Lune attempts to extract valuable information from here.
  *
  */
-export type UnstructuredKeyValue = Record<string, string>
+export type UnstructuredKeyValue = {}
