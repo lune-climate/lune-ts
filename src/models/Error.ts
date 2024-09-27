@@ -74,5 +74,6 @@ export namespace Error {
         AIRPORT_ROUTE_REQUIRED = 'airport_route_required',
         FUTURE_DEPARTURE_INVALID = 'future_departure_invalid',
         SMART_SCAN_INFERENCE_FAILURE = 'smart_scan_inference_failure',
+        SMART_SCAN_CREATION_FAILURE = 'smart_scan_creation_failure',
     }
 }
