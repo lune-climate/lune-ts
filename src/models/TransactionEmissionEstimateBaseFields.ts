@@ -25,6 +25,12 @@ export type TransactionEmissionEstimateBaseFields = {
      *
      */
     searchTermMatch?: string
+    /**
+     * Populated if semantic search was used to find a match to the provided search term or category
+     * Indicates confidence in the match from 0 - 2, 0 being most confident.
+     *
+     */
+    searchTermMatchScore?: number
     dietFactor: string | NullEnum
     exchangeRate: string | NullEnum
     exchangeRateDate: string | NullEnum
