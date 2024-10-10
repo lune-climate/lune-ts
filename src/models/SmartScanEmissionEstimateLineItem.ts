@@ -10,14 +10,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
+import type { EstimateMass } from './EstimateMass.js'
 import type { TransactionEmissionEstimateBaseFields } from './TransactionEmissionEstimateBaseFields.js'
 
 /**
  * Smart scan line item estimate.
  */
 export type SmartScanEmissionEstimateLineItem = {
-    mass: Mass
+    mass: EstimateMass
     /**
      * Identifies the type of the line item emission estimate. New values are expected to be
      * introduced over time and considered to be a non breaking change.
