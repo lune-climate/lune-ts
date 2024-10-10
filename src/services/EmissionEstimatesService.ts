@@ -25,10 +25,10 @@ import type { ElectricityEmissionEstimate } from '../models/ElectricityEmissionE
 import type { EmissionFactorActivity } from '../models/EmissionFactorActivity.js'
 import type { EmissionFactorEstimate } from '../models/EmissionFactorEstimate.js'
 import type { EstimateIdempotencyKey } from '../models/EstimateIdempotencyKey.js'
+import type { EstimateMassUnit } from '../models/EstimateMassUnit.js'
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
 import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
-import type { MassUnit } from '../models/MassUnit.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { Metadata } from '../models/Metadata.js'
 import type { MonetaryAmount } from '../models/MonetaryAmount.js'
@@ -394,7 +394,7 @@ export abstract class EmissionEstimatesService {
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
              *
              */
-            estimateMassUnit?: MassUnit
+            estimateMassUnit?: EstimateMassUnit
         },
         options?: {
             /**
@@ -467,7 +467,7 @@ export abstract class EmissionEstimatesService {
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
              *
              */
-            estimateMassUnit?: MassUnit
+            estimateMassUnit?: EstimateMassUnit
         },
         options?: {
             /**
@@ -512,7 +512,7 @@ export abstract class EmissionEstimatesService {
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
              *
              */
-            estimateMassUnit?: MassUnit
+            estimateMassUnit?: EstimateMassUnit
         },
         options?: {
             /**
@@ -585,7 +585,7 @@ export abstract class EmissionEstimatesService {
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
              *
              */
-            estimateMassUnit?: MassUnit
+            estimateMassUnit?: EstimateMassUnit
         },
         options?: {
             /**
@@ -735,7 +735,7 @@ export abstract class EmissionEstimatesService {
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
              *
              */
-            estimateMassUnit?: MassUnit
+            estimateMassUnit?: EstimateMassUnit
         },
         options?: {
             /**
@@ -790,7 +790,7 @@ export abstract class EmissionEstimatesService {
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
              *
              */
-            estimateMassUnit?: MassUnit
+            estimateMassUnit?: EstimateMassUnit
         },
         options?: {
             /**
@@ -865,7 +865,7 @@ export abstract class EmissionEstimatesService {
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
              *
              */
-            estimateMassUnit?: MassUnit
+            estimateMassUnit?: EstimateMassUnit
         },
         options?: {
             /**

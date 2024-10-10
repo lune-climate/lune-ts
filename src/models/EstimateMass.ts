@@ -10,15 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { EstimateMass } from './EstimateMass.js'
-import type { Metadata } from './Metadata.js'
+import type { EstimateMassUnit } from './EstimateMassUnit.js'
 
-/**
- * An emission estimate result. The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
- */
-export type EmissionEstimate = {
-    mass: EstimateMass
-    metadata?: Metadata
-    idempotencyKey?: EstimateIdempotencyKey
+export type EstimateMass = {
+    amount: string
+    unit: EstimateMassUnit
 }
