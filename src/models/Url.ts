@@ -11,6 +11,9 @@
 /* eslint-disable */
 
 /**
- * An HTTPS URL
+ * An HTTPS URL.
+ *
+ * The URL must match the following regular expression: `^https:\/\/[-a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&\/\/=]*)$`
+ *
  */
 export type Url = string

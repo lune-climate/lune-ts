@@ -24,13 +24,13 @@ export type TransactionEmissionEstimateBaseFields = {
      * The emission factor for this term is used to compute the emission estimate.
      *
      */
-    searchTermMatch?: string
+    searchTermMatch: string | null
     /**
      * Populated if semantic search was used to find a match to the provided search term or category
      * Indicates confidence in the match from 0 - 2, 0 being most confident.
      *
      */
-    searchTermMatchScore?: number
+    searchTermMatchScore: number | null
     dietFactor: string | NullEnum
     exchangeRate: string | NullEnum
     exchangeRateDate: string | NullEnum
