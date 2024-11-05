@@ -56,4 +56,22 @@ export type MultiLegShippingEmissionEstimate = {
      * An external accessible URL linking to a detailed page that provides complete information about the estimate.
      */
     externalEstimateUrl: Url | NullEnum
+    /**
+     * Identifies the source used to create the estimate.
+     */
+    source?: MultiLegShippingEmissionEstimate.source
 } & EmissionEstimateResponse
+
+export namespace MultiLegShippingEmissionEstimate {
+    /**
+     * Identifies the source used to create the estimate.
+     */
+    export enum source {
+        API = 'api',
+        DASHBOARD = 'dashboard',
+        CSV = 'csv',
+        CHAIN_IO = 'chain_io',
+        ECOTRANSIT_CSV = 'ecotransit_csv',
+        WIDGET = 'widget',
+    }
+}
