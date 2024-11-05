@@ -65,6 +65,7 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimate & {
         | 'imo_unavailable_container_ship_fallback'
         | 'imo_unavailable_container_ship_trade_lane_fallback'
         | 'flight_number_unavailable_fallback'
+        | 'invalid_flight_route_fallback'
     >
     /**
      * Information regarding why an alternative distance calculation method was used.
