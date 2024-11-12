@@ -1021,6 +1021,36 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Get a smart-scan emission estimate
+     * @param id The estimate's unique identifier
+     * @param options Additional operation options
+     * @returns SmartScanEmissionEstimate OK
+     */
+    public getSmartScanEstimate(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<SmartScanEmissionEstimate>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/estimates/smart-scan/{id}',
+            path: {
+                id: id,
+            },
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
      * Create a transaction emission estimate (single)
      * @param data Request data
      * @param options Additional operation options
