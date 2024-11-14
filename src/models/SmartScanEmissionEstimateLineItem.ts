@@ -11,7 +11,7 @@
 /* eslint-disable */
 
 import type { EstimateMass } from './EstimateMass.js'
-import type { TransactionEmissionEstimateBaseFields } from './TransactionEmissionEstimateBaseFields.js'
+import type { SmartScanEstimateTransactionLineItem } from './SmartScanEstimateTransactionLineItem.js'
 
 /**
  * Smart scan line item estimate.
@@ -24,7 +24,7 @@ export type SmartScanEmissionEstimateLineItem = {
      *
      */
     type: SmartScanEmissionEstimateLineItem.type
-} & TransactionEmissionEstimateBaseFields
+} & SmartScanEstimateTransactionLineItem
 
 export namespace SmartScanEmissionEstimateLineItem {
     /**
