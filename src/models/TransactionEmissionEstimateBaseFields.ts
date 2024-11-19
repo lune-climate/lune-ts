@@ -32,6 +32,11 @@ export type TransactionEmissionEstimateBaseFields = {
      */
     searchTermMatchScore: number | null
     dietFactor: string | NullEnum
+    /**
+     * The text embedding model used to support semantic search
+     *
+     */
+    semanticMatchingModel: string | null
     exchangeRate: string | NullEnum
     exchangeRateDate: string | NullEnum
 }
