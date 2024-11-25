@@ -73,7 +73,7 @@ export namespace Error {
         ESTIMATE_IDEMPOTENCY_ALREADY_EXISTS = 'estimate_idempotency_already_exists',
         AIRPORT_ROUTE_REQUIRED = 'airport_route_required',
         FUTURE_DEPARTURE_INVALID = 'future_departure_invalid',
-        SMART_SCAN_INFERENCE_FAILURE = 'smart_scan_inference_failure',
-        SMART_SCAN_CREATION_FAILURE = 'smart_scan_creation_failure',
+        TRANSACTION_DOCUMENT_INFERENCE_FAILURE = 'transaction_document_inference_failure',
+        TRANSACTION_DOCUMENT_CREATION_FAILURE = 'transaction_document_creation_failure',
     }
 }

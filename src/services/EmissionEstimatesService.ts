@@ -46,7 +46,7 @@ import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
 import type { ShippingMethod } from '../models/ShippingMethod.js'
 import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
-import type { SmartScanEmissionEstimate } from '../models/SmartScanEmissionEstimate.js'
+import type { TransactionDocumentEmissionEstimate } from '../models/TransactionDocumentEmissionEstimate.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 import type { TransactionEstimateRequestData } from '../models/TransactionEstimateRequestData.js'
@@ -982,11 +982,11 @@ export abstract class EmissionEstimatesService {
      * Create emission estimate(s) via receipt or invoice data.
      * @param data Request data
      * @param options Additional operation options
-     * @returns SmartScanEmissionEstimate OK
+     * @returns TransactionDocumentEmissionEstimate OK
      */
-    public createSmartScanEstimate(
+    public createTransactionDocumentEstimate(
         data: {
-            smartScanEstimateRequest: {
+            transactionDocumentEstimateRequest: {
                 /**
                  * Data to be used to create the appropriate emission estimate.
                  */
@@ -1002,11 +1002,11 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<SmartScanEmissionEstimate>, ApiError>> {
+    ): Promise<Result<SuccessResponse<TransactionDocumentEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
-            url: '/estimates/smart-scan',
-            body: data?.smartScanEstimateRequest,
+            url: '/estimates/transaction-documents',
+            body: data?.transactionDocumentEstimateRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -1021,12 +1021,12 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
-     * Get a smart-scan emission estimate
+     * Get a transaction document emission estimate
      * @param id The estimate's unique identifier
      * @param options Additional operation options
-     * @returns SmartScanEmissionEstimate OK
+     * @returns TransactionDocumentEmissionEstimate OK
      */
-    public getSmartScanEstimate(
+    public getTransactionDocumentEstimate(
         id: string,
         options?: {
             /**
@@ -1034,10 +1034,10 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<SmartScanEmissionEstimate>, ApiError>> {
+    ): Promise<Result<SuccessResponse<TransactionDocumentEmissionEstimate>, ApiError>> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
-            url: '/estimates/smart-scan/{id}',
+            url: '/estimates/transaction-documents/{id}',
             path: {
                 id: id,
             },

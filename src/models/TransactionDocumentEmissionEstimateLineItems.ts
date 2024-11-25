@@ -10,9 +10,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { SmartScanEmissionEstimateLineItem } from './SmartScanEmissionEstimateLineItem.js'
+import type { TransactionDocumentEmissionEstimateLineItem } from './TransactionDocumentEmissionEstimateLineItem.js'
 
 /**
- * Line items for the smart scan estimate. At least one line item will always exist.
+ * Line items for the transaction document estimate. At least one line item will always exist.
  */
-export type SmartScanEmissionEstimateLineItems = Array<SmartScanEmissionEstimateLineItem>
+export type TransactionDocumentEmissionEstimateLineItems =
+    Array<TransactionDocumentEmissionEstimateLineItem>
