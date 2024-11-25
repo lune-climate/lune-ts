@@ -14,7 +14,7 @@ import type { BaseEstimateRequest } from './BaseEstimateRequest.js'
 import type { TransactionEstimateRequestData } from './TransactionEstimateRequestData.js'
 import type { UnstructuredKeyValue } from './UnstructuredKeyValue.js'
 
-export type SmartScanEstimateRequest = {
+export type TransactionDocumentEstimateRequest = {
     /**
      * Data to be used to create the appropriate emission estimate.
      */

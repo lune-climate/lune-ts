@@ -11,22 +11,22 @@
 /* eslint-disable */
 
 import type { EstimateMass } from './EstimateMass.js'
-import type { SmartScanEstimateTransactionLineItem } from './SmartScanEstimateTransactionLineItem.js'
+import type { TransactionDocumentEstimateTransactionLineItem } from './TransactionDocumentEstimateTransactionLineItem.js'
 
 /**
- * Smart scan line item estimate.
+ * Transcation document line item estimate.
  */
-export type SmartScanEmissionEstimateLineItem = {
+export type TransactionDocumentEmissionEstimateLineItem = {
     mass: EstimateMass
     /**
      * Identifies the type of the line item emission estimate. New values are expected to be
      * introduced over time and considered to be a non breaking change.
      *
      */
-    type: SmartScanEmissionEstimateLineItem.type
-} & SmartScanEstimateTransactionLineItem
+    type: TransactionDocumentEmissionEstimateLineItem.type
+} & TransactionDocumentEstimateTransactionLineItem
 
-export namespace SmartScanEmissionEstimateLineItem {
+export namespace TransactionDocumentEmissionEstimateLineItem {
     /**
      * Identifies the type of the line item emission estimate. New values are expected to be
      * introduced over time and considered to be a non breaking change.

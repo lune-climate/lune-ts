@@ -16,9 +16,9 @@ import type { NullEnum } from './NullEnum.js'
 import type { TransactionEmissionEstimateBaseFields } from './TransactionEmissionEstimateBaseFields.js'
 
 /**
- * A Smart scan transaction line item describing the properties that have been idenfitied.
+ * A transaction document line item describing the properties that have been idenfitied.
  */
-export type SmartScanEstimateTransactionLineItem = TransactionEmissionEstimateBaseFields &
+export type TransactionDocumentEstimateTransactionLineItem = TransactionEmissionEstimateBaseFields &
     ({
         /**
          * The 3-character country code that has been identified.

@@ -11,10 +11,10 @@
 /* eslint-disable */
 
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
-import type { SmartScanEmissionEstimateLineItems } from './SmartScanEmissionEstimateLineItems.js'
-import type { SmartScanEstimateRequest } from './SmartScanEstimateRequest.js'
+import type { TransactionDocumentEmissionEstimateLineItems } from './TransactionDocumentEmissionEstimateLineItems.js'
+import type { TransactionDocumentEstimateRequest } from './TransactionDocumentEstimateRequest.js'
 
-export type SmartScanEmissionEstimate = EmissionEstimateResponse & {
-    request: SmartScanEstimateRequest
-    lineItems: SmartScanEmissionEstimateLineItems
+export type TransactionDocumentEmissionEstimate = EmissionEstimateResponse & {
+    request: TransactionDocumentEstimateRequest
+    lineItems: TransactionDocumentEmissionEstimateLineItems
 }
