@@ -1785,4 +1785,34 @@ export abstract class EmissionEstimatesService {
             },
         })
     }
+
+    /**
+     * Get an emission estimate calculated using a specific emission factor
+     * @param id The estimate's unique identifier
+     * @param options Additional operation options
+     * @returns EmissionFactorEstimate OK
+     */
+    public getEmissionFactorEstimate(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<EmissionFactorEstimate>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/estimates/emission-factor/{id}',
+            path: {
+                id: id,
+            },
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
 }
