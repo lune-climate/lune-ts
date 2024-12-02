@@ -73,5 +73,6 @@ export namespace MultiLegShippingEmissionEstimate {
         CHAIN_IO = 'chain_io',
         ECOTRANSIT_CSV = 'ecotransit_csv',
         WIDGET = 'widget',
+        ECOTRANSIT = 'ecotransit',
     }
 }
