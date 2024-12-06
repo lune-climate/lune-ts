@@ -287,6 +287,7 @@ export { PassengerRailEstimateRequest } from './models/PassengerRailEstimateRequ
 export { PassengerRoadEstimateRequest } from './models/PassengerRoadEstimateRequest.js'
 export type { PassengerTransportationEmissionEstimate } from './models/PassengerTransportationEmissionEstimate.js'
 export type { PassengerTransportationEstimateRequest } from './models/PassengerTransportationEstimateRequest.js'
+export type { PassengerTransportationLegEmissionEstimate } from './models/PassengerTransportationLegEmissionEstimate.js'
 export type { Payment } from './models/Payment.js'
 export { Project } from './models/Project.js'
 export type { ProjectPerimeter } from './models/ProjectPerimeter.js'

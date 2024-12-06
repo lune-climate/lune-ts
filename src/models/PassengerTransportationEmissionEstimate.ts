@@ -13,6 +13,7 @@
 import type { EmissionEstimate } from './EmissionEstimate.js'
 import type { EstimateQuote } from './EstimateQuote.js'
 import type { PassengerTransportationEstimateRequest } from './PassengerTransportationEstimateRequest.js'
+import type { PassengerTransportationLegEmissionEstimate } from './PassengerTransportationLegEmissionEstimate.js'
 
 /**
  * An emission estimate result for passenger transport involving multiple legs.
@@ -31,7 +32,7 @@ export type PassengerTransportationEmissionEstimate = EmissionEstimate & {
      * The emission calculation unique identifier
      */
     id: string
-    legs: Array<EmissionEstimate>
+    legs: Array<PassengerTransportationLegEmissionEstimate>
     quote: EstimateQuote
     request: PassengerTransportationEstimateRequest
 }
