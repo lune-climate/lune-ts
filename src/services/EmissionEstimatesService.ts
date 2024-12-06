@@ -382,7 +382,7 @@ export abstract class EmissionEstimatesService {
      * @param options Additional operation options
      * @returns PaginatedAnyShippingEmissionEstimates OK
      */
-    public listAllShipingEstimates(
+    public listAllShippingEstimates(
         data?: {
             /**
              * Maximum number of resources to return, between 1 and 100.
