@@ -171,7 +171,6 @@ export enum CurrencyCode {
     USD = 'USD',
     UYU = 'UYU',
     UZS = 'UZS',
-    VEF = 'VEF',
     VES = 'VES',
     VND = 'VND',
     VUV = 'VUV',
