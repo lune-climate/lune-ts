@@ -14,7 +14,7 @@ import type { EstimateMass } from './EstimateMass.js'
 import type { TransactionDocumentEstimateTransactionLineItem } from './TransactionDocumentEstimateTransactionLineItem.js'
 
 /**
- * Transcation document line item estimate.
+ * Transaction document line item estimate.
  */
 export type TransactionDocumentEmissionEstimateLineItem = {
     mass: EstimateMass
