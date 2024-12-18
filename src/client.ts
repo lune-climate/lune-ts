@@ -7,7 +7,7 @@
 // (You can modify this by hand if its extension is .hbs)
 //
 // =======================================================================
-import axios, { AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
+import axios, { AxiosError, AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
 import camelCaseKeys from 'camelcase-keys'
 
 import { ClientConfig } from './core/ClientConfig.js'
@@ -63,24 +63,32 @@ export class LuneClient {
         }
         this.client = axios.create()
 
-        // Convert to camelCase when receiving request
-        const camelCaseResponse = (response: AxiosResponse): ExtendedAxiosResponse => ({
-            ...response,
-            _meta: {
-                ...extractRequestFromResponseInterceptor(response),
-                response: response.data,
-            },
-            // SAFETY: The camelcase-keys type definitions are overly restrictive. The function
-            // handles all kinds of values just fine: arrays, numbers, strings, null etc.
-            //
-            // Instead of writing a bunch of type-detecting conditional code to satisfy the
-            // TS compiler let's just wholesale ignore this type mismatch – we don't know what
-            // value do we actually deal with here but the library will handle it.
-            data: camelCaseKeys(response.data, { deep: true }),
-        })
+        // Convert to camelCase when receiving JSON responses
+        const camelCaseResponse = (
+            response: AxiosResponse,
+        ): AxiosResponse | ExtendedAxiosResponse => {
+            const contentType = response.headers['content-type']
+            if (!contentType || !contentType.includes('application/json')) {
+                return response
+            }
+            return {
+                ...response,
+                _meta: {
+                    ...extractRequestFromResponseInterceptor(response),
+                    response: response.data,
+                },
+                // SAFETY: The camelcase-keys type definitions are overly restrictive. The function
+                // handles all kinds of values just fine: arrays, numbers, strings, null etc.
+                //
+                // Instead of writing a bunch of type-detecting conditional code to satisfy the
+                // TS compiler let's just wholesale ignore this type mismatch – we don't know what
+                // value do we actually deal with here but the library will handle it.
+                data: camelCaseKeys(response.data, { deep: true }),
+            }
+        }
         this.client.interceptors.response.use(
             camelCaseResponse,
-            (error: ExtendedAxiosError): Promise<ExtendedAxiosError> => {
+            (error: AxiosError | ExtendedAxiosError): Promise<AxiosError | ExtendedAxiosError> => {
                 // There's a separate, slightly different callback for errors.
                 if (!isAxiosError(error)) {
                     throw error
