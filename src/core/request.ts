@@ -5,7 +5,7 @@ import { Err, Ok, Result } from 'ts-results-es'
 import { ApiError, constructApiError } from './ApiError.js'
 import type { ApiRequestOptions } from './ApiRequestOptions.js'
 import type { ClientConfig, Headers } from './ClientConfig.js'
-import { asSuccessResponse, ExtendedAxiosResponse, SuccessResponse } from './SuccessResponse.js'
+import { asSuccessResponse, SuccessResponse } from './SuccessResponse.js'
 
 const isDefined = <T>(value: T | null | undefined): value is Exclude<T, null | undefined> => {
     return value !== undefined && value !== null
@@ -209,12 +209,8 @@ export const request = async <T>(
         params: formData,
         data: body,
     })
-        .then((resp: AxiosResponse<T>) => {
-            if (!('_meta' in resp)) {
-                throw new Error('_meta is expected')
-            }
-            const response = resp as ExtendedAxiosResponse<T>
-            return Ok(asSuccessResponse(response.data, response._meta))
+        .then((response: AxiosResponse<T>) => {
+            return Ok(asSuccessResponse(headers, response))
         })
         .catch((error: unknown) => {
             if (!isAxiosError(error)) {
