@@ -1,9 +1,12 @@
 name: Rebuild client and open PR with changes
 
-# Perform workflow whenever we get a change in schema event
 on:
+  # Perform workflow whenever we get a change in schema event
   repository_dispatch:
     types: [rebuild_schema_change]
+  # Perform workflow daily to make sure we are never too stale
+  schedule:
+    - cron: "0 5 * * *"
 
 jobs:
   build:
