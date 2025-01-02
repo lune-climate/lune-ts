@@ -208,6 +208,7 @@ export const request = async <T>(
         headers,
         params: formData,
         data: body,
+        ...(options.responseType ? { responseType: options.responseType } : {}),
     })
         .then((response: AxiosResponse<T>) => {
             return Ok(asSuccessResponse(headers, response))
