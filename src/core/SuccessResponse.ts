@@ -1,7 +1,5 @@
 import { AxiosError, AxiosResponse } from 'axios'
 
-import type { Headers } from './ClientConfig.js'
-
 export const Methods = ['get', 'delete', 'head', 'options', 'post', 'put', 'patch']
 export type Method = (typeof Methods)[number]
 
@@ -29,12 +27,9 @@ function isNotPureObject(value: unknown): boolean {
     )
 }
 
-export function asSuccessResponse<T>(
-    headers: Headers,
-    response: AxiosResponse<T>,
-): SuccessResponse<T> {
+export function asSuccessResponse<T>(response: AxiosResponse<T>): SuccessResponse<T> {
     const value: T = response.data
-    const contentType = headers['content-type']
+    const contentType = response.headers['content-type']
     if (contentType && contentType.includes('application/json')) {
         if (!('_meta' in response)) {
             throw new Error('_meta is expected')
