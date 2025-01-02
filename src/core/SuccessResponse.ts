@@ -28,7 +28,10 @@ function isNotPureObject(value: unknown): boolean {
     )
 }
 
-export function asSuccessResponse<T>(headers: Headers, response: AxiosResponse<T>): SuccessResponse<T> {
+export function asSuccessResponse<T>(
+    headers: Headers,
+    response: AxiosResponse<T>,
+): SuccessResponse<T> {
     const value: T = response.data
     const contentType = headers['content-type']
     if (contentType && contentType.includes('application/json')) {
