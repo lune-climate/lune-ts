@@ -58,6 +58,9 @@ export abstract class BundlesService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundles',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -91,6 +94,9 @@ export abstract class BundlesService {
             url: '/bundles/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 404: `The specified resource was not found`,

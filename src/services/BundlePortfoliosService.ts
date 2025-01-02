@@ -36,6 +36,9 @@ export abstract class BundlePortfoliosService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundle-portfolios',
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,
@@ -63,6 +66,9 @@ export abstract class BundlePortfoliosService {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/bundle-portfolios',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 bundle_portfolio_id: data?.bundlePortfolioId,
             },

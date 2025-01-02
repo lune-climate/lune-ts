@@ -40,6 +40,9 @@ export abstract class ClientAccountsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts/client/me',
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
@@ -88,6 +91,9 @@ export abstract class ClientAccountsService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/accounts/client',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 name: data?.name,
                 currency: data?.currency,
@@ -145,6 +151,9 @@ export abstract class ClientAccountsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts/client',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -205,6 +214,9 @@ export abstract class ClientAccountsService {
             url: '/accounts/client/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             body: {
                 name: data?.name,
@@ -270,6 +282,9 @@ export abstract class ClientAccountsService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 name: data?.name,
                 beneficiary: data?.beneficiary,
@@ -314,6 +329,9 @@ export abstract class ClientAccountsService {
             url: '/accounts/client/{id}/logo',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             formData: {
                 logo: data?.logo,

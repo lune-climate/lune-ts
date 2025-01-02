@@ -102,6 +102,9 @@ export abstract class EmissionFactorsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/emission-factors',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -136,6 +139,9 @@ export abstract class EmissionFactorsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/emission-factors/regions',
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
