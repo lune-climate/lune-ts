@@ -41,6 +41,9 @@ export abstract class AccountsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts/me',
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
@@ -94,6 +97,9 @@ export abstract class AccountsService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/accounts',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 name: data?.name,
                 currency: data?.currency,
@@ -149,6 +155,9 @@ export abstract class AccountsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -211,6 +220,9 @@ export abstract class AccountsService {
             url: '/accounts/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             body: {
                 name: data?.name,
@@ -278,6 +290,9 @@ export abstract class AccountsService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 name: data?.name,
                 beneficiary: data?.beneficiary,
@@ -322,6 +337,9 @@ export abstract class AccountsService {
             url: '/accounts/{id}/logo',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             formData: {
                 logo: data?.logo,

@@ -48,6 +48,9 @@ export abstract class WebhooksService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/webhooks',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 account_id: data?.accountId,
             },
@@ -85,6 +88,9 @@ export abstract class WebhooksService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/webhooks',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 url: data?.url,
                 account_ids: data?.accountIds,
@@ -120,6 +126,9 @@ export abstract class WebhooksService {
             url: '/webhooks/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -167,6 +176,9 @@ export abstract class WebhooksService {
             url: '/webhooks/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             body: {
                 url: data?.url,
@@ -236,6 +248,9 @@ export abstract class WebhooksService {
             url: '/webhooks/{id}/rotate-secret',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,

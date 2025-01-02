@@ -47,6 +47,9 @@ export abstract class PaymentsService {
             path: {
                 temporary_id: temporaryId,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 404: `The specified resource was not found`,

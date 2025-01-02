@@ -57,6 +57,9 @@ export abstract class SustainabilityPageService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/sustainability-pages',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 status: data?.status,
                 slug: data?.slug,
@@ -103,6 +106,9 @@ export abstract class SustainabilityPageService {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/sustainability-pages',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 status: data?.status,
                 slug: data?.slug,
@@ -138,6 +144,9 @@ export abstract class SustainabilityPageService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/sustainability-pages/current-account',
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
@@ -171,6 +180,9 @@ export abstract class SustainabilityPageService {
             path: {
                 type: type,
                 slug: slug,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -207,6 +219,9 @@ export abstract class SustainabilityPageService {
                 organisation_id: organisationId,
                 type: type,
                 handle: handle,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 404: `The specified resource was not found`,
