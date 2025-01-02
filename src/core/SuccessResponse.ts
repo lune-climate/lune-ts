@@ -18,7 +18,8 @@ type AsObject<T> = T extends object
         ? { notAnObject: T }
         : T
     : { notAnObject: T }
-export type SuccessResponse<T> = (AsObject<T> & { _meta: Meta<T> }) | T
+export type SuccessResponseWithMeta<T> = AsObject<T> & { _meta: Meta<T> }
+export type SuccessResponse<T> = SuccessResponseWithMeta<T> | T
 
 function isNotPureObject(value: unknown): boolean {
     return (
