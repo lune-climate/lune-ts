@@ -211,7 +211,7 @@ export const request = async <T>(
         ...(options.responseType ? { responseType: options.responseType } : {}),
     })
         .then((response: AxiosResponse<T>) => {
-            return Ok(asSuccessResponse(headers, response))
+            return Ok(asSuccessResponse(response))
         })
         .catch((error: unknown) => {
             if (!isAxiosError(error)) {
