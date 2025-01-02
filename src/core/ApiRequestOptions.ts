@@ -10,5 +10,5 @@ export type ApiRequestOptions = {
     readonly mediaType?: string
     readonly responseHeader?: string
     readonly errors?: Record<number, string>
-    readonly responseType?: 'arraybuffer' | 'document' | 'json' | 'text' | 'stream' | 'blob' | null;
+    readonly responseType?: 'arraybuffer' | 'document' | 'json' | 'text' | 'stream' | 'blob' | null
 }
