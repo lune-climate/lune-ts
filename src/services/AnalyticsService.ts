@@ -55,6 +55,9 @@ export abstract class AnalyticsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/cumulative-per-bundle',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 from: data?.from,
                 through: data?.through,
@@ -96,6 +99,9 @@ export abstract class AnalyticsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/metrics',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 from: data?.from,
                 through: data?.through,
@@ -137,6 +143,9 @@ export abstract class AnalyticsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/aggregated-by-property',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 from: data?.from,
                 through: data?.through,
@@ -188,6 +197,9 @@ export abstract class AnalyticsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/emission-calculations',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 from: data?.from,
                 through: data?.through,
@@ -240,6 +252,9 @@ export abstract class AnalyticsService {
             url: '/analytics/shipping/public/{account_id}',
             path: {
                 account_id: accountId,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             query: {
                 from: data?.from,

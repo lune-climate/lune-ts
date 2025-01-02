@@ -59,6 +59,9 @@ export abstract class ProjectsService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/projects',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -93,6 +96,9 @@ export abstract class ProjectsService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
@@ -121,6 +127,9 @@ export abstract class ProjectsService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
@@ -148,6 +157,9 @@ export abstract class ProjectsService {
             url: '/projects/by-slug/{slug}',
             path: {
                 slug: slug,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 404: `The specified resource was not found`,

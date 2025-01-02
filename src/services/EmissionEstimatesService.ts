@@ -101,6 +101,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/electricity',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 name: data?.name,
                 consumption: data?.consumption,
@@ -143,6 +146,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/electricity/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -195,6 +201,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/electricity/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             body: {
                 name: data?.name,
@@ -257,6 +266,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/flight',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 route: data?.route,
                 cabin_class: data?.cabinClass,
@@ -321,6 +333,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/passenger-transportation',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 passengers: data?.passengers,
                 legs: data?.legs,
@@ -364,6 +379,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/passenger-transportation/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -437,6 +455,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/estimates/shipping/all',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -510,6 +531,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
             },
@@ -557,6 +581,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
@@ -630,6 +657,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
@@ -705,6 +735,9 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             body: data?.updateShippingEstimateAnnotationsRequest,
             mediaType: 'application/json',
             errors: {
@@ -778,6 +811,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/shipping/multi-leg',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
             },
@@ -835,6 +871,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/multi-leg/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
@@ -910,6 +949,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/shipping/multi-leg/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
@@ -995,6 +1037,9 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             body: data?.updateShippingEstimateAnnotationsRequest,
             mediaType: 'application/json',
             errors: {
@@ -1037,6 +1082,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/transaction-documents',
+            headers: {
+                Accept: 'application/json',
+            },
             body: data?.transactionDocumentEstimateRequest,
             mediaType: 'application/json',
             errors: {
@@ -1071,6 +1119,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/transaction-documents/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -1131,6 +1182,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/transactions',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 name: data?.name,
                 value: data?.value,
@@ -1183,6 +1237,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/transactions/batch',
+            headers: {
+                Accept: 'application/json',
+            },
             body: data?.batchTransactionEstimateRequest,
             mediaType: 'application/json',
             errors: {
@@ -1220,6 +1277,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/transactions/by-idempotency-key/{idempotency_key}',
             path: {
                 idempotency_key: idempotencyKey,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -1271,6 +1331,9 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 is_transaction: data?.isTransaction,
                 transaction_processed_at: data?.transactionProcessedAt,
@@ -1310,6 +1373,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/transactions/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -1374,6 +1440,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/transactions/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             body: {
                 name: data?.name,
@@ -1524,6 +1593,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/company',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 months: data?.months,
                 employees: data?.employees,
@@ -1587,6 +1659,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/company/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,
@@ -1718,6 +1793,9 @@ export abstract class EmissionEstimatesService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 months: data?.months,
                 employees: data?.employees,
@@ -1797,6 +1875,9 @@ export abstract class EmissionEstimatesService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/estimates/emission-factor',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 emission_factor_id: data?.emissionFactorId,
                 activity: data?.activity,
@@ -1837,6 +1918,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/emission-factor/{id}',
             path: {
                 id: id,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 401: `The API Key is missing or is invalid`,

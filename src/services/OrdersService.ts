@@ -57,6 +57,9 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass',
+            headers: {
+                Accept: 'application/json',
+            },
             body: data?.createOrderByQuantityRequest,
             mediaType: 'application/json',
             errors: {
@@ -113,6 +116,9 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-value',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 value: data?.value,
                 idempotency_key: data?.idempotencyKey,
@@ -167,6 +173,9 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-estimate',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 estimate_id: data?.estimateId,
                 idempotency_key: data?.idempotencyKey,
@@ -225,6 +234,9 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/orders',
+            headers: {
+                Accept: 'application/json',
+            },
             query: {
                 limit: data?.limit,
                 after: data?.after,
@@ -259,6 +271,9 @@ export abstract class OrdersService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/json',
+            },
             errors: {
                 404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
@@ -287,6 +302,10 @@ export abstract class OrdersService {
             path: {
                 id: id,
             },
+            headers: {
+                Accept: 'application/pdf',
+            },
+            responseType: 'blob',
             errors: {
                 404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
@@ -317,6 +336,9 @@ export abstract class OrdersService {
             url: '/orders/by-idempotency-key/{idempotency_key}',
             path: {
                 idempotency_key: idempotencyKey,
+            },
+            headers: {
+                Accept: 'application/json',
             },
             errors: {
                 404: `The specified resource was not found`,
@@ -351,6 +373,9 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-mass/quote',
+            headers: {
+                Accept: 'application/json',
+            },
             body: data?.orderQuoteByQuantityRequest,
             mediaType: 'application/json',
             errors: {
@@ -396,6 +421,9 @@ export abstract class OrdersService {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/orders/by-value/quote',
+            headers: {
+                Accept: 'application/json',
+            },
             body: {
                 value: data?.value,
                 bundle_selection: data?.bundleSelection,
