@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { BaseEstimateRequest } from './BaseEstimateRequest.js'
+import type { TransactionDocumentProcessedAt } from './TransactionDocumentProcessedAt.js'
 import type { TransactionEstimateRequestData } from './TransactionEstimateRequestData.js'
 import type { UnstructuredKeyValue } from './UnstructuredKeyValue.js'
 
@@ -21,5 +22,15 @@ export type TransactionDocumentEstimateRequest = {
     unstructuredData: {
         keyValue?: UnstructuredKeyValue
     }
+    /**
+     * When true, the emission estimate refers to an actual transaction document for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+     *
+     * This property exists to distinguish generic estimates, quotes or forecasts from actual transaction documents that have occured.
+     *
+     * You can mark an estimate as a transaction document at any time.
+     *
+     */
+    isTransactionDocument?: boolean
+    transactionDocumentProcessedAt?: TransactionDocumentProcessedAt
 } & BaseEstimateRequest &
     TransactionEstimateRequestData

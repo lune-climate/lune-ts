@@ -351,6 +351,7 @@ export { TransactionDocumentEmissionEstimateLineItem } from './models/Transactio
 export type { TransactionDocumentEmissionEstimateLineItems } from './models/TransactionDocumentEmissionEstimateLineItems.js'
 export type { TransactionDocumentEstimateRequest } from './models/TransactionDocumentEstimateRequest.js'
 export type { TransactionDocumentEstimateTransactionLineItem } from './models/TransactionDocumentEstimateTransactionLineItem.js'
+export type { TransactionDocumentProcessedAt } from './models/TransactionDocumentProcessedAt.js'
 export type { TransactionEmissionEstimate } from './models/TransactionEmissionEstimate.js'
 export type { TransactionEmissionEstimateBaseFields } from './models/TransactionEmissionEstimateBaseFields.js'
 export type { TransactionEstimateRequest } from './models/TransactionEstimateRequest.js'

@@ -47,6 +47,7 @@ import type { ShippingMethod } from '../models/ShippingMethod.js'
 import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
 import type { TransactionDocumentEmissionEstimate } from '../models/TransactionDocumentEmissionEstimate.js'
+import type { TransactionDocumentProcessedAt } from '../models/TransactionDocumentProcessedAt.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 import type { TransactionEstimateRequestData } from '../models/TransactionEstimateRequestData.js'
@@ -1069,6 +1070,16 @@ export abstract class EmissionEstimatesService {
                 unstructuredData: {
                     keyValue?: UnstructuredKeyValue
                 }
+                /**
+                 * When true, the emission estimate refers to an actual transaction document for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                 *
+                 * This property exists to distinguish generic estimates, quotes or forecasts from actual transaction documents that have occured.
+                 *
+                 * You can mark an estimate as a transaction document at any time.
+                 *
+                 */
+                isTransactionDocument?: boolean
+                transactionDocumentProcessedAt?: TransactionDocumentProcessedAt
             } & BaseEstimateRequest &
                 TransactionEstimateRequestData
         },

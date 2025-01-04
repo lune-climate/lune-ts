@@ -13,8 +13,19 @@
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
 import type { TransactionDocumentEmissionEstimateLineItems } from './TransactionDocumentEmissionEstimateLineItems.js'
 import type { TransactionDocumentEstimateRequest } from './TransactionDocumentEstimateRequest.js'
+import type { TransactionDocumentProcessedAt } from './TransactionDocumentProcessedAt.js'
 
 export type TransactionDocumentEmissionEstimate = EmissionEstimateResponse & {
     request: TransactionDocumentEstimateRequest
     lineItems: TransactionDocumentEmissionEstimateLineItems
+    /**
+     * When true, the emission estimate refers to an actual transaction document for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+     *
+     * This property exists to distinguish generic estimates, quotes or forecasts from actual transaction documents that have occured.
+     *
+     * You can mark an estimate as a transaction document at any time.
+     *
+     */
+    isTransactionDocument: boolean
+    transactionDocumentProcessedAt: TransactionDocumentProcessedAt
 }
