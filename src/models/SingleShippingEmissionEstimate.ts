@@ -58,5 +58,6 @@ export namespace SingleShippingEmissionEstimate {
         ECOTRANSIT_CSV = 'ecotransit_csv',
         WIDGET = 'widget',
         ECOTRANSIT = 'ecotransit',
+        BLUE_YONDER = 'blue_yonder',
     }
 }
