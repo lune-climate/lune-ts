@@ -250,6 +250,7 @@ export { WebhookEvent } from './models/WebhookEvent.js'
 export type { WebhookFullSecret } from './models/WebhookFullSecret.js'
 export type { WebhookRequest } from './models/WebhookRequest.js'
 export type { WTWBreakdown } from './models/WTWBreakdown.js'
+export type { WtwBreakdownTimeseries } from './models/WtwBreakdownTimeseries.js'
 
 export { AccountsService } from './services/AccountsService.js'
 export { AnalyticsService } from './services/AnalyticsService.js'

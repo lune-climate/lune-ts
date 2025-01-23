@@ -17,6 +17,7 @@
  * * `mapbox` – we used the Mapbox Matrix API
  * * `user_input` – the distance was provided to us directly
  * * `osrm` – we used Open Source Routing Machine, the OpenStreetMap Data Routing Engine
+ * * `google_maps` - we used the Google Distance Matrix API
  * * `vessel_tracking` – we used the AIS data to track the vessel's route
  * * `carrier_schedule_stops` – we used the sea distance algorithm to calculate the distance
  * between the stops reported in the carrier schedule
@@ -29,6 +30,7 @@ export enum DistanceCalculationMethod {
     MAPBOX = 'mapbox',
     USER_INPUT = 'user_input',
     OSRM = 'osrm',
+    GOOGLE_MAPS = 'google_maps',
     VESSEL_TRACKING = 'vessel_tracking',
     CARRIER_SCHEDULE_STOPS = 'carrier_schedule_stops',
 }

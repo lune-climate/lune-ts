@@ -13,9 +13,11 @@
 import type { AccountType } from './AccountType.js'
 import type { ShippingCarbonIntensityTimeseries } from './ShippingCarbonIntensityTimeseries.js'
 import type { ShippingEmissionTimeseries } from './ShippingEmissionTimeseries.js'
+import type { WtwBreakdownTimeseries } from './WtwBreakdownTimeseries.js'
 
 export type AnalyticsShippingEstimates = {
     emissionTimeseries: ShippingEmissionTimeseries
+    wtwBreakdownTimeseries: WtwBreakdownTimeseries
     carbonIntensityTimeseries: ShippingCarbonIntensityTimeseries
     /**
      * Total carbon intensity for the returned timeframe.
