@@ -12,10 +12,10 @@
 
 import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { Distance } from './Distance.js'
-import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
 import type { NullEnum } from './NullEnum.js'
 import type { ShippedAt } from './ShippedAt.js'
+import type { ShippingEmissionEstimateResponse } from './ShippingEmissionEstimateResponse.js'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.js'
 import type { Url } from './Url.js'
 
@@ -60,7 +60,7 @@ export type MultiLegShippingEmissionEstimate = {
      * Identifies the source used to create the estimate.
      */
     source?: MultiLegShippingEmissionEstimate.source
-} & EmissionEstimateResponse
+} & ShippingEmissionEstimateResponse
 
 export namespace MultiLegShippingEmissionEstimate {
     /**

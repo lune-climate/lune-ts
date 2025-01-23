@@ -10,10 +10,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EmissionEstimate } from './EmissionEstimate.js'
 import type { EmissionEstimateResponseQuoteAndId } from './EmissionEstimateResponseQuoteAndId.js'
+import type { EmissionEstimateWithWTWBreakdown } from './EmissionEstimateWithWTWBreakdown.js'
 
 /**
- * An emission estimate result including a quote
+ * A logistics emission estimate result including a quote
  */
-export type EmissionEstimateResponse = EmissionEstimate & EmissionEstimateResponseQuoteAndId
+export type ShippingEmissionEstimateResponse = EmissionEstimateWithWTWBreakdown &
+    EmissionEstimateResponseQuoteAndId

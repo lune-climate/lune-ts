@@ -15,14 +15,14 @@ import type { CalculatedRoute } from './CalculatedRoute.js'
 import type { Distance } from './Distance.js'
 import type { DistanceCalculationDetails } from './DistanceCalculationDetails.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
-import type { EmissionEstimate } from './EmissionEstimate.js'
+import type { EmissionEstimateWithWTWBreakdown } from './EmissionEstimateWithWTWBreakdown.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RoadMethodologyDetails } from './RoadMethodologyDetails.js'
 import type { VesselInferenceMethod } from './VesselInferenceMethod.js'
 
-export type BaseShippingLegEmissionEstimate = EmissionEstimate & {
+export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown & {
     /**
      * The method we used to infer a vessel from client provided input.
      *
