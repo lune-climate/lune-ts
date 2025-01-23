@@ -10,10 +10,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EmissionEstimate } from './EmissionEstimate.js'
-import type { EmissionEstimateResponseQuoteAndId } from './EmissionEstimateResponseQuoteAndId.js'
+import type { NullEnum } from './NullEnum.js'
+import type { WTWBreakdown } from './WTWBreakdown.js'
 
-/**
- * An emission estimate result including a quote
- */
-export type EmissionEstimateResponse = EmissionEstimate & EmissionEstimateResponseQuoteAndId
+export type EstimateMassWTWDetails = {
+    /**
+     * This property is `null` for any estimate created before 30/01/2025
+     */
+    wtwDetails: WTWBreakdown | NullEnum
+}

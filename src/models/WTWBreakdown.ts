@@ -10,10 +10,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EmissionEstimate } from './EmissionEstimate.js'
-import type { EmissionEstimateResponseQuoteAndId } from './EmissionEstimateResponseQuoteAndId.js'
+import type { EstimateMass } from './EstimateMass.js'
 
-/**
- * An emission estimate result including a quote
- */
-export type EmissionEstimateResponse = EmissionEstimate & EmissionEstimateResponseQuoteAndId
+export type WTWBreakdown = {
+    wtt: EstimateMass
+    ttw: EstimateMass
+    unknown: EstimateMass
+}

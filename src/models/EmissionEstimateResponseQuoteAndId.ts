@@ -10,10 +10,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EmissionEstimate } from './EmissionEstimate.js'
-import type { EmissionEstimateResponseQuoteAndId } from './EmissionEstimateResponseQuoteAndId.js'
+import type { EstimateQuote } from './EstimateQuote.js'
 
-/**
- * An emission estimate result including a quote
- */
-export type EmissionEstimateResponse = EmissionEstimate & EmissionEstimateResponseQuoteAndId
+export type EmissionEstimateResponseQuoteAndId = {
+    /**
+     * The emission calculation unique identifier
+     */
+    id: string
+    quote: EstimateQuote
+}
