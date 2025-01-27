@@ -10,6 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { GasWTWBreakdown } from './GasWTWBreakdown.js'
+
 export type GasEmissions = {
     /**
      * Amount of CO₂ equivalent gas. All gas emissions are accounted here.
@@ -31,4 +33,5 @@ export type GasEmissions = {
      * Amount of other greenhouse gases.
      */
     other?: string
+    wtwBreakdown?: GasWTWBreakdown
 }
