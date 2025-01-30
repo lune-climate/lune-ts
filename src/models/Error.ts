@@ -76,5 +76,6 @@ export namespace Error {
         TRANSACTION_DOCUMENT_INFERENCE_FAILURE = 'transaction_document_inference_failure',
         TRANSACTION_DOCUMENT_CREATION_FAILURE = 'transaction_document_creation_failure',
         INVALID_SELECTED_ACCOUNT_ID = 'invalid_selected_account_id',
+        ACCOUNT_IDEMPOTENCY_ALREADY_EXISTS = 'account_idempotency_already_exists',
     }
 }
