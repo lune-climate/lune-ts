@@ -12,6 +12,7 @@
 import type { Account } from '../models/Account.js'
 import type { AccountCurrencyCode } from '../models/AccountCurrencyCode.js'
 import type { AccountExternalPagesVisibility } from '../models/AccountExternalPagesVisibility.js'
+import type { AccountIdempotencyKey } from '../models/AccountIdempotencyKey.js'
 import type { AccountPair } from '../models/AccountPair.js'
 import type { PaginatedAccounts } from '../models/PaginatedAccounts.js'
 import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
@@ -276,6 +277,7 @@ export abstract class AccountsService {
              */
             handle?: string
             externalPagesVisibility?: AccountExternalPagesVisibility
+            idempotencyKey?: AccountIdempotencyKey
         },
         options?: {
             /**
@@ -299,6 +301,7 @@ export abstract class AccountsService {
                 bundle_portfolio_id: data?.bundlePortfolioId,
                 handle: data?.handle,
                 external_pages_visibility: data?.externalPagesVisibility,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {

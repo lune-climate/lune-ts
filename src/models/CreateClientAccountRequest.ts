@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { AccountCurrencyCode } from './AccountCurrencyCode.js'
+import type { AccountIdempotencyKey } from './AccountIdempotencyKey.js'
 
 export type CreateClientAccountRequest = {
     /**
@@ -34,6 +35,7 @@ export type CreateClientAccountRequest = {
      *
      */
     externalPagesVisibility?: CreateClientAccountRequest.external_pages_visibility
+    idempotencyKey?: AccountIdempotencyKey
 }
 
 export namespace CreateClientAccountRequest {

@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { AccountExternalPagesVisibility } from './AccountExternalPagesVisibility.js'
+import type { AccountIdempotencyKey } from './AccountIdempotencyKey.js'
 
 /**
  * Providing null on a property will result in clearing the existing value (if present).
@@ -37,4 +38,5 @@ export type PartialUpdateAccountRequest = {
      */
     handle?: string
     externalPagesVisibility?: AccountExternalPagesVisibility
+    idempotencyKey?: AccountIdempotencyKey
 }
