@@ -11,6 +11,8 @@
 /* eslint-disable */
 
 import type { AccountBase } from './AccountBase.js'
+import type { AccountIdempotencyKey } from './AccountIdempotencyKey.js'
+import type { NullEnum } from './NullEnum.js'
 
 /**
  * Client accounts are designed for clients working with multi-tenancy applications.
@@ -24,6 +26,7 @@ import type { AccountBase } from './AccountBase.js'
  */
 export type ClientAccount = AccountBase & {
     scope: ClientAccount.scope
+    idempotencyKey?: AccountIdempotencyKey | NullEnum
 }
 
 export namespace ClientAccount {

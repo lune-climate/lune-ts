@@ -11,8 +11,10 @@
 /* eslint-disable */
 import type { AccountCurrencyCode } from '../models/AccountCurrencyCode.js'
 import type { AccountExternalPagesVisibility } from '../models/AccountExternalPagesVisibility.js'
+import type { AccountIdempotencyKey } from '../models/AccountIdempotencyKey.js'
 import type { ClientAccount } from '../models/ClientAccount.js'
 import type { PaginatedClientAccounts } from '../models/PaginatedClientAccounts.js'
+import type { UpdateAccountRequest } from '../models/UpdateAccountRequest.js'
 import type { UploadLogoResponse } from '../models/UploadLogoResponse.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -80,6 +82,7 @@ export abstract class ClientAccountsService {
              *
              */
             externalPagesVisibility?: 'public' | 'hidden'
+            idempotencyKey?: AccountIdempotencyKey
         },
         options?: {
             /**
@@ -100,12 +103,14 @@ export abstract class ClientAccountsService {
                 beneficiary: data?.beneficiary,
                 handle: data?.handle,
                 external_pages_visibility: data?.externalPagesVisibility,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
@@ -177,30 +182,9 @@ export abstract class ClientAccountsService {
     public updateClientAccount(
         id: string,
         data: {
-            /**
-             * The account name.
-             */
-            name: string
-            /**
-             * The account beneficiary. Leading and trailing spaces are removed.
-             */
-            beneficiary?: string
-            /**
-             * The bundle portfolio unique identifier.
-             */
-            bundlePortfolioId?: string
-            /**
-             * `handle` is a client defined URL-friendly string that identifies the account.
-             *
-             * The `handle` is unique per organisation and account type.
-             *
-             */
-            handle?: string
-            /**
-             * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
-             *
-             */
-            externalPagesVisibility?: 'public' | 'hidden'
+            updateClientAccountRequest: UpdateAccountRequest & {
+                idempotencyKey?: AccountIdempotencyKey
+            }
         },
         options?: {
             /**
@@ -218,19 +202,14 @@ export abstract class ClientAccountsService {
             headers: {
                 Accept: 'application/json',
             },
-            body: {
-                name: data?.name,
-                beneficiary: data?.beneficiary,
-                bundle_portfolio_id: data?.bundlePortfolioId,
-                handle: data?.handle,
-                external_pages_visibility: data?.externalPagesVisibility,
-            },
+            body: data?.updateClientAccountRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
                 404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
@@ -268,6 +247,7 @@ export abstract class ClientAccountsService {
              */
             handle?: string
             externalPagesVisibility?: AccountExternalPagesVisibility
+            idempotencyKey?: AccountIdempotencyKey
         },
         options?: {
             /**
@@ -291,6 +271,7 @@ export abstract class ClientAccountsService {
                 bundle_portfolio_id: data?.bundlePortfolioId,
                 handle: data?.handle,
                 external_pages_visibility: data?.externalPagesVisibility,
+                idempotency_key: data?.idempotencyKey,
             },
             mediaType: 'application/json',
             errors: {
