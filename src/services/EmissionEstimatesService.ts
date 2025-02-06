@@ -24,6 +24,7 @@ import type { ElectricityConsumption } from '../models/ElectricityConsumption.js
 import type { ElectricityEmissionEstimate } from '../models/ElectricityEmissionEstimate.js'
 import type { EmissionFactorActivity } from '../models/EmissionFactorActivity.js'
 import type { EmissionFactorEstimate } from '../models/EmissionFactorEstimate.js'
+import type { EstimateClientAccountRequest } from '../models/EstimateClientAccountRequest.js'
 import type { EstimateIdempotencyKey } from '../models/EstimateIdempotencyKey.js'
 import type { EstimateMassUnit } from '../models/EstimateMassUnit.js'
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
@@ -794,6 +795,7 @@ export abstract class EmissionEstimatesService {
             shippedAt?: ShippedAt
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
+            clientAccount?: EstimateClientAccountRequest
             /**
              * By default estimate mass units are returned in tonnes.
              *
@@ -828,6 +830,7 @@ export abstract class EmissionEstimatesService {
                 shipped_at: data?.shippedAt,
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
+                client_account: data?.clientAccount,
             },
             mediaType: 'application/json',
             errors: {
@@ -930,6 +933,7 @@ export abstract class EmissionEstimatesService {
             shippedAt?: ShippedAt
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
+            clientAccount?: EstimateClientAccountRequest
             /**
              * By default estimate mass units are returned in tonnes.
              *
@@ -967,6 +971,7 @@ export abstract class EmissionEstimatesService {
                 shipped_at: data?.shippedAt,
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
+                client_account: data?.clientAccount,
             },
             mediaType: 'application/json',
             errors: {

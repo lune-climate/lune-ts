@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
+import type { EstimateClientAccountRequest } from './EstimateClientAccountRequest.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { Metadata } from './Metadata.js'
@@ -57,4 +58,5 @@ export type MultiLegShippingEstimateRequest = {
     shippedAt?: ShippedAt
     metadata?: Metadata
     idempotencyKey?: EstimateIdempotencyKey
+    clientAccount?: EstimateClientAccountRequest
 }
