@@ -16,6 +16,7 @@ import type { Metadata } from './Metadata.js'
 import type { PassengerFlightEstimateRequest } from './PassengerFlightEstimateRequest.js'
 import type { PassengerRailEstimateRequest } from './PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from './PassengerRoadEstimateRequest.js'
+import type { PassengerTransportationTravelledAt } from './PassengerTransportationTravelledAt.js'
 import type { QuantityTrunc } from './QuantityTrunc.js'
 
 /**
@@ -41,4 +42,14 @@ export type PassengerTransportationEstimateRequest = {
     name?: string
     metadata?: Metadata
     idempotencyKey?: EstimateIdempotencyKey
+    /**
+     * When true, the emission estimate refers to an actual passenger transportation journey and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+     *
+     * This property exists to distinguish generic estimates, quotes or forecasts from actual passenger transportation that has occurred.
+     *
+     * You can mark an estimate as a passenger transportation at any time.
+     *
+     */
+    isPassengerTransportation?: boolean
+    passengerTransportationTravelledAt?: PassengerTransportationTravelledAt
 }

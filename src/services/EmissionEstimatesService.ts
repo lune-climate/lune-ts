@@ -39,6 +39,7 @@ import type { PassengerFlightEstimateRequest } from '../models/PassengerFlightEs
 import type { PassengerRailEstimateRequest } from '../models/PassengerRailEstimateRequest.js'
 import type { PassengerRoadEstimateRequest } from '../models/PassengerRoadEstimateRequest.js'
 import type { PassengerTransportationEmissionEstimate } from '../models/PassengerTransportationEmissionEstimate.js'
+import type { PassengerTransportationTravelledAt } from '../models/PassengerTransportationTravelledAt.js'
 import type { QuantityTrunc } from '../models/QuantityTrunc.js'
 import type { RegionFallback } from '../models/RegionFallback.js'
 import type { Shipment } from '../models/Shipment.js'
@@ -324,6 +325,16 @@ export abstract class EmissionEstimatesService {
             name?: string
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
+            /**
+             * When true, the emission estimate refers to an actual passenger transportation journey and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish generic estimates, quotes or forecasts from actual passenger transportation that has occurred.
+             *
+             * You can mark an estimate as a passenger transportation at any time.
+             *
+             */
+            isPassengerTransportation?: boolean
+            passengerTransportationTravelledAt?: PassengerTransportationTravelledAt
         },
         options?: {
             /**
@@ -346,6 +357,8 @@ export abstract class EmissionEstimatesService {
                 name: data?.name,
                 metadata: data?.metadata,
                 idempotency_key: data?.idempotencyKey,
+                is_passenger_transportation: data?.isPassengerTransportation,
+                passenger_transportation_travelled_at: data?.passengerTransportationTravelledAt,
             },
             mediaType: 'application/json',
             errors: {
