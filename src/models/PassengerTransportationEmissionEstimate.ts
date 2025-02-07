@@ -14,6 +14,7 @@ import type { EmissionEstimate } from './EmissionEstimate.js'
 import type { EstimateQuote } from './EstimateQuote.js'
 import type { PassengerTransportationEstimateRequest } from './PassengerTransportationEstimateRequest.js'
 import type { PassengerTransportationLegEmissionEstimate } from './PassengerTransportationLegEmissionEstimate.js'
+import type { PassengerTransportationTravelledAt } from './PassengerTransportationTravelledAt.js'
 
 /**
  * An emission estimate result for passenger transport involving multiple legs.
@@ -35,4 +36,12 @@ export type PassengerTransportationEmissionEstimate = EmissionEstimate & {
     legs: Array<PassengerTransportationLegEmissionEstimate>
     quote: EstimateQuote
     request: PassengerTransportationEstimateRequest
+    /**
+     * When true, the emission estimate refers to an actual passenger transportation journey and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+     *
+     * This property exists to distinguish generic estimates, quotes or forecasts from actual passenger transportation that has occurred.
+     *
+     */
+    isPassengerTransportation?: boolean
+    passengerTransportationTravelledAt?: PassengerTransportationTravelledAt
 }
