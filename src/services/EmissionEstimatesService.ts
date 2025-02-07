@@ -1383,6 +1383,65 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Update a transaction document emission estimate's annotations
+     * This method allows updating a selection of estimate annotations without going through
+     * a full estimate update (with all the necessary inputs).
+     *
+     * Only properties included in the input data are updated.
+     *
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns TransactionDocumentEmissionEstimate OK
+     */
+    public partialUpdateTransactionDocumentsEstimateAnnotations(
+        id: string,
+        data: {
+            /**
+             * When true, the emission estimate refers to an actual transaction document for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish generic estimates, quotes or forecasts from actual transaction documents that have occured.
+             *
+             * You can mark an estimate as transaction document at any time.
+             *
+             */
+            isTransactionDocument?: boolean
+            transactionDocumentProcessedAt?: TransactionDocumentProcessedAt
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<TransactionDocumentEmissionEstimate>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PATCH',
+            url: '/estimates/transaction-documents/{id}/annotations',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            body: {
+                is_transaction_document: data?.isTransactionDocument,
+                transaction_document_processed_at: data?.transactionDocumentProcessedAt,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                413: `The request is larger than 100kB.`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
      * Get a transaction emission estimate
      * @param id The estimate's unique identifier
      * @param options Additional operation options
