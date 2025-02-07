@@ -20,9 +20,11 @@ fix-linting:
 build:
 	npm run build
 
+# Extract the latest calendar version also via the changelog in our docs. This is not perfect but should serve quite well for our purposes.
+VERSION := $(shell curl -L -f -s https://docs.lune.co/changelog.md | head -n 1 | tail -c 11)
+
 api-schema:
-	# Extract the latest calendar version also via the changelog in our docs. This is not perfect but should serve quite well for our purposes.
-	$(eval VERSION :=$(shell curl -L -s https://docs.lune.co/changelog.md | head -n 1 | tail -c 11))
+	@test -n "$(VERSION)" || { echo "Failed to fetch API version from the docs."; exit 1; }
 	npx @lune-climate/openapi-typescript-codegen -i https://docs.lune.co/openapi.yml --apiVersion '$(VERSION)' --output src --exportCore false --exportServices true --exportSchemas false
 
 move-client:
