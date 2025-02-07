@@ -15,6 +15,7 @@ import type { CalculatedRoute } from './CalculatedRoute.js'
 import type { Distance } from './Distance.js'
 import type { DistanceCalculationDetails } from './DistanceCalculationDetails.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
+import type { ElectricMethodMethodologyDetails } from './ElectricMethodMethodologyDetails.js'
 import type { EmissionEstimateWithWTWBreakdown } from './EmissionEstimateWithWTWBreakdown.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
@@ -73,5 +74,9 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
      *
      */
     distanceCalculationDetails: DistanceCalculationDetails | NullEnum
-    methodologyDetails: MethodologyDetails | RoadMethodologyDetails | NullEnum
+    methodologyDetails:
+        | MethodologyDetails
+        | RoadMethodologyDetails
+        | ElectricMethodMethodologyDetails
+        | NullEnum
 }

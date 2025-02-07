@@ -10,17 +10,16 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export enum EmissionFactorSource {
-    EPA = 'epa',
-    EXIOBASE = 'exiobase',
-    ECOINVENT = 'ecoinvent',
-    BEIS = 'beis',
-    LUNE = 'lune',
-    GLEC = 'glec',
-    EMSA = 'emsa',
-    CBAM = 'cbam',
-    ADEME = 'ademe',
-    IDEMAT = 'idemat',
-    IATA = 'iata',
-    EMBER = 'ember',
+export type FlightNumberMethod = {
+    /**
+     * Flight number in either ICAO or IATA format.
+     *
+     * For generic airfreight emissions without flight number, use Simple Shipping Method.
+     *
+     */
+    flightNumber: string
+    /**
+     * Departure date of the flight. The date is in UTC timezone. Dates that are over 24 hours in the future are not allowed.
+     */
+    departureOn: string
 }

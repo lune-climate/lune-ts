@@ -10,16 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type AirShippingMethod = {
-    /**
-     * Flight number in either ICAO or IATA format.
-     *
-     * For generic airfreight emissions without flight number, use Simple Shipping Method.
-     *
-     */
-    flightNumber: string
-    /**
-     * Departure date of the flight. The date is in UTC timezone. Dates that are over 24 hours in the future are not allowed.
-     */
-    departureOn: string
-}
+import type { AircraftTypeMethod } from './AircraftTypeMethod.js'
+import type { FlightNumberMethod } from './FlightNumberMethod.js'
+
+export type AirShippingMethod = FlightNumberMethod | AircraftTypeMethod
