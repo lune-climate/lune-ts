@@ -10,39 +10,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
-import type { Diet } from './Diet.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { Merchant } from './Merchant.js'
-import type { Metadata } from './Metadata.js'
-import type { MonetaryAmount } from './MonetaryAmount.js'
-import type { QuantityTrunc } from './QuantityTrunc.js'
-import type { RegionFallback } from './RegionFallback.js'
+import type { TransactionEstimatePartialRequest } from './TransactionEstimatePartialRequest.js'
 import type { TransactionProcessedAt } from './TransactionProcessedAt.js'
 
 /**
  * Parameters for estimating emissions associated with purchasing goods or services.
  */
-export type TransactionEstimateRequest = {
-    /**
-     * A name to reference this calculation.
-     */
-    name?: string
-    /**
-     * Monetary value of the transaction. This should exclude shipping and taxes.
-     */
-    value: MonetaryAmount
-    /**
-     * Merchant from whom the goods or services the purchase was made
-     */
-    merchant: Merchant
-    /**
-     * Individual diet. Used to better estimate  food-related purchases.
-     */
-    diet?: Diet
-    bundleSelection?: BundleSelectionRequest
-    quantityTrunc?: QuantityTrunc
-    metadata?: Metadata
+export type TransactionEstimateRequest = TransactionEstimatePartialRequest & {
     idempotencyKey?: EstimateIdempotencyKey
     /**
      * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
@@ -54,5 +29,4 @@ export type TransactionEstimateRequest = {
      */
     isTransaction?: boolean
     transactionProcessedAt?: TransactionProcessedAt
-    regionFallback?: RegionFallback
 }
