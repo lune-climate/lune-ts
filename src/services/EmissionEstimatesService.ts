@@ -51,6 +51,7 @@ import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmi
 import type { TransactionDocumentEmissionEstimate } from '../models/TransactionDocumentEmissionEstimate.js'
 import type { TransactionDocumentProcessedAt } from '../models/TransactionDocumentProcessedAt.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
+import type { TransactionEstimatePartialRequest } from '../models/TransactionEstimatePartialRequest.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
 import type { TransactionEstimateRequestData } from '../models/TransactionEstimateRequestData.js'
 import type { TransactionProcessedAt } from '../models/TransactionProcessedAt.js'
@@ -1169,37 +1170,19 @@ export abstract class EmissionEstimatesService {
      */
     public createTransactionEstimate(
         data: {
-            /**
-             * Monetary value of the transaction. This should exclude shipping and taxes.
-             */
-            value: MonetaryAmount
-            /**
-             * Merchant from whom the goods or services the purchase was made
-             */
-            merchant: Merchant
-            /**
-             * A name to reference this calculation.
-             */
-            name?: string
-            /**
-             * Individual diet. Used to better estimate  food-related purchases.
-             */
-            diet?: Diet
-            bundleSelection?: BundleSelectionRequest
-            quantityTrunc?: QuantityTrunc
-            metadata?: Metadata
-            idempotencyKey?: EstimateIdempotencyKey
-            /**
-             * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
-             *
-             * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
-             *
-             * You can mark an estimate as transaction at any time.
-             *
-             */
-            isTransaction?: boolean
-            transactionProcessedAt?: TransactionProcessedAt
-            regionFallback?: RegionFallback
+            transactionEstimateRequest: TransactionEstimatePartialRequest & {
+                idempotencyKey?: EstimateIdempotencyKey
+                /**
+                 * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                 *
+                 * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
+                 *
+                 * You can mark an estimate as transaction at any time.
+                 *
+                 */
+                isTransaction?: boolean
+                transactionProcessedAt?: TransactionProcessedAt
+            }
         },
         options?: {
             /**
@@ -1214,19 +1197,7 @@ export abstract class EmissionEstimatesService {
             headers: {
                 Accept: 'application/json',
             },
-            body: {
-                name: data?.name,
-                value: data?.value,
-                merchant: data?.merchant,
-                diet: data?.diet,
-                bundle_selection: data?.bundleSelection,
-                quantity_trunc: data?.quantityTrunc,
-                metadata: data?.metadata,
-                idempotency_key: data?.idempotencyKey,
-                is_transaction: data?.isTransaction,
-                transaction_processed_at: data?.transactionProcessedAt,
-                region_fallback: data?.regionFallback,
-            },
+            body: data?.transactionEstimateRequest,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -1484,6 +1455,68 @@ export abstract class EmissionEstimatesService {
     public updateTransactionEstimate(
         id: string,
         data: {
+            transactionEstimateRequest: TransactionEstimatePartialRequest & {
+                idempotencyKey?: EstimateIdempotencyKey
+                /**
+                 * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
+                 *
+                 * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
+                 *
+                 * You can mark an estimate as transaction at any time.
+                 *
+                 */
+                isTransaction?: boolean
+                transactionProcessedAt?: TransactionProcessedAt
+            }
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<TransactionEmissionEstimate>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PUT',
+            url: '/estimates/transactions/{id}',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            body: data?.transactionEstimateRequest,
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                413: `The request is larger than 100kB.`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Create a multi-match transaction emission estimate
+     * Obtain multiple emission estimates for a single transaction by applying different
+     * emission factors in one request.
+     *
+     * The transaction estimate endpoint selects the emission factor with
+     * highest confidence. While this is typically ideal, sometimes you may prefer a
+     * different emission factor choice. The multi-match endpoint calculates estimates using up to five alternative emission factors, ordered by confidence score, giving you options to select from.
+     *
+     * Each estimate counts towards your plan's emission estimate allowance.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns any OK
+     */
+    public createMultiMatchTransactionEstimate(
+        data: {
             /**
              * Monetary value of the transaction. This should exclude shipping and taxes.
              */
@@ -1503,18 +1536,12 @@ export abstract class EmissionEstimatesService {
             bundleSelection?: BundleSelectionRequest
             quantityTrunc?: QuantityTrunc
             metadata?: Metadata
-            idempotencyKey?: EstimateIdempotencyKey
+            regionFallback?: RegionFallback
             /**
-             * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
-             *
-             * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
-             *
-             * You can mark an estimate as transaction at any time.
+             * The number of matches to return.
              *
              */
-            isTransaction?: boolean
-            transactionProcessedAt?: TransactionProcessedAt
-            regionFallback?: RegionFallback
+            limit: number
         },
         options?: {
             /**
@@ -1522,15 +1549,22 @@ export abstract class EmissionEstimatesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<TransactionEmissionEstimate>, ApiError>> {
+    ): Promise<
+        Result<
+            SuccessResponse<{
+                estimates?: Array<TransactionEmissionEstimate>
+            }>,
+            ApiError
+        >
+    > {
         return __request(this.client, this.config, options || {}, {
-            method: 'PUT',
-            url: '/estimates/transactions/{id}',
-            path: {
-                id: id,
-            },
+            method: 'POST',
+            url: '/estimates/transactions/multi-match',
             headers: {
                 Accept: 'application/json',
+            },
+            query: {
+                limit: data?.limit,
             },
             body: {
                 name: data?.name,
@@ -1540,16 +1574,12 @@ export abstract class EmissionEstimatesService {
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
                 metadata: data?.metadata,
-                idempotency_key: data?.idempotencyKey,
-                is_transaction: data?.isTransaction,
-                transaction_processed_at: data?.transactionProcessedAt,
                 region_fallback: data?.regionFallback,
             },
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
-                404: `The specified resource was not found`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
