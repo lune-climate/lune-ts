@@ -27,4 +27,10 @@ export type MerchantViaCategory = {
      *
      */
     categoryCode: string
+    /**
+     * The search term to query.
+     * Search is resolved using a combination of semantic and keyword searching.
+     *
+     */
+    searchTerm?: string
 }

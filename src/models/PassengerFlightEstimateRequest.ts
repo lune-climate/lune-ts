@@ -13,6 +13,7 @@
 import type { AirportSourceDestination } from './AirportSourceDestination.js'
 import type { CabinClass } from './CabinClass.js'
 import type { Distance } from './Distance.js'
+import type { SourceDestination } from './SourceDestination.js'
 
 /**
  * Parameters for estimating emissions for commercial plane travel
@@ -21,6 +22,6 @@ export type PassengerFlightEstimateRequest = {
     /**
      * Either the flight distance or the start/destination airport code (ICAO or IATA).
      */
-    route: Distance | AirportSourceDestination
+    route: Distance | AirportSourceDestination | SourceDestination
     cabinClass: CabinClass
 }
