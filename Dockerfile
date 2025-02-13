@@ -1,4 +1,4 @@
-FROM node:16.15.1
+FROM node:22.13.1
 
 # Why is this needed?
 #
