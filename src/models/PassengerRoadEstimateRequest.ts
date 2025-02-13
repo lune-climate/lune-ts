@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AirportSourceDestination } from './AirportSourceDestination.js'
 import type { Distance } from './Distance.js'
 import type { SourceDestination } from './SourceDestination.js'
 
@@ -20,7 +21,7 @@ export type PassengerRoadEstimateRequest = {
     /**
      * Either the flight distance or the start/destination address or source and destination
      */
-    route: Distance | SourceDestination
+    route: Distance | SourceDestination | AirportSourceDestination
     /**
      * * `car_mini`: smallest category of car sometimes referred to as a city car. Examples include`: Citroën C1, Fiat/Alfa Romeo 500 and Panda, Peugeot 107, Volkswagen up!, Renault TWINGO, Toyota AYGO, smart fortwo and Hyundai i 10.
      * * `car_supermini`: car that is larger than a city car, but smaller than a small family car. Examples include`: Ford Fiesta, Renault CLIO, Volkswagen Polo, Citroën C2 and C3, Opel Corsa, Peugeot 208, and Toyota Yaris.

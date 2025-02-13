@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AirportSourceDestination } from './AirportSourceDestination.js'
 import type { Distance } from './Distance.js'
 import type { SourceDestination } from './SourceDestination.js'
 
@@ -20,7 +21,7 @@ export type PassengerRailEstimateRequest = {
     /**
      * Either the flight distance or the start/destination address or source and destination
      */
-    route: Distance | SourceDestination
+    route: Distance | SourceDestination | AirportSourceDestination
     railType: PassengerRailEstimateRequest.rail_type
 }
 
