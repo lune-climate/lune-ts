@@ -21,6 +21,7 @@ import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmis
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RoadMethodologyDetails } from './RoadMethodologyDetails.js'
+import type { RouteInferenceDetails } from './RouteInferenceDetails.js'
 import type { VesselInferenceMethod } from './VesselInferenceMethod.js'
 
 export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown & {
@@ -78,5 +79,6 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
         | MethodologyDetails
         | RoadMethodologyDetails
         | ElectricMethodMethodologyDetails
+        | RouteInferenceDetails
         | NullEnum
 }
