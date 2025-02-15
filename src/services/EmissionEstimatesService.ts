@@ -817,6 +817,10 @@ export abstract class EmissionEstimatesService {
              *
              */
             estimateMassUnit?: EstimateMassUnit
+            /**
+             * Whether to apply route inference to the estimate.
+             */
+            applyRouteInference?: boolean
         },
         options?: {
             /**
@@ -833,6 +837,7 @@ export abstract class EmissionEstimatesService {
             },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
+                apply_route_inference: data?.applyRouteInference,
             },
             body: {
                 shipment: data?.shipment,
@@ -955,6 +960,10 @@ export abstract class EmissionEstimatesService {
              *
              */
             estimateMassUnit?: EstimateMassUnit
+            /**
+             * Whether to apply route inference to the estimate.
+             */
+            applyRouteInference?: boolean
         },
         options?: {
             /**
@@ -974,6 +983,7 @@ export abstract class EmissionEstimatesService {
             },
             query: {
                 estimate_mass_unit: data?.estimateMassUnit,
+                apply_route_inference: data?.applyRouteInference,
             },
             body: {
                 shipment: data?.shipment,
