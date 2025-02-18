@@ -30,7 +30,7 @@ export type GasEmissions = {
      */
     nitrousOxide?: string
     /**
-     * Amount of other greenhouse gases.
+     * Amount of CO₂ equivalent gas contributed by other greenhouse gases.
      */
     other?: string
     wtwBreakdown?: GasWTWBreakdown
