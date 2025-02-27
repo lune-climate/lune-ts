@@ -11,14 +11,14 @@
 /* eslint-disable */
 
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
-import type { EstimateMassWithWTWBreakdown } from './EstimateMassWithWTWBreakdown.js'
+import type { EstimateMassWithBreakdowns } from './EstimateMassWithBreakdowns.js'
 import type { Metadata } from './Metadata.js'
 
 /**
  * A logistics emission estimate result. The value returned is in CO2e – it accounts for both CO2 and non-CO2 emissions.
  */
 export type EmissionEstimateWithWTWBreakdown = {
-    mass: EstimateMassWithWTWBreakdown
+    mass: EstimateMassWithBreakdowns
     metadata?: Metadata
     idempotencyKey?: EstimateIdempotencyKey
 }

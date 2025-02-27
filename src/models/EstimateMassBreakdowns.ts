@@ -10,7 +10,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EstimateMass } from './EstimateMass.js'
-import type { EstimateMassWTWDetails } from './EstimateMassWTWDetails.js'
+import type { NullEnum } from './NullEnum.js'
+import type { PollutantBreakdown } from './PollutantBreakdown.js'
+import type { WTWBreakdown } from './WTWBreakdown.js'
 
-export type EstimateMassWithWTWBreakdown = EstimateMass & EstimateMassWTWDetails
+export type EstimateMassBreakdowns = {
+    /**
+     * This property is `null` for any estimate created before 30/01/2025
+     */
+    wtwDetails: WTWBreakdown | NullEnum
+    pollutants: NullEnum | PollutantBreakdown
+}
