@@ -1111,6 +1111,15 @@ export abstract class EmissionEstimatesService {
                 transactionDocumentProcessedAt?: TransactionDocumentProcessedAt
             } & BaseEstimateRequest &
                 TransactionEstimateRequestData
+            /**
+             * Maximum allowed relative difference between sum of line items and total amount.
+             *
+             * A value of 0 requires exact match, while 0.05 allows up to 5% difference.
+             *
+             * Defaults to 0.1.
+             *
+             */
+            relativeAmountToleranceThreshold?: number
         },
         options?: {
             /**
@@ -1124,6 +1133,9 @@ export abstract class EmissionEstimatesService {
             url: '/estimates/transaction-documents',
             headers: {
                 Accept: 'application/json',
+            },
+            query: {
+                relative_amount_tolerance_threshold: data?.relativeAmountToleranceThreshold,
             },
             body: data?.transactionDocumentEstimateRequest,
             mediaType: 'application/json',
