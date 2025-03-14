@@ -70,6 +70,10 @@ export type PublicSustainabilityPage = {
      */
     logo: string | null
     /**
+     * The organisation logo
+     */
+    organisationLogo: string | null
+    /**
      * The name of the account for which the sustainability page is generated.
      */
     accountName: string
