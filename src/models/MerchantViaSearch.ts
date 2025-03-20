@@ -10,7 +10,22 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export type MerchantViaSearch =
+export type MerchantViaSearch = {
+    /**
+     * The name of the merchant.
+     */
+    name?: string
+    /**
+     * The three-letter code of the merchant's country.
+     */
+    countryCode: string
+    /**
+     * The search term to query.
+     * Search is resolved using a combination of semantic and keyword searching.
+     *
+     */
+    searchTerm: string
+} & (
     | {
           /**
            * A category the transaction belongs to.
@@ -26,19 +41,4 @@ export type MerchantViaSearch =
            */
           categoryHierarchy?: Array<string>
       }
-    | {
-          /**
-           * The name of the merchant.
-           */
-          name?: string
-          /**
-           * The three-letter code of the merchant's country.
-           */
-          countryCode: string
-          /**
-           * The search term to query.
-           * Search is resolved using a combination of semantic and keyword searching.
-           *
-           */
-          searchTerm: string
-      }
+)
