@@ -11,13 +11,14 @@
 /* eslint-disable */
 
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
+import type { NullEnum } from './NullEnum.js'
+import type { TransactionDocumentEmissionEstimateFallback } from './TransactionDocumentEmissionEstimateFallback.js'
 import type { TransactionDocumentEmissionEstimateLineItems } from './TransactionDocumentEmissionEstimateLineItems.js'
 import type { TransactionDocumentEstimateRequest } from './TransactionDocumentEstimateRequest.js'
 import type { TransactionDocumentProcessedAt } from './TransactionDocumentProcessedAt.js'
 
 export type TransactionDocumentEmissionEstimate = EmissionEstimateResponse & {
     request: TransactionDocumentEstimateRequest
-    lineItems: TransactionDocumentEmissionEstimateLineItems
     /**
      * When true, the emission estimate refers to an actual transaction document for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
      *
@@ -28,4 +29,13 @@ export type TransactionDocumentEmissionEstimate = EmissionEstimateResponse & {
      */
     isTransactionDocument: boolean
     transactionDocumentProcessedAt: TransactionDocumentProcessedAt
-}
+} & (
+        | {
+              lineItems: TransactionDocumentEmissionEstimateLineItems
+              fallback: NullEnum
+          }
+        | {
+              lineItems: NullEnum
+              fallback: TransactionDocumentEmissionEstimateFallback
+          }
+    )
