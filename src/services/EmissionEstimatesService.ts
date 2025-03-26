@@ -49,6 +49,7 @@ import type { ShippingMethod } from '../models/ShippingMethod.js'
 import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
 import type { TransactionDocumentEmissionEstimate } from '../models/TransactionDocumentEmissionEstimate.js'
+import type { TransactionDocumentEstimateRequest } from '../models/TransactionDocumentEstimateRequest.js'
 import type { TransactionDocumentProcessedAt } from '../models/TransactionDocumentProcessedAt.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimatePartialRequest } from '../models/TransactionEstimatePartialRequest.js'
@@ -1138,6 +1139,63 @@ export abstract class EmissionEstimatesService {
                 relative_amount_tolerance_threshold: data?.relativeAmountToleranceThreshold,
             },
             body: data?.transactionDocumentEstimateRequest,
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                422: `The input is valid but could not be processed correctly to perform the operation.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Asynchronously create emission estimate(s) via receipt or invoice data.
+     * Requests are processed asynchronously and responses are sent to a configured
+     * webhook.
+     *
+     * We recommend providing a correlation_id value to reconcile responses/requests.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns void
+     */
+    public createTransactionDocumentEstimateAsync(
+        data: {
+            transactionDocumentEstimateRequestAsync: TransactionDocumentEstimateRequest & {
+                /**
+                 * ID to reconcile requests and responses on the client side. This value is returned to clients in webhook events.
+                 *
+                 */
+                correlationId?: string
+            }
+            /**
+             * Maximum allowed relative difference between sum of line items and total amount.
+             *
+             * A value of 0 requires exact match, while 0.05 allows up to 5% difference.
+             *
+             * Defaults to 0.1.
+             *
+             */
+            relativeAmountToleranceThreshold?: number
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<void>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/estimates/transaction-documents/async',
+            query: {
+                relative_amount_tolerance_threshold: data?.relativeAmountToleranceThreshold,
+            },
+            body: data?.transactionDocumentEstimateRequestAsync,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
