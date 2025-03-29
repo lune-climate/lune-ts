@@ -10,4 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+/**
+ * The property is set to `null`.
+ */
 export type NullEnum = null | null
