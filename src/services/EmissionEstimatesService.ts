@@ -1250,18 +1250,8 @@ export abstract class EmissionEstimatesService {
      */
     public createTransactionEstimate(
         data: {
-            transactionEstimateRequest: TransactionEstimatePartialRequest & {
-                idempotencyKey?: EstimateIdempotencyKey
-                /**
-                 * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                 *
-                 * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
-                 *
-                 * You can mark an estimate as transaction at any time.
-                 *
-                 */
-                isTransaction?: boolean
-                transactionProcessedAt?: TransactionProcessedAt
+            requestBody: TransactionEstimateRequest & {
+                clientAccount?: EstimateClientAccountRequest
             }
         },
         options?: {
@@ -1277,7 +1267,7 @@ export abstract class EmissionEstimatesService {
             headers: {
                 Accept: 'application/json',
             },
-            body: data?.transactionEstimateRequest,
+            body: data?.requestBody,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
