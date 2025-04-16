@@ -75,5 +75,6 @@ export namespace MultiLegShippingEmissionEstimate {
         WIDGET = 'widget',
         ECOTRANSIT = 'ecotransit',
         BLUE_YONDER = 'blue_yonder',
+        RFQ = 'rfq',
     }
 }
