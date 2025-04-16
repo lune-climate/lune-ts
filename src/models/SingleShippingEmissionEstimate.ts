@@ -59,5 +59,6 @@ export namespace SingleShippingEmissionEstimate {
         WIDGET = 'widget',
         ECOTRANSIT = 'ecotransit',
         BLUE_YONDER = 'blue_yonder',
+        RFQ = 'rfq',
     }
 }
