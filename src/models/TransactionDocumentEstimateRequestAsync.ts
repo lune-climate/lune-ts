@@ -10,7 +10,12 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * The property is set to `null`.
- */
-export type NullEnum = null | null
+import type { TransactionDocumentEstimateRequest } from './TransactionDocumentEstimateRequest.js'
+
+export type TransactionDocumentEstimateRequestAsync = TransactionDocumentEstimateRequest & {
+    /**
+     * ID to reconcile requests and responses on the client side. This value is returned to clients in webhook events.
+     *
+     */
+    correlationId?: string
+}

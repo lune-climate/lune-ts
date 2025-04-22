@@ -11,7 +11,6 @@
 /* eslint-disable */
 import type { AirportSourceDestination } from '../models/AirportSourceDestination.js'
 import type { Area } from '../models/Area.js'
-import type { BaseEstimateRequest } from '../models/BaseEstimateRequest.js'
 import type { BatchTransactionEmissionEstimate } from '../models/BatchTransactionEmissionEstimate.js'
 import type { BundleSelectionRequest } from '../models/BundleSelectionRequest.js'
 import type { CabinClass } from '../models/CabinClass.js'
@@ -49,13 +48,12 @@ import type { ShippingMethod } from '../models/ShippingMethod.js'
 import type { ShippingRoute } from '../models/ShippingRoute.js'
 import type { SingleShippingEmissionEstimate } from '../models/SingleShippingEmissionEstimate.js'
 import type { TransactionDocumentEmissionEstimate } from '../models/TransactionDocumentEmissionEstimate.js'
+import type { TransactionDocumentEstimateRequest } from '../models/TransactionDocumentEstimateRequest.js'
 import type { TransactionDocumentProcessedAt } from '../models/TransactionDocumentProcessedAt.js'
 import type { TransactionEmissionEstimate } from '../models/TransactionEmissionEstimate.js'
 import type { TransactionEstimatePartialRequest } from '../models/TransactionEstimatePartialRequest.js'
 import type { TransactionEstimateRequest } from '../models/TransactionEstimateRequest.js'
-import type { TransactionEstimateRequestData } from '../models/TransactionEstimateRequestData.js'
 import type { TransactionProcessedAt } from '../models/TransactionProcessedAt.js'
-import type { UnstructuredKeyValue } from '../models/UnstructuredKeyValue.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -1092,25 +1090,9 @@ export abstract class EmissionEstimatesService {
      */
     public createTransactionDocumentEstimate(
         data: {
-            transactionDocumentEstimateRequest: {
-                /**
-                 * Data to be used to create the appropriate emission estimate.
-                 */
-                unstructuredData: {
-                    keyValue?: UnstructuredKeyValue
-                }
-                /**
-                 * When true, the emission estimate refers to an actual transaction document for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                 *
-                 * This property exists to distinguish generic estimates, quotes or forecasts from actual transaction documents that have occured.
-                 *
-                 * You can mark an estimate as a transaction document at any time.
-                 *
-                 */
-                isTransactionDocument?: boolean
-                transactionDocumentProcessedAt?: TransactionDocumentProcessedAt
-            } & BaseEstimateRequest &
-                TransactionEstimateRequestData
+            requestBody: TransactionDocumentEstimateRequest & {
+                clientAccount?: EstimateClientAccountRequest
+            }
             /**
              * Maximum allowed relative difference between sum of line items and total amount.
              *
@@ -1137,7 +1119,64 @@ export abstract class EmissionEstimatesService {
             query: {
                 relative_amount_tolerance_threshold: data?.relativeAmountToleranceThreshold,
             },
-            body: data?.transactionDocumentEstimateRequest,
+            body: data?.requestBody,
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                422: `The input is valid but could not be processed correctly to perform the operation.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Asynchronously create emission estimate(s) via receipt or invoice data.
+     * Requests are processed asynchronously and responses are sent to a configured
+     * webhook.
+     *
+     * We recommend providing a correlation_id value to reconcile responses/requests.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns void
+     */
+    public createTransactionDocumentEstimateAsync(
+        data: {
+            transactionDocumentEstimateRequestAsync: TransactionDocumentEstimateRequest & {
+                /**
+                 * ID to reconcile requests and responses on the client side. This value is returned to clients in webhook events.
+                 *
+                 */
+                correlationId?: string
+            }
+            /**
+             * Maximum allowed relative difference between sum of line items and total amount.
+             *
+             * A value of 0 requires exact match, while 0.05 allows up to 5% difference.
+             *
+             * Defaults to 0.1.
+             *
+             */
+            relativeAmountToleranceThreshold?: number
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<void>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/estimates/transaction-documents/async',
+            query: {
+                relative_amount_tolerance_threshold: data?.relativeAmountToleranceThreshold,
+            },
+            body: data?.transactionDocumentEstimateRequestAsync,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -1192,18 +1231,8 @@ export abstract class EmissionEstimatesService {
      */
     public createTransactionEstimate(
         data: {
-            transactionEstimateRequest: TransactionEstimatePartialRequest & {
-                idempotencyKey?: EstimateIdempotencyKey
-                /**
-                 * When true, the emission estimate refers to an actual transaction for goods or services and will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                 *
-                 * This property exists to distinguish generic estimates, quotes or forecasts from actual transactions that have occured.
-                 *
-                 * You can mark an estimate as transaction at any time.
-                 *
-                 */
-                isTransaction?: boolean
-                transactionProcessedAt?: TransactionProcessedAt
+            requestBody: TransactionEstimateRequest & {
+                clientAccount?: EstimateClientAccountRequest
             }
         },
         options?: {
@@ -1219,7 +1248,7 @@ export abstract class EmissionEstimatesService {
             headers: {
                 Accept: 'application/json',
             },
-            body: data?.transactionEstimateRequest,
+            body: data?.requestBody,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
