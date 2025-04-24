@@ -44,6 +44,7 @@ export type EmissionFactorDenominatorUnit =
     | 'Ml'
     | 'ml'
     | 'm*year'
+    | 'cm2'
     | 'm2'
     | 'ha*year'
     | 'm2*year'
