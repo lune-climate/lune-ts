@@ -17,6 +17,7 @@ import type { CabinClass } from '../models/CabinClass.js'
 import type { CompanyCloudUse } from '../models/CompanyCloudUse.js'
 import type { CompanyEmissionEstimate } from '../models/CompanyEmissionEstimate.js'
 import type { CompanyOnPremiseUse } from '../models/CompanyOnPremiseUse.js'
+import type { CreateMultiLegShippingEstimateByFuelResponse } from '../models/CreateMultiLegShippingEstimateByFuelResponse.js'
 import type { Diet } from '../models/Diet.js'
 import type { Distance } from '../models/Distance.js'
 import type { ElectricityConsumption } from '../models/ElectricityConsumption.js'
@@ -1074,6 +1075,80 @@ export abstract class EmissionEstimatesService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                413: `The request is larger than 100kB.`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Create a multi-leg shipping emission estimate based on fuel usage.
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns CreateMultiLegShippingEstimateByFuelResponse OK
+     */
+    public createMultiLegShippingEstimateByFuel(
+        data: {
+            /**
+             * Shipment legs fuel use information, can be only one leg if you only a single
+             * transport to calculate emissions for.
+             *
+             */
+            legs: Array<{
+                /**
+                 * The vehicle's fuel.
+                 */
+                fuel:
+                    | 'gasoline'
+                    | 'diesel'
+                    | '99_diesel_1_biodiesel'
+                    | '98_diesel_2_biodiesel'
+                    | '95_diesel_5_biodiesel'
+                    | '93_diesel_7_biodiesel'
+                    | '90_diesel_10_biodiesel'
+                    | '80_diesel_20_biodiesel'
+                    | '50_diesel_50_biodiesel'
+                    | 'ethanol_from_corn'
+                    | 'hvo_from_tallow'
+                    | 'lpg'
+                /**
+                 * How much fuel was consumed by the shipment, in litres.
+                 */
+                fuelConsumedLitres: number
+            }>
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: EstimateMassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<CreateMultiLegShippingEstimateByFuelResponse>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/estimates/shipping/multi-leg/by-fuel',
+            headers: {
+                Accept: 'application/json',
+            },
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
+            },
+            body: {
+                legs: data?.legs,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
