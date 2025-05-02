@@ -14,6 +14,7 @@ import type { CreateMultiLegShippingEstimateByFuelRequest } from './CreateMultiL
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { EstimateMassWithBreakdowns } from './EstimateMassWithBreakdowns.js'
 import type { EstimateQuote } from './EstimateQuote.js'
+import type { FuelMethodologyDetails } from './FuelMethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
 import type { Url } from './Url.js'
 
@@ -36,6 +37,7 @@ export type CreateMultiLegShippingEstimateByFuelResponse = {
     legs: Array<{
         mass: EstimateMassWithBreakdowns
         emissionFactor: EmissionFactorWithGasEmissions
+        methodologyDetails: FuelMethodologyDetails
     }>
     mass: EstimateMassWithBreakdowns
 }
