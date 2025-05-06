@@ -1119,6 +1119,16 @@ export abstract class EmissionEstimatesService {
                 fuelConsumedLitres: number
             }>
             /**
+             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
+             *
+             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
+             *
+             * You can mark an estimate as shipment at any time.
+             *
+             */
+            isShipment?: boolean
+            shippedAt?: ShippedAt
+            /**
              * By default estimate mass units are returned in tonnes.
              *
              * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
@@ -1144,6 +1154,8 @@ export abstract class EmissionEstimatesService {
             },
             body: {
                 legs: data?.legs,
+                is_shipment: data?.isShipment,
+                shipped_at: data?.shippedAt,
             },
             mediaType: 'application/json',
             errors: {
