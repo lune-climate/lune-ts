@@ -1158,6 +1158,52 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Get a multi-leg shipping emission estimate based on fuel usage.
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns CreateMultiLegShippingEstimateByFuelResponse OK
+     */
+    public getMultiLegShippingEstimateByFuel(
+        id: string,
+        data?: {
+            /**
+             * By default estimate mass units are returned in tonnes.
+             *
+             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
+             *
+             */
+            estimateMassUnit?: EstimateMassUnit
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<CreateMultiLegShippingEstimateByFuelResponse>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/estimates/shipping/multi-leg/by-fuel/{id}',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            query: {
+                estimate_mass_unit: data?.estimateMassUnit,
+            },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
      * Create emission estimate(s) via receipt or invoice data.
      * @param data Request data
      * @param options Additional operation options
