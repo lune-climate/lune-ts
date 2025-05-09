@@ -12,6 +12,7 @@
 
 import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { CalculatedRoute } from './CalculatedRoute.js'
+import type { DataQualityScore } from './DataQualityScore.js'
 import type { Distance } from './Distance.js'
 import type { DistanceCalculationDetails } from './DistanceCalculationDetails.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
@@ -81,4 +82,9 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
         | ElectricMethodMethodologyDetails
         | RouteInferenceDetails
         | NullEnum
+    /**
+     * Represents the quality of the emission estimation for a particular shipping leg.
+     *
+     */
+    dataQualityScore?: DataQualityScore | NullEnum
 }

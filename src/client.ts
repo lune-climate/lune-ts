@@ -202,6 +202,7 @@ export type { CreateOrderByValueRequest } from './models/CreateOrderByValueReque
 export type { CreateWebhookRequest } from './models/CreateWebhookRequest.js'
 export type { CumulativeBundleAnalytics } from './models/CumulativeBundleAnalytics.js'
 export { CurrencyCode } from './models/CurrencyCode.js'
+export { DataQualityScore } from './models/DataQualityScore.js'
 export { Diet } from './models/Diet.js'
 export { Distance } from './models/Distance.js'
 export type { DistanceCalculationDetails } from './models/DistanceCalculationDetails.js'
