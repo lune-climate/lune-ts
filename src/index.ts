@@ -228,6 +228,7 @@ export { SustainabilityPageDescription } from './models/SustainabilityPageDescri
 export type { SustainabilityPageRequest } from './models/SustainabilityPageRequest.js'
 export { SustainabilityPageSection } from './models/SustainabilityPageSection.js'
 export type { SustainabilityPageSections } from './models/SustainabilityPageSections.js'
+export type { SustainabilityPageSectionsNullable } from './models/SustainabilityPageSectionsNullable.js'
 export type { SustainabilityPageSlug } from './models/SustainabilityPageSlug.js'
 export { SustainabilityPageStatus } from './models/SustainabilityPageStatus.js'
 export { SustainabilityPageTitle } from './models/SustainabilityPageTitle.js'
