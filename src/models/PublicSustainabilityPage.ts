@@ -13,6 +13,7 @@
 import type { CarbonPermanence } from './CarbonPermanence.js'
 import type { CurrencyCode } from './CurrencyCode.js'
 import type { MonetaryAmountValue } from './MonetaryAmountValue.js'
+import type { NullEnum } from './NullEnum.js'
 import type { SupportedUNSdg } from './SupportedUNSdg.js'
 
 /**
@@ -36,35 +37,32 @@ export type PublicSustainabilityPage = {
               quantity: string
           }
     description:
-        | (
-              | {
-                    format: PublicSustainabilityPage.format
-                    /**
-                     * The number of one-way flights from NYC to London the emissions of which are an equivalent to the CO2 reduction.
-                     */
-                    flightsNycToLondon: number
-                }
-              | null
-              | {
-                    format: PublicSustainabilityPage.format
-                    /**
-                     * The number of supported UN Sustainable Development Goals (SDGs).
-                     */
-                    numberOfUnSdgs: number
-                    /**
-                     * The number of supported carbon offset projects.
-                     */
-                    numberOfProjects: number
-                }
-              | {
-                    format: PublicSustainabilityPage.format
-                    /**
-                     * The custom description of the sustainability page provided in the configuration.
-                     */
-                    customDescription: string | null
-                }
-          )
-        | null
+        | NullEnum
+        | {
+              format: PublicSustainabilityPage.format
+              /**
+               * The number of one-way flights from NYC to London the emissions of which are an equivalent to the CO2 reduction.
+               */
+              flightsNycToLondon: number
+          }
+        | {
+              format: PublicSustainabilityPage.format
+              /**
+               * The number of supported UN Sustainable Development Goals (SDGs).
+               */
+              numberOfUnSdgs: number
+              /**
+               * The number of supported carbon offset projects.
+               */
+              numberOfProjects: number
+          }
+        | {
+              format: PublicSustainabilityPage.format
+              /**
+               * The custom description of the sustainability page provided in the configuration.
+               */
+              customDescription: string | null
+          }
     /**
      * The sustainability page logo URL.
      */
