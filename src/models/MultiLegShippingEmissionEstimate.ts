@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { AdjustedDistance } from './AdjustedDistance.js'
+import type { DataQualityGrade } from './DataQualityGrade.js'
 import type { Distance } from './Distance.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
 import type { NullEnum } from './NullEnum.js'
@@ -42,6 +43,15 @@ export type MultiLegShippingEmissionEstimate = {
      */
     isShipment: boolean
     shippedAt: ShippedAt
+    /**
+     * Represents the average data quality score for each leg.
+     *
+     */
+    dataQualityScore?:
+        | {
+              score: DataQualityGrade
+          }
+        | NullEnum
     /**
      * An array representing a leg's emission estimate.
      *

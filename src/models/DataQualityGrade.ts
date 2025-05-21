@@ -10,14 +10,19 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { DataQualityGrade } from './DataQualityGrade.js'
-import type { NullEnum } from './NullEnum.js'
-
-export type DataQualityScore = {
-    score: DataQualityGrade
-    components: {
-        emissionFactorScore: DataQualityGrade
-        routeScore: DataQualityGrade | NullEnum
-        shipmentScore: DataQualityGrade
-    }
+/**
+ * A quality grade ranging from "A_plus" (excellent) to "D" (unsatisfactory).
+ *
+ */
+export enum DataQualityGrade {
+    A_PLUS = 'A_plus',
+    A = 'A',
+    A_MINUS = 'A_minus',
+    B_PLUS = 'B_plus',
+    B = 'B',
+    B_MINUS = 'B_minus',
+    C_PLUS = 'C_plus',
+    C = 'C',
+    C_MINUS = 'C_minus',
+    D = 'D',
 }
