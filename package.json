@@ -46,7 +46,7 @@
     "@lune-climate/openapi-typescript-codegen": "^0.1.18",
     "typescript": "^5.1.6",
     "@types/node": "^22.0.0",
-    "@typescript-eslint/eslint-plugin": "^7.0.1",
+    "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.21.0",
     "eslint": "^8.0.0",
     "eslint-import-resolver-node": "^0.3.4",
