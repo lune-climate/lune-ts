@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { CreateMultiLegShippingEstimateByFuelRequest } from './CreateMultiLegShippingEstimateByFuelRequest.js'
+import type { DataQualityGrade } from './DataQualityGrade.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { EstimateMassWithBreakdowns } from './EstimateMassWithBreakdowns.js'
 import type { EstimateQuote } from './EstimateQuote.js'
@@ -51,4 +52,13 @@ export type CreateMultiLegShippingEstimateByFuelResponse = {
      */
     isShipment: boolean
     shippedAt: ShippedAt
+    /**
+     * Represents the quality of the emission estimation.
+     *
+     */
+    dataQualityScore:
+        | {
+              score: DataQualityGrade
+          }
+        | NullEnum
 }
