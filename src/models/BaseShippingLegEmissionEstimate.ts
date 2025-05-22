@@ -86,5 +86,5 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
      * Represents the quality of the emission estimation for a particular shipping leg.
      *
      */
-    dataQualityScore?: DataQualityScore | NullEnum
+    dataQualityScore: DataQualityScore | NullEnum
 }

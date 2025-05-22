@@ -47,7 +47,7 @@ export type MultiLegShippingEmissionEstimate = {
      * Represents the average data quality score for each leg.
      *
      */
-    dataQualityScore?:
+    dataQualityScore:
         | {
               score: DataQualityGrade
           }
