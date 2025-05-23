@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { DataQualityScore } from './DataQualityScore.js'
 import type { EstimateQuote } from './EstimateQuote.js'
 import type { Metadata } from './Metadata.js'
 import type { NullEnum } from './NullEnum.js'
@@ -40,6 +41,11 @@ export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
      * An external accessible URL linking to a detailed page that provides complete information about the estimate.
      */
     externalEstimateUrl: Url | NullEnum
+    /**
+     * Represents the quality of the emission estimation.
+     *
+     */
+    dataQualityScore: DataQualityScore | NullEnum
     /**
      * Identifies the source used to create the estimate.
      */
