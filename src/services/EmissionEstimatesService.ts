@@ -1403,6 +1403,18 @@ export abstract class EmissionEstimatesService {
      *
      * The response contains estimates or errors in the same orders as the request.
      *
+     * Because of the nature of this endpoint the operation is particularly
+     * susceptible to timeouts if the number of transactions in the request is high
+     * and/or multiple requests are made concurrently.
+     *
+     * To alleviate that you may consider using the
+     * {% ref page="/calculate-emissions/spend-management/csv-upload" /%} function,
+     * which is well-suited for handling large numbers of records.
+     *
+     * Alternatively, if you want to keep using this endpoint you can provide
+     * `idempotency_key` inside individual estimates so that you can safely retry
+     * the same request without risking duplicating estimates.
+     *
      * @param data Request data
      * @param options Additional operation options
      * @returns BatchTransactionEmissionEstimate OK
