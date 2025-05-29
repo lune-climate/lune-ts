@@ -10,7 +10,21 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { MerchantWithCategoryCode } from './MerchantWithCategoryCode.js'
-import type { MerchantWithSearchTerm } from './MerchantWithSearchTerm.js'
-
-export type Merchant = MerchantWithSearchTerm | MerchantWithCategoryCode
+export type MerchantWithSearchTerm =
+    | {
+          name?: string
+          countryCode: string
+          searchTerm: string
+          categoryHierarchy: Array<string>
+      }
+    | {
+          name?: string
+          countryCode: string
+          searchTerm: string
+          category: string
+      }
+    | {
+          name?: string
+          countryCode: string
+          searchTerm: string
+      }
