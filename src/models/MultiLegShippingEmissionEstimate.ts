@@ -15,6 +15,7 @@ import type { DataQualityGrade } from './DataQualityGrade.js'
 import type { Distance } from './Distance.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
 import type { NullEnum } from './NullEnum.js'
+import type { RawDistance } from './RawDistance.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingEmissionEstimateResponse } from './ShippingEmissionEstimateResponse.js'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.js'
@@ -59,6 +60,7 @@ export type MultiLegShippingEmissionEstimate = {
      *
      */
     legs: Array<ShippingLegEmissionEstimate>
+    rawDistance: RawDistance
     distance: Distance
     adjustedDistance: AdjustedDistance
     request: MultiLegShippingEstimateRequest

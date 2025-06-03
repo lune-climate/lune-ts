@@ -10,16 +10,18 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Deprecated. This value is the same as Distance.
- *
- */
-export type AdjustedDistance = {
+export type RawDistance = {
     amount: string
-    unit: AdjustedDistance.unit
+    /**
+     * A raw estimate of distance before GLEC required Distance Adjustment Factors are applied.
+     */
+    unit: RawDistance.unit
 }
 
-export namespace AdjustedDistance {
+export namespace RawDistance {
+    /**
+     * A raw estimate of distance before GLEC required Distance Adjustment Factors are applied.
+     */
     export enum unit {
         KM = 'km',
         MI = 'mi',
