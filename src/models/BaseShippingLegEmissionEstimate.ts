@@ -21,6 +21,7 @@ import type { EmissionEstimateWithWTWBreakdown } from './EmissionEstimateWithWTW
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
+import type { RawDistance } from './RawDistance.js'
 import type { RoadMethodologyDetails } from './RoadMethodologyDetails.js'
 import type { RouteInferenceDetails } from './RouteInferenceDetails.js'
 import type { VesselInferenceMethod } from './VesselInferenceMethod.js'
@@ -33,6 +34,7 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
      *
      */
     vesselInferenceDetails?: VesselInferenceMethod | NullEnum
+    rawDistance?: RawDistance
     distance?: Distance
     adjustedDistance?: AdjustedDistance
     /**

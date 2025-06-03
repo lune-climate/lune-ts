@@ -13,6 +13,7 @@
 import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { CalculatedRouteLocation } from './CalculatedRouteLocation.js'
 import type { Distance } from './Distance.js'
+import type { RawDistance } from './RawDistance.js'
 
 /**
  * A location and a distance from the previous location (or `source`, if this is the
@@ -24,6 +25,7 @@ import type { Distance } from './Distance.js'
  */
 export type CalculatedRouteLeg = {
     location: CalculatedRouteLocation
+    rawDistance: RawDistance
     distance: Distance
     adjustedDistance: AdjustedDistance
 }
