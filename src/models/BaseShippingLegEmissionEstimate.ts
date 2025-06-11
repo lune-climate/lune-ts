@@ -19,6 +19,7 @@ import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
 import type { ElectricMethodMethodologyDetails } from './ElectricMethodMethodologyDetails.js'
 import type { EmissionEstimateWithWTWBreakdown } from './EmissionEstimateWithWTWBreakdown.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
+import type { InferenceDetails } from './InferenceDetails.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RawDistance } from './RawDistance.js'
@@ -89,4 +90,10 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
      *
      */
     dataQualityScore: DataQualityScore | NullEnum
+    /**
+     * Lune infers certain properties to improve estimation accuracy.
+     * Any inferences made will be described in this field.
+     *
+     */
+    inferenceDetails?: InferenceDetails | NullEnum
 }
