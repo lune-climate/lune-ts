@@ -11,7 +11,6 @@
 /* eslint-disable */
 
 import type { MerchantCategoryCode } from './MerchantCategoryCode.js'
-import type { MonetaryAmount } from './MonetaryAmount.js'
 import type { NullEnum } from './NullEnum.js'
 import type { TransactionEmissionEstimateBaseFields } from './TransactionEmissionEstimateBaseFields.js'
 
@@ -24,7 +23,6 @@ export type TransactionDocumentEstimateTransactionLineItem = TransactionEmission
          * The 3-character country code that has been identified.
          */
         countryCode: string
-        value: MonetaryAmount
     } & (
         | {
               /**
