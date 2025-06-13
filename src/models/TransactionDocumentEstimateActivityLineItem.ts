@@ -10,16 +10,22 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { EmissionFactorActivity } from './EmissionFactorActivity.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { NullEnum } from './NullEnum.js'
 import type { TransactionEmissionSearchFields } from './TransactionEmissionSearchFields.js'
 
-export type TransactionEmissionEstimateBaseFields = TransactionEmissionSearchFields & {
+/**
+ * A transaction document line item describing the activity related properties that have been identified.
+ */
+export type TransactionDocumentEstimateActivityLineItem = TransactionEmissionSearchFields & {
     /**
-     * This property is `null` for any estimate created before 01/03/2024
+     * The line items that has been identified.
+     */
+    item: string
+    activity: EmissionFactorActivity
+    /**
+     * This property is `null` for any estimate created before 01/12/2024
      */
     emissionFactor: EmissionFactorWithGasEmissions | NullEnum
-    dietFactor: string | NullEnum
-    exchangeRate: string | NullEnum
-    exchangeRateDate: string | NullEnum
 }

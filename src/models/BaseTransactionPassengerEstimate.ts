@@ -10,16 +10,22 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Distance } from './Distance.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { NullEnum } from './NullEnum.js'
-import type { TransactionEmissionSearchFields } from './TransactionEmissionSearchFields.js'
 
-export type TransactionEmissionEstimateBaseFields = TransactionEmissionSearchFields & {
+export type BaseTransactionPassengerEstimate = {
+    distance: Distance
     /**
-     * This property is `null` for any estimate created before 01/03/2024
+     * This property is `null` for any estimate created before 01/12/2024
      */
     emissionFactor: EmissionFactorWithGasEmissions | NullEnum
-    dietFactor: string | NullEnum
-    exchangeRate: string | NullEnum
-    exchangeRateDate: string | NullEnum
+    /**
+     * The line items that has been identified.
+     */
+    item: string
+    /**
+     * Number of passengers the calculation should be applied to.
+     */
+    passengers: number
 }

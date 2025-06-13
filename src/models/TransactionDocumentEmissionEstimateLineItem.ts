@@ -11,12 +11,16 @@
 /* eslint-disable */
 
 import type { EstimateMass } from './EstimateMass.js'
+import type { MonetaryAmount } from './MonetaryAmount.js'
+import type { TransactionDocumentEstimateActivityLineItem } from './TransactionDocumentEstimateActivityLineItem.js'
 import type { TransactionDocumentEstimateTransactionLineItem } from './TransactionDocumentEstimateTransactionLineItem.js'
+import type { TransactionDocumentEstimateTransportationLineItem } from './TransactionDocumentEstimateTransportationLineItem.js'
 
 /**
  * Transaction document line item estimate.
  */
 export type TransactionDocumentEmissionEstimateLineItem = {
+    value: MonetaryAmount
     mass: EstimateMass
     /**
      * Identifies the type of the line item emission estimate. New values are expected to be
@@ -24,7 +28,11 @@ export type TransactionDocumentEmissionEstimateLineItem = {
      *
      */
     type: TransactionDocumentEmissionEstimateLineItem.type
-} & TransactionDocumentEstimateTransactionLineItem
+} & (
+    | TransactionDocumentEstimateTransactionLineItem
+    | TransactionDocumentEstimateTransportationLineItem
+    | TransactionDocumentEstimateActivityLineItem
+)
 
 export namespace TransactionDocumentEmissionEstimateLineItem {
     /**
@@ -34,5 +42,7 @@ export namespace TransactionDocumentEmissionEstimateLineItem {
      */
     export enum type {
         TRANSACTION = 'transaction',
+        PASSENGER_TRANSPORTATION = 'passenger_transportation',
+        ACTIVITY_TRANSACTION = 'activity_transaction',
     }
 }
