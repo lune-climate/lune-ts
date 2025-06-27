@@ -10,9 +10,36 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { NullEnum } from './NullEnum.js'
+import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
+import type { ShippingCountryCode } from './ShippingCountryCode.js'
+
 export type InferenceDetails = {
     /**
      * The trade lane Lune has inferred as most likely for the shipment's route.
      */
     tradeLaneFromRoute?: string
+    /**
+     * The road emission standard trade has inferred via country information in the shipment's route.
+     */
+    roadEmissionStandard: {
+        value: RoadEmissionStandard
+        from: InferenceDetails.from
+        /**
+         * Inferred source country code
+         */
+        sourceCountryCode: ShippingCountryCode | NullEnum
+        /**
+         * Inferred destination country code
+         */
+        destinationCountryCode: ShippingCountryCode | NullEnum
+    } | null
+}
+
+export namespace InferenceDetails {
+    export enum from {
+        SOURCE = 'source',
+        DESTINATION = 'destination',
+        BOTH = 'both',
+    }
 }
