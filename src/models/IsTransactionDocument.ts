@@ -11,12 +11,9 @@
 /* eslint-disable */
 
 /**
- * Indicate how geographical constraints (e.g., `country_code`, `region`) should be handled when matching emission factors.
+ * Use to distinguish confirmed transaction documents from quotes or forecasts. Defaults to `false` when omitted. Can be updated at any point.
  *
- * Defaults to `never` which indicates only emission factors that exactly match the specified geographic area are used. No fallbacks are applied.
+ * When `true`, the estimate represents an actual transaction document for purchased goods and services and will be included in Lune analytics.
  *
  */
-export enum RegionFallback {
-    NEVER = 'never',
-    ALWAYS = 'always',
-}
+export type IsTransactionDocument = boolean

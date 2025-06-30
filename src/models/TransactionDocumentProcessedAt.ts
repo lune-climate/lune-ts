@@ -11,18 +11,9 @@
 /* eslint-disable */
 
 /**
- * This property captures the exact date and time at which the transaction document was recorded and processed.
+ * Provide the date and time that the document is processed, as an RFC 3339 timestamp.
  *
- * If a value is provided when creating or updating an estimate we use the value.
- * Otherwise defaults to the current time when creating estimates and remains
- * unchanged when updating estimates.
- *
- * This property must be formatted as RFC 3339, section 5.6 timestamp.
- *
- * Examples:
- * * 2023-12-01T12:30:30.000Z
- * * 2023-12-01T12:30:30Z
- * * 2023-12-01T11:30:30+01.00
+ * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
  *
  */
 export type TransactionDocumentProcessedAt = string

@@ -125,6 +125,7 @@ export type { IdentifiedVesselShippingMethod } from './models/IdentifiedVesselSh
 export { InferenceDetails } from './models/InferenceDetails.js'
 export { InferredVesselShippingMethod } from './models/InferredVesselShippingMethod.js'
 export type { IntegerPercentage } from './models/IntegerPercentage.js'
+export type { IsTransactionDocument } from './models/IsTransactionDocument.js'
 export type { Locode } from './models/Locode.js'
 export { LogisticsSiteMethod } from './models/LogisticsSiteMethod.js'
 export type { Mass } from './models/Mass.js'
