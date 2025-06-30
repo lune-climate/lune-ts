@@ -69,6 +69,11 @@
  *
  * # Rail transport
  *
+ * Use the `rail` method to have Lune infer the most likely rail type (electric or diesel)
+ * for your shipment based on its route.
+ *
+ * Rail type can be explicitly specified using the `diesel_freight_train` or `electric_freight_train` methods.
+ *
  * You can explicitly request a US emission factor (`diesel_freight_train_us_average`)
  * or a European one (`diesel_freight_train_eu_...`).
  *
@@ -104,6 +109,7 @@ export enum SimpleShippingMethod {
     INLAND_WATERWAY_CONTAINER_VESSEL_CONVOY = 'inland_waterway_container_vessel_convoy',
     DIESEL_FREIGHT_TRAIN = 'diesel_freight_train',
     ELECTRIC_FREIGHT_TRAIN = 'electric_freight_train',
+    RAIL = 'rail',
     DIESEL_FREIGHT_TRAIN_US_AVERAGE = 'diesel_freight_train_us_average',
     DIESEL_FREIGHT_TRAIN_EU_AVERAGE = 'diesel_freight_train_eu_average',
     DIESEL_FREIGHT_TRAIN_EU_CONTAINER = 'diesel_freight_train_eu_container',
