@@ -14,7 +14,7 @@ import type { TransactionDocumentEstimateRequest } from './TransactionDocumentEs
 
 export type TransactionDocumentEstimateRequestAsync = TransactionDocumentEstimateRequest & {
     /**
-     * ID to reconcile requests and responses on the client side. This value is returned to clients in webhook events.
+     * Provide an ID to reconcile requests and responses. This value is returned in webhook events.
      *
      */
     correlationId?: string

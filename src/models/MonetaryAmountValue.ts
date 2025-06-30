@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 /**
- * An amount of money (the fractional part is optional)
+ * Specify the monetary value in the currency defined by the `currency_code` property in the request. If no `currency_code` is provided, the currency will default to that of the associated account.
+ *
  */
 export type MonetaryAmountValue = string
