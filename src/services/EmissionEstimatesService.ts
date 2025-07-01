@@ -29,6 +29,7 @@ import type { EstimateIdempotencyKey } from '../models/EstimateIdempotencyKey.js
 import type { EstimateMassUnit } from '../models/EstimateMassUnit.js'
 import type { FlightEmissionEstimate } from '../models/FlightEmissionEstimate.js'
 import type { IntegerPercentage } from '../models/IntegerPercentage.js'
+import type { IsShipment } from '../models/IsShipment.js'
 import type { IsTransactionDocument } from '../models/IsTransactionDocument.js'
 import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
 import type { Merchant } from '../models/Merchant.js'
@@ -431,11 +432,9 @@ export abstract class EmissionEstimatesService {
              */
             after?: string
             /**
-             * When true, the emission estimate refers to an actual shipment of goods.
+             * Use to distinguish confirmed shipments from quotes. Defaults to `false` when omitted. Can be updated at any point.
              *
-             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-             *
-             * By default, all estimates are returned.
+             * When `true`, the estimate represents an actual shipment of goods and will be included in Lune analytics.
              *
              */
             isShipment?: boolean
@@ -454,10 +453,7 @@ export abstract class EmissionEstimatesService {
              */
             through?: string
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
         },
@@ -507,15 +503,7 @@ export abstract class EmissionEstimatesService {
                 name?: string
                 bundleSelection?: BundleSelectionRequest
                 quantityTrunc?: QuantityTrunc
-                /**
-                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                 *
-                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-                 *
-                 * You can mark an estimate as shipment at any time.
-                 *
-                 */
-                isShipment?: boolean
+                isShipment?: IsShipment
                 shippedAt?: ShippedAt
                 metadata?: Metadata
                 idempotencyKey?: EstimateIdempotencyKey
@@ -530,10 +518,7 @@ export abstract class EmissionEstimatesService {
                   }
             )
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
         },
@@ -578,10 +563,7 @@ export abstract class EmissionEstimatesService {
         id: string,
         data?: {
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
         },
@@ -631,15 +613,7 @@ export abstract class EmissionEstimatesService {
                 name?: string
                 bundleSelection?: BundleSelectionRequest
                 quantityTrunc?: QuantityTrunc
-                /**
-                 * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                 *
-                 * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-                 *
-                 * You can mark an estimate as shipment at any time.
-                 *
-                 */
-                isShipment?: boolean
+                isShipment?: IsShipment
                 shippedAt?: ShippedAt
                 metadata?: Metadata
                 idempotencyKey?: EstimateIdempotencyKey
@@ -654,10 +628,7 @@ export abstract class EmissionEstimatesService {
                   }
             )
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
         },
@@ -712,15 +683,7 @@ export abstract class EmissionEstimatesService {
         data: {
             updateShippingEstimateAnnotationsRequest:
                 | {
-                      /**
-                       * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                       *
-                       * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-                       *
-                       * You can mark an estimate as shipment at any time.
-                       *
-                       */
-                      isShipment: boolean
+                      isShipment: IsShipment
                       shippedAt?: ShippedAt
                       metadata?: Metadata
                       idempotencyKey?: EstimateIdempotencyKey
@@ -770,7 +733,7 @@ export abstract class EmissionEstimatesService {
 
     /**
      * Create a shipping emission estimate (multi-leg)
-     * Each leg can be fulfilled by a different method, eg a truck, a plane or other options.
+     * Calculate an emission estimate for your shipment. The shipment may consist of a single leg or multiple legs, with each leg using a different mode of transport.
      * @param data Request data
      * @param options Additional operation options
      * @returns MultiLegShippingEmissionEstimate OK
@@ -797,28 +760,17 @@ export abstract class EmissionEstimatesService {
             name?: string
             bundleSelection?: BundleSelectionRequest
             quantityTrunc?: QuantityTrunc
-            /**
-             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-             *
-             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-             *
-             * You can mark an estimate as shipment at any time.
-             *
-             */
-            isShipment?: boolean
+            isShipment?: IsShipment
             shippedAt?: ShippedAt
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
             clientAccount?: EstimateClientAccountRequest
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
             /**
-             * Whether to apply route inference to the estimate.
+             * Specify whether to apply road transfer inference to the estimate calculation.
              */
             applyRouteInference?: boolean
         },
@@ -875,10 +827,7 @@ export abstract class EmissionEstimatesService {
         id: string,
         data?: {
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
         },
@@ -940,28 +889,17 @@ export abstract class EmissionEstimatesService {
             name?: string
             bundleSelection?: BundleSelectionRequest
             quantityTrunc?: QuantityTrunc
-            /**
-             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-             *
-             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-             *
-             * You can mark an estimate as shipment at any time.
-             *
-             */
-            isShipment?: boolean
+            isShipment?: IsShipment
             shippedAt?: ShippedAt
             metadata?: Metadata
             idempotencyKey?: EstimateIdempotencyKey
             clientAccount?: EstimateClientAccountRequest
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
             /**
-             * Whether to apply route inference to the estimate.
+             * Specify whether to apply road transfer inference to the estimate calculation.
              */
             applyRouteInference?: boolean
         },
@@ -1028,15 +966,7 @@ export abstract class EmissionEstimatesService {
         data: {
             updateShippingEstimateAnnotationsRequest:
                 | {
-                      /**
-                       * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-                       *
-                       * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-                       *
-                       * You can mark an estimate as shipment at any time.
-                       *
-                       */
-                      isShipment: boolean
+                      isShipment: IsShipment
                       shippedAt?: ShippedAt
                       metadata?: Metadata
                       idempotencyKey?: EstimateIdempotencyKey
@@ -1119,21 +1049,10 @@ export abstract class EmissionEstimatesService {
                  */
                 fuelConsumedLitres: number
             }>
-            /**
-             * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-             *
-             * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-             *
-             * You can mark an estimate as shipment at any time.
-             *
-             */
-            isShipment?: boolean
+            isShipment?: IsShipment
             shippedAt?: ShippedAt
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
         },
@@ -1181,10 +1100,7 @@ export abstract class EmissionEstimatesService {
         id: string,
         data?: {
             /**
-             * By default estimate mass units are returned in tonnes.
-             *
-             * Estimate mass units in responses are converted to `estimate_mass_unit` when set.
-             *
+             * Specify the unit the emission estimate mass should be returned in. Defaults to tonnes (`t`) if not specified.
              */
             estimateMassUnit?: EstimateMassUnit
         },

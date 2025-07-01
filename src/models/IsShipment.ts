@@ -10,13 +10,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Distance } from './Distance.js'
-import type { ShippingSourceDestination } from './ShippingSourceDestination.js'
-
 /**
- * Provide the route of the leg using either the total `distance` travelled, or the `source` and `destination` location.
+ * Use to distinguish confirmed shipments from quotes. Defaults to `false` when omitted. Can be updated at any point.
  *
- * If shipping between unusual or remote locations, provide `distance` directly for best results
+ * When `true`, the estimate represents an actual shipment of goods and will be included in Lune analytics.
  *
  */
-export type ShippingRoute = Distance | ShippingSourceDestination
+export type IsShipment = boolean

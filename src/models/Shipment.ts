@@ -13,11 +13,9 @@
 import type { Mass } from './Mass.js'
 
 /**
- * Either a mass given in kilograms or tonnes (`mass`) or the number of [Twenty-foot Equivalent
- * Units (TEUs)](https://en.wikipedia.org/wiki/Twenty-foot_equivalent_unit) (with their cargo type,
- * optionally). Note that providing `mass` will result in more accurate estimates for methods other
- * than `container_ship`. Estimates using `container_ship` are more precise when the shipment is given
- * in TEUs.
+ * Provide the shipment weight using either `mass` (in grams, kilograms, or tonnes) or `containers` (in Twenty-foot Equivalent Units, or TEUs).
+ *
+ * When using `containers`, you can optionally include `mass` and `cargo_type` for more accurate estimates.
  *
  */
 export type Shipment =
@@ -27,13 +25,9 @@ export type Shipment =
     | {
           containers: string
           /**
-           * If omitted, `average` is assumed.
+           * Specify the weight of cargo in the container. If omitted, `average` is used by default.
            *
-           * The following conversions apply:
-           * * `lightweight`: 1 container = 6 tonnes
-           * * `average`: 1 container = 10 tonnes
-           * * `heavyweight`: 1 container = 14.5 tonnes
-           * * `container_only`: 1 container = 2 tonnes
+           * Each type applies a different conversion to mass for emissions estimation. See [TEU conversion table](https://docs.lune.co/general-concepts/logistics-methodology#13-cargo-weight) for details.
            *
            */
           cargoType?: Shipment.cargo_type
@@ -42,13 +36,9 @@ export type Shipment =
 
 export namespace Shipment {
     /**
-     * If omitted, `average` is assumed.
+     * Specify the weight of cargo in the container. If omitted, `average` is used by default.
      *
-     * The following conversions apply:
-     * * `lightweight`: 1 container = 6 tonnes
-     * * `average`: 1 container = 10 tonnes
-     * * `heavyweight`: 1 container = 14.5 tonnes
-     * * `container_only`: 1 container = 2 tonnes
+     * Each type applies a different conversion to mass for emissions estimation. See [TEU conversion table](https://docs.lune.co/general-concepts/logistics-methodology#13-cargo-weight) for details.
      *
      */
     export enum cargo_type {
