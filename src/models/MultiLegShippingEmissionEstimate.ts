@@ -13,6 +13,7 @@
 import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { DataQualityGrade } from './DataQualityGrade.js'
 import type { Distance } from './Distance.js'
+import type { IsShipment } from './IsShipment.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RawDistance } from './RawDistance.js'
@@ -34,15 +35,7 @@ import type { Url } from './Url.js'
  *
  */
 export type MultiLegShippingEmissionEstimate = {
-    /**
-     * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-     *
-     * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-     *
-     * You can mark an estimate as shipment at any time.
-     *
-     */
-    isShipment: boolean
+    isShipment: IsShipment
     shippedAt: ShippedAt
     /**
      * Represents the average data quality score for each leg.
