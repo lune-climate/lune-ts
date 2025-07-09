@@ -92,7 +92,7 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
     dataQualityScore: DataQualityScore | NullEnum
     /**
      * Lune infers certain properties to improve estimation accuracy.
-     * Any inferences made will be described in this field.
+     * Any inferences made will be described in this property.
      *
      */
     inferenceDetails?: InferenceDetails | NullEnum

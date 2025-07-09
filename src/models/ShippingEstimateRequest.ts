@@ -12,6 +12,7 @@
 
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
+import type { IsShipment } from './IsShipment.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { Metadata } from './Metadata.js'
 import type { QuantityTrunc } from './QuantityTrunc.js'
@@ -32,15 +33,7 @@ export type ShippingEstimateRequest = {
     name?: string
     bundleSelection?: BundleSelectionRequest
     quantityTrunc?: QuantityTrunc
-    /**
-     * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-     *
-     * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-     *
-     * You can mark an estimate as shipment at any time.
-     *
-     */
-    isShipment?: boolean
+    isShipment?: IsShipment
     shippedAt?: ShippedAt
     metadata?: Metadata
     idempotencyKey?: EstimateIdempotencyKey

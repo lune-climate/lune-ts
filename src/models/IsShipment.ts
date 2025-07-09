@@ -11,9 +11,14 @@
 /* eslint-disable */
 
 /**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
+ * Use to distinguish confirmed shipments from quotes. Defaults to `false` when omitted. Can be updated at any point.
  *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
+ * This property must be formatted as RFC 3339, section 5.6 timestamp.
+ *
+ * Examples:
+ * * 2023-12-01T12:30:30.000Z
+ * * 2023-12-01T12:30:30Z
+ * * 2023-12-01T11:30:30+01.00
  *
  */
-export type TransactionProcessedAt = string
+export type IsShipment = boolean

@@ -11,11 +11,9 @@
 /* eslint-disable */
 
 /**
- * The three-letter code of the country where the shipping takes place, if applicable.
+ * The three-letter ISO country code where the shipment occurs. See [ISO 3166-1 alpha-3](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-3) codes for the full list of valid country codes.
  *
- * Providing this value will improve the estimation process. If the shipping spans
- * multiple countries you can either make multiple per-country estimations or choose
- * the country with the largest share of the route.
+ * For multi-country shipments, use the country covering the largest portion of the route.
  *
  */
 export enum ShippingCountryCode {
