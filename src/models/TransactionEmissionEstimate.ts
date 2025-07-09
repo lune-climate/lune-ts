@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
+import type { IsTransaction } from './IsTransaction.js'
 import type { NullEnum } from './NullEnum.js'
 import type { TransactionEmissionEstimateBaseFields } from './TransactionEmissionEstimateBaseFields.js'
 import type { TransactionEstimateRequest } from './TransactionEstimateRequest.js'
@@ -24,6 +25,6 @@ export type TransactionEmissionEstimate = EmissionEstimateResponse &
          * An external accessible URL linking to a detailed page that provides complete information about the estimate.
          */
         externalEstimateUrl: Url | NullEnum
-        isTransaction: boolean | NullEnum
+        isTransaction: IsTransaction | NullEnum
         transactionProcessedAt: TransactionProcessedAt | NullEnum
     }

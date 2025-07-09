@@ -24,15 +24,15 @@ export type TransactionEstimatePartialRequest = {
      */
     name?: string
     /**
-     * Monetary value of the transaction. This should exclude shipping and taxes.
+     * Specify the monetary value of the transaction, excluding shipping and taxes.
      */
     value: MonetaryAmount
     /**
-     * Merchant from whom the goods or services the purchase was made
+     * The merchant from whom the goods or services were purchased.
      */
     merchant: Merchant
     /**
-     * Individual diet. Used to better estimate  food-related purchases.
+     * Specify individual dietary preferences to improve estimates for food-related purchases.
      */
     diet?: Diet
     bundleSelection?: BundleSelectionRequest
