@@ -64,4 +64,10 @@ export type RoadShippingMethod = {
      *
      */
     emissionStandard?: RoadEmissionStandard
+    /**
+     * The shipment is refrigerated or "dry" (not refrigerated).
+     * Dry shipments result in lower emissions.
+     *
+     */
+    refrigerated?: boolean
 }
