@@ -14,6 +14,7 @@ import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
 import type { RoadEmptyRunsFactor } from './RoadEmptyRunsFactor.js'
 import type { RoadGradient } from './RoadGradient.js'
 import type { RoadLoadFactor } from './RoadLoadFactor.js'
+import type { RoadRefrigerationFactor } from './RoadRefrigerationFactor.js'
 import type { RoadSituation } from './RoadSituation.js'
 
 /**
@@ -45,6 +46,7 @@ export type RoadMethodologyDetails = {
     capacityUtilisation: number
     situation: RoadSituation
     gradient: RoadGradient
+    refrigerationFactor?: RoadRefrigerationFactor
 }
 
 export namespace RoadMethodologyDetails {
