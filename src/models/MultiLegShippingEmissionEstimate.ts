@@ -11,9 +11,12 @@
 /* eslint-disable */
 
 import type { AdjustedDistance } from './AdjustedDistance.js'
+import type { DataQualityGrade } from './DataQualityGrade.js'
 import type { Distance } from './Distance.js'
+import type { IsShipment } from './IsShipment.js'
 import type { MultiLegShippingEstimateRequest } from './MultiLegShippingEstimateRequest.js'
 import type { NullEnum } from './NullEnum.js'
+import type { RawDistance } from './RawDistance.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingEmissionEstimateResponse } from './ShippingEmissionEstimateResponse.js'
 import type { ShippingLegEmissionEstimate } from './ShippingLegEmissionEstimate.js'
@@ -32,16 +35,17 @@ import type { Url } from './Url.js'
  *
  */
 export type MultiLegShippingEmissionEstimate = {
+    isShipment: IsShipment
+    shippedAt: ShippedAt
     /**
-     * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-     *
-     * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-     *
-     * You can mark an estimate as shipment at any time.
+     * Represents the average data quality score for each leg.
      *
      */
-    isShipment: boolean
-    shippedAt: ShippedAt
+    dataQualityScore:
+        | {
+              score: DataQualityGrade
+          }
+        | NullEnum
     /**
      * An array representing a leg's emission estimate.
      *
@@ -49,6 +53,7 @@ export type MultiLegShippingEmissionEstimate = {
      *
      */
     legs: Array<ShippingLegEmissionEstimate>
+    rawDistance: RawDistance
     distance: Distance
     adjustedDistance: AdjustedDistance
     request: MultiLegShippingEstimateRequest

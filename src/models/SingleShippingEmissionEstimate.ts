@@ -10,7 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { DataQualityScore } from './DataQualityScore.js'
 import type { EstimateQuote } from './EstimateQuote.js'
+import type { IsShipment } from './IsShipment.js'
 import type { Metadata } from './Metadata.js'
 import type { NullEnum } from './NullEnum.js'
 import type { ShippedAt } from './ShippedAt.js'
@@ -23,15 +25,7 @@ export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
      * The emission calculation unique identifier
      */
     id: string
-    /**
-     * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-     *
-     * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-     *
-     * You can mark an estimate as shipment at any time.
-     *
-     */
-    isShipment: boolean
+    isShipment: IsShipment
     shippedAt: ShippedAt
     quote: EstimateQuote
     request: ShippingEstimateRequest
@@ -40,6 +34,11 @@ export type SingleShippingEmissionEstimate = ShippingLegEmissionEstimate & {
      * An external accessible URL linking to a detailed page that provides complete information about the estimate.
      */
     externalEstimateUrl: Url | NullEnum
+    /**
+     * Represents the quality of the emission estimation.
+     *
+     */
+    dataQualityScore: DataQualityScore | NullEnum
     /**
      * Identifies the source used to create the estimate.
      */

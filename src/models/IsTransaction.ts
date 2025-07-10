@@ -11,9 +11,9 @@
 /* eslint-disable */
 
 /**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
+ * Use to distinguish confirmed transactions from quotes or forecasts. Defaults to `false` when omitted. Can be updated at any point.
  *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
+ * When `true`, the estimate represents an actual transaction for purchased goods and services and will be included in Lune analytics.
  *
  */
-export type TransactionProcessedAt = string
+export type IsTransaction = boolean

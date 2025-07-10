@@ -17,17 +17,17 @@ import type { OptionalMerchant } from './OptionalMerchant.js'
 import type { RegionFallback } from './RegionFallback.js'
 
 /**
- * Parameters for estimating emissions associated with purchasing goods or services.
+ * Properties for estimating emissions associated with purchasing goods or services.
  */
 export type TransactionEstimateRequestData = {
     value?: MonetaryAmountValue
     currency?: CurrencyCode
     /**
-     * Merchant from whom the goods or services the purchase was made
+     * The merchant from whom the goods or services were purchased.
      */
     merchant?: OptionalMerchant
     /**
-     * Individual diet. Used to better estimate  food-related purchases.
+     * Specify individual dietary preferences to improve estimates for food-related purchases.
      */
     diet?: Diet
     regionFallback?: RegionFallback

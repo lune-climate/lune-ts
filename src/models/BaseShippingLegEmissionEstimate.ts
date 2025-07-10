@@ -12,14 +12,17 @@
 
 import type { AdjustedDistance } from './AdjustedDistance.js'
 import type { CalculatedRoute } from './CalculatedRoute.js'
+import type { DataQualityScore } from './DataQualityScore.js'
 import type { Distance } from './Distance.js'
 import type { DistanceCalculationDetails } from './DistanceCalculationDetails.js'
 import type { DistanceCalculationMethod } from './DistanceCalculationMethod.js'
 import type { ElectricMethodMethodologyDetails } from './ElectricMethodMethodologyDetails.js'
 import type { EmissionEstimateWithWTWBreakdown } from './EmissionEstimateWithWTWBreakdown.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
+import type { InferenceDetails } from './InferenceDetails.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
+import type { RawDistance } from './RawDistance.js'
 import type { RoadMethodologyDetails } from './RoadMethodologyDetails.js'
 import type { RouteInferenceDetails } from './RouteInferenceDetails.js'
 import type { VesselInferenceMethod } from './VesselInferenceMethod.js'
@@ -32,6 +35,7 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
      *
      */
     vesselInferenceDetails?: VesselInferenceMethod | NullEnum
+    rawDistance?: RawDistance
     distance?: Distance
     adjustedDistance?: AdjustedDistance
     /**
@@ -81,4 +85,15 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
         | ElectricMethodMethodologyDetails
         | RouteInferenceDetails
         | NullEnum
+    /**
+     * Represents the quality of the emission estimation for a particular shipping leg.
+     *
+     */
+    dataQualityScore: DataQualityScore | NullEnum
+    /**
+     * Lune infers certain properties to improve estimation accuracy.
+     * Any inferences made will be described in this property.
+     *
+     */
+    inferenceDetails?: InferenceDetails | NullEnum
 }

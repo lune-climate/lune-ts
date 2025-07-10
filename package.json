@@ -1,6 +1,6 @@
 {
   "name": "@lune-climate/lune",
-  "version": "3.3.17",
+  "version": "3.3.24",
   "description": "Lune Typescript Client",
   "main": "cjs/client.js",
   "module": "esm/client.js",
@@ -45,7 +45,7 @@
     "@lune-climate/eslint-config": "git+https://github.com/lune-climate/eslint-config.git#master",
     "@lune-climate/openapi-typescript-codegen": "^0.1.18",
     "typescript": "^5.1.6",
-    "@types/node": "^22.0.0",
+    "@types/node": "^24.0.3",
     "@typescript-eslint/eslint-plugin": "^7.0.1",
     "@typescript-eslint/parser": "^8.21.0",
     "eslint": "^8.0.0",

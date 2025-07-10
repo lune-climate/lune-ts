@@ -11,82 +11,61 @@
 /* eslint-disable */
 
 /**
- * # Inland waterways
+ * Provide a single enum value to describe the transport method. For each transport method, enums follow a consistent pattern, as described below.
  *
- * Vessel sizes:
- * * `inland_waterway_motor_vessel_*`:
- * * `extra_small` – less than 50 m / 650 t
- * * `small` – 50-80 m (650-1000 t)
- * * `medium` – 85-110 m (1000-2000 t)
- * * `large` – 135 m (2000-3000 t)
- * * `inland_waterway_coupled_convoy` – 163-185 m
- * * `inland_waterway_pushed_convoy_*`:
- * * `small` – 2 barges
- * * `medium` – 4-5 barges
- * * `large` – 6 barges
- * * `inland_waterway_container_vessel_medium` – 110 m
- * * `inland_waterway_container_vessel_large` – 135 m
+ * Note: This input only applies for inland waterways, road, rail, and air transport. For sea transport, please use the Single property transport method (Sea only).
+ *
+ * # Inland waterways
+ * For inland waterways, values follow the pattern:
+ *
+ * `inland_waterway_{vessel_type}_{size}`
+ *
+ * Only the `vessel_type` is required.
+ *
+ * The full list of available enums is provided below. The following section lists only those enums that include a size component, with each size mapped to its corresponding vessel dimensions.
+ *
+ * * `inland_waterway_motor_vessel_extra_small`: Under 50 m (650 t)
+ * * `inland_waterway_motor_vessel_small`: 50–80 m (650–1000 t)
+ * * `inland_waterway_motor_vessel_medium`: 85–110 m (1000–2000 t)
+ * * `inland_waterway_motor_vessel_large`: 135 m (2000–3000 t)
+ * * `inland_waterway_coupled_convoy`: 163–185 m
+ * * `inland_waterway_pushed_convoy_small`: 2 barges
+ * * `inland_waterway_pushed_convoy_medium`: 4–5 barges
+ * * `inland_waterway_pushed_convoy_large`: 6 barges
+ * * `inland_waterway_container_vessel_medium`: 110 m
+ * * `inland_waterway_container_vessel_large`: 135 m
  *
  * # Road transport
+ * For road transport, values follow the pattern:
  *
- * As far as road transport is concerned we support a variety of trucks (the `truck_*`
- * methods). Our emission estimates assume diesel fuel and average load characteristics
- * at the moment, unless a specific type says otherwise.
+ * `truck_{vehicle_type}_{vehicle_size}_{fuel}_{load_characteristics}`
  *
- * ## Regional differences
+ * Only the `vehicle_type` is required. If `vehicle_size`, `fuel`, or `load_characteristics` are omitted, they default to `generic`, `diesel`, and `average` respectively.
  *
- * Truck types in North America and the rest of the world are categorized differently,
- * therefore they're available here as distinct shipping methods. The North America
- * trucks are prefixed with `truck_na_` while for the rest of the world it's just `truck_`.
+ * To indicate a North American vehicle, use the prefix `truck_na` instead of `truck`.
  *
- * ## Truck sizes
+ * The full list of available enums is provided below. The following section includes only those enums that specify a vehicle size, with each size mapped to its corresponding Gross Vehicle Weight (GVW). In some cases, size is included directly in the property name (e.g., truck_rigid_7_5t).
  *
- * * Vans (`truck_generic_van`, `truck_na_van`) are under 3.5 tonnes GVW (Gross Vehicle Weight).
- * * `truck_generic_urban` is between 3.5 and 7.5 tonnes GVW
- * * `truck_generic_mgv` is betwen 7.5 and 20 tonnes
- * * `truck_generic_hgv` is above 20 tonnes GVW
- *
- * For other truck types the GVW is either in the method name (like `truck_rigid_7_5t` which is
- * up to 7.5 tonnes) or is not specified.
- *
- * ## Choosing the right truck type
- *
- * The are significant differences in emissions of different truck types. The more precisely
- * you can declare what kind of truck you use, the better.
- *
- * If you only know a rough size of the truck you'll do well can choose one of the
- * `truck_generic_*` types if outside North America.
- *
- * ## Truck fuels
- *
- * Suffixes such as `_petrol`, `_cng`, `_lpg`, `_lng`, `_bio_lng` indicate the vehicle uses a specific fuel.
- * When no fuel is specified, assume diesel.
- *
- * ## Truck load characteristics
- *
- * Suffixes such as `_light_load`, `_heavy_load`, `_container` indicate the vehicle's load characteristics.
- * When not specified, assume average/mixed load.
+ * * `truck_generic_van`: Under 3.5 t GVW
+ * * `truck_generic_urban`: 3.5-7.5 t GVW
+ * * `truck_generic_mgv`: 7.5-20 t GVW
+ * * `truck_generic_hgv`: More than 20 t GVW
  *
  * # Rail transport
+ * For rail transport, values follow the pattern:
  *
- * You can explicitly request a US emission factor (`diesel_freight_train_us_average`)
- * or a European one (`diesel_freight_train_eu_...`).
+ * `{train_type}_{region}_{load_characteristics}`
  *
- * There are multiple European emission factors for different load characteristics or different traction.
- * When load characteristics or traction aren't known use `diesel_freight_train_eu_average`.
+ * Only `train_type` (either `diesel_freight_train` or electric_freight_train) is required.
  *
- * For `diesel_freight_train_eu_truck_and_trailer` and
- * `diesel_freight_train_eu_truck_trailer_only` the shipment size refers to the net load
- * within the truck.
+ * The region value is used to request either an EU or US emission factor. If omitted, an EU emission factor is used. When load characteristics are omitted, `average` is assumed.
  *
  * # Air transport
+ * For air transport, Lune supports one of three values:
  *
- * Lune supports two types of aircraft:
- * * `cargo_plane` - freighter
- * * `passenger_plane` - belly freight
- * * `plane` - unknown
- *
- * `plane` uses a weighted average of cargo and passenger planes.
+ * * `cargo_plane`: Indicating a full freighter plane.
+ * * `passenger_plane`: Indicating the plane only contains belly freight.
+ * * `plane`: When the freight capacity of the plane is unknown. This value uses a weighted average of cargo and passenger planes.
  *
  */
 export enum SimpleShippingMethod {
@@ -104,6 +83,7 @@ export enum SimpleShippingMethod {
     INLAND_WATERWAY_CONTAINER_VESSEL_CONVOY = 'inland_waterway_container_vessel_convoy',
     DIESEL_FREIGHT_TRAIN = 'diesel_freight_train',
     ELECTRIC_FREIGHT_TRAIN = 'electric_freight_train',
+    RAIL = 'rail',
     DIESEL_FREIGHT_TRAIN_US_AVERAGE = 'diesel_freight_train_us_average',
     DIESEL_FREIGHT_TRAIN_EU_AVERAGE = 'diesel_freight_train_eu_average',
     DIESEL_FREIGHT_TRAIN_EU_CONTAINER = 'diesel_freight_train_eu_container',

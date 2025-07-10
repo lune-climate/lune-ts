@@ -10,10 +10,14 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
- *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
- *
- */
-export type TransactionProcessedAt = string
+import type { DataQualityGrade } from './DataQualityGrade.js'
+import type { NullEnum } from './NullEnum.js'
+
+export type DataQualityScore = {
+    score: DataQualityGrade
+    components: {
+        emissionFactorScore: DataQualityGrade
+        routeScore: DataQualityGrade | NullEnum
+        shipmentScore: DataQualityGrade
+    }
+}

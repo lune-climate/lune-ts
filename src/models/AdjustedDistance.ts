@@ -11,8 +11,7 @@
 /* eslint-disable */
 
 /**
- * Distance estimation after distance adjustment factors have been applied.
- * Adjusted factors are decided by GLEC and are added to make distances more realistic.
+ * Deprecated. This value is the same as Distance.
  *
  */
 export type AdjustedDistance = {

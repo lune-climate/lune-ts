@@ -10,10 +10,21 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
- *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
- *
- */
-export type TransactionProcessedAt = string
+export type MerchantWithSearchTerm =
+    | {
+          name?: string
+          countryCode: string
+          searchTerm: string
+          categoryHierarchy: Array<string>
+      }
+    | {
+          name?: string
+          countryCode: string
+          searchTerm: string
+          category: string
+      }
+    | {
+          name?: string
+          countryCode: string
+          searchTerm: string
+      }

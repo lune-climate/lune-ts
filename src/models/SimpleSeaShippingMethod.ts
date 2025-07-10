@@ -11,13 +11,11 @@
 /* eslint-disable */
 
 /**
- * ## Deadweight tonnage
+ * For sea transport, values follow the pattern:
  *
- * `dwkt` suffixes describe the ship's deadweight kilotonne upper bound, whereas `over_Xdwkt` suffixes describe lower bounds.
+ * `{vessel_type}_{vessel_carrying_capacity}_{vessel_fuel}`
  *
- * ## Fuels
- *
- * Suffixes such as `_hfo` (Heavy fuel oil), `_vlsfo` (Very Low Sulphur Fuel Oil), `_mdo` (Marine diesel oil) describe the ship's fuel.
+ * The carrying capacity of the vessel is provided in deadweight kilotonnes. It is identified using `_Xdwkt` or `_over_Xdwkt` suffixes which indicate the vessels's upper or lower bounds respectively.
  *
  */
 export enum SimpleSeaShippingMethod {

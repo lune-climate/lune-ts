@@ -13,7 +13,7 @@
 import type { NullEnum } from './NullEnum.js'
 import type { SustainabilityPageCustomDescription } from './SustainabilityPageCustomDescription.js'
 import type { SustainabilityPageDescription } from './SustainabilityPageDescription.js'
-import type { SustainabilityPageSections } from './SustainabilityPageSections.js'
+import type { SustainabilityPageSectionsNullable } from './SustainabilityPageSectionsNullable.js'
 import type { SustainabilityPageSlug } from './SustainabilityPageSlug.js'
 import type { SustainabilityPageStatus } from './SustainabilityPageStatus.js'
 import type { SustainabilityPageTitle } from './SustainabilityPageTitle.js'
@@ -29,6 +29,6 @@ export type SustainabilityPage = {
     slug: SustainabilityPageSlug
     title: SustainabilityPageTitle
     description: SustainabilityPageDescription | NullEnum
-    customDescription: SustainabilityPageCustomDescription | null
-    sections: SustainabilityPageSections | null
+    customDescription: SustainabilityPageCustomDescription
+    sections: SustainabilityPageSectionsNullable
 }

@@ -10,10 +10,21 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
- *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
- *
- */
-export type TransactionProcessedAt = string
+export type RawDistance = {
+    amount: string
+    /**
+     * A raw estimate of distance before GLEC required Distance Adjustment Factors are applied.
+     */
+    unit: RawDistance.unit
+}
+
+export namespace RawDistance {
+    /**
+     * A raw estimate of distance before GLEC required Distance Adjustment Factors are applied.
+     */
+    export enum unit {
+        KM = 'km',
+        MI = 'mi',
+        NM = 'nm',
+    }
+}

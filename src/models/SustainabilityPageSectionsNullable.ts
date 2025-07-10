@@ -10,10 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { SustainabilityPageSection } from './SustainabilityPageSection.js'
+
 /**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
- *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
- *
+ * The sustainability page sections that will be displayed in the page. Only a single instance of each section type is allowed and the order is irrelevant.
  */
-export type TransactionProcessedAt = string
+export type SustainabilityPageSectionsNullable = Array<SustainabilityPageSection> | null

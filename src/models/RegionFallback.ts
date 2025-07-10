@@ -11,13 +11,9 @@
 /* eslint-disable */
 
 /**
- * Controls how geographical constraints are interpreted and if a fallback is performed.
- * For example, how fields like `country_code` and `region` are interpreted.
+ * Specify how geographical constraints (e.g., `country_code`, `region`) should be handled when matching emission factors, and if fallbacks should be used.
  *
- * * `never` (the default) means no fallback is performed and only emission
- * factors that match the specified geographical area are returned.
- * * `always` means the emission factors for related geographic areas are unconditionally included
- * in the results.
+ * Defaults to `never`, meaning only emission factors that exactly match the specified geography are used. No fallbacks are applied.
  *
  */
 export enum RegionFallback {

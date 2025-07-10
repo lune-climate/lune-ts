@@ -14,15 +14,9 @@ import type { Distance } from './Distance.js'
 import type { ShippingSourceDestination } from './ShippingSourceDestination.js'
 
 /**
- * Either the shipping distance or the start/destination address pair.
+ * Provide the route of the leg using either the total `distance` travelled, or the `source` and `destination` location.
  *
- * Note that for sea transport the source/destination pair should be as close to
- * locations of existing and well-known ports as possible. Coordinates or addresses
- * that lie far from the shore line or coordinates deep into the sea or ocean will
- * result in inaccurate calculations.
- *
- * When transporting goods over unusual routes or between unusual points it's better
- * to provide us the distance directly to ensure better calculations.
+ * If shipping between unusual or remote locations, provide `distance` directly for best results
  *
  */
 export type ShippingRoute = Distance | ShippingSourceDestination

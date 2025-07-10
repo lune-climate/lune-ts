@@ -16,13 +16,18 @@ import type { RoadFuel } from './RoadFuel.js'
 import type { RoadGradient } from './RoadGradient.js'
 import type { RoadLoadFactor } from './RoadLoadFactor.js'
 import type { RoadSituation } from './RoadSituation.js'
+import type { RoadVehicleType } from './RoadVehicleType.js'
 
 /**
  * Calculate emissions for road vehicles based on input parameters such as vehicle type, fuel type, load factor, empty runs factor, etc.
  *
  */
 export type RoadShippingMethod = {
-    vehicleType: RoadShippingMethod.vehicle_type
+    /**
+     * Vehicle type used for shipping. Use the `truck` method to have Lune infer the type of truck most likely used
+     *
+     */
+    vehicleType: RoadVehicleType | 'truck'
     fuel: RoadFuel
     /**
      * Describes the road's topology.
@@ -59,20 +64,10 @@ export type RoadShippingMethod = {
      *
      */
     emissionStandard?: RoadEmissionStandard
-}
-
-export namespace RoadShippingMethod {
-    export enum vehicle_type {
-        TRUCK_GENERIC_VAN = 'truck_generic_van',
-        TRUCK_RIGID_7_5T = 'truck_rigid_7_5t',
-        TRUCK_RIGID_12T = 'truck_rigid_12t',
-        TRUCK_RIGID_20T = 'truck_rigid_20t',
-        TRUCK_RIGID_26T = 'truck_rigid_26t',
-        TRUCK_RIGID_32T = 'truck_rigid_32t',
-        TRUCK_ARTICULATED_34T = 'truck_articulated_34t',
-        TRUCK_ARTICULATED_40T = 'truck_articulated_40t',
-        TRUCK_ARTICULATED_44T = 'truck_articulated_44t',
-        TRUCK_ARTICULATED_60T = 'truck_articulated_60t',
-        TRUCK_ARTICULATED_72T = 'truck_articulated_72t',
-    }
+    /**
+     * The shipment is refrigerated or "dry" (not refrigerated).
+     * Dry shipments result in lower emissions.
+     *
+     */
+    refrigerated?: boolean
 }

@@ -11,9 +11,10 @@
 /* eslint-disable */
 
 /**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
+ * The uplift percentage based on refrigeration and cargo capacity.
  *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
+ * For refrigerated vans (up to 3.5 t GVW) an uplift of 15% is applied.
+ * For refrigerated heavier vehicles (> 3.5 t GVW) an uplift of 12% is applied.
  *
  */
-export type TransactionProcessedAt = string
+export type RoadRefrigerationFactor = number

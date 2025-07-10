@@ -10,10 +10,11 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Provide the date and time that the transaction is processed, as an RFC 3339 timestamp.
- *
- * If omitted, the property defaults to the time of request. Used only for analytics, with no impact on the actual estimate calculation.
- *
- */
-export type TransactionProcessedAt = string
+export enum EmissionStandardRegion {
+    AFRICA = 'Africa',
+    ASIA_AND_PACIFIC = 'Asia and Pacific',
+    NORTH_AMERICA = 'North America',
+    CENTRAL_AND_SOUTH_AMERICA = 'Central and South America',
+    EUROPE = 'Europe',
+    WORLD = 'World',
+}

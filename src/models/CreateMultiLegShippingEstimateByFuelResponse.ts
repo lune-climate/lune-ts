@@ -11,10 +11,12 @@
 /* eslint-disable */
 
 import type { CreateMultiLegShippingEstimateByFuelRequest } from './CreateMultiLegShippingEstimateByFuelRequest.js'
+import type { DataQualityGrade } from './DataQualityGrade.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { EstimateMassWithBreakdowns } from './EstimateMassWithBreakdowns.js'
 import type { EstimateQuote } from './EstimateQuote.js'
 import type { FuelMethodologyDetails } from './FuelMethodologyDetails.js'
+import type { IsShipment } from './IsShipment.js'
 import type { NullEnum } from './NullEnum.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { Url } from './Url.js'
@@ -41,14 +43,15 @@ export type CreateMultiLegShippingEstimateByFuelResponse = {
         methodologyDetails: FuelMethodologyDetails
     }>
     mass: EstimateMassWithBreakdowns
+    isShipment: IsShipment
+    shippedAt: ShippedAt
     /**
-     * When true, the emission estimate refers to an actual shipment of goods, will be included in Lune analytics and can be included in any CO2 emissions reporting.
-     *
-     * This property exists to distinguish booking quotes or forecasts from actual shipments where goods are moved.
-     *
-     * You can mark an estimate as shipment at any time.
+     * Represents the quality of the emission estimation.
      *
      */
-    isShipment: boolean
-    shippedAt: ShippedAt
+    dataQualityScore:
+        | {
+              score: DataQualityGrade
+          }
+        | NullEnum
 }
