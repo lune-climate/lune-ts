@@ -226,7 +226,7 @@ export type { ShippingEstimateRequest } from './models/ShippingEstimateRequest.j
 export type { ShippingLegEmissionEstimate } from './models/ShippingLegEmissionEstimate.js'
 export type { ShippingMethod } from './models/ShippingMethod.js'
 export type { ShippingRoute } from './models/ShippingRoute.js'
-export type { ShippingSourceDestination } from './models/ShippingSourceDestination.js'
+export { ShippingSourceDestination } from './models/ShippingSourceDestination.js'
 export { SimpleSeaShippingMethod } from './models/SimpleSeaShippingMethod.js'
 export { SimpleShippingMethod } from './models/SimpleShippingMethod.js'
 export { SingleShippingEmissionEstimate } from './models/SingleShippingEmissionEstimate.js'
