@@ -10,7 +10,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { NullEnum } from './NullEnum.js'
 import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
 import type { RoadEmptyRunsFactor } from './RoadEmptyRunsFactor.js'
 import type { RoadGradient } from './RoadGradient.js'
@@ -47,7 +46,7 @@ export type RoadMethodologyDetails = {
     capacityUtilisation: number
     situation: RoadSituation
     gradient: RoadGradient
-    refrigerationFactor?: RoadRefrigerationFactor | NullEnum
+    refrigerationFactor?: RoadRefrigerationFactor
 }
 
 export namespace RoadMethodologyDetails {
