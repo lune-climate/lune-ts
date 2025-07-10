@@ -17,4 +17,4 @@
  * For refrigerated heavier vehicles (> 3.5 t GVW) an uplift of 12% is applied.
  *
  */
-export type RoadRefrigerationFactor = number | null
+export type RoadRefrigerationFactor = number
