@@ -14,34 +14,10 @@ import type { Address } from './Address.js'
 import type { AirportCode } from './AirportCode.js'
 import type { GeographicCoordinates } from './GeographicCoordinates.js'
 import type { Locode } from './Locode.js'
+import type { TransitCorridor } from './TransitCorridor.js'
 
 export type ShippingSourceDestination = {
     source: Address | GeographicCoordinates | Locode | AirportCode
     destination: Address | GeographicCoordinates | Locode | AirportCode
-    /**
-     * The transit corridor used for sea shipments. This is used to improve the accuracy of the estimate.
-     * If not provided, the shortest route is calculated.
-     *
-     * Only applicable to sea shipments.
-     *
-     */
-    transitCorridor?: ShippingSourceDestination.transit_corridor
-}
-
-export namespace ShippingSourceDestination {
-    /**
-     * The transit corridor used for sea shipments. This is used to improve the accuracy of the estimate.
-     * If not provided, the shortest route is calculated.
-     *
-     * Only applicable to sea shipments.
-     *
-     */
-    export enum transit_corridor {
-        PANAMA = 'panama',
-        SUEZ = 'suez',
-        CAPE_OF_GOOD_HOPE = 'cape_of_good_hope',
-        NORTHWEST_PASSAGE = 'northwest_passage',
-        NORTHEAST_PASSAGE = 'northeast_passage',
-        CAPE_HORN = 'cape_horn',
-    }
+    transitCorridor?: TransitCorridor
 }
