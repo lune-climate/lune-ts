@@ -77,11 +77,7 @@ export abstract class ClientAccountsService {
              *
              */
             handle?: string
-            /**
-             * Enum to control the visibility of external pages such as sustainability and analytics pages.
-             *
-             */
-            externalPagesVisibility?: 'public' | 'hidden'
+            externalPagesVisibility?: AccountExternalPagesVisibility
             idempotencyKey?: AccountIdempotencyKey
         },
         options?: {

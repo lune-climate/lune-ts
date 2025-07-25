@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { AccountCurrencyCode } from './AccountCurrencyCode.js'
+import type { AccountExternalPagesVisibility } from './AccountExternalPagesVisibility.js'
 import type { AccountHandle } from './AccountHandle.js'
 import type { AccountIdempotencyKey } from './AccountIdempotencyKey.js'
 
@@ -36,11 +37,7 @@ export type EstimateClientAccountRequest =
            * The account beneficiary. Leading and trailing spaces are removed.
            */
           beneficiary?: string
-          /**
-           * Enum to control the visibility of external pages such as sustainability and analytics pages.
-           *
-           */
-          externalPagesVisibility?: EstimateClientAccountRequest.external_pages_visibility
+          externalPagesVisibility?: AccountExternalPagesVisibility
           handle: AccountHandle
       }
     | {
@@ -53,22 +50,7 @@ export type EstimateClientAccountRequest =
            * The account beneficiary. Leading and trailing spaces are removed.
            */
           beneficiary?: string
-          /**
-           * Enum to control the visibility of external pages such as sustainability and analytics pages.
-           *
-           */
-          externalPagesVisibility?: EstimateClientAccountRequest.external_pages_visibility
+          externalPagesVisibility?: AccountExternalPagesVisibility
           handle?: AccountHandle
           idempotencyKey: AccountIdempotencyKey
       }
-
-export namespace EstimateClientAccountRequest {
-    /**
-     * Enum to control the visibility of external pages such as sustainability and analytics pages.
-     *
-     */
-    export enum external_pages_visibility {
-        PUBLIC = 'public',
-        HIDDEN = 'hidden',
-    }
-}

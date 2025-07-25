@@ -13,10 +13,15 @@
 /**
  * Controls the visibility of external pages such as sustainability and analytics pages.
  *
+ * `public` pages are visible to everyone.
+ * `private` pages are only visible through a verified JWT.
+ * `hidden` pages not visible.
+ *
  * Defaults to `hidden`.
  *
  */
 export enum AccountExternalPagesVisibility {
     PUBLIC = 'public',
     HIDDEN = 'hidden',
+    PRIVATE = 'private',
 }
