@@ -82,11 +82,7 @@ export abstract class AccountsService {
              *
              */
             handle?: string
-            /**
-             * Enum to control the visibility of external pages such as sustainability and analytics pages.
-             *
-             */
-            externalPagesVisibility?: 'public' | 'hidden'
+            externalPagesVisibility?: AccountExternalPagesVisibility
         },
         options?: {
             /**
@@ -203,11 +199,7 @@ export abstract class AccountsService {
              *
              */
             handle?: string
-            /**
-             * Either hidden or public. Controls the visibility of external pages such as sustainability and analytics pages. Default is hidden
-             *
-             */
-            externalPagesVisibility?: 'public' | 'hidden'
+            externalPagesVisibility?: AccountExternalPagesVisibility
         },
         options?: {
             /**
