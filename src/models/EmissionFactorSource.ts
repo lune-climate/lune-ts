@@ -23,4 +23,5 @@ export enum EmissionFactorSource {
     IDEMAT = 'idemat',
     IATA = 'iata',
     EMBER = 'ember',
+    CEDA = 'ceda',
 }
