@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { Address } from './Address.js'
 import type { EmissionStandardRegion } from './EmissionStandardRegion.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
@@ -28,6 +29,13 @@ export type InferenceDetails = {
         railType: InferenceDetails.rail_type
         sourceCountry: string
         destinationCountry: string
+    } | null
+    /**
+     * Addresses that have been cleaned, corrected, and had missing parts inferred using a large language model
+     */
+    cleanedAddress: {
+        source: Address | NullEnum
+        destination: Address | NullEnum
     } | null
     /**
      * The road emission standard trade has inferred via country information in the shipment's route.
