@@ -9,7 +9,7 @@ shell: build-image
 	docker compose run --service-ports --rm client
 
 install:
-	npm ci
+	npm ci --legacy-peer-deps
 
 check-linting:
 	npm run check-format
@@ -45,15 +45,15 @@ build-from-source: install check-linting build
 
 patch-version:
 	npm --no-git-tag-version version patch
-	npm ci
+	npm ci --legacy-peer-deps
 
 minor-version:
 	npm --no-git-tag-version version minor
-	npm ci
+	npm ci --legacy-peer-deps
 
 major-version:
 	npm --no-git-tag-version version major
-	npm ci
+	npm ci --legacy-peer-deps
 
 publish:
 	cd dist && npm publish --access public
