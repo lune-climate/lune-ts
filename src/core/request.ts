@@ -39,7 +39,7 @@ const isFormData = (value: any): value is FormData => {
 const base64 = (str: string): string => {
     try {
         return btoa(str)
-    } catch (err) {
+    } catch {
         return Buffer.from(str).toString('base64')
     }
 }
