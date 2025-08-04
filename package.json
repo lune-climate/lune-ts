@@ -39,7 +39,7 @@
     "axios": "^1.4.0",
     "camelcase-keys": "<8.0.0",
     "snakecase-keys": "^9.0.2",
-    "ts-results-es": "^4.0.0 || ^5.0.1"
+    "ts-results-es": "^4.0.0 || ^5.0.1 || ^6.0.0"
   },
   "devDependencies": {
     "@lune-climate/eslint-config": "git+https://github.com/lune-climate/eslint-config.git#master",
