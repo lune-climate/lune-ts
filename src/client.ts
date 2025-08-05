@@ -91,6 +91,8 @@ export class LuneClient {
             (error: AxiosError | ExtendedAxiosError): Promise<AxiosError | ExtendedAxiosError> => {
                 // There's a separate, slightly different callback for errors.
                 if (!isAxiosError(error)) {
+                    // We're only rethrowing what we got, don't blame us.
+                    // eslint-disable-next-line @typescript-eslint/only-throw-error
                     throw error
                 }
                 if (error.response) {
