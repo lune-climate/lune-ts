@@ -88,7 +88,7 @@ export class LuneClient {
         }
         this.client.interceptors.response.use(
             camelCaseResponse,
-            (error: unknown): Promise<AxiosError | ExtendedAxiosError> => {
+            (error: AxiosError | ExtendedAxiosError): Promise<AxiosError | ExtendedAxiosError> => {
                 // There's a separate, slightly different callback for errors.
                 if (!isAxiosError(error)) {
                     throw error
