@@ -11,10 +11,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
-          
       - name: Rebuild client from remote schema
         run: |
           docker compose -f docker-compose-ci.yml run \
