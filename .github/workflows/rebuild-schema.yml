@@ -11,12 +11,16 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+          
       - name: Rebuild client from remote schema
-        run: docker compose -f docker-compose-ci.yml run update_from_remote_schema
+        run: |
+          docker compose -f docker-compose-ci.yml run \
+            --user $(id -u):$(id -g) \
+            update_from_remote_schema
+        
       - name: Create PR with changes
         uses: peter-evans/create-pull-request@v3
         with:
