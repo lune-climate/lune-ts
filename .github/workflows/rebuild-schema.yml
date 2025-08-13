@@ -26,6 +26,8 @@ jobs:
           id
           pwd
           ls -la
+          echo "=== src/models/ permissions ==="
+          ls -la src/models/
           echo "=== Git status ==="
           git status
           echo "=== Docker info ==="
