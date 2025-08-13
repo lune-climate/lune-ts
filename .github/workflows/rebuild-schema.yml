@@ -19,6 +19,7 @@ jobs:
         run: |
           docker compose -f docker-compose-ci.yml run \
             --user $(id -u):$(id -g) \
+            -e NPM_CONFIG_CACHE=/tmp/.npm-cache \
             update_from_remote_schema
         
       - name: Create PR with changes
