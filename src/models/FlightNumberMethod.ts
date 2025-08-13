@@ -10,6 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { AircraftConfiguration } from './AircraftConfiguration.js'
+
 export type FlightNumberMethod = {
     /**
      * Flight number in either ICAO or IATA format.
@@ -22,4 +24,5 @@ export type FlightNumberMethod = {
      * Departure date of the flight. The date is in UTC timezone. Dates that are over 24 hours in the future are not allowed.
      */
     departureOn: string
+    aircraftConfiguration?: AircraftConfiguration
 }

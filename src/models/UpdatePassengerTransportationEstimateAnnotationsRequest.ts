@@ -10,19 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-export enum EmissionFactorSource {
-    EPA = 'epa',
-    EXIOBASE = 'exiobase',
-    ECOINVENT = 'ecoinvent',
-    BEIS = 'beis',
-    LUNE = 'lune',
-    GLEC = 'glec',
-    EMSA = 'emsa',
-    CBAM = 'cbam',
-    ADEME = 'ademe',
-    IDEMAT = 'idemat',
-    IATA = 'iata',
-    EMBER = 'ember',
-    CEDA = 'ceda',
-    ICCT = 'icct',
+import type { PassengerTransportationTravelledAt } from './PassengerTransportationTravelledAt.js'
+
+export type UpdatePassengerTransportationEstimateAnnotationsRequest = {
+    isPassengerTransportation?: boolean
+    passengerTransportationTravelledAt?: PassengerTransportationTravelledAt
 }
