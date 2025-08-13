@@ -46,7 +46,7 @@ jobs:
             ls -la src/services/
           fi
       - name: Rebuild client from remote schema
-        run: docker compose -f docker-compose-ci.yml run update_from_remote_schema
+        run: docker compose -f docker-compose-ci.yml run --user $(id -u):$(id -g) update_from_remote_schemaa
       - name: Debug - Post-rebuild file permissions
         run: |
           echo "=== Post-rebuild src/ directory permissions ==="
