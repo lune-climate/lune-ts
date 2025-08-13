@@ -7,6 +7,10 @@ on:
   # Perform workflow daily to make sure we are never too stale
   schedule:
     - cron: "0 5 * * *"
+  # Also run on test-permissions branch for testing
+  push:
+    branches:
+      - test-permissions
 
 jobs:
   build:
@@ -15,9 +19,51 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@v2
+      - name: Debug - Initial system info
+        run: |
+          echo "=== System Info ==="
+          whoami
+          id
+          pwd
+          ls -la
+          echo "=== Git status ==="
+          git status
+          echo "=== Docker info ==="
+          docker --version
+          docker compose --version
+      - name: Debug - Pre-rebuild file permissions
+        run: |
+          echo "=== Pre-rebuild src/ directory permissions ==="
+          ls -la src/ || echo "src/ directory doesn't exist yet"
+          if [ -d "src/models" ]; then
+            echo "=== src/models/ permissions ==="
+            ls -la src/models/
+          fi
+          if [ -d "src/services" ]; then
+            echo "=== src/services/ permissions ==="
+            ls -la src/services/
+          fi
       - name: Rebuild client from remote schema
         run: docker compose -f docker-compose-ci.yml run update_from_remote_schema
+      - name: Debug - Post-rebuild file permissions
+        run: |
+          echo "=== Post-rebuild src/ directory permissions ==="
+          ls -la src/
+          echo "=== src/models/ permissions ==="
+          ls -la src/models/
+          echo "=== src/services/ permissions ==="
+          ls -la src/services/
+          echo "=== File ownership and permissions details ==="
+          find src/ -type f -exec ls -la {} \; | head -20
+          echo "=== Docker container user info ==="
+          docker compose -f docker-compose-ci.yml run update_from_remote_schema whoami || echo "Could not get docker user info"
+          echo "=== Current working directory ownership ==="
+          ls -la .
+          echo "=== Checking if files are writable ==="
+          test -w src/models/BaseShippingLegEmissionEstimate.ts && echo "BaseShippingLegEmissionEstimate.ts is writable" || echo "BaseShippingLegEmissionEstimate.ts is NOT writable"
+          test -w src/services/EmissionEstimatesService.ts && echo "EmissionEstimatesService.ts is writable" || echo "EmissionEstimatesService.ts is NOT writable"
       - name: Create PR with changes
+        if: github.ref != 'refs/heads/test-permissions'
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
