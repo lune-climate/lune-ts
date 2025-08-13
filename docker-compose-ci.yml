@@ -2,7 +2,7 @@ version: "3.9"
 services:
   update_from_remote_schema:
     build: .
-    command: bash -c "cd /lune-ts && make build-from-schema"
+    command: bash -c "ls -lah / && ls -lah ~ && cd /lune-ts && make build-from-schema"
     volumes:
       - .:/lune-ts
   build_from_source:
