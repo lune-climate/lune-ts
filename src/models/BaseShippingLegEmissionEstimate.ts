@@ -25,6 +25,7 @@ import type { NullEnum } from './NullEnum.js'
 import type { RawDistance } from './RawDistance.js'
 import type { RoadMethodologyDetails } from './RoadMethodologyDetails.js'
 import type { RouteInferenceDetails } from './RouteInferenceDetails.js'
+import type { SeaMethodologyDetails } from './SeaMethodologyDetails.js'
 import type { VesselInferenceMethod } from './VesselInferenceMethod.js'
 
 export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown & {
@@ -84,6 +85,7 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
         | RoadMethodologyDetails
         | ElectricMethodMethodologyDetails
         | RouteInferenceDetails
+        | SeaMethodologyDetails
         | NullEnum
     /**
      * Represents the quality of the emission estimation for a particular shipping leg.
