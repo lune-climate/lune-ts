@@ -11,7 +11,9 @@
 /* eslint-disable */
 
 import type { Address } from './Address.js'
+import type { AirportCode } from './AirportCode.js'
 import type { EmissionStandardRegion } from './EmissionStandardRegion.js'
+import type { Locode } from './Locode.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
 import type { RoadVehicleType } from './RoadVehicleType.js'
@@ -31,11 +33,11 @@ export type InferenceDetails = {
         destinationCountry: string
     } | null
     /**
-     * Addresses that have been cleaned, corrected, and had missing parts inferred using a large language model
+     * Routes that have been cleaned, corrected, and had missing parts inferred using a large language model
      */
-    cleanedAddress: {
-        source: Address | NullEnum
-        destination: Address | NullEnum
+    cleanedRoute: {
+        source: Address | Locode | AirportCode | NullEnum
+        destination: Address | Locode | AirportCode | NullEnum
     } | null
     /**
      * The road emission standard trade has inferred via country information in the shipment's route.
@@ -67,6 +69,23 @@ export type InferenceDetails = {
         value: RoadVehicleType
         isInternationalShipment: boolean
     } | null
+    /**
+     * The road fuel has inferred via source country information in the shipment's route.
+     */
+    roadFuel?: {
+        /**
+         * The vehicle's infered fuel.
+         */
+        value: InferenceDetails.value
+        /**
+         * Inferred source country code
+         */
+        sourceCountryCode: ShippingCountryCode | NullEnum
+        /**
+         * Inferred source country region, present when region information was used to infer the standard
+         */
+        sourceRegion: EmissionStandardRegion | NullEnum
+    } | null
 }
 
 export namespace InferenceDetails {
@@ -79,5 +98,24 @@ export namespace InferenceDetails {
         SOURCE = 'source',
         DESTINATION = 'destination',
         BOTH = 'both',
+    }
+
+    /**
+     * The vehicle's infered fuel.
+     */
+    export enum value {
+        GASOLINE = 'gasoline',
+        DIESEL = 'diesel',
+        _99_DIESEL_1_BIODIESEL = '99_diesel_1_biodiesel',
+        _98_DIESEL_2_BIODIESEL = '98_diesel_2_biodiesel',
+        _95_DIESEL_5_BIODIESEL = '95_diesel_5_biodiesel',
+        _93_DIESEL_7_BIODIESEL = '93_diesel_7_biodiesel',
+        _90_DIESEL_10_BIODIESEL = '90_diesel_10_biodiesel',
+        _80_DIESEL_20_BIODIESEL = '80_diesel_20_biodiesel',
+        _50_DIESEL_50_BIODIESEL = '50_diesel_50_biodiesel',
+        ETHANOL_FROM_CORN = 'ethanol_from_corn',
+        HVO_FROM_TALLOW = 'hvo_from_tallow',
+        LPG = 'lpg',
+        CNG = 'cng',
     }
 }

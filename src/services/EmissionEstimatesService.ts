@@ -411,6 +411,56 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Update a passenger transportation emission estimate's annotations
+     * This method allows updating a selection of estimate annotations without going through
+     * a full estimate update (with all the necessary inputs).
+     *
+     * Only properties included in the input data are updated.
+     *
+     * @param id The estimate's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns PassengerTransportationEmissionEstimate OK
+     */
+    public partialUpdatePassengerTransportationEstimateAnnotations(
+        id: string,
+        data: {
+            isPassengerTransportation?: boolean
+            passengerTransportationTravelledAt?: PassengerTransportationTravelledAt
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<PassengerTransportationEmissionEstimate>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'PATCH',
+            url: '/estimates/passenger-transportation/{id}/annotations',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            body: {
+                is_passenger_transportation: data?.isPassengerTransportation,
+                passenger_transportation_travelled_at: data?.passengerTransportationTravelledAt,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
      * List all shipping estimates
      * Returns single and multi-leg shipping estimates paginated in reverse order.
      *
