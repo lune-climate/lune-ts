@@ -16,7 +16,14 @@ jobs:
       - name: Checkout the code
         uses: actions/checkout@v2
       - name: Rebuild client from remote schema
-        run: docker compose -f docker-compose-ci.yml run update_from_remote_schema
+        run: |
+          # --user preserves file ownership to match host user (prevents permission issues)
+          # -e sets npm cache directory to avoid permission conflicts in container
+          docker compose -f docker-compose-ci.yml run \
+            --user $(id -u):$(id -g) \
+            -e NPM_CONFIG_CACHE=/tmp/.npm-cache \
+            update_from_remote_schema
+        
       - name: Create PR with changes
         uses: peter-evans/create-pull-request@v3
         with:
