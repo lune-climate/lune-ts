@@ -1,45 +1,43 @@
 name: Rebuild client and open PR with changes
 
 on:
-    # Perform workflow whenever we get a change in schema event
-    repository_dispatch:
-        types: [rebuild_schema_change]
-    # Perform workflow daily to make sure we are never too stale
-    schedule:
-        - cron: '0 5 * * *'
+  # Perform workflow whenever we get a change in schema event
+  repository_dispatch:
+    types: [rebuild_schema_change]
+  # Perform workflow daily to make sure we are never too stale
+  schedule:
+    - cron: "0 5 * * *"
 
 jobs:
-    build:
-        runs-on: ubuntu-latest
+  build:
+    runs-on: ubuntu-latest
 
-        steps:
-            - name: Checkout the code
-              uses: actions/checkout@v2
-            - name: Rebuild client from remote schema
-              run: |
-                  # --user preserves file ownership to match host user (prevents permission issues)
-                  # -e sets npm cache directory to avoid permission conflicts in container
-                  docker compose -f docker-compose-ci.yml run \
-                    --user $(id -u):$(id -g) \
-                    -e NPM_CONFIG_CACHE=/tmp/.npm-cache \
-                    update_from_remote_schema
-
-            - name: Create PR with changes
-              uses: peter-evans/create-pull-request@v3
-              with:
-                  token: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
-                  commit-message: Client auto update
-                  committer: GitHub <noreply@github.com>
-                  author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
-                  signoff: false
-                  base: master
-                  branch: auto-schema-update
-                  delete-branch: true
-                  title: 'Client auto update'
-                  body: |
-                      Underlying schema has changed. Check changes and approve accordingly. This will not create any release, simply assimilate changes on the schema.
-                  labels: |
-                      Schema Rebuild
-                      Automated PR
-                  reviewers: lune-eng
-                  draft: false
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+      - name: Rebuild client from remote schema
+        run: |
+          docker compose -f docker-compose-ci.yml run \
+            --user $(id -u):$(id -g) \
+            -e NPM_CONFIG_CACHE=/tmp/.npm-cache \
+            update_from_remote_schema
+        
+      - name: Create PR with changes
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
+          commit-message: Client auto update
+          committer: GitHub <noreply@github.com>
+          author: ${{ github.actor }} <${{ github.actor }}@users.noreply.github.com>
+          signoff: false
+          base: master
+          branch: auto-schema-update
+          delete-branch: true
+          title: 'Client auto update'
+          body: |
+            Underlying schema has changed. Check changes and approve accordingly. This will not create any release, simply assimilate changes on the schema.
+          labels: |
+            Schema Rebuild
+            Automated PR
+          reviewers: lune-eng
+          draft: false
