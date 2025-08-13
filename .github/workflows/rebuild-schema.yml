@@ -63,7 +63,6 @@ jobs:
           test -w src/models/BaseShippingLegEmissionEstimate.ts && echo "BaseShippingLegEmissionEstimate.ts is writable" || echo "BaseShippingLegEmissionEstimate.ts is NOT writable"
           test -w src/services/EmissionEstimatesService.ts && echo "EmissionEstimatesService.ts is writable" || echo "EmissionEstimatesService.ts is NOT writable"
       - name: Create PR with changes
-        if: github.ref != 'refs/heads/test-permissions'
         uses: peter-evans/create-pull-request@v3
         with:
           token: ${{ secrets.CLIENT_REBUILD_TOKEN_GITHUB }}
