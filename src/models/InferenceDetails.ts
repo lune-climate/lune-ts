@@ -16,6 +16,8 @@ import type { EmissionStandardRegion } from './EmissionStandardRegion.js'
 import type { Locode } from './Locode.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
+import type { RoadGradient } from './RoadGradient.js'
+import type { RoadSituation } from './RoadSituation.js'
 import type { RoadVehicleType } from './RoadVehicleType.js'
 import type { ShippingCountryCode } from './ShippingCountryCode.js'
 
@@ -72,7 +74,7 @@ export type InferenceDetails = {
     /**
      * The road fuel has inferred via source country information in the shipment's route.
      */
-    roadFuel?: {
+    roadFuel: {
         /**
          * The vehicle's infered fuel.
          */
@@ -85,6 +87,24 @@ export type InferenceDetails = {
          * Inferred source country region, present when region information was used to infer the standard
          */
         sourceRegion: EmissionStandardRegion | NullEnum
+    } | null
+    /**
+     * The road gradient inferred via elevation data for the shipment's route.
+     */
+    roadGradient: {
+        /**
+         * The vehicle's infered gradient.
+         */
+        value: RoadGradient
+    } | null
+    /**
+     * The road situation inferred via the road types and traffic conditions for the route.
+     */
+    roadSituation: {
+        /**
+         * The vehicle's infered situation.
+         */
+        value: RoadSituation
     } | null
 }
 
