@@ -41,4 +41,22 @@ export type RouteInferenceExplanation = {
      * Lune has detected that your provided flight number has resolved into two or more legs.
      */
     resolvedFromFlightNumber?: string
+    /**
+     * Indicates Lune has detected that this leg's destination does not match the next leg's
+     * source. Lune has therefore inferred an additional road connection leg.
+     *
+     */
+    inferredConnectionLeg?: RouteInferenceExplanation.inferred_connection_leg
+}
+
+export namespace RouteInferenceExplanation {
+    /**
+     * Indicates Lune has detected that this leg's destination does not match the next leg's
+     * source. Lune has therefore inferred an additional road connection leg.
+     *
+     */
+    export enum inferred_connection_leg {
+        MISSING_CONNECTION_TO_NEXT_LEG = 'missing_connection_to_next_leg',
+        OVERLAND_CONNECTION_TO_NEXT_LEG = 'overland_connection_to_next_leg',
+    }
 }
