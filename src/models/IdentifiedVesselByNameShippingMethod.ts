@@ -10,7 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { ContainerShippingMethod } from './ContainerShippingMethod.js'
+import type { ContainerShippingMethodWithExtraProperties } from './ContainerShippingMethodWithExtraProperties.js'
 
 /**
  * This method uses the vessel's name to select an emission factors, falling back to trade lane emissions factors if provided. If the vessel name matches
@@ -31,4 +31,4 @@ export type IdentifiedVesselByNameShippingMethod =
            *
            */
           vesselName: string
-      } & ContainerShippingMethod)
+      } & ContainerShippingMethodWithExtraProperties)
