@@ -190,6 +190,7 @@ export type { CompanyEmissionEstimate } from './models/CompanyEmissionEstimate.j
 export type { CompanyEstimateRequest } from './models/CompanyEstimateRequest.js'
 export type { CompanyOnPremiseUse } from './models/CompanyOnPremiseUse.js'
 export { ContainerShippingMethod } from './models/ContainerShippingMethod.js'
+export { ContainerShippingMethodWithExtraProperties } from './models/ContainerShippingMethodWithExtraProperties.js'
 export type { ConvertedShipment } from './models/ConvertedShipment.js'
 export type { CountTimeseries } from './models/CountTimeseries.js'
 export type { CreateAccountRequest } from './models/CreateAccountRequest.js'
