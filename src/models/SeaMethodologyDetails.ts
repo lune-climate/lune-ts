@@ -25,6 +25,13 @@ export type SeaMethodologyDetails = {
      */
     vesselCruisingSpeedKnots: number
     /**
+     * The source of the average vessel cruising speed. Can be either from:
+     * - IMO published average for the vessel's TEU class
+     * - Averaged cruising speed for the specific vessel calculated from AIS data
+     *
+     */
+    vesselCruisingSpeedSource: SeaMethodologyDetails.vessel_cruising_speed_source
+    /**
      * The estimated time over which the voyage took place, in hours.
      *
      */
@@ -34,4 +41,17 @@ export type SeaMethodologyDetails = {
      *
      */
     voyageEmissionsPerTeu: number
+}
+
+export namespace SeaMethodologyDetails {
+    /**
+     * The source of the average vessel cruising speed. Can be either from:
+     * - IMO published average for the vessel's TEU class
+     * - Averaged cruising speed for the specific vessel calculated from AIS data
+     *
+     */
+    export enum vessel_cruising_speed_source {
+        AVERAGE_FOR_VESSEL_CLASS = 'average_for_vessel_class',
+        AIS = 'ais',
+    }
 }
