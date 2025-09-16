@@ -33,6 +33,12 @@ export type PassengerTransportationEmissionEstimate = EmissionEstimate & {
      * The emission calculation unique identifier
      */
     id: string
+    /**
+     * An array of journey legs created from request. There's no guarantee this array will
+     * be the same length as the request's `legs` array since we may infer more legs
+     * based on routing information.
+     *
+     */
     legs: Array<PassengerTransportationLegEmissionEstimate>
     quote: EstimateQuote
     request: PassengerTransportationEstimateRequest
