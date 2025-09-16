@@ -10,7 +10,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { CalculatedRouteLocation } from './CalculatedRouteLocation.js'
 import type { Distance } from './Distance.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { EstimateMass } from './EstimateMass.js'
@@ -23,39 +22,4 @@ export type PassengerTransportationLegEmissionEstimate = {
      * This property is `null` for any estimate created before 01/12/2024
      */
     emissionFactor?: EmissionFactorWithGasEmissions | NullEnum
-    /**
-     * When a leg is partially, or fully, inferred then this property will contain the source and destination of the final route used to calculate `distance`
-     */
-    routeInferenceDetails?:
-        | {
-              source: CalculatedRouteLocation
-              destination: CalculatedRouteLocation
-          }
-        | NullEnum
-    /**
-     * Details about the parameters used in the methodology for estimating emissions.
-     */
-    methodologyDetails?:
-        | NullEnum
-        | {
-              /**
-               * Passenger flight methodology details.
-               */
-              flight?: {
-                  /**
-                   * Name of the identified aircraft
-                   */
-                  aircraftName: string
-                  /**
-                   * Estimate of the fuel consumed by the flight, measured in tonnes.
-                   */
-                  flightFuelConsumedTonnes: number
-                  /**
-                   * Fraction (ranging from 0 to 1) of total flight leg emissions for which
-                   * the passenger(s) is responsible.
-                   *
-                   */
-                  emissionShare: number
-              }
-          }
 }
