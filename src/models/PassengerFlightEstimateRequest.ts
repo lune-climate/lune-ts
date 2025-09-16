@@ -13,6 +13,7 @@
 import type { AirportSourceDestination } from './AirportSourceDestination.js'
 import type { CabinClass } from './CabinClass.js'
 import type { Distance } from './Distance.js'
+import type { FlightNumberMethod } from './FlightNumberMethod.js'
 import type { SourceDestination } from './SourceDestination.js'
 
 /**
@@ -24,4 +25,5 @@ export type PassengerFlightEstimateRequest = {
      */
     route: Distance | AirportSourceDestination | SourceDestination
     cabinClass: CabinClass
+    flightIdentification?: FlightNumberMethod
 }
