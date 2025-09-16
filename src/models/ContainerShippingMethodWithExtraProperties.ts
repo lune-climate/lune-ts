@@ -19,6 +19,11 @@ export type ContainerShippingMethodWithExtraProperties = {
      */
     refrigerated?: boolean
     /**
+     * Measure of how fully a vessel is utilising its cargo capacity.
+     *
+     */
+    loadFactor?: number
+    /**
      * Container transport emissions vary per trade lane. When a trade lane is not given we'll
      * use an industry-wide average. Providing an `aggregated_*` trade lane group will result in an
      * a more accurate estimate. Providing an `disaggregated_*` trade lane will result in the best
