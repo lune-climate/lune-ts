@@ -22,4 +22,10 @@ export type PassengerTransportationLegEmissionEstimate = {
      * This property is `null` for any estimate created before 01/12/2024
      */
     emissionFactor?: EmissionFactorWithGasEmissions | NullEnum
+    /**
+     * If the input method results in multiple legs being detected, each leg will be
+     * calculated and shown separately.
+     *
+     */
+    resolvedLegs?: NullEnum
 }
