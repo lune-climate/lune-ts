@@ -14,6 +14,7 @@ import type { Distance } from './Distance.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { EstimateMass } from './EstimateMass.js'
 import type { NullEnum } from './NullEnum.js'
+import type { ResolvedPassengerTransportationEmissionEstimateLegs } from './ResolvedPassengerTransportationEmissionEstimateLegs.js'
 
 export type PassengerTransportationLegEmissionEstimate = {
     mass: EstimateMass
@@ -22,4 +23,10 @@ export type PassengerTransportationLegEmissionEstimate = {
      * This property is `null` for any estimate created before 01/12/2024
      */
     emissionFactor?: EmissionFactorWithGasEmissions | NullEnum
+    /**
+     * If the input method results in multiple legs being detected, each leg will be
+     * calculated and shown separately.
+     *
+     */
+    resolvedLegs?: ResolvedPassengerTransportationEmissionEstimateLegs | NullEnum
 }
