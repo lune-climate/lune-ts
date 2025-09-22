@@ -11,7 +11,11 @@
 /* eslint-disable */
 
 import type { BaseTransactionPassengerEstimate } from './BaseTransactionPassengerEstimate.js'
+import type { NullEnum } from './NullEnum.js'
 import type { PassengerFlightEstimateRequest } from './PassengerFlightEstimateRequest.js'
+import type { ResolvedTransactionPassengerTransportationEmissionEstimateLegs } from './ResolvedTransactionPassengerTransportationEmissionEstimateLegs.js'
 
 export type TransactionPassengerFlightEstimate = PassengerFlightEstimateRequest &
-    BaseTransactionPassengerEstimate
+    BaseTransactionPassengerEstimate & {
+        resolvedLegs?: ResolvedTransactionPassengerTransportationEmissionEstimateLegs | NullEnum
+    }
