@@ -10,6 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { NullEnum } from './NullEnum.js'
+
 /**
  * Details about the parameters and calculations used in the methodology for estimating sea freight emissions.
  *
@@ -41,6 +43,12 @@ export type SeaMethodologyDetails = {
      *
      */
     voyageEmissionsPerTeu: number
+    /**
+     * Estimate of the fuel consumed by refrigerating the shipment on the sea  voyage,
+     * measured in tonnes. Null if the leg was not refrigerated.
+     *
+     */
+    refrigerationFuelConsumedTonnes: number | NullEnum
 }
 
 export namespace SeaMethodologyDetails {
