@@ -61,5 +61,6 @@ export namespace SeaMethodologyDetails {
     export enum vessel_cruising_speed_source {
         AVERAGE_FOR_VESSEL_CLASS = 'average_for_vessel_class',
         AIS = 'ais',
+        AIS_VOYAGE_SPECIFIC = 'ais_voyage_specific',
     }
 }
