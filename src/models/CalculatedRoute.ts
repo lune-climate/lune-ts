@@ -24,4 +24,8 @@ import type { CalculatedRouteLocation } from './CalculatedRouteLocation.js'
 export type CalculatedRoute = {
     source: CalculatedRouteLocation
     legs: Array<CalculatedRouteLeg>
+    /**
+     * Attribution for the route provider, if applicable.
+     */
+    attribution: string | null
 }
