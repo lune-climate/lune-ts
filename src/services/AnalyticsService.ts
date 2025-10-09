@@ -11,6 +11,7 @@
 /* eslint-disable */
 import type { AggregatedAnalyticsByProperty } from '../models/AggregatedAnalyticsByProperty.js'
 import type { AnalyticsMetrics } from '../models/AnalyticsMetrics.js'
+import type { BusinessEmissionsAnalytics } from '../models/BusinessEmissionsAnalytics.js'
 import type { CumulativeBundleAnalytics } from '../models/CumulativeBundleAnalytics.js'
 import type { EmissionCalculationMetrics } from '../models/EmissionCalculationMetrics.js'
 
@@ -204,6 +205,55 @@ export abstract class AnalyticsService {
                 through: data?.through,
                 interval: data?.interval,
                 all_accounts: data?.allAccounts,
+            },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get business emissions analytics
+     * Get business emissions analytics.
+     *
+     * Business analytics are calculated for transactions, transaction documents, passenger transportation and activity estimates
+     * that have their `is_transaction`, `is_transaction_document`, `is_passenger_transportation` properties set to true respectively.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns BusinessEmissionsAnalytics OK
+     */
+    public getBusinessEmissionsAnalytics(
+        data?: {
+            /**
+             * The start date of the custom date range.
+             * Defaults to the date of the first estimate if not specified.
+             */
+            from?: string
+            /**
+             * The to (inclusive) date of the custom date range.
+             * Defaults to the current date if not specified.
+             */
+            through?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<BusinessEmissionsAnalytics>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/analytics/business',
+            headers: {
+                Accept: 'application/json',
+            },
+            query: {
+                from: data?.from,
+                through: data?.through,
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
