@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { CargoType } from './CargoType.js'
 import type { Mass } from './Mass.js'
 
 /**
@@ -24,27 +25,6 @@ export type Shipment =
       }
     | {
           containers: string
-          /**
-           * Specify the weight of cargo in the container. If omitted, `average` is used by default.
-           *
-           * Each type applies a different conversion to mass for emissions estimation. See [TEU conversion table](https://docs.lune.co/general-concepts/logistics-methodology#13-cargo-weight) for details.
-           *
-           */
-          cargoType?: Shipment.cargo_type
+          cargoType?: CargoType
           mass?: Mass
       }
-
-export namespace Shipment {
-    /**
-     * Specify the weight of cargo in the container. If omitted, `average` is used by default.
-     *
-     * Each type applies a different conversion to mass for emissions estimation. See [TEU conversion table](https://docs.lune.co/general-concepts/logistics-methodology#13-cargo-weight) for details.
-     *
-     */
-    export enum cargo_type {
-        LIGHTWEIGHT = 'lightweight',
-        AVERAGE = 'average',
-        HEAVYWEIGHT = 'heavyweight',
-        CONTAINER_ONLY = 'container_only',
-    }
-}
