@@ -20,6 +20,7 @@ import type { ElectricMethodMethodologyDetails } from './ElectricMethodMethodolo
 import type { EmissionEstimateWithWTWBreakdown } from './EmissionEstimateWithWTWBreakdown.js'
 import type { EmissionFactorWithGasEmissions } from './EmissionFactorWithGasEmissions.js'
 import type { InferenceDetails } from './InferenceDetails.js'
+import type { LogisticsActivity } from './LogisticsActivity.js'
 import type { MethodologyDetails } from './MethodologyDetails.js'
 import type { NullEnum } from './NullEnum.js'
 import type { RawDistance } from './RawDistance.js'
@@ -46,6 +47,7 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
      *
      */
     distanceCalculationMethod: DistanceCalculationMethod | NullEnum
+    activity: LogisticsActivity | NullEnum
     /**
      * The shipping route.
      *
