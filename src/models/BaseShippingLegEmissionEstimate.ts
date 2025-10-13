@@ -49,7 +49,7 @@ export type BaseShippingLegEmissionEstimate = EmissionEstimateWithWTWBreakdown &
      */
     distanceCalculationMethod: DistanceCalculationMethod | NullEnum
     activity: LogisticsActivity | NullEnum
-    intensity?: LogisticsIntensityBreakdown | NullEnum
+    intensity: LogisticsIntensityBreakdown | NullEnum
     /**
      * The shipping route.
      *
