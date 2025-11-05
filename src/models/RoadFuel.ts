@@ -27,5 +27,6 @@ export enum RoadFuel {
     HVO_FROM_TALLOW = 'hvo_from_tallow',
     LPG = 'lpg',
     CNG = 'cng',
+    LNG = 'lng',
     AUTO_DETECT = 'auto_detect',
 }
