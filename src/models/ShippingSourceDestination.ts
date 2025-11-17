@@ -19,5 +19,23 @@ import type { TransitCorridor } from './TransitCorridor.js'
 export type ShippingSourceDestination = {
     source: Address | GeographicCoordinates | Locode | AirportCode
     destination: Address | GeographicCoordinates | Locode | AirportCode
+    /**
+     * Transit corridor to force the route through for sea shipments.
+     *
+     * Only applicable to sea shipments.
+     *
+     * Mutually exclusive with restricted_transit_corridors.
+     *
+     */
     transitCorridor?: TransitCorridor
+    /**
+     * Transit corridors that should be avoided for sea shipments. This is used to improve the accuracy of the estimate.
+     * If not provided, no corridors are restricted.
+     *
+     * Only applicable to sea shipments.
+     *
+     * Mutually exclusive with transit_corridor.
+     *
+     */
+    restrictedTransitCorridors?: Array<TransitCorridor>
 }
