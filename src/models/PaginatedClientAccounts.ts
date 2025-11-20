@@ -10,7 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { ClientAccount } from './ClientAccount.js'
+import type { ClientAccountWithAnalyticSummary } from './ClientAccountWithAnalyticSummary.js'
 import type { PaginatedBase } from './PaginatedBase.js'
 
 export type PaginatedClientAccounts = PaginatedBase & {
@@ -20,5 +20,5 @@ export type PaginatedClientAccounts = PaginatedBase & {
      * Part of a paginated response.
      *
      */
-    data: Array<ClientAccount>
+    data: Array<ClientAccountWithAnalyticSummary>
 }
