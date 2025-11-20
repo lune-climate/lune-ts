@@ -55,6 +55,7 @@ export type { CalculatedRouteLocation } from './models/CalculatedRouteLocation.j
 export { CarbonPermanence } from './models/CarbonPermanence.js'
 export { CargoType } from './models/CargoType.js'
 export { ClientAccount } from './models/ClientAccount.js'
+export type { ClientAccountWithAnalyticSummary } from './models/ClientAccountWithAnalyticSummary.js'
 export { CloudProvider } from './models/CloudProvider.js'
 export type { CompanyCloudUse } from './models/CompanyCloudUse.js'
 export type { CompanyEmissionEstimate } from './models/CompanyEmissionEstimate.js'
