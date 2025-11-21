@@ -10,25 +10,10 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { EmissionEstimateResponse } from './EmissionEstimateResponse.js'
-import type { IsTransactionDocument } from './IsTransactionDocument.js'
-import type { NullEnum } from './NullEnum.js'
-import type { TransactionDocumentEmissionEstimateFallback } from './TransactionDocumentEmissionEstimateFallback.js'
-import type { TransactionDocumentEmissionEstimateLineItems } from './TransactionDocumentEmissionEstimateLineItems.js'
+import type { TransactionDocumentEmissionEstimateWithoutRequest } from './TransactionDocumentEmissionEstimateWithoutRequest.js'
 import type { TransactionDocumentEstimateRequest } from './TransactionDocumentEstimateRequest.js'
-import type { TransactionDocumentProcessedAt } from './TransactionDocumentProcessedAt.js'
 
-export type TransactionDocumentEmissionEstimate = EmissionEstimateResponse & {
-    request: TransactionDocumentEstimateRequest
-    isTransactionDocument: IsTransactionDocument
-    transactionDocumentProcessedAt: TransactionDocumentProcessedAt
-} & (
-        | {
-              lineItems: TransactionDocumentEmissionEstimateLineItems
-              fallback: NullEnum
-          }
-        | {
-              lineItems: NullEnum
-              fallback: TransactionDocumentEmissionEstimateFallback
-          }
-    )
+export type TransactionDocumentEmissionEstimate =
+    TransactionDocumentEmissionEstimateWithoutRequest & {
+        request: TransactionDocumentEstimateRequest
+    }
