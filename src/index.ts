@@ -261,6 +261,7 @@ export type { TransactionDocumentEmissionEstimate } from './models/TransactionDo
 export type { TransactionDocumentEmissionEstimateFallback } from './models/TransactionDocumentEmissionEstimateFallback.js'
 export { TransactionDocumentEmissionEstimateLineItem } from './models/TransactionDocumentEmissionEstimateLineItem.js'
 export type { TransactionDocumentEmissionEstimateLineItems } from './models/TransactionDocumentEmissionEstimateLineItems.js'
+export type { TransactionDocumentEmissionEstimateWithoutRequest } from './models/TransactionDocumentEmissionEstimateWithoutRequest.js'
 export type { TransactionDocumentEstimateActivityLineItem } from './models/TransactionDocumentEstimateActivityLineItem.js'
 export type { TransactionDocumentEstimateRequest } from './models/TransactionDocumentEstimateRequest.js'
 export type { TransactionDocumentEstimateRequestAsync } from './models/TransactionDocumentEstimateRequestAsync.js'
