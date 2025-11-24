@@ -18,6 +18,9 @@
  *
  * Note: only `postcode` is guaranteed to be unique for a country.
  *
+ * `country_code` is optional, but it is strongly recommended to provide it for
+ * better accuracy if possible.
+ *
  */
 export type Address = {
     /**
@@ -36,5 +39,5 @@ export type Address = {
     /**
      * A three-letter country code.
      */
-    countryCode: string
+    countryCode?: string
 }
