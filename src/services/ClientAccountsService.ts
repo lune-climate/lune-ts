@@ -325,4 +325,45 @@ export abstract class ClientAccountsService {
             },
         })
     }
+
+    /**
+     * Delete a client account logo
+     * @param id The account's unique identifier
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns UploadLogoResponse OK
+     */
+    public deleteClientAccountLogo(
+        id: string,
+        data: {
+            logo: Blob
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<UploadLogoResponse>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'DELETE',
+            url: '/accounts/client/{id}/logo',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            formData: {
+                logo: data?.logo,
+            },
+            mediaType: 'multipart/form-data',
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
 }

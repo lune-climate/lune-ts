@@ -1191,7 +1191,7 @@ export abstract class EmissionEstimatesService {
      */
     public createTransactionDocumentEstimate(
         data: {
-            requestBody: TransactionDocumentEstimateRequest & {
+            transactionDocumentEstimateRequestWrapper: TransactionDocumentEstimateRequest & {
                 clientAccount?: EstimateClientAccountRequest
             }
             /**
@@ -1219,7 +1219,7 @@ export abstract class EmissionEstimatesService {
             query: {
                 relative_amount_tolerance_threshold: data?.relativeAmountToleranceThreshold,
             },
-            body: data?.requestBody,
+            body: data?.transactionDocumentEstimateRequestWrapper,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
@@ -1329,7 +1329,7 @@ export abstract class EmissionEstimatesService {
      */
     public createTransactionEstimate(
         data: {
-            requestBody: TransactionEstimateRequest & {
+            transactionEstimateRequestWrapper: TransactionEstimateRequest & {
                 clientAccount?: EstimateClientAccountRequest
             }
         },
@@ -1346,7 +1346,7 @@ export abstract class EmissionEstimatesService {
             headers: {
                 Accept: 'application/json',
             },
-            body: data?.requestBody,
+            body: data?.transactionEstimateRequestWrapper,
             mediaType: 'application/json',
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
