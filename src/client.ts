@@ -126,7 +126,8 @@ applyMixins(LuneClient, [
 
 // eslint-disable-next-line no-redeclare, @typescript-eslint/no-unsafe-declaration-merging -- mixins require same name
 export interface LuneClient
-    extends AccountsService,
+    extends
+        AccountsService,
         AnalyticsService,
         BundlePortfoliosService,
         BundlesService,
