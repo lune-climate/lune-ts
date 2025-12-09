@@ -45,6 +45,7 @@ import type { PassengerTransportationEmissionEstimate } from '../models/Passenge
 import type { PassengerTransportationTravelledAt } from '../models/PassengerTransportationTravelledAt.js'
 import type { QuantityTrunc } from '../models/QuantityTrunc.js'
 import type { RegionFallback } from '../models/RegionFallback.js'
+import type { RouteInference } from '../models/RouteInference.js'
 import type { Shipment } from '../models/Shipment.js'
 import type { ShippedAt } from '../models/ShippedAt.js'
 import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
@@ -805,6 +806,7 @@ export abstract class EmissionEstimatesService {
                       method: LogisticsSiteMethod
                   }
             >
+            routeInference?: RouteInference
             /**
              * A name to reference this calculation.
              */
@@ -822,6 +824,9 @@ export abstract class EmissionEstimatesService {
             estimateMassUnit?: EstimateMassUnit
             /**
              * Specify whether to apply road transfer inference to the estimate calculation.
+             *
+             * This parameter is deprecated. Use the `route_inference` request body parameter.
+             *
              */
             applyRouteInference?: boolean
         },
@@ -845,6 +850,7 @@ export abstract class EmissionEstimatesService {
             body: {
                 shipment: data?.shipment,
                 legs: data?.legs,
+                route_inference: data?.routeInference,
                 name: data?.name,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
@@ -934,6 +940,7 @@ export abstract class EmissionEstimatesService {
                       method: LogisticsSiteMethod
                   }
             >
+            routeInference?: RouteInference
             /**
              * A name to reference this calculation.
              */
@@ -951,6 +958,9 @@ export abstract class EmissionEstimatesService {
             estimateMassUnit?: EstimateMassUnit
             /**
              * Specify whether to apply road transfer inference to the estimate calculation.
+             *
+             * This parameter is deprecated. Use the `route_inference` request body parameter.
+             *
              */
             applyRouteInference?: boolean
         },
@@ -977,6 +987,7 @@ export abstract class EmissionEstimatesService {
             body: {
                 shipment: data?.shipment,
                 legs: data?.legs,
+                route_inference: data?.routeInference,
                 name: data?.name,
                 bundle_selection: data?.bundleSelection,
                 quantity_trunc: data?.quantityTrunc,
