@@ -17,6 +17,7 @@ import type { IsShipment } from './IsShipment.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { Metadata } from './Metadata.js'
 import type { QuantityTrunc } from './QuantityTrunc.js'
+import type { RouteInference } from './RouteInference.js'
 import type { Shipment } from './Shipment.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingCountryCode } from './ShippingCountryCode.js'
@@ -41,6 +42,7 @@ export type MultiLegShippingEstimateRequest = {
               method: LogisticsSiteMethod
           }
     >
+    routeInference?: RouteInference
     /**
      * A name to reference this calculation.
      */
