@@ -14,6 +14,7 @@
  * * `great_circle_distance` – Great-circle distance (as the crow flies)
  * * `great_circle_distance_x2` – Great-circle distance multiplied by two
  * * `sea_distance_algorithm` – our algorithm using known distances between ports
+ * * `inland_distance_algorithm` – our algorithm using OSM hydrographycal data
  * * `mapbox` – we used the Mapbox Matrix API
  * * `user_input` – the distance was provided to us directly
  * * `osrm` – we used Open Source Routing Machine, the OpenStreetMap Data Routing Engine
@@ -28,6 +29,7 @@ export enum DistanceCalculationMethod {
     GREAT_CIRCLE_DISTANCE = 'great_circle_distance',
     GREAT_CIRCLE_DISTANCE_X2 = 'great_circle_distance_x2',
     SEA_DISTANCE_ALGORITHM = 'sea_distance_algorithm',
+    INLAND_DISTANCE_ALGORITHM = 'inland_distance_algorithm',
     MAPBOX = 'mapbox',
     USER_INPUT = 'user_input',
     OSRM = 'osrm',
