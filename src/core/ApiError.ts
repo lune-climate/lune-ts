@@ -9,11 +9,11 @@ export type ApiError =
           readonly description: string
           readonly statusCode: number
           /**
-           * @deprecated Use `code` and `message` properties, if present, regarding
+           * @deprecated Use `errorCode` and `message` properties, if present, regarding
            * thedetails of the error encountered.
            *
            * This array is present for backwards * compatibility and always contains
-           * a single element with data inside identical to `code` and `messages`.
+           * a single element with data inside identical to `errorCode` and `messages`.
            */
           readonly errors: ErrorResponse['errors'] | undefined
           /**
@@ -23,9 +23,9 @@ export type ApiError =
            */
           readonly requestId: string | undefined
       } &
-          // Looks complicated but there's a purpose: communicate that code and message
+          // Looks complicated but there's a purpose: communicate that errorCode and message
           // are either both defined or both undefined.
-          (ErrorResponse['error'] | { code: undefined; message: undefined }))
+          (ErrorResponse['error'] | { errorCode: undefined; message: undefined }))
 
 export function constructApiError(error: AxiosError, options: ApiRequestOptions): ApiError {
     // The request was made and the server responded with a status code
@@ -48,7 +48,7 @@ export function constructApiError(error: AxiosError, options: ApiRequestOptions)
             statusCode: error.response.status,
             description: errors[error.response.status],
             errors: errorResponse.errors,
-            code: errorResponse.error.code,
+            errorCode: errorResponse.error.errorCode,
             message: errorResponse.error.message,
             // Implementation detail: Cloudflare sits in front of Lune API servers currently
             // and we use its cf-ray values as request ids.
