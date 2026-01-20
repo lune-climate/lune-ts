@@ -9,7 +9,7 @@ export type ApiError =
           readonly description: string
           readonly statusCode: number
           /**
-           * @deprecated Use `errorCode` and `message` properties, if present, regarding
+           * @deprecated Use `errorCode` and `message` properties, if present, to see
            * the details of the error encountered.
            *
            * This array is present for backwards * compatibility and always contains
