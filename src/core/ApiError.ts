@@ -43,13 +43,13 @@ export function constructApiError(error: AxiosError, options: ApiRequestOptions)
             ...options.errors,
         }
 
-        const errorResponse = error.response.data as ErrorResponse
+        const errorResponse = error.response.data as ErrorResponse | undefined
         return {
             statusCode: error.response.status,
             description: errors[error.response.status],
-            errors: errorResponse.errors,
-            errorCode: errorResponse.error.errorCode,
-            message: errorResponse.error.message,
+            errors: errorResponse?.errors,
+            errorCode: errorResponse?.error.errorCode,
+            message: errorResponse?.error.message,
             // Implementation detail: Cloudflare sits in front of Lune API servers currently
             // and we use its cf-ray values as request ids.
             requestId: error.response.headers['cf-ray'],
