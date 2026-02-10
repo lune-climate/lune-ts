@@ -14,7 +14,7 @@ import type { IdentifiedVesselByIMOShippingMethod } from './IdentifiedVesselByIM
 import type { IdentifiedVesselByNameShippingMethod } from './IdentifiedVesselByNameShippingMethod.js'
 
 /**
- * This method uses either the vessel's IMO number or the vessel name in order to select an emission factor, falling back to trade lane emissions factors if provided.
+ * This method uses either the vessel's IMO number or the vessel name in order to select an emission factor, falling back to trade lane emission factors. The trade lane is either explicitly provided or inferred from the shipment's source and destination locations.
  *
  * If vessel tracking is to be used the `vessel_tracking` data needs to be provided.
  *

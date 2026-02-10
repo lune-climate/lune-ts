@@ -24,10 +24,14 @@ export type ContainerShippingMethod = {
      */
     loadFactor?: number
     /**
-     * Container transport emissions vary per trade lane. When a trade lane is not given we'll
-     * use an industry-wide average. Providing an `aggregated_*` trade lane group will result in an
-     * a more accurate estimate. Providing an `disaggregated_*` trade lane will result in the best
-     * estimate precision.
+     * Container transport emissions vary per trade lane. When a trade lane is not provided,
+     * Lune will attempt to infer it from the shipment's source and destination locations.
+     * If inference is not possible (e.g. no route provided or locations fall outside mapped
+     * regions), an industry-wide average will be used. Any inferred trade lane is reported in
+     * the response's `inference_details.trade_lane_from_route` field.
+     *
+     * Providing an `aggregated_*` trade lane group will result in a more accurate estimate.
+     * Providing a `disaggregated_*` trade lane will result in the best estimate precision.
      *
      * The identifiers are kept relatively short for brevity: Mediterranean includes Black Sea and
      * South America includes Central America.
@@ -45,10 +49,14 @@ export namespace ContainerShippingMethod {
     }
 
     /**
-     * Container transport emissions vary per trade lane. When a trade lane is not given we'll
-     * use an industry-wide average. Providing an `aggregated_*` trade lane group will result in an
-     * a more accurate estimate. Providing an `disaggregated_*` trade lane will result in the best
-     * estimate precision.
+     * Container transport emissions vary per trade lane. When a trade lane is not provided,
+     * Lune will attempt to infer it from the shipment's source and destination locations.
+     * If inference is not possible (e.g. no route provided or locations fall outside mapped
+     * regions), an industry-wide average will be used. Any inferred trade lane is reported in
+     * the response's `inference_details.trade_lane_from_route` field.
+     *
+     * Providing an `aggregated_*` trade lane group will result in a more accurate estimate.
+     * Providing a `disaggregated_*` trade lane will result in the best estimate precision.
      *
      * The identifiers are kept relatively short for brevity: Mediterranean includes Black Sea and
      * South America includes Central America.

@@ -13,8 +13,7 @@
 import type { ContainerShippingMethodWithExtraProperties } from './ContainerShippingMethodWithExtraProperties.js'
 
 /**
- * This method uses the vessel's name to select an emission factors, falling back to trade lane emissions factors if provided. If the vessel name matches
- * multiple vessels with different IMO's or no vessel at all, the fallback is used.
+ * This method uses the vessel's name to select emission factors, falling back to trade lane emission factors. The trade lane is either explicitly provided or inferred from the shipment's source and destination locations. If the vessel name matches multiple vessels with different IMOs or no vessel at all, the fallback is used.
  *
  */
 export type IdentifiedVesselByNameShippingMethod =

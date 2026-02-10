@@ -13,7 +13,7 @@
 import type { ContainerShippingMethodWithExtraProperties } from './ContainerShippingMethodWithExtraProperties.js'
 
 /**
- * This method uses the vessel's IMO number emission factors when found, falling back to trade lane emissions factors if provided.
+ * This method uses the vessel's IMO number emission factors when found, falling back to trade lane emission factors. The trade lane is either explicitly provided or inferred from the shipment's source and destination locations.
  *
  */
 export type IdentifiedVesselByIMOShippingMethod =
