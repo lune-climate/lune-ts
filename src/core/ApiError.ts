@@ -46,10 +46,12 @@ export function constructApiError(error: AxiosError, options: ApiRequestOptions)
         // Not all error responses contain error information inside, hence Record<never, never>.
         const errorResponse = error.response.data as
             | ErrorResponse
-            | Record<never, never>
+            // Error responses with no defined body schema come with bodies set to the HTTP status
+            // in text form like "Unauthorized".
+            | string
             | undefined
         const errorData =
-            errorResponse && 'error' in errorResponse ? errorResponse.error : undefined
+            errorResponse && typeof errorResponse === 'object' ? errorResponse.error : undefined
         return {
             statusCode: error.response.status,
             description: errors[error.response.status],
