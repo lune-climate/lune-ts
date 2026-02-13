@@ -14,8 +14,11 @@
  * Account-unique identifier provided by the client.
  *
  * `idempotency_key` has two purposes:
- * 1. Clients can safely retry estimate requests without accidentally performing the same operation multiple times.
+ * 1. Clients can use `idempotency_key` to prevent duplicate estimates.
  * 2. Clients can use `idempotency_key` to reconcile estimates with entities on their system.
+ *
+ * If an estimate with the same `idempotency_key` already exists, the API returns
+ * HTTP 409 Conflict with error code `estimate_idempotency_already_exists`.
  *
  */
 export type EstimateIdempotencyKey = string
