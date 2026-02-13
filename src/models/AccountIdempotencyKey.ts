@@ -15,7 +15,8 @@
  *
  * `idempotency_key` is unique per account type.
  *
- * The property ensures Accounts created with an existing `idempotency_key` are not created.
+ * If an account with the same `idempotency_key` already exists, the API returns
+ * HTTP 409 Conflict with error code `account_idempotency_already_exists`.
  *
  */
 export type AccountIdempotencyKey = string

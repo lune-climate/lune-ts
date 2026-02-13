@@ -27,8 +27,13 @@ export type CreateOrderByQuantityWithBundlePercentage = {
      * Account-unique identifier provided by the client.
      *
      * `idempotency_key` has two purposes:
-     * 1. Clients can safely retry order requests without accidentally performing the same operation twice. The current state of the original order is returned.
+     * 1. Clients can use `idempotency_key` to prevent duplicate orders.
      * 2. Clients can use `idempotency_key` to reconcile orders with other entities on their system.
+     *
+     * If an order with the same `idempotency_key` already exists, the API returns
+     * HTTP 409 Conflict with error code `order_idempotency_already_exists`. To
+     * retrieve the existing order, use the
+     * `GET /v1/orders/by-idempotency-key/{idempotency_key}` endpoint.
      *
      */
     idempotencyKey?: string
