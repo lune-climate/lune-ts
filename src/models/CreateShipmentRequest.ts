@@ -13,96 +13,75 @@
 import type { Incoterm } from './Incoterm.js'
 import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
-import type { NullEnum } from './NullEnum.js'
 import type { ShipmentContractType } from './ShipmentContractType.js'
-import type { ShipmentEmissions } from './ShipmentEmissions.js'
-import type { ShipmentLegResponse } from './ShipmentLegResponse.js'
+import type { ShipmentLeg } from './ShipmentLeg.js'
 import type { ShipmentServiceLevel } from './ShipmentServiceLevel.js'
-import type { ShipmentTourResponse } from './ShipmentTourResponse.js'
-import type { Timestamp } from './Timestamp.js'
+import type { ShipmentTour } from './ShipmentTour.js'
 
-/**
- * A shipment with its legs, with or without emissions.
- */
-export type Shipment = ShipmentEmissions & {
-    /**
-     * Lune-generated unique identifier.
-     */
-    id: string
+export type CreateShipmentRequest = {
     /**
      * Client-side shipment reference identifier.
      */
-    shipmentId: string
+    shipmentId?: string
     /**
-     * Identifier of the supplier.
+     * Idempotency key for the request. A 409 Conflict is returned if a
+     * shipment with the same idempotency key already exists.
+     *
      */
-    supplierId: string
-    /**
-     * Name of the supplier.
-     */
-    supplierName: string
-    /**
-     * Identifier of the shipper.
-     */
-    shipperId: string | null
-    /**
-     * Name of the shipper.
-     */
-    shipperName: string | null
-    metadata: Metadata | null
+    idempotencyKey?: string
+    metadata?: Metadata
     /**
      * Tags for categorising or filtering shipments.
      */
-    tags: Array<string> | null
-    serviceLevel: ShipmentServiceLevel | null
-    incoterm: Incoterm | null
-    contractType: ShipmentContractType | null
+    tags?: Array<string>
+    serviceLevel?: ShipmentServiceLevel
+    incoterm?: Incoterm
+    contractType?: ShipmentContractType
     /**
      * Whether the shipment contains hazardous cargo.
      */
-    hazardousCargo: boolean | null
+    hazardousCargo?: boolean
     /**
      * Booking reference number.
      */
-    bookingReference: string | null
+    bookingReference?: string
     /**
      * House waybill number.
      */
-    houseWaybill: string | null
+    houseWaybill?: string
     /**
      * Purchase order reference identifier.
      */
-    referenceIdPo: string | null
+    referenceIdPo?: string
     /**
      * Client-side identifier for the consignee.
      */
-    consigneeId: string | null
+    consigneeId?: string
     /**
      * Name of the consignee.
      */
-    consigneeName: string | null
+    consigneeName?: string
     /**
      * Client-side identifier for the consignor.
      */
-    consignorId: string | null
+    consignorId?: string
     /**
      * Name of the consignor.
      */
-    consignorName: string | null
+    consignorName?: string
     /**
      * Name of the freight paying party.
      */
-    freightPayingParty: string | null
+    freightPayingParty?: string
     /**
      * Legal entity responsible for the shipment.
      */
-    legalEntity: string | null
-    freightCost: MonetaryAmount | null
+    legalEntity?: string
+    freightCost?: MonetaryAmount
     /**
      * Emission scope for the shipper contract.
      */
-    shipperContractEmissionScope: string | null
-    tour: ShipmentTourResponse | NullEnum
-    legs: Array<ShipmentLegResponse>
-    createdAt: Timestamp
+    shipperContractEmissionScope?: string
+    tour?: ShipmentTour
+    legs: Array<ShipmentLeg>
 }

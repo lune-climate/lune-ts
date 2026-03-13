@@ -14,11 +14,11 @@ import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { EstimateClientAccountRequest } from './EstimateClientAccountRequest.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { IsShipment } from './IsShipment.js'
+import type { Load } from './Load.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { Metadata } from './Metadata.js'
 import type { QuantityTrunc } from './QuantityTrunc.js'
 import type { RouteInference } from './RouteInference.js'
-import type { Shipment } from './Shipment.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingCountryCode } from './ShippingCountryCode.js'
 import type { ShippingMethod } from './ShippingMethod.js'
@@ -28,7 +28,7 @@ import type { ShippingRoute } from './ShippingRoute.js'
  * Calculate an emission estimate for shipments with one or more legs.
  */
 export type MultiLegShippingEstimateRequest = {
-    shipment: Shipment
+    shipment: Load
     /**
      * An array representing all the legs of a shipment.
      */

@@ -32,6 +32,7 @@ import type { IntegerPercentage } from '../models/IntegerPercentage.js'
 import type { IsShipment } from '../models/IsShipment.js'
 import type { IsTransaction } from '../models/IsTransaction.js'
 import type { IsTransactionDocument } from '../models/IsTransactionDocument.js'
+import type { Load } from '../models/Load.js'
 import type { LogisticsSiteMethod } from '../models/LogisticsSiteMethod.js'
 import type { Merchant } from '../models/Merchant.js'
 import type { Metadata } from '../models/Metadata.js'
@@ -46,7 +47,6 @@ import type { PassengerTransportationTravelledAt } from '../models/PassengerTran
 import type { QuantityTrunc } from '../models/QuantityTrunc.js'
 import type { RegionFallback } from '../models/RegionFallback.js'
 import type { RouteInference } from '../models/RouteInference.js'
-import type { Shipment } from '../models/Shipment.js'
 import type { ShippedAt } from '../models/ShippedAt.js'
 import type { ShippingCountryCode } from '../models/ShippingCountryCode.js'
 import type { ShippingMethod } from '../models/ShippingMethod.js'
@@ -548,7 +548,7 @@ export abstract class EmissionEstimatesService {
     public createShippingEstimate(
         data: {
             shippingEstimateRequest: {
-                shipment: Shipment
+                shipment: Load
                 /**
                  * A name to reference this calculation.
                  */
@@ -658,7 +658,7 @@ export abstract class EmissionEstimatesService {
         id: string,
         data: {
             shippingEstimateRequest: {
-                shipment: Shipment
+                shipment: Load
                 /**
                  * A name to reference this calculation.
                  */
@@ -792,7 +792,7 @@ export abstract class EmissionEstimatesService {
      */
     public createMultiLegShippingEstimate(
         data: {
-            shipment: Shipment
+            shipment: Load
             /**
              * An array representing all the legs of a shipment.
              */
@@ -926,7 +926,7 @@ export abstract class EmissionEstimatesService {
     public updateMultiLegShippingEstimate(
         id: string,
         data: {
-            shipment: Shipment
+            shipment: Load
             /**
              * An array representing all the legs of a shipment.
              */
