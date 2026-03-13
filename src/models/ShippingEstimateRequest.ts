@@ -13,10 +13,10 @@
 import type { BundleSelectionRequest } from './BundleSelectionRequest.js'
 import type { EstimateIdempotencyKey } from './EstimateIdempotencyKey.js'
 import type { IsShipment } from './IsShipment.js'
+import type { Load } from './Load.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { Metadata } from './Metadata.js'
 import type { QuantityTrunc } from './QuantityTrunc.js'
-import type { Shipment } from './Shipment.js'
 import type { ShippedAt } from './ShippedAt.js'
 import type { ShippingCountryCode } from './ShippingCountryCode.js'
 import type { ShippingMethod } from './ShippingMethod.js'
@@ -26,7 +26,7 @@ import type { ShippingRoute } from './ShippingRoute.js'
  * Parameters for estimating shipping emissions
  */
 export type ShippingEstimateRequest = {
-    shipment: Shipment
+    shipment: Load
     /**
      * A name to reference this calculation.
      */
