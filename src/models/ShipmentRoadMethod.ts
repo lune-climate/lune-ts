@@ -67,9 +67,9 @@ export type ShipmentRoadMethod = {
      */
     roadType?: string
     /**
-     * Gross vehicle weight rating.
+     * Gross vehicle mass rating.
      */
-    grossVehicleWeightRating?: Mass
+    grossVehicleMassRating?: Mass
     /**
      * Primary fuel consumption for this leg.
      */

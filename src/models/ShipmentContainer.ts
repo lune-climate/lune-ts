@@ -30,5 +30,5 @@ export type ShipmentContainer = {
     teu?: string
     loadType?: ContainerLoadType
     cargoType?: CargoType
-    containerEmptyWeight?: Mass
+    containerEmptyMass?: Mass
 }

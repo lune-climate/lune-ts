@@ -18,12 +18,12 @@ import type { Volume } from './Volume.js'
  * Cargo load details for a shipment leg.
  */
 export type ShipmentLoad = {
-    weight?: Mass
+    mass?: Mass
     volume?: Volume
     /**
      * Number of pieces in the load.
      */
     pieceCount?: number
-    chargeableWeight?: Mass
+    chargeableMass?: Mass
     containers?: Array<ShipmentContainer>
 }

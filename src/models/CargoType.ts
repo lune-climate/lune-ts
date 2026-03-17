@@ -11,7 +11,7 @@
 /* eslint-disable */
 
 /**
- * Specify the weight of cargo in the container. If omitted, `average` is used by default.
+ * Specify the mass of cargo in the container. If omitted, `average` is used by default.
  *
  * Each type applies a different conversion to mass for emissions estimation. See [TEU conversion table](https://docs.lune.co/general-concepts/logistics-methodology#13-cargo-weight) for details.
  *
