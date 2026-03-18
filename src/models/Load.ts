@@ -14,7 +14,7 @@ import type { CargoType } from './CargoType.js'
 import type { Mass } from './Mass.js'
 
 /**
- * Provide the shipment weight using either `mass` (in grams, kilograms, or tonnes) or `containers` (in Twenty-foot Equivalent Units, or TEUs).
+ * Provide the shipment mass using either `mass` (in grams, kilograms, or tonnes) or `containers` (in Twenty-foot Equivalent Units, or TEUs).
  *
  * When using `containers`, you can optionally include `mass` and `cargo_type` for more accurate estimates.
  *

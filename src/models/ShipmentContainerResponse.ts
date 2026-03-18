@@ -30,5 +30,5 @@ export type ShipmentContainerResponse = {
     teu: string | null
     loadType: ContainerLoadType | null
     cargoType: CargoType | null
-    containerEmptyWeight: Mass | null
+    containerEmptyMass: Mass | null
 }
