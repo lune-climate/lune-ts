@@ -34,7 +34,7 @@ export type ShipmentLegResponse = {
      */
     order: number | null
     method: ShipmentMethod
-    carriage: CarriageType | null
+    carriage: CarriageType | NullEnum
     origin: ShipmentLocation | null
     destination: ShipmentLocation | null
     distance: Distance | null
