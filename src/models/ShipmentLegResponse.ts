@@ -17,7 +17,7 @@ import type { NullEnum } from './NullEnum.js'
 import type { ShipmentLegDatesResponse } from './ShipmentLegDatesResponse.js'
 import type { ShipmentLoadResponse } from './ShipmentLoadResponse.js'
 import type { ShipmentLocation } from './ShipmentLocation.js'
-import type { ShipmentMethod } from './ShipmentMethod.js'
+import type { ShipmentMethodResponse } from './ShipmentMethodResponse.js'
 import type { TransitCorridor } from './TransitCorridor.js'
 
 /**
@@ -33,11 +33,11 @@ export type ShipmentLegResponse = {
      *
      */
     order: number | null
-    method: ShipmentMethod
-    carriage: CarriageType
-    origin: ShipmentLocation | null
-    destination: ShipmentLocation | null
-    distance: Distance | null
+    method: ShipmentMethodResponse
+    carriage: CarriageType | NullEnum
+    origin: ShipmentLocation | NullEnum
+    destination: ShipmentLocation | NullEnum
+    distance: Distance | NullEnum
     /**
      * Name of the carrier for this leg.
      */
@@ -62,7 +62,7 @@ export type ShipmentLegResponse = {
      *
      */
     restrictedTransitCorridors: Array<TransitCorridor> | NullEnum
-    load: ShipmentLoadResponse | null
+    load: ShipmentLoadResponse | NullEnum
     /**
      * Measure of how fully the vehicle is utilising its cargo capacity (0 to 1).
      *
@@ -78,6 +78,6 @@ export type ShipmentLegResponse = {
      *
      */
     passengerUtilisation: string | null
-    dates: ShipmentLegDatesResponse | null
-    emissions: LegEmissionsResponse | null
+    dates: ShipmentLegDatesResponse | NullEnum
+    emissions: LegEmissionsResponse | NullEnum
 }

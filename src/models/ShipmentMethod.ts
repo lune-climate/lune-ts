@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { AirShippingMethod } from './AirShippingMethod.js'
+import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { ShipmentRailMethod } from './ShipmentRailMethod.js'
 import type { ShipmentRoadMethod } from './ShipmentRoadMethod.js'
 import type { ShipmentSeaMethod } from './ShipmentSeaMethod.js'
@@ -27,3 +28,4 @@ export type ShipmentMethod =
     | AirShippingMethod
     | ShipmentSeaMethod
     | ShipmentRailMethod
+    | LogisticsSiteMethod

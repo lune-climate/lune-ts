@@ -14,6 +14,7 @@ import type { CargoType } from './CargoType.js'
 import type { ContainerLoadType } from './ContainerLoadType.js'
 import type { ContainerSizeType } from './ContainerSizeType.js'
 import type { Mass } from './Mass.js'
+import type { NullEnum } from './NullEnum.js'
 
 /**
  * Details of a shipping container.
@@ -23,12 +24,12 @@ export type ShipmentContainerResponse = {
      * Container number.
      */
     number: string | null
-    type: ContainerSizeType | null
+    type: ContainerSizeType | NullEnum
     /**
      * TEU equivalent of the container.
      */
     teu: string | null
-    loadType: ContainerLoadType | null
-    cargoType: CargoType | null
-    containerEmptyMass: Mass | null
+    loadType: ContainerLoadType | NullEnum
+    cargoType: CargoType | NullEnum
+    containerEmptyMass: Mass | NullEnum
 }

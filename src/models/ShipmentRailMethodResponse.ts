@@ -10,21 +10,20 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
+import type { FuelConsumption } from './FuelConsumption.js'
 import type { NullEnum } from './NullEnum.js'
-import type { ShipmentContainerResponse } from './ShipmentContainerResponse.js'
-import type { Volume } from './Volume.js'
 
-/**
- * Cargo load details for a shipment leg.
- */
-export type ShipmentLoadResponse = {
-    mass: Mass | NullEnum
-    volume: Volume | NullEnum
-    /**
-     * Number of pieces in the load.
-     */
-    pieceCount: number | null
-    chargeableMass: Mass | NullEnum
-    containers: Array<ShipmentContainerResponse> | null
+export type ShipmentRailMethodResponse = {
+    trainType: ShipmentRailMethodResponse.train_type
+    fuelConsumption: FuelConsumption | NullEnum
+    biofuelType: string | null
+    biofuelShare: string | null
+    feedstockType: string | null
+}
+
+export namespace ShipmentRailMethodResponse {
+    export enum train_type {
+        DIESEL_FREIGHT_TRAIN = 'diesel_freight_train',
+        ELECTRIC_FREIGHT_TRAIN = 'electric_freight_train',
+    }
 }
