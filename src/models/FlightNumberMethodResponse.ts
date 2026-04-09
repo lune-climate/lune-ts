@@ -10,11 +10,18 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Service level for the shipment.
- */
-export enum ShipmentServiceLevel {
-    EXPRESS = 'express',
-    ECONOMY = 'economy',
-    PRIORITY = 'priority',
+import type { AircraftConfiguration } from './AircraftConfiguration.js'
+import type { NullEnum } from './NullEnum.js'
+
+export type FlightNumberMethodResponse = {
+    /**
+     * Flight number in either ICAO or IATA format.
+     *
+     */
+    flightNumber: string | null
+    /**
+     * Departure date of the flight.
+     */
+    departureOn: string | null
+    aircraftConfiguration: AircraftConfiguration | NullEnum
 }

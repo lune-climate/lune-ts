@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { NullEnum } from './NullEnum.js'
 import type { ShipmentDateOrDateTime } from './ShipmentDateOrDateTime.js'
 
 /**
@@ -19,17 +20,17 @@ export type ShipmentLegDatesResponse = {
     /**
      * Estimated departure date or date-time.
      */
-    etd: ShipmentDateOrDateTime | null
+    etd: ShipmentDateOrDateTime | NullEnum
     /**
      * Estimated arrival date or date-time.
      */
-    eta: ShipmentDateOrDateTime | null
+    eta: ShipmentDateOrDateTime | NullEnum
     /**
      * Actual departure date or date-time.
      */
-    atd: ShipmentDateOrDateTime | null
+    atd: ShipmentDateOrDateTime | NullEnum
     /**
      * Actual arrival date or date-time.
      */
-    ata: ShipmentDateOrDateTime | null
+    ata: ShipmentDateOrDateTime | NullEnum
 }

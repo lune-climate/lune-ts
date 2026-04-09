@@ -91,7 +91,7 @@ export type ShipmentEmissions = {
     /**
      * Total distance in kilometres.
      */
-    distanceKm: number | null
+    distanceKm: string | null
     /**
      * Total emissions (kg CO2e).
      */
