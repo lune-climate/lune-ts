@@ -10,11 +10,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-/**
- * Service level for the shipment.
- */
-export enum ShipmentServiceLevel {
-    EXPRESS = 'express',
-    ECONOMY = 'economy',
-    PRIORITY = 'priority',
-}
+import type { AircraftTypeMethod } from './AircraftTypeMethod.js'
+
+export type AircraftTypeMethodResponse = AircraftTypeMethod

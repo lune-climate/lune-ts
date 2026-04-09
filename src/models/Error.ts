@@ -79,5 +79,6 @@ export namespace Error {
         ACCOUNT_IDEMPOTENCY_ALREADY_EXISTS = 'account_idempotency_already_exists',
         ACCOUNT_HANDLE_IDEMPOTENCY_KEY_INCONSISTENCY = 'account_handle_idempotency_key_inconsistency',
         ROUTE_NOT_FOUND = 'route_not_found',
+        INSUFFICIENT_CREDITS = 'insufficient_credits',
     }
 }

@@ -49,14 +49,14 @@ export type Shipment = ShipmentEmissions & {
      * Name of the shipper.
      */
     shipperName: string | null
-    metadata: Metadata | null
+    metadata: Metadata | NullEnum
     /**
      * Tags for categorising or filtering shipments.
      */
     tags: Array<string> | null
-    serviceLevel: ShipmentServiceLevel | null
-    incoterm: Incoterm | null
-    contractType: ShipmentContractType | null
+    serviceLevel: ShipmentServiceLevel | NullEnum
+    incoterm: Incoterm | NullEnum
+    contractType: ShipmentContractType | NullEnum
     /**
      * Whether the shipment contains hazardous cargo.
      */
@@ -97,7 +97,7 @@ export type Shipment = ShipmentEmissions & {
      * Legal entity responsible for the shipment.
      */
     legalEntity: string | null
-    freightCost: MonetaryAmount | null
+    freightCost: MonetaryAmount | NullEnum
     /**
      * Emission scope for the shipper contract.
      */
