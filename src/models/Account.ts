@@ -26,7 +26,7 @@ export type Account = AccountBase & {
      * A live account points to its sibling test account and vice versa.
      *
      */
-    siblingId: string
+    siblingId: string | null
 }
 
 export namespace Account {
