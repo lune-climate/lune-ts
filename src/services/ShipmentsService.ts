@@ -17,6 +17,7 @@ import type { PaginatedShipments } from '../models/PaginatedShipments.js'
 import type { Shipment } from '../models/Shipment.js'
 import type { ShipmentContractType } from '../models/ShipmentContractType.js'
 import type { ShipmentLeg } from '../models/ShipmentLeg.js'
+import type { ShipmentModeOfTransport } from '../models/ShipmentModeOfTransport.js'
 import type { ShipmentServiceLevel } from '../models/ShipmentServiceLevel.js'
 import type { ShipmentTour } from '../models/ShipmentTour.js'
 
@@ -52,6 +53,56 @@ export abstract class ShipmentsService {
              *
              */
             after?: string
+            /**
+             * Free-text search term used to match shipment IDs in the returned results.
+             *
+             */
+            search?: string
+            /**
+             * Include only shipments with a shipment date on or after this date.
+             *
+             */
+            shipmentDateFrom?: string
+            /**
+             * Include only shipments with a shipment date on or before this date.
+             *
+             */
+            shipmentDateTo?: string
+            /**
+             * Filter shipments by the main carriage mode of transport.
+             *
+             */
+            mainCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Filter shipments by the pre-carriage mode of transport.
+             *
+             */
+            preCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Filter shipments by the post-carriage mode of transport.
+             *
+             */
+            postCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Filter shipments by supplier account IDs.
+             *
+             */
+            supplier?: Array<string>
+            /**
+             * Filter shipments by shipper account IDs.
+             *
+             */
+            shipper?: Array<string>
+            /**
+             * Filter shipments by whether they contain legs with flagged emission intensity.
+             *
+             */
+            flagged?: boolean
+            /**
+             * Filter shipments by emissions availability.
+             *
+             */
+            emissions?: 'all' | 'with_co2e' | 'without_co2e'
         },
         options?: {
             /**
@@ -69,6 +120,16 @@ export abstract class ShipmentsService {
             query: {
                 limit: data?.limit,
                 after: data?.after,
+                search: data?.search,
+                shipment_date_from: data?.shipmentDateFrom,
+                shipment_date_to: data?.shipmentDateTo,
+                main_carriage_mot: data?.mainCarriageMot,
+                pre_carriage_mot: data?.preCarriageMot,
+                post_carriage_mot: data?.postCarriageMot,
+                supplier: data?.supplier,
+                shipper: data?.shipper,
+                flagged: data?.flagged,
+                emissions: data?.emissions,
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,

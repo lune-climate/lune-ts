@@ -21,4 +21,13 @@ export type PaginatedShipments = PaginatedBase & {
      *
      */
     data: Array<Shipment>
+    /**
+     * Total number of shipments matching the active filters.
+     *
+     */
+    total: {
+        all: number
+        withCo2E: number
+        withoutCo2E: number
+    }
 }
