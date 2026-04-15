@@ -323,6 +323,7 @@ export type { TransactionPassengerRoadEstimate } from './models/TransactionPasse
 export type { TransactionPassengerTransportationResolvedLeg } from './models/TransactionPassengerTransportationResolvedLeg.js'
 export type { TransactionProcessedAt } from './models/TransactionProcessedAt.js'
 export { TransitCorridor } from './models/TransitCorridor.js'
+export type { UnknownLocationCode } from './models/UnknownLocationCode.js'
 export type { UnstructuredKeyValue } from './models/UnstructuredKeyValue.js'
 export type { UpdateAccountRequest } from './models/UpdateAccountRequest.js'
 export type { UpdateClientAccountRequest } from './models/UpdateClientAccountRequest.js'

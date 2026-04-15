@@ -17,6 +17,10 @@
  */
 export type ShipmentEmissions = {
     /**
+     * Unique identifier of the emission estimate associated with this shipment.
+     */
+    estimateId: string | null
+    /**
      * Origin street address line 1.
      */
     originStreetLine1: string | null
