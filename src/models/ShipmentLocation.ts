@@ -14,9 +14,15 @@ import type { Address } from './Address.js'
 import type { AirportCode } from './AirportCode.js'
 import type { GeographicCoordinates } from './GeographicCoordinates.js'
 import type { Locode } from './Locode.js'
+import type { UnknownLocationCode } from './UnknownLocationCode.js'
 
 /**
  * A location specified as one of: an address, geographic coordinates, a UN/LOCODE, or an airport code.
  *
  */
-export type ShipmentLocation = Address | GeographicCoordinates | Locode | AirportCode
+export type ShipmentLocation =
+    | Address
+    | GeographicCoordinates
+    | Locode
+    | AirportCode
+    | UnknownLocationCode
