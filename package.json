@@ -1,6 +1,6 @@
 {
   "name": "@lune-climate/lune",
-  "version": "3.8.5",
+  "version": "3.8.6",
   "description": "Lune Typescript Client",
   "main": "cjs/client.js",
   "module": "esm/client.js",
