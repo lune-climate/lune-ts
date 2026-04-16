@@ -54,4 +54,16 @@ export type CreateMultiLegShippingEstimateByFuelResponse = {
               score: DataQualityGrade
           }
         | NullEnum
+    /**
+     * The date and time when the estimate was created.
+     */
+    createdAt: string
+    /**
+     * Name of the uploaded data sheet.
+     */
+    filename: string | NullEnum
+    /**
+     * Full name of the user that uploaded the data sheet.
+     */
+    userFullname: string | NullEnum
 }

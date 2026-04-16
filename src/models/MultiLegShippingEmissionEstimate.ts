@@ -65,6 +65,18 @@ export type MultiLegShippingEmissionEstimate = {
      * Identifies the source used to create the estimate.
      */
     source?: MultiLegShippingEmissionEstimate.source
+    /**
+     * The date and time when the estimate was created.
+     */
+    createdAt: string
+    /**
+     * Name of the uploaded data sheet.
+     */
+    filename: string | NullEnum
+    /**
+     * Full name of the user that uploaded the data sheet.
+     */
+    userFullname: string | NullEnum
 } & ShippingEmissionEstimateResponse
 
 export namespace MultiLegShippingEmissionEstimate {
