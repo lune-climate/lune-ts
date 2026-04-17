@@ -102,6 +102,10 @@ export type Shipment = ShipmentEmissions & {
      * Emission scope for the shipper contract.
      */
     shipperContractEmissionScope: string | null
+    /**
+     * Source of the emissions data.
+     */
+    emissionsSource: 'ecotransit' | 'lune' | 'manual' | NullEnum
     tour: ShipmentTourResponse | NullEnum
     legs: Array<ShipmentLegResponse>
     createdAt: Timestamp

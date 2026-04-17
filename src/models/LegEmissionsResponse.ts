@@ -109,10 +109,6 @@ export type LegEmissionsResponse = {
      */
     transportActivity: string | null
     /**
-     * Source of the emissions data.
-     */
-    emissionsSource: LegEmissionsResponse.emissions_source | null
-    /**
      * Description of the emission factor used.
      */
     emissionFactorDescription: string | null
@@ -140,15 +136,4 @@ export type LegEmissionsResponse = {
      * Year of the emission factor.
      */
     emissionFactorYear: number | null
-}
-
-export namespace LegEmissionsResponse {
-    /**
-     * Source of the emissions data.
-     */
-    export enum emissions_source {
-        ECOTRANSIT = 'ecotransit',
-        LUNE = 'lune',
-        MANUAL = 'manual',
-    }
 }
