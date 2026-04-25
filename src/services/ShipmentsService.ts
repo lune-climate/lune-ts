@@ -87,12 +87,12 @@ export abstract class ShipmentsService {
              * Filter shipments by supplier account IDs.
              *
              */
-            supplier?: Array<string>
+            supplierId?: Array<string>
             /**
              * Filter shipments by shipper account IDs.
              *
              */
-            shipper?: Array<string>
+            shipperId?: Array<string>
             /**
              * Filter shipments by whether they contain legs with flagged emission intensity.
              *
@@ -126,8 +126,8 @@ export abstract class ShipmentsService {
                 main_carriage_mot: data?.mainCarriageMot,
                 pre_carriage_mot: data?.preCarriageMot,
                 post_carriage_mot: data?.postCarriageMot,
-                supplier: data?.supplier,
-                shipper: data?.shipper,
+                supplier_id: data?.supplierId,
+                shipper_id: data?.shipperId,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
             },
