@@ -9,6 +9,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { CreateShipmentRequest } from '../models/CreateShipmentRequest.js'
 import type { CreateShipmentResponse } from '../models/CreateShipmentResponse.js'
 import type { Incoterm } from '../models/Incoterm.js'
 import type { Metadata } from '../models/Metadata.js'
@@ -162,6 +163,25 @@ export abstract class ShipmentsService {
              *
              */
             idempotencyKey?: string
+            /**
+             * An identifier you've assigned to this row's counterparty,
+             * scoped to the account making the request. A contact may have
+             * multiple Internal IDs and this row matches against any of them;
+             * these are managed via the Lune dashboard. Used to resolve the
+             * counterparty when the batch does not provide a batch-level
+             * `contact_id`; ignored otherwise. Should be supplied together
+             * with `target_internal_name`.
+             *
+             */
+            targetInternalId?: string
+            /**
+             * Display name for the counterparty associated with
+             * `target_internal_id`. Used when no contact yet has the supplied
+             * `target_internal_id` and one needs to be created. Ignored when
+             * the batch provides a `contact_id`.
+             *
+             */
+            targetInternalName?: string
             metadata?: Metadata
             /**
              * Tags for categorising or filtering shipments.
@@ -233,6 +253,8 @@ export abstract class ShipmentsService {
             body: {
                 shipment_id: data?.shipmentId,
                 idempotency_key: data?.idempotencyKey,
+                target_internal_id: data?.targetInternalId,
+                target_internal_name: data?.targetInternalName,
                 metadata: data?.metadata,
                 tags: data?.tags,
                 service_level: data?.serviceLevel,
@@ -261,6 +283,106 @@ export abstract class ShipmentsService {
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Upload a batch of shipments
+     * Submit a batch of shipments for emission reporting.
+     *
+     * Only rudimentary checks (e.g. payload structure and size) are performed
+     * at upload time. The request either succeeds as a whole or it does not;
+     * there are no per-row errors on upload. Detailed per-row validation
+     * happens asynchronously when the batch is processed.
+     *
+     * The counterparty on each resulting shipment is resolved from
+     * one of two sources:
+     *
+     * 1. If `contact_id` is supplied on the request, the identified contact
+     * is the counterparty for every resulting shipment. Per-row
+     * `target_internal_id` and `target_internal_name` are ignored for
+     * counterparty resolution in this case.
+     * 2. Otherwise, each row's counterparty is resolved from its per-row
+     * `target_internal_id`, scoped to the authenticated account.
+     * `target_internal_name` is used when the system has to create a
+     * previously-unseen counterparty mapping.
+     *
+     * Supplying both `contact_id` on the request and `target_internal_id`
+     * on a row is not an error; `contact_id` wins. Rows without a usable
+     * counterparty when `contact_id` is absent will fail during asynchronous
+     * processing.
+     *
+     * The `shipper_id` and `supplier_id` on each resulting shipment
+     * are derived from the authenticated account and the resolved
+     * counterparty: a shipper account is assigned as `shipper_id`,
+     * otherwise it is assigned as `supplier_id`, and the counterparty
+     * takes the opposite role.
+     *
+     * Returns a batch identifier that can be used to refer to the batch later.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns any OK
+     */
+    public createShipmentBatch(
+        data: {
+            shipments: Array<CreateShipmentRequest>
+            /**
+             * Lune contact identifier for the counterparty in this batch.
+             * When supplied, every row in the batch uses the identified contact
+             * as the counterparty and per-row `target_internal_id` /
+             * `target_internal_name` are ignored for counterparty resolution.
+             * When omitted, each row's counterparty is resolved from its
+             * per-row `target_internal_id` instead.
+             *
+             */
+            contactId?: string
+            /**
+             * Idempotency key for this batch upload, unique per authenticated
+             * account. A 409 Conflict is returned if a batch with the same
+             * idempotency key has already been submitted by this account.
+             *
+             */
+            idempotencyKey?: string
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<
+        Result<
+            SuccessResponse<{
+                /**
+                 * Batch identifier.
+                 */
+                id: string
+            }>,
+            ApiError
+        >
+    > {
+        return __request(this.client, this.config, options || {}, {
+            method: 'POST',
+            url: '/shipments/batches',
+            headers: {
+                Accept: 'application/json',
+            },
+            body: {
+                shipments: data?.shipments,
+                contact_id: data?.contactId,
+                idempotency_key: data?.idempotencyKey,
+            },
+            mediaType: 'application/json',
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
+                413: `The request is larger than 100kB.`,
+                415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
             },
         })
     }
