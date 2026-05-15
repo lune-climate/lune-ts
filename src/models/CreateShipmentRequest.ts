@@ -29,6 +29,25 @@ export type CreateShipmentRequest = {
      *
      */
     idempotencyKey?: string
+    /**
+     * An identifier you've assigned to this row's counterparty,
+     * scoped to the account making the request. A contact may have
+     * multiple Internal IDs and this row matches against any of them;
+     * these are managed via the Lune dashboard. Used to resolve the
+     * counterparty when the batch does not provide a batch-level
+     * `contact_id`; ignored otherwise. Should be supplied together
+     * with `target_internal_name`.
+     *
+     */
+    targetInternalId?: string
+    /**
+     * Display name for the counterparty associated with
+     * `target_internal_id`. Used when no contact yet has the supplied
+     * `target_internal_id` and one needs to be created. Ignored when
+     * the batch provides a `contact_id`.
+     *
+     */
+    targetInternalName?: string
     metadata?: Metadata
     /**
      * Tags for categorising or filtering shipments.
