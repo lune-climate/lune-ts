@@ -24,12 +24,6 @@ export type CreateShipmentRequest = {
      */
     shipmentId?: string
     /**
-     * Idempotency key for the request. A 409 Conflict is returned if a
-     * shipment with the same idempotency key already exists.
-     *
-     */
-    idempotencyKey?: string
-    /**
      * An identifier you've assigned to this row's counterparty,
      * scoped to the account making the request. A contact may have
      * multiple Internal IDs and this row matches against any of them;
