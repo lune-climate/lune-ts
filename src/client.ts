@@ -216,7 +216,6 @@ export type { CreateOrderByQuantityWithBundleMass } from './models/CreateOrderBy
 export type { CreateOrderByQuantityWithBundlePercentage } from './models/CreateOrderByQuantityWithBundlePercentage.js'
 export type { CreateOrderByValueRequest } from './models/CreateOrderByValueRequest.js'
 export type { CreateShipmentRequest } from './models/CreateShipmentRequest.js'
-export type { CreateShipmentResponse } from './models/CreateShipmentResponse.js'
 export type { CreateWebhookRequest } from './models/CreateWebhookRequest.js'
 export type { CumulativeBundleAnalytics } from './models/CumulativeBundleAnalytics.js'
 export { CurrencyCode } from './models/CurrencyCode.js'
