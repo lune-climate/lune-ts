@@ -185,8 +185,9 @@ export abstract class ShipmentsService {
             contactId?: string
             /**
              * Idempotency key for this batch upload, unique per authenticated
-             * account. A 409 Conflict is returned if a batch with the same
-             * idempotency key has already been submitted by this account.
+             * account. Returns HTTP 409 Conflict with error code
+             * `shipment_batch_idempotency_already_exists` if a batch with the
+             * same idempotency key has already been submitted by this account.
              *
              */
             idempotencyKey?: string
