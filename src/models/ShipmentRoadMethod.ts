@@ -11,7 +11,6 @@
 /* eslint-disable */
 
 import type { FuelConsumption } from './FuelConsumption.js'
-import type { Mass } from './Mass.js'
 import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
 import type { RoadFuel } from './RoadFuel.js'
 import type { RoadGradient } from './RoadGradient.js'
@@ -63,31 +62,11 @@ export type ShipmentRoadMethod = {
      */
     vin?: string
     /**
-     * Type of road (e.g. highway, urban).
-     */
-    roadType?: string
-    /**
-     * Gross vehicle mass rating.
-     */
-    grossVehicleMassRating?: Mass
-    /**
      * Primary fuel consumption for this leg.
      */
     fuelConsumption?: FuelConsumption
     /**
-     * Secondary fuel consumption (e.g. electric portion of a hybrid).
-     */
-    secondaryFuelConsumption?: FuelConsumption
-    /**
-     * Type of biofuel used.
-     */
-    biofuelType?: string
-    /**
      * Share of biofuel in the fuel mix (0 to 1).
      */
     biofuelShare?: string | null
-    /**
-     * Type of feedstock used to produce the biofuel.
-     */
-    feedstockType?: string
 }

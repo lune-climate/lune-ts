@@ -26,17 +26,9 @@ export type ShipmentRailMethod = {
      */
     fuelConsumption?: FuelConsumption
     /**
-     * Type of biofuel used.
-     */
-    biofuelType?: string
-    /**
      * Share of biofuel in the fuel mix (0 to 1).
      */
     biofuelShare?: string | null
-    /**
-     * Type of feedstock used to produce the biofuel.
-     */
-    feedstockType?: string
 }
 
 export namespace ShipmentRailMethod {
