@@ -78,6 +78,7 @@ export namespace Error {
         INVALID_SELECTED_ACCOUNT_ID = 'invalid_selected_account_id',
         ACCOUNT_IDEMPOTENCY_ALREADY_EXISTS = 'account_idempotency_already_exists',
         ACCOUNT_HANDLE_IDEMPOTENCY_KEY_INCONSISTENCY = 'account_handle_idempotency_key_inconsistency',
+        SHIPMENT_BATCH_IDEMPOTENCY_ALREADY_EXISTS = 'shipment_batch_idempotency_already_exists',
         ROUTE_NOT_FOUND = 'route_not_found',
         INSUFFICIENT_CREDITS = 'insufficient_credits',
     }
