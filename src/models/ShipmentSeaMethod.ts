@@ -38,19 +38,7 @@ export type ShipmentSeaMethod = (
      */
     fuelConsumption?: FuelConsumption
     /**
-     * Secondary fuel consumption.
-     */
-    secondaryFuelConsumption?: FuelConsumption
-    /**
-     * Type of biofuel used.
-     */
-    biofuelType?: string
-    /**
      * Share of biofuel in the fuel mix (0 to 1).
      */
     biofuelShare?: string
-    /**
-     * Type of feedstock used to produce the biofuel.
-     */
-    feedstockType?: string
 }

@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ClientProvidedShipmentEmissions } from './ClientProvidedShipmentEmissions.js'
 import type { Incoterm } from './Incoterm.js'
 import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
@@ -43,10 +44,6 @@ export type CreateShipmentRequest = {
      */
     targetInternalName?: string
     metadata?: Metadata
-    /**
-     * Tags for categorising or filtering shipments.
-     */
-    tags?: Array<string>
     serviceLevel?: ShipmentServiceLevel
     incoterm?: Incoterm
     contractType?: ShipmentContractType
@@ -96,5 +93,6 @@ export type CreateShipmentRequest = {
      */
     shipperContractEmissionScope?: string
     tour?: ShipmentTour
+    emissions?: ClientProvidedShipmentEmissions
     legs: Array<ShipmentLeg>
 }

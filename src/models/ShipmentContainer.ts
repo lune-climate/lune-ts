@@ -10,7 +10,6 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { CargoType } from './CargoType.js'
 import type { ContainerLoadType } from './ContainerLoadType.js'
 import type { ContainerSizeType } from './ContainerSizeType.js'
 import type { Mass } from './Mass.js'
@@ -19,16 +18,11 @@ import type { Mass } from './Mass.js'
  * Details of a shipping container.
  */
 export type ShipmentContainer = {
-    /**
-     * Container number.
-     */
-    number?: string
     type?: ContainerSizeType
     /**
      * TEU equivalent of the container.
      */
     teu?: string
     loadType?: ContainerLoadType
-    cargoType?: CargoType
     containerEmptyMass?: Mass
 }
