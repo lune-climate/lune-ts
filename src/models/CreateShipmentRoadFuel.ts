@@ -10,20 +10,15 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
-import type { ShipmentContainer } from './ShipmentContainer.js'
-import type { Volume } from './Volume.js'
-
 /**
- * Cargo load details for a shipment leg.
+ * Road fuel accepted when creating a shipment.
  */
-export type ShipmentLoad = {
-    mass?: Mass
-    volume?: Volume
-    /**
-     * Number of pieces in the load.
-     */
-    pieceCount?: number
-    chargeableMass?: Mass
-    containers?: ShipmentContainer
+export enum CreateShipmentRoadFuel {
+    GASOLINE = 'gasoline',
+    DIESEL = 'diesel',
+    ETHANOL_FROM_CORN = 'ethanol_from_corn',
+    HVO_FROM_TALLOW = 'hvo_from_tallow',
+    LPG = 'lpg',
+    CNG = 'cng',
+    LNG = 'lng',
 }

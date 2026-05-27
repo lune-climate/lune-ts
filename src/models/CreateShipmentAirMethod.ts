@@ -10,20 +10,9 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
-import type { ShipmentContainer } from './ShipmentContainer.js'
-import type { Volume } from './Volume.js'
+import type { CreateShipmentAircraftTypeMethod } from './CreateShipmentAircraftTypeMethod.js'
+import type { CreateShipmentFlightNumberMethod } from './CreateShipmentFlightNumberMethod.js'
 
-/**
- * Cargo load details for a shipment leg.
- */
-export type ShipmentLoad = {
-    mass?: Mass
-    volume?: Volume
-    /**
-     * Number of pieces in the load.
-     */
-    pieceCount?: number
-    chargeableMass?: Mass
-    containers?: ShipmentContainer
-}
+export type CreateShipmentAirMethod =
+    | CreateShipmentFlightNumberMethod
+    | CreateShipmentAircraftTypeMethod

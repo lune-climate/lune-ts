@@ -19,7 +19,7 @@ export type ClientProvidedLegEmissions = {
     /**
      * Total emissions (kg CO2e).
      */
-    totalEmissions?: string
+    totalEmissions: string
     /**
      * Well-to-tank emissions (kg CO2e).
      */
@@ -103,15 +103,11 @@ export type ClientProvidedLegEmissions = {
     /**
      * Distance (km).
      */
-    distanceKm?: string | null
+    distanceKm: string
     /**
      * Transport activity (tonne-kilometres).
      */
     transportActivity?: string | null
-    /**
-     * Source of the emissions data.
-     */
-    emissionsSource?: ClientProvidedLegEmissions.emissions_source
     /**
      * Description of the emission factor used.
      */
@@ -140,15 +136,4 @@ export type ClientProvidedLegEmissions = {
      * Year of the emission factor.
      */
     emissionFactorYear?: number
-}
-
-export namespace ClientProvidedLegEmissions {
-    /**
-     * Source of the emissions data.
-     */
-    export enum emissions_source {
-        ECOTRANSIT = 'ecotransit',
-        LUNE = 'lune',
-        MANUAL = 'manual',
-    }
 }

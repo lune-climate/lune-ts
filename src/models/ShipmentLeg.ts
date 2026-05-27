@@ -12,11 +12,11 @@
 
 import type { CarriageType } from './CarriageType.js'
 import type { ClientProvidedLegEmissions } from './ClientProvidedLegEmissions.js'
+import type { CreateShipmentMethod } from './CreateShipmentMethod.js'
 import type { Distance } from './Distance.js'
 import type { ShipmentLegDates } from './ShipmentLegDates.js'
 import type { ShipmentLoad } from './ShipmentLoad.js'
 import type { ShipmentLocation } from './ShipmentLocation.js'
-import type { ShipmentMethod } from './ShipmentMethod.js'
 import type { TransitCorridor } from './TransitCorridor.js'
 
 /**
@@ -33,7 +33,7 @@ export type ShipmentLeg = {
      *
      */
     order?: number
-    method: ShipmentMethod
+    method: CreateShipmentMethod
     carriage: CarriageType
     origin?: ShipmentLocation
     destination?: ShipmentLocation
