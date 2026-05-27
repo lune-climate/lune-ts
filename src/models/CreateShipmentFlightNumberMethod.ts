@@ -10,20 +10,19 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
-import type { ShipmentContainer } from './ShipmentContainer.js'
-import type { Volume } from './Volume.js'
+import type { AircraftConfiguration } from './AircraftConfiguration.js'
 
-/**
- * Cargo load details for a shipment leg.
- */
-export type ShipmentLoad = {
-    mass?: Mass
-    volume?: Volume
+export type CreateShipmentFlightNumberMethod = {
     /**
-     * Number of pieces in the load.
+     * Flight number in either ICAO or IATA format.
+     *
+     * For generic airfreight emissions without flight number, use Simple Shipping Method.
+     *
      */
-    pieceCount?: number
-    chargeableMass?: Mass
-    containers?: ShipmentContainer
+    flightNumber: string
+    /**
+     * Departure date of the flight in UTC.
+     */
+    departureOn: string
+    aircraftConfiguration?: AircraftConfiguration
 }
