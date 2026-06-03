@@ -12,6 +12,7 @@
 import type { CreateShipmentRequest } from '../models/CreateShipmentRequest.js'
 import type { PaginatedShipments } from '../models/PaginatedShipments.js'
 import type { Shipment } from '../models/Shipment.js'
+import type { ShipmentBatch } from '../models/ShipmentBatch.js'
 import type { ShipmentModeOfTransport } from '../models/ShipmentModeOfTransport.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -229,6 +230,42 @@ export abstract class ShipmentsService {
                 415: `The payload format is in an unsupported format.`,
                 429: `Too many requests have been made in a short period of time`,
                 503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Get a shipment batch
+     * Fetch the current processing state of a shipment batch. Row
+     * results and counts are included when row processing has run to
+     * completion.
+     *
+     * @param id Shipment batch identifier.
+     * @param options Additional operation options
+     * @returns ShipmentBatch OK
+     */
+    public getShipmentBatch(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<ShipmentBatch>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/shipments/batches/{id}',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
             },
         })
     }
