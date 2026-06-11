@@ -9,17 +9,11 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
-import type { CreateShipmentResponse } from '../models/CreateShipmentResponse.js'
-import type { Incoterm } from '../models/Incoterm.js'
-import type { Metadata } from '../models/Metadata.js'
-import type { MonetaryAmount } from '../models/MonetaryAmount.js'
+import type { CreateShipmentRequest } from '../models/CreateShipmentRequest.js'
 import type { PaginatedShipments } from '../models/PaginatedShipments.js'
 import type { Shipment } from '../models/Shipment.js'
-import type { ShipmentContractType } from '../models/ShipmentContractType.js'
-import type { ShipmentLeg } from '../models/ShipmentLeg.js'
+import type { ShipmentBatch } from '../models/ShipmentBatch.js'
 import type { ShipmentModeOfTransport } from '../models/ShipmentModeOfTransport.js'
-import type { ShipmentServiceLevel } from '../models/ShipmentServiceLevel.js'
-import type { ShipmentTour } from '../models/ShipmentTour.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -140,82 +134,64 @@ export abstract class ShipmentsService {
     }
 
     /**
-     * Create a shipment
-     * Ingest a shipment for asynchronous emissions calculation.
+     * Upload a batch of shipments
+     * Submit a batch of shipments for emission reporting.
      *
-     * Returns a job identifier that can be used to track the ingestion status.
+     * Only rudimentary checks (e.g. payload structure and size) are performed
+     * at upload time. The request either succeeds as a whole or it does not;
+     * there are no per-row errors on upload. Detailed per-row validation
+     * happens asynchronously when the batch is processed.
+     *
+     * The counterparty on each resulting shipment is resolved from
+     * one of two sources:
+     *
+     * 1. If `contact_id` is supplied on the request, the identified contact
+     * is the counterparty for every resulting shipment. Per-row
+     * `target_internal_id` and `target_internal_name` are ignored for
+     * counterparty resolution in this case.
+     * 2. Otherwise, each row's counterparty is resolved from its per-row
+     * `target_internal_id`, scoped to the authenticated account.
+     * `target_internal_name` is used when the system has to create a
+     * previously-unseen counterparty mapping.
+     *
+     * Supplying both `contact_id` on the request and `target_internal_id`
+     * on a row is not an error; `contact_id` wins. Rows without a usable
+     * counterparty when `contact_id` is absent will fail during asynchronous
+     * processing.
+     *
+     * The `shipper_id` and `supplier_id` on each resulting shipment
+     * are derived from the authenticated account and the resolved
+     * counterparty: a shipper account is assigned as `shipper_id`,
+     * otherwise it is assigned as `supplier_id`, and the counterparty
+     * takes the opposite role.
+     *
+     * Returns a batch identifier that can be used to refer to the batch later.
      *
      * @param data Request data
      * @param options Additional operation options
-     * @returns CreateShipmentResponse OK
+     * @returns any OK
      */
-    public createShipment(
+    public createShipmentBatch(
         data: {
-            legs: Array<ShipmentLeg>
+            shipments: Array<CreateShipmentRequest>
             /**
-             * Client-side shipment reference identifier.
+             * Lune contact identifier for the counterparty in this batch.
+             * When supplied, every row in the batch uses the identified contact
+             * as the counterparty and per-row `target_internal_id` /
+             * `target_internal_name` are ignored for counterparty resolution.
+             * When omitted, each row's counterparty is resolved from its
+             * per-row `target_internal_id` instead.
+             *
              */
-            shipmentId?: string
+            contactId?: string
             /**
-             * Idempotency key for the request. A 409 Conflict is returned if a
-             * shipment with the same idempotency key already exists.
+             * Idempotency key for this batch upload, unique per authenticated
+             * account. Returns HTTP 409 Conflict with error code
+             * `shipment_batch_idempotency_already_exists` if a batch with the
+             * same idempotency key has already been submitted by this account.
              *
              */
             idempotencyKey?: string
-            metadata?: Metadata
-            /**
-             * Tags for categorising or filtering shipments.
-             */
-            tags?: Array<string>
-            serviceLevel?: ShipmentServiceLevel
-            incoterm?: Incoterm
-            contractType?: ShipmentContractType
-            /**
-             * Whether the shipment contains hazardous cargo.
-             */
-            hazardousCargo?: boolean
-            /**
-             * Booking reference number.
-             */
-            bookingReference?: string
-            /**
-             * House waybill number.
-             */
-            houseWaybill?: string
-            /**
-             * Purchase order reference identifier.
-             */
-            referenceIdPo?: string
-            /**
-             * Client-side identifier for the consignee.
-             */
-            consigneeId?: string
-            /**
-             * Name of the consignee.
-             */
-            consigneeName?: string
-            /**
-             * Client-side identifier for the consignor.
-             */
-            consignorId?: string
-            /**
-             * Name of the consignor.
-             */
-            consignorName?: string
-            /**
-             * Name of the freight paying party.
-             */
-            freightPayingParty?: string
-            /**
-             * Legal entity responsible for the shipment.
-             */
-            legalEntity?: string
-            freightCost?: MonetaryAmount
-            /**
-             * Emission scope for the shipper contract.
-             */
-            shipperContractEmissionScope?: string
-            tour?: ShipmentTour
         },
         options?: {
             /**
@@ -223,35 +199,27 @@ export abstract class ShipmentsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<CreateShipmentResponse>, ApiError>> {
+    ): Promise<
+        Result<
+            SuccessResponse<{
+                /**
+                 * Batch identifier.
+                 */
+                id: string
+            }>,
+            ApiError
+        >
+    > {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
-            url: '/shipments',
+            url: '/shipments/batches',
             headers: {
                 Accept: 'application/json',
             },
             body: {
-                shipment_id: data?.shipmentId,
+                shipments: data?.shipments,
+                contact_id: data?.contactId,
                 idempotency_key: data?.idempotencyKey,
-                metadata: data?.metadata,
-                tags: data?.tags,
-                service_level: data?.serviceLevel,
-                incoterm: data?.incoterm,
-                contract_type: data?.contractType,
-                hazardous_cargo: data?.hazardousCargo,
-                booking_reference: data?.bookingReference,
-                house_waybill: data?.houseWaybill,
-                reference_id_po: data?.referenceIdPo,
-                consignee_id: data?.consigneeId,
-                consignee_name: data?.consigneeName,
-                consignor_id: data?.consignorId,
-                consignor_name: data?.consignorName,
-                freight_paying_party: data?.freightPayingParty,
-                legal_entity: data?.legalEntity,
-                freight_cost: data?.freightCost,
-                shipper_contract_emission_scope: data?.shipperContractEmissionScope,
-                tour: data?.tour,
-                legs: data?.legs,
             },
             mediaType: 'application/json',
             errors: {
@@ -260,6 +228,43 @@ export abstract class ShipmentsService {
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
+     * Get a shipment batch
+     * Fetch the current processing state of a shipment batch. Row
+     * results and counts are included when row processing has run to
+     * completion.
+     *
+     * @param id Shipment batch identifier.
+     * @param options Additional operation options
+     * @returns ShipmentBatch OK
+     */
+    public getShipmentBatch(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): Promise<Result<SuccessResponse<ShipmentBatch>, ApiError>> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/shipments/batches/{id}',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })

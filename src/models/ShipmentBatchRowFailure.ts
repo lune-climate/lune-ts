@@ -10,20 +10,20 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
-import type { ShipmentContainer } from './ShipmentContainer.js'
-import type { Volume } from './Volume.js'
-
-/**
- * Cargo load details for a shipment leg.
- */
-export type ShipmentLoad = {
-    mass?: Mass
-    volume?: Volume
+export type ShipmentBatchRowFailure = {
     /**
-     * Number of pieces in the load.
+     * Zero-based index of the input row.
      */
-    pieceCount?: number
-    chargeableMass?: Mass
-    containers?: ShipmentContainer
+    rowIndex: number
+    status: ShipmentBatchRowFailure.status
+    /**
+     * Row-level processing error.
+     */
+    error: string
+}
+
+export namespace ShipmentBatchRowFailure {
+    export enum status {
+        FAILED = 'failed',
+    }
 }

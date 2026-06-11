@@ -12,12 +12,11 @@
 
 /**
  * A subset of simple transport methods available for shipment legs.
- * Covers inland waterway, rail, and air transport. Road and sea transport
- * should use their dedicated shipment method schemas instead.
+ * Covers rail and air transport. Road and sea transport should use their
+ * dedicated shipment method schemas instead.
  *
- * # Inland waterways
- * For inland waterways, values follow the pattern:
- * `inland_waterway_{vessel_type}_{size}`
+ * Note: Inland waterway transport is not currently supported when
+ * creating shipments via this API.
  *
  * # Rail transport
  * For rail transport, values follow the pattern:
@@ -30,18 +29,6 @@
  *
  */
 export enum SimpleShipmentMethod {
-    INLAND_WATERWAY_MOTOR_VESSEL_EXTRA_SMALL = 'inland_waterway_motor_vessel_extra_small',
-    INLAND_WATERWAY_MOTOR_VESSEL_SMALL = 'inland_waterway_motor_vessel_small',
-    INLAND_WATERWAY_MOTOR_VESSEL_MEDIUM = 'inland_waterway_motor_vessel_medium',
-    INLAND_WATERWAY_MOTOR_VESSEL_LARGE = 'inland_waterway_motor_vessel_large',
-    INLAND_WATERWAY_COUPLED_CONVOY = 'inland_waterway_coupled_convoy',
-    INLAND_WATERWAY_PUSHED_CONVOY_SMALL = 'inland_waterway_pushed_convoy_small',
-    INLAND_WATERWAY_PUSHED_CONVOY_MEDIUM = 'inland_waterway_pushed_convoy_medium',
-    INLAND_WATERWAY_PUSHED_CONVOY_LARGE = 'inland_waterway_pushed_convoy_large',
-    INLAND_WATERWAY_TANKER = 'inland_waterway_tanker',
-    INLAND_WATERWAY_CONTAINER_VESSEL_MEDIUM = 'inland_waterway_container_vessel_medium',
-    INLAND_WATERWAY_CONTAINER_VESSEL_LARGE = 'inland_waterway_container_vessel_large',
-    INLAND_WATERWAY_CONTAINER_VESSEL_CONVOY = 'inland_waterway_container_vessel_convoy',
     DIESEL_FREIGHT_TRAIN = 'diesel_freight_train',
     ELECTRIC_FREIGHT_TRAIN = 'electric_freight_train',
     RAIL = 'rail',

@@ -10,12 +10,21 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Timestamp } from './Timestamp.js'
-
-export type CreateShipmentResponse = {
-    /**
-     * Lune-generated identifier for the ingestion job.
-     */
-    jobId: string
-    createdAt: Timestamp
+/**
+ * Road emission standard accepted when creating a shipment.
+ */
+export enum CreateShipmentRoadEmissionStandard {
+    EURO1 = 'euro1',
+    EURO2 = 'euro2',
+    EURO3 = 'euro3',
+    EURO4 = 'euro4',
+    EURO5 = 'euro5',
+    EURO6_AC = 'euro6-ac',
+    EURO6_DE = 'euro6-de',
+    JP1994 = 'jp1994',
+    JP1997 = 'jp1997',
+    JP2003 = 'jp2003',
+    JP2005 = 'jp2005',
+    JP2009 = 'jp2009',
+    JP2016 = 'jp2016',
 }

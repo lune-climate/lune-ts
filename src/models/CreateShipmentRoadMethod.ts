@@ -10,25 +10,24 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { CreateShipmentRoadEmissionStandard } from './CreateShipmentRoadEmissionStandard.js'
+import type { CreateShipmentRoadFuel } from './CreateShipmentRoadFuel.js'
 import type { FuelConsumption } from './FuelConsumption.js'
-import type { RoadEmissionStandard } from './RoadEmissionStandard.js'
-import type { RoadFuel } from './RoadFuel.js'
 import type { RoadGradient } from './RoadGradient.js'
 import type { RoadSituation } from './RoadSituation.js'
 import type { RoadVehicleType } from './RoadVehicleType.js'
 
 /**
- * Road transport method with shipment-specific reporting fields such as
- * vehicle identification and fuel consumption.
+ * Road transport method accepted when creating a shipment.
  *
  */
-export type ShipmentRoadMethod = {
+export type CreateShipmentRoadMethod = {
     /**
      * Vehicle type used for shipping.
      *
      */
     vehicleType: RoadVehicleType | 'truck'
-    fuel: RoadFuel
+    fuel: CreateShipmentRoadFuel
     /**
      * Describes the road's topology.
      *
@@ -43,7 +42,7 @@ export type ShipmentRoadMethod = {
      * The vehicle's emission standard for pollution.
      *
      */
-    emissionStandard?: RoadEmissionStandard
+    emissionStandard?: CreateShipmentRoadEmissionStandard
     /**
      * The shipment is refrigerated or "dry" (not refrigerated).
      *

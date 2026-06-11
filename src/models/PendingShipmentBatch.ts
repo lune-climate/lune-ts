@@ -10,20 +10,22 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
-import type { ShipmentContainer } from './ShipmentContainer.js'
-import type { Volume } from './Volume.js'
-
-/**
- * Cargo load details for a shipment leg.
- */
-export type ShipmentLoad = {
-    mass?: Mass
-    volume?: Volume
+export type PendingShipmentBatch = {
     /**
-     * Number of pieces in the load.
+     * Batch identifier.
      */
-    pieceCount?: number
-    chargeableMass?: Mass
-    containers?: ShipmentContainer
+    id: string
+    /**
+     * Batch processing status.
+     */
+    status: PendingShipmentBatch.status
+}
+
+export namespace PendingShipmentBatch {
+    /**
+     * Batch processing status.
+     */
+    export enum status {
+        PENDING = 'pending',
+    }
 }

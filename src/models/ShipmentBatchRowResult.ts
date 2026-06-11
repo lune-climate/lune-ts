@@ -10,20 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
-import type { ShipmentContainer } from './ShipmentContainer.js'
-import type { Volume } from './Volume.js'
+import type { ShipmentBatchRowFailure } from './ShipmentBatchRowFailure.js'
+import type { ShipmentBatchRowSuccess } from './ShipmentBatchRowSuccess.js'
 
-/**
- * Cargo load details for a shipment leg.
- */
-export type ShipmentLoad = {
-    mass?: Mass
-    volume?: Volume
-    /**
-     * Number of pieces in the load.
-     */
-    pieceCount?: number
-    chargeableMass?: Mass
-    containers?: ShipmentContainer
-}
+export type ShipmentBatchRowResult = ShipmentBatchRowSuccess | ShipmentBatchRowFailure

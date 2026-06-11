@@ -10,22 +10,21 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { AirShippingMethod } from './AirShippingMethod.js'
+import type { CreateShipmentAirMethod } from './CreateShipmentAirMethod.js'
+import type { CreateShipmentRoadMethod } from './CreateShipmentRoadMethod.js'
+import type { CreateShipmentSeaMethod } from './CreateShipmentSeaMethod.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
 import type { ShipmentRailMethod } from './ShipmentRailMethod.js'
-import type { ShipmentRoadMethod } from './ShipmentRoadMethod.js'
-import type { ShipmentSeaMethod } from './ShipmentSeaMethod.js'
 import type { SimpleShipmentMethod } from './SimpleShipmentMethod.js'
 
 /**
- * Transport method for a shipment leg. Extends the existing shipping method
- * variants with shipment-specific reporting fields.
+ * Transport method accepted when creating a shipment.
  *
  */
-export type ShipmentMethod =
+export type CreateShipmentMethod =
     | SimpleShipmentMethod
-    | ShipmentRoadMethod
-    | AirShippingMethod
-    | ShipmentSeaMethod
+    | CreateShipmentRoadMethod
+    | CreateShipmentAirMethod
+    | CreateShipmentSeaMethod
     | ShipmentRailMethod
     | LogisticsSiteMethod

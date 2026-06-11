@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ClientProvidedShipmentEmissions } from './ClientProvidedShipmentEmissions.js'
 import type { Incoterm } from './Incoterm.js'
 import type { Metadata } from './Metadata.js'
 import type { MonetaryAmount } from './MonetaryAmount.js'
@@ -24,16 +25,25 @@ export type CreateShipmentRequest = {
      */
     shipmentId?: string
     /**
-     * Idempotency key for the request. A 409 Conflict is returned if a
-     * shipment with the same idempotency key already exists.
+     * An identifier you've assigned to this row's counterparty,
+     * scoped to the account making the request. A contact may have
+     * multiple Internal IDs and this row matches against any of them;
+     * these are managed via the Lune dashboard. Used to resolve the
+     * counterparty when the batch does not provide a batch-level
+     * `contact_id`; ignored otherwise. Should be supplied together
+     * with `target_internal_name`.
      *
      */
-    idempotencyKey?: string
-    metadata?: Metadata
+    targetInternalId?: string
     /**
-     * Tags for categorising or filtering shipments.
+     * Display name for the counterparty associated with
+     * `target_internal_id`. Used when no contact yet has the supplied
+     * `target_internal_id` and one needs to be created. Ignored when
+     * the batch provides a `contact_id`.
+     *
      */
-    tags?: Array<string>
+    targetInternalName?: string
+    metadata?: Metadata
     serviceLevel?: ShipmentServiceLevel
     incoterm?: Incoterm
     contractType?: ShipmentContractType
@@ -83,5 +93,6 @@ export type CreateShipmentRequest = {
      */
     shipperContractEmissionScope?: string
     tour?: ShipmentTour
+    emissions?: ClientProvidedShipmentEmissions
     legs: Array<ShipmentLeg>
 }

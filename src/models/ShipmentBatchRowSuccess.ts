@@ -10,20 +10,20 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { Mass } from './Mass.js'
-import type { ShipmentContainer } from './ShipmentContainer.js'
-import type { Volume } from './Volume.js'
-
-/**
- * Cargo load details for a shipment leg.
- */
-export type ShipmentLoad = {
-    mass?: Mass
-    volume?: Volume
+export type ShipmentBatchRowSuccess = {
     /**
-     * Number of pieces in the load.
+     * Zero-based index of the input row.
      */
-    pieceCount?: number
-    chargeableMass?: Mass
-    containers?: ShipmentContainer
+    rowIndex: number
+    status: ShipmentBatchRowSuccess.status
+    /**
+     * Encoded shipment identifier.
+     */
+    shipmentId: string
+}
+
+export namespace ShipmentBatchRowSuccess {
+    export enum status {
+        SUCCESS = 'success',
+    }
 }
