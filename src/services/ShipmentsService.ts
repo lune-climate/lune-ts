@@ -192,6 +192,12 @@ export abstract class ShipmentsService {
              *
              */
             idempotencyKey?: string
+            /**
+             * Whether to schedule emission calculations immediately after this
+             * batch has been processed. Defaults to false.
+             *
+             */
+            calculateEmissions?: boolean
         },
         options?: {
             /**
@@ -220,6 +226,7 @@ export abstract class ShipmentsService {
                 shipments: data?.shipments,
                 contact_id: data?.contactId,
                 idempotency_key: data?.idempotencyKey,
+                calculate_emissions: data?.calculateEmissions,
             },
             mediaType: 'application/json',
             errors: {
