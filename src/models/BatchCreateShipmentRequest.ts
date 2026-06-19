@@ -32,4 +32,10 @@ export type BatchCreateShipmentRequest = {
      *
      */
     idempotencyKey?: string
+    /**
+     * Whether to schedule emission calculations immediately after this
+     * batch has been processed. Defaults to false.
+     *
+     */
+    calculateEmissions?: boolean
 }
