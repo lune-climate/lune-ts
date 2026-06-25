@@ -12,6 +12,7 @@
 
 import type { AccountCurrencyCode } from './AccountCurrencyCode.js'
 import type { AccountExternalPagesVisibility } from './AccountExternalPagesVisibility.js'
+import type { AccountOrganisationType } from './AccountOrganisationType.js'
 import type { AccountType } from './AccountType.js'
 
 export type AccountBase = {
@@ -27,6 +28,7 @@ export type AccountBase = {
      * The unique identifier of the organisation this account belongs to
      */
     organisationId: string
+    organisationType: AccountOrganisationType
     /**
      * `handle` is a client defined URL-friendly string that identifies the account.
      *
