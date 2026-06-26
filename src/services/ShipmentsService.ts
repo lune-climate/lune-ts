@@ -88,6 +88,11 @@ export abstract class ShipmentsService {
              */
             shipperId?: Array<string>
             /**
+             * Filter shipments by the IDs of the shipment batches they were created from.
+             *
+             */
+            shipmentBatchId?: Array<string>
+            /**
              * Filter shipments by whether they contain legs with flagged emission intensity.
              *
              */
@@ -122,6 +127,7 @@ export abstract class ShipmentsService {
                 post_carriage_mot: data?.postCarriageMot,
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
+                shipment_batch_id: data?.shipmentBatchId,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
             },
