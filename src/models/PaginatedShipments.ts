@@ -31,5 +31,5 @@ export type PaginatedShipments = PaginatedBase & {
         all: number
         withCo2E: number
         withoutCo2E: number
-    }
+    } | null
 }
