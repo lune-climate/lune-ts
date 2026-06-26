@@ -102,6 +102,11 @@ export abstract class ShipmentsService {
              *
              */
             emissions?: 'all' | 'with_co2e' | 'without_co2e'
+            /**
+             * Whether to include approximate shipment totals in the response.
+             *
+             */
+            includeTotals?: boolean
         },
         options?: {
             /**
@@ -130,6 +135,7 @@ export abstract class ShipmentsService {
                 shipment_batch_id: data?.shipmentBatchId,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
+                include_totals: data?.includeTotals,
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
