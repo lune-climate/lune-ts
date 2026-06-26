@@ -22,7 +22,9 @@ export type PaginatedShipments = PaginatedBase & {
      */
     data: Array<Shipment>
     /**
-     * Total number of shipments matching the active filters.
+     * Approximate total number of shipments matching the active filters.
+     *
+     * These totals may lag behind the current shipment data.
      *
      */
     total: {
