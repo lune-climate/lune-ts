@@ -20,8 +20,7 @@ import type { IdentifiedVesselByNameShippingMethod } from './IdentifiedVesselByN
  *
  */
 export type IdentifiedVesselShippingMethod = (
-    | IdentifiedVesselByIMOShippingMethod
-    | IdentifiedVesselByNameShippingMethod
+    IdentifiedVesselByIMOShippingMethod | IdentifiedVesselByNameShippingMethod
 ) & {
     vesselTracking?: {
         /**

@@ -14,5 +14,4 @@ import type { CreateOrderByQuantityWithBundleMass } from './CreateOrderByQuantit
 import type { CreateOrderByQuantityWithBundlePercentage } from './CreateOrderByQuantityWithBundlePercentage.js'
 
 export type CreateOrderByQuantityRequest =
-    | CreateOrderByQuantityWithBundlePercentage
-    | CreateOrderByQuantityWithBundleMass
+    CreateOrderByQuantityWithBundlePercentage | CreateOrderByQuantityWithBundleMass

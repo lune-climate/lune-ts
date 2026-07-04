@@ -14,5 +14,4 @@ import type { OrderQuoteByQuantityWithBundleMass } from './OrderQuoteByQuantityW
 import type { OrderQuoteByQuantityWithBundlePercentage } from './OrderQuoteByQuantityWithBundlePercentage.js'
 
 export type OrderQuoteByQuantityRequest =
-    | OrderQuoteByQuantityWithBundlePercentage
-    | OrderQuoteByQuantityWithBundleMass
+    OrderQuoteByQuantityWithBundlePercentage | OrderQuoteByQuantityWithBundleMass

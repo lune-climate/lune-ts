@@ -14,5 +14,4 @@ import type { MultiLegShippingEmissionEstimate } from './MultiLegShippingEmissio
 import type { SingleShippingEmissionEstimate } from './SingleShippingEmissionEstimate.js'
 
 export type AnyShippingEmissionEstimate =
-    | SingleShippingEmissionEstimate
-    | MultiLegShippingEmissionEstimate
+    SingleShippingEmissionEstimate | MultiLegShippingEmissionEstimate
