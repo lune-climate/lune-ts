@@ -21,8 +21,4 @@ import type { UnknownLocationCode } from './UnknownLocationCode.js'
  *
  */
 export type ShipmentLocation =
-    | Address
-    | GeographicCoordinates
-    | Locode
-    | AirportCode
-    | UnknownLocationCode
+    Address | GeographicCoordinates | Locode | AirportCode | UnknownLocationCode

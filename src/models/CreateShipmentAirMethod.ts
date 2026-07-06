@@ -14,5 +14,4 @@ import type { CreateShipmentAircraftTypeMethod } from './CreateShipmentAircraftT
 import type { CreateShipmentFlightNumberMethod } from './CreateShipmentFlightNumberMethod.js'
 
 export type CreateShipmentAirMethod =
-    | CreateShipmentFlightNumberMethod
-    | CreateShipmentAircraftTypeMethod
+    CreateShipmentFlightNumberMethod | CreateShipmentAircraftTypeMethod

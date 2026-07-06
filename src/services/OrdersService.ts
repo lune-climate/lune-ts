@@ -44,8 +44,7 @@ export abstract class OrdersService {
     public createOrderByMass(
         data: {
             createOrderByQuantityRequest:
-                | CreateOrderByQuantityWithBundlePercentage
-                | CreateOrderByQuantityWithBundleMass
+                CreateOrderByQuantityWithBundlePercentage | CreateOrderByQuantityWithBundleMass
         },
         options?: {
             /**
@@ -370,8 +369,7 @@ export abstract class OrdersService {
     public getOrderQuoteByMass(
         data: {
             orderQuoteByQuantityRequest:
-                | OrderQuoteByQuantityWithBundlePercentage
-                | OrderQuoteByQuantityWithBundleMass
+                OrderQuoteByQuantityWithBundlePercentage | OrderQuoteByQuantityWithBundleMass
         },
         options?: {
             /**
