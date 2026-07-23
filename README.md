@@ -111,11 +111,16 @@ An API change was released to Production. You want to start using it via the lun
    
    Wait for job to finish.
 5. ts-lune repo: 4. should create a PR that bumps the ts-client to a new version. Approve and merge this.
-6. npm registry: Go to and wait until you can see that the new version was published https://www.npmjs.com/package/@lune-climate/lune (this should have happened automatically after merging new version number to MASTER as seen in step 5. but seems slow - give it a min)
-7. Bump the version of ts-client in your local repo to match the newly published npm version, run yarn/npm to install it and start using it
-
-Diagram you don't actually need to look at:
-<img width="1493" alt="image" src="https://user-images.githubusercontent.com/3956723/182634194-0d55a2e0-3832-4e60-8029-38194f4f5ee5.png">
+6. ts-lune repo: Create and push a release tag matching the package version, for example `v3.9.1`,
+   on the commit merged in step 5. This triggers the **Publish new version** workflow.
+7. GitHub Actions: Approve the `npm-publish` environment deployment in the **Publish new version**
+   workflow. The workflow builds the package without publishing credentials and stages the
+   resulting tarball on npm using trusted publishing.
+8. npm registry: In npmjs.com, open the **Staged Packages** tab for the signed-in maintainer
+   account, review the staged package, then approve it with 2FA. Wait until the new version
+   appears on https://www.npmjs.com/package/@lune-climate/lune.
+9. Bump the version of ts-client in your local repo to match the newly published npm version,
+   run yarn/npm to install it and start using it.
 
 ## Future work
 

@@ -2,21 +2,65 @@ name: Publish new version
 
 on:
   push:
-    branches:
-      - master
+    tags:
+      - 'v*'
+
+permissions: {}
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
     steps:
       - name: Checkout the code
-        uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
       - name: Build schema from source
         run: docker compose -f docker-compose-ci.yml run build_from_source
-      - uses: actions/setup-node@f1f314fca9dfce2769ece7d933488f076716723e # v1.4.6
+      - name: Create release artifact directory
+        run: mkdir -p npm-package
+      - name: Pack release artifact
+        run: npm pack ./dist --ignore-scripts --pack-destination npm-package
+      - name: Verify release artifact
+        shell: bash
+        run: |
+          mapfile -t tarballs < <(find npm-package -maxdepth 1 -type f -name '*.tgz' -print)
+          test "${#tarballs[@]}" -eq 1
+      - name: Upload release artifact
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4.6.2
         with:
-          node-version: 16
-          registry-url: https://registry.npmjs.org/
-      - run: make publish-ignore-same-version-error
-        env:
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          name: npm-package
+          path: npm-package
+          if-no-files-found: error
+
+  publish:
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: npm-publish
+      cancel-in-progress: false
+    environment:
+      name: npm-publish
+      url: https://www.npmjs.com/package/@lune-climate/lune
+    permissions:
+      id-token: write
+    steps:
+      - name: Download release artifact
+        uses: actions/download-artifact@634f93cb2916e3fdff6788551b99b062d0335ce0 # v5.0.0
+        with:
+          name: npm-package
+          path: dist
+      - name: Set up Node.js
+        uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6.1.0
+        with:
+          node-version: '26.5.0'
+          registry-url: https://registry.npmjs.org
+          package-manager-cache: false
+      - name: Stage release artifact
+        shell: bash
+        run: |
+          mapfile -t tarballs < <(find dist -maxdepth 1 -type f -name '*.tgz' -print)
+          test "${#tarballs[@]}" -eq 1
+          npm stage publish "./${tarballs[0]}"
