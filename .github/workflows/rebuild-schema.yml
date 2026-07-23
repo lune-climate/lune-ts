@@ -20,6 +20,8 @@ jobs:
     steps:
       - name: Checkout the code
         uses: actions/checkout@0717577d45739eb3c851188b29f50ed6c0b2194e # v2.8.0
+        with:
+          persist-credentials: false
       - name: Rebuild client from remote schema
         run: |
           # --user preserves file ownership to match host user (prevents permission issues)
