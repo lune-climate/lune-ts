@@ -20,7 +20,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class ShipmentsService {
     protected abstract client: AxiosInstance
@@ -114,7 +114,7 @@ export abstract class ShipmentsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<PaginatedShipments>, ApiError>> {
+    ): AsyncResult<SuccessResponse<PaginatedShipments>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/shipments',
@@ -217,16 +217,14 @@ export abstract class ShipmentsService {
              */
             accountId?: string
         },
-    ): Promise<
-        Result<
-            SuccessResponse<{
-                /**
-                 * Batch identifier.
-                 */
-                id: string
-            }>,
-            ApiError
-        >
+    ): AsyncResult<
+        SuccessResponse<{
+            /**
+             * Batch identifier.
+             */
+            id: string
+        }>,
+        ApiError
     > {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
@@ -271,7 +269,7 @@ export abstract class ShipmentsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<ShipmentBatch>, ApiError>> {
+    ): AsyncResult<SuccessResponse<ShipmentBatch>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/shipments/batches/{id}',
@@ -306,7 +304,7 @@ export abstract class ShipmentsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<Shipment>, ApiError>> {
+    ): AsyncResult<SuccessResponse<Shipment>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/shipments/{id}',

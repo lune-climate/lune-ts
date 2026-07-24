@@ -17,7 +17,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class BundlesService {
     protected abstract client: AxiosInstance
@@ -54,7 +54,7 @@ export abstract class BundlesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<PaginatedBundles>, ApiError>> {
+    ): AsyncResult<SuccessResponse<PaginatedBundles>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundles',
@@ -88,7 +88,7 @@ export abstract class BundlesService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<Bundle>, ApiError>> {
+    ): AsyncResult<SuccessResponse<Bundle>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundles/{id}',

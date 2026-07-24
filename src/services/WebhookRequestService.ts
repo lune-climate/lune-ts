@@ -16,7 +16,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class WebhookRequestService {
     protected abstract client: AxiosInstance
@@ -43,7 +43,7 @@ export abstract class WebhookRequestService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<any>, ApiError>> {
+    ): AsyncResult<SuccessResponse<any>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/WebhookRequest',

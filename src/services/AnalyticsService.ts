@@ -20,7 +20,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class AnalyticsService {
     protected abstract client: AxiosInstance
@@ -51,7 +51,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<CumulativeBundleAnalytics>, ApiError>> {
+    ): AsyncResult<SuccessResponse<CumulativeBundleAnalytics>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/cumulative-per-bundle',
@@ -95,7 +95,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<AnalyticsMetrics>, ApiError>> {
+    ): AsyncResult<SuccessResponse<AnalyticsMetrics>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/metrics',
@@ -139,7 +139,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<AggregatedAnalyticsByProperty>, ApiError>> {
+    ): AsyncResult<SuccessResponse<AggregatedAnalyticsByProperty>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/aggregated-by-property',
@@ -193,7 +193,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<EmissionCalculationMetrics>, ApiError>> {
+    ): AsyncResult<SuccessResponse<EmissionCalculationMetrics>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/emission-calculations',
@@ -244,7 +244,7 @@ export abstract class AnalyticsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<BusinessEmissionsAnalytics>, ApiError>> {
+    ): AsyncResult<SuccessResponse<BusinessEmissionsAnalytics>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/analytics/business',
