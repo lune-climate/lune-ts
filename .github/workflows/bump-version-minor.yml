@@ -4,10 +4,15 @@ name: Create PR with bump minor version
 on:
   - workflow_dispatch
 
+permissions: {}
+
 jobs:
   build:
     name: Bump version (minor) and create PR.
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
 
     steps:
       - name: Checkout the code
