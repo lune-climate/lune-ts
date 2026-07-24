@@ -1,6 +1,6 @@
 import { AxiosInstance, AxiosResponse, isAxiosError } from 'axios'
 import snakeCaseKeys from 'snakecase-keys'
-import { Err, Ok, Result } from 'ts-results-es'
+import { AsyncResult, Err, Ok } from 'ts-results-es'
 
 import { ApiError, constructApiError } from './ApiError.js'
 import type { ApiRequestOptions } from './ApiRequestOptions.js'
@@ -185,14 +185,14 @@ const getRequestBody = (options: ApiRequestOptions): any => {
     }
 }
 
-export const request = async <T>(
+export const request = <T>(
     client: AxiosInstance,
     config: ClientConfig,
     luneOptions: {
         accountId?: string
     },
     options: ApiRequestOptions,
-): Promise<Result<SuccessResponse<T>, ApiError>> => {
+): AsyncResult<SuccessResponse<T>, ApiError> => {
     const url = getUrl(config, options)
     const formData = getFormData(options)
     const body = getRequestBody(options)
@@ -202,21 +202,23 @@ export const request = async <T>(
         headers['Lune-Account'] = luneOptions.accountId
     }
 
-    return client({
-        baseURL: url,
-        method: options.method,
-        headers,
-        params: formData,
-        data: body,
-        ...(options.responseType ? { responseType: options.responseType } : {}),
-    })
-        .then((response: AxiosResponse<T>) => {
-            return Ok(asSuccessResponse(response))
+    return new AsyncResult(
+        client({
+            baseURL: url,
+            method: options.method,
+            headers,
+            params: formData,
+            data: body,
+            ...(options.responseType ? { responseType: options.responseType } : {}),
         })
-        .catch((error: unknown) => {
-            if (!isAxiosError(error)) {
-                throw error
-            }
-            return Err(constructApiError(error, options))
-        })
+            .then((response: AxiosResponse<T>) => {
+                return Ok(asSuccessResponse(response))
+            })
+            .catch((error: unknown) => {
+                if (!isAxiosError(error)) {
+                    throw error
+                }
+                return Err(constructApiError(error, options))
+            }),
+    )
 }

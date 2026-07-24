@@ -69,7 +69,7 @@ export class LuneClient {
             response: AxiosResponse,
         ): AxiosResponse | ExtendedAxiosResponse => {
             const contentType = response.headers['content-type']
-            if (!contentType || !contentType.includes('application/json')) {
+            if (typeof contentType !== 'string' || !contentType.includes('application/json')) {
                 return response
             }
             return {

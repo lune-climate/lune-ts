@@ -19,7 +19,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class EmissionFactorsService {
     protected abstract client: AxiosInstance
@@ -98,7 +98,7 @@ export abstract class EmissionFactorsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<PaginatedEmissionFactors>, ApiError>> {
+    ): AsyncResult<SuccessResponse<PaginatedEmissionFactors>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/emission-factors',
@@ -135,7 +135,7 @@ export abstract class EmissionFactorsService {
          * Account Id to be used to perform the API call
          */
         accountId?: string
-    }): Promise<Result<SuccessResponse<EmissionFactorRegions>, ApiError>> {
+    }): AsyncResult<SuccessResponse<EmissionFactorRegions>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/emission-factors/regions',

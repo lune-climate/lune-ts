@@ -25,7 +25,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class SustainabilityPageService {
     protected abstract client: AxiosInstance
@@ -53,7 +53,7 @@ export abstract class SustainabilityPageService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<SustainabilityPage>, ApiError>> {
+    ): AsyncResult<SuccessResponse<SustainabilityPage>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/sustainability-pages',
@@ -102,7 +102,7 @@ export abstract class SustainabilityPageService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<SustainabilityPage>, ApiError>> {
+    ): AsyncResult<SuccessResponse<SustainabilityPage>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/sustainability-pages',
@@ -140,7 +140,7 @@ export abstract class SustainabilityPageService {
          * Account Id to be used to perform the API call
          */
         accountId?: string
-    }): Promise<Result<SuccessResponse<SustainabilityPage>, ApiError>> {
+    }): AsyncResult<SuccessResponse<SustainabilityPage>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/sustainability-pages/current-account',
@@ -173,7 +173,7 @@ export abstract class SustainabilityPageService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<PublicSustainabilityPage>, ApiError>> {
+    ): AsyncResult<SuccessResponse<PublicSustainabilityPage>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/sustainability-pages/public/{type}/{slug}',
@@ -211,7 +211,7 @@ export abstract class SustainabilityPageService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<PublicSustainabilityPage>, ApiError>> {
+    ): AsyncResult<SuccessResponse<PublicSustainabilityPage>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/sustainability-pages/public/{organisation_id}/{type}/{handle}',

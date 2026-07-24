@@ -22,7 +22,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class ClientAccountsService {
     protected abstract client: AxiosInstance
@@ -38,7 +38,7 @@ export abstract class ClientAccountsService {
          * Account Id to be used to perform the API call
          */
         accountId?: string
-    }): Promise<Result<SuccessResponse<ClientAccount>, ApiError>> {
+    }): AsyncResult<SuccessResponse<ClientAccount>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts/client/me',
@@ -86,7 +86,7 @@ export abstract class ClientAccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<ClientAccount>, ApiError>> {
+    ): AsyncResult<SuccessResponse<ClientAccount>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/accounts/client',
@@ -148,7 +148,7 @@ export abstract class ClientAccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<PaginatedClientAccounts>, ApiError>> {
+    ): AsyncResult<SuccessResponse<PaginatedClientAccounts>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/accounts/client',
@@ -188,7 +188,7 @@ export abstract class ClientAccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<ClientAccount>, ApiError>> {
+    ): AsyncResult<SuccessResponse<ClientAccount>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/accounts/client/{id}',
@@ -251,7 +251,7 @@ export abstract class ClientAccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<ClientAccount>, ApiError>> {
+    ): AsyncResult<SuccessResponse<ClientAccount>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'PATCH',
             url: '/accounts/client/{id}',
@@ -300,7 +300,7 @@ export abstract class ClientAccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<UploadLogoResponse>, ApiError>> {
+    ): AsyncResult<SuccessResponse<UploadLogoResponse>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'POST',
             url: '/accounts/client/{id}/logo',
@@ -340,7 +340,7 @@ export abstract class ClientAccountsService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<UploadLogoResponse>, ApiError>> {
+    ): AsyncResult<SuccessResponse<UploadLogoResponse>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'DELETE',
             url: '/accounts/client/{id}/logo',
