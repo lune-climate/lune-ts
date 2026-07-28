@@ -30,7 +30,7 @@ function isNotPureObject(value: unknown): boolean {
 export function asSuccessResponse<T>(response: AxiosResponse<T>): SuccessResponse<T> {
     const value: T = response.data
     const contentType = response.headers['content-type']
-    if (contentType && contentType.includes('application/json')) {
+    if (typeof contentType === 'string' && contentType.includes('application/json')) {
         if (!('_meta' in response)) {
             throw new Error('_meta is expected')
         }
@@ -65,14 +65,14 @@ export function extractRequestFromResponseInterceptor(response: AxiosResponse): 
         throw new Error(`Unexpected method: ${req.method}`)
     }
 
+    const contentType = req.headers['Content-Type']
+
     return {
         method: req.method!,
         url: req.baseURL!,
         request: !data ? null : typeof data === 'string' ? JSON.parse(data) : data,
         requestHeaders: {
-            contentType: req.headers['Content-Type']
-                ? (req.headers['Content-Type'] as string)
-                : null,
+            contentType: typeof contentType === 'string' ? contentType : null,
         },
     }
 }
