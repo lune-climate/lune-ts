@@ -16,7 +16,7 @@ import { request as __request } from '../core/request.js'
 import { SuccessResponse } from '../core/SuccessResponse.js'
 import { ApiError } from '../core/ApiError.js'
 import { AxiosInstance } from 'axios'
-import { Result } from 'ts-results-es'
+import { AsyncResult } from 'ts-results-es'
 
 export abstract class BundlePortfoliosService {
     protected abstract client: AxiosInstance
@@ -32,7 +32,7 @@ export abstract class BundlePortfoliosService {
          * Account Id to be used to perform the API call
          */
         accountId?: string
-    }): Promise<Result<SuccessResponse<Array<BundlePortfolio>>, ApiError>> {
+    }): AsyncResult<SuccessResponse<Array<BundlePortfolio>>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'GET',
             url: '/bundle-portfolios',
@@ -62,7 +62,7 @@ export abstract class BundlePortfoliosService {
              */
             accountId?: string
         },
-    ): Promise<Result<SuccessResponse<BundlePortfolio>, ApiError>> {
+    ): AsyncResult<SuccessResponse<BundlePortfolio>, ApiError> {
         return __request(this.client, this.config, options || {}, {
             method: 'PUT',
             url: '/bundle-portfolios',
