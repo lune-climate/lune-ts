@@ -10,6 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ShipmentBatchSource } from './ShipmentBatchSource.js'
+
 export type ProcessedShipmentBatchWithError = {
     /**
      * Batch identifier.
@@ -19,6 +21,7 @@ export type ProcessedShipmentBatchWithError = {
      * Batch processing status.
      */
     status: ProcessedShipmentBatchWithError.status
+    source: ShipmentBatchSource
     /**
      * Batch-level processing error, when row processing did not run.
      */
