@@ -11,6 +11,7 @@
 /* eslint-disable */
 
 import type { ShipmentBatchRowResult } from './ShipmentBatchRowResult.js'
+import type { ShipmentBatchSource } from './ShipmentBatchSource.js'
 
 export type ProcessedShipmentBatchWithResults = {
     /**
@@ -21,6 +22,7 @@ export type ProcessedShipmentBatchWithResults = {
      * Batch processing status.
      */
     status: ProcessedShipmentBatchWithResults.status
+    source: ShipmentBatchSource
     /**
      * Number of rows that were processed successfully.
      */

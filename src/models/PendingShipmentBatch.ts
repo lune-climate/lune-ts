@@ -10,6 +10,8 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ShipmentBatchSource } from './ShipmentBatchSource.js'
+
 export type PendingShipmentBatch = {
     /**
      * Batch identifier.
@@ -19,6 +21,7 @@ export type PendingShipmentBatch = {
      * Batch processing status.
      */
     status: PendingShipmentBatch.status
+    source: ShipmentBatchSource
 }
 
 export namespace PendingShipmentBatch {
