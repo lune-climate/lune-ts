@@ -10,9 +10,11 @@
 /* tslint:disable */
 /* eslint-disable */
 import type { CreateShipmentRequest } from '../models/CreateShipmentRequest.js'
+import type { PaginatedShipmentBatches } from '../models/PaginatedShipmentBatches.js'
 import type { PaginatedShipments } from '../models/PaginatedShipments.js'
 import type { Shipment } from '../models/Shipment.js'
 import type { ShipmentBatch } from '../models/ShipmentBatch.js'
+import type { ShipmentBatchSource } from '../models/ShipmentBatchSource.js'
 import type { ShipmentModeOfTransport } from '../models/ShipmentModeOfTransport.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
@@ -139,6 +141,65 @@ export abstract class ShipmentsService {
             },
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * List shipment batches
+     * Returns the account's paginated shipment batches in reverse order
+     * (most recent first).
+     *
+     * Each item uses the same summary shape. Counts and `batch_error` are
+     * null until processing finishes (or when a batch-level error prevents
+     * row-level processing). Per-row `results` are not included; use get
+     * shipment batch to fetch them for a single batch.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns PaginatedShipmentBatches OK
+     */
+    public listShipmentBatches(
+        data?: {
+            /**
+             * Maximum number of resources to return, between 1 and 100.
+             *
+             */
+            limit?: string
+            /**
+             * A cursor for use in pagination.
+             *
+             * The cursor that points to the starting item of the next page of results. If not provided, the first page of results is returned.
+             *
+             */
+            after?: string
+            /**
+             * Filter batches by how they were created.
+             *
+             */
+            source?: Array<ShipmentBatchSource>
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): AsyncResult<SuccessResponse<PaginatedShipmentBatches>, ApiError> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/shipments/batches',
+            headers: {
+                Accept: 'application/json',
+            },
+            query: {
+                limit: data?.limit,
+                after: data?.after,
+                source: data?.source,
+            },
+            errors: {
                 401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,
             },
