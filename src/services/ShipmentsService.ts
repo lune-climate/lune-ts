@@ -95,6 +95,20 @@ export abstract class ShipmentsService {
              */
             shipmentBatchId?: Array<string>
             /**
+             * Filter shipments by the IDs of the data sheet uploads their shipment
+             * batches were created from. Values are OR'd: a shipment matches if its
+             * batch came from any of the given data sheets.
+             *
+             */
+            dataSheetId?: Array<string>
+            /**
+             * Filter shipments to only the given IDs. Values are OR'd: a shipment
+             * matches if its ID is any of the given values. IDs are the same
+             * encoded values returned in each shipment's `id` field.
+             *
+             */
+            id?: Array<string>
+            /**
              * Filter shipments by whether they contain legs with flagged emission intensity.
              *
              */
@@ -135,6 +149,8 @@ export abstract class ShipmentsService {
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
+                data_sheet_id: data?.dataSheetId,
+                id: data?.id,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
                 include_totals: data?.includeTotals,
