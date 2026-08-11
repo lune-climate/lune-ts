@@ -102,9 +102,10 @@ export abstract class ShipmentsService {
              */
             dataSheetId?: Array<string>
             /**
-             * Filter shipments to only the given IDs. Values are OR'd: a shipment
-             * matches if its ID is any of the given values. IDs are the same
-             * encoded values returned in each shipment's `id` field.
+             * Filter shipments to only the given IDs. This is the same
+             * Lune-generated unique identifier already returned on each
+             * shipment's `id` field, so it can be matched. Values are OR'd: a
+             * shipment matches if its ID is any of the given values.
              *
              */
             id?: Array<string>
