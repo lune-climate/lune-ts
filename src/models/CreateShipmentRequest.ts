@@ -17,7 +17,6 @@ import type { MonetaryAmount } from './MonetaryAmount.js'
 import type { ShipmentContractType } from './ShipmentContractType.js'
 import type { ShipmentLeg } from './ShipmentLeg.js'
 import type { ShipmentServiceLevel } from './ShipmentServiceLevel.js'
-import type { ShipmentTour } from './ShipmentTour.js'
 
 export type CreateShipmentRequest = {
     /**
@@ -92,7 +91,6 @@ export type CreateShipmentRequest = {
      * Emission scope for the shipper contract.
      */
     shipperContractEmissionScope?: string
-    tour?: ShipmentTour
     emissions?: ClientProvidedShipmentEmissions
     legs: Array<ShipmentLeg>
 }
