@@ -12,7 +12,6 @@
 
 import type { ContainerLoadType } from './ContainerLoadType.js'
 import type { ContainerSizeType } from './ContainerSizeType.js'
-import type { Mass } from './Mass.js'
 
 /**
  * Details of a shipping container.
@@ -24,5 +23,4 @@ export type ShipmentContainer = {
      */
     teu?: string
     loadType?: ContainerLoadType
-    containerEmptyMass?: Mass
 }

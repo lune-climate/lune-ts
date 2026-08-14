@@ -18,7 +18,6 @@ import type { ShipmentContractType } from './ShipmentContractType.js'
 import type { ShipmentEmissions } from './ShipmentEmissions.js'
 import type { ShipmentLegResponse } from './ShipmentLegResponse.js'
 import type { ShipmentServiceLevel } from './ShipmentServiceLevel.js'
-import type { ShipmentTourResponse } from './ShipmentTourResponse.js'
 import type { Timestamp } from './Timestamp.js'
 
 /**
@@ -106,7 +105,6 @@ export type Shipment = ShipmentEmissions & {
      * Source of the emissions data.
      */
     emissionsSource: 'ecotransit' | 'lune' | 'manual' | NullEnum
-    tour: ShipmentTourResponse | NullEnum
     legs: Array<ShipmentLegResponse>
     createdAt: Timestamp
 }
