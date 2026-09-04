@@ -124,6 +124,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -225,6 +226,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 404: `The specified resource was not found`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
@@ -290,6 +292,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -368,6 +371,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -595,6 +599,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -708,6 +713,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 404: `The specified resource was not found`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
@@ -864,6 +870,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -1001,6 +1008,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 404: `The specified resource was not found`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
@@ -1143,6 +1151,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -1235,6 +1244,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 415: `The payload format is in an unsupported format.`,
                 422: `The input is valid but could not be processed correctly to perform the operation.`,
@@ -1290,6 +1300,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 415: `The payload format is in an unsupported format.`,
                 422: `The input is valid but could not be processed correctly to perform the operation.`,
@@ -1362,6 +1373,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -1403,6 +1415,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -1624,6 +1637,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 404: `The specified resource was not found`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
@@ -1712,6 +1726,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -1880,6 +1895,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
                 415: `The payload format is in an unsupported format.`,
@@ -2080,6 +2096,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 404: `The specified resource was not found`,
                 409: `The request could not be completed due to a conflict with the current state of the target resource or resources`,
                 413: `The request is larger than 100kB.`,
@@ -2141,7 +2158,7 @@ export abstract class EmissionEstimatesService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
-                403: `The API Key is not authorized to perform the operation`,
+                403: `The API Key is not authorized to perform the operation, or the organisation does not have enough credits.`,
                 413: `The request is larger than 100kB.`,
                 429: `Too many requests have been made in a short period of time`,
             },

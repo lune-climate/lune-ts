@@ -17,9 +17,9 @@ export type ShipmentBatchRowSuccess = {
     rowIndex: number
     status: ShipmentBatchRowSuccess.status
     /**
-     * Encoded shipment identifier.
+     * Lune-provided shipment ID, distinct from the user-provided `shipment_id`.
      */
-    shipmentId: string
+    id: string
 }
 
 export namespace ShipmentBatchRowSuccess {
