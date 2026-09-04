@@ -174,6 +174,9 @@ export abstract class ShipmentsService {
      *
      * The request is rejected if more than 200000 shipments are selected.
      *
+     * For an organisation billed by credit, the request is rejected if its
+     * credit balance is below the number of matched shipments.
+     *
      * @param data Request data
      * @param options Additional operation options
      * @returns any OK
@@ -290,6 +293,7 @@ export abstract class ShipmentsService {
             errors: {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
+                403: `The API Key is not authorized to perform the operation`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
