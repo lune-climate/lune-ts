@@ -33,9 +33,11 @@ export namespace LogisticsIntensity {
         KG_PER_TKM = 'kg_per_tkm',
         G_PER_TKM = 'g_per_tkm',
         MG_PER_TKM = 'mg_per_tkm',
+        LBS_PER_TKM = 'lbs_per_tkm',
         T_PER_T = 't_per_t',
         KG_PER_T = 'kg_per_t',
         G_PER_T = 'g_per_t',
         MG_PER_T = 'mg_per_t',
+        LBS_PER_T = 'lbs_per_t',
     }
 }

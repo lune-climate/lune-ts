@@ -11,11 +11,12 @@
 /* eslint-disable */
 
 /**
- * Unit, `t` for tonne, `kg` for kilogram, `g` for gram, `mg` for milligram
+ * Unit, `t` for tonne, `kg` for kilogram, `g` for gram, `mg` for milligram, `lbs` for pound
  */
 export enum EstimateMassUnit {
     MG = 'mg',
     G = 'g',
     KG = 'kg',
     T = 't',
+    LBS = 'lbs',
 }

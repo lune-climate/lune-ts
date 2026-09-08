@@ -11,10 +11,11 @@
 /* eslint-disable */
 
 /**
- * Unit, `t` for tonne, `kg` for kilogram, `g` for gram
+ * Unit, `t` for tonne, `kg` for kilogram, `g` for gram, `lbs` for pound
  */
 export enum MassUnit {
     G = 'g',
     KG = 'kg',
     T = 't',
+    LBS = 'lbs',
 }
