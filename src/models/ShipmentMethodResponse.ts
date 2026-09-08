@@ -13,6 +13,7 @@
 import type { AircraftTypeMethodResponse } from './AircraftTypeMethodResponse.js'
 import type { FlightNumberMethodResponse } from './FlightNumberMethodResponse.js'
 import type { LogisticsSiteMethod } from './LogisticsSiteMethod.js'
+import type { ShipmentParcelMethodResponse } from './ShipmentParcelMethodResponse.js'
 import type { ShipmentRailMethodResponse } from './ShipmentRailMethodResponse.js'
 import type { ShipmentRoadMethodResponse } from './ShipmentRoadMethodResponse.js'
 import type { ShipmentSeaMethodResponse } from './ShipmentSeaMethodResponse.js'
@@ -26,3 +27,4 @@ export type ShipmentMethodResponse =
     | AircraftTypeMethodResponse
     | ShipmentSeaMethodResponse
     | ShipmentRailMethodResponse
+    | ShipmentParcelMethodResponse
