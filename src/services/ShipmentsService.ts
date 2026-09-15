@@ -16,6 +16,7 @@ import type { Shipment } from '../models/Shipment.js'
 import type { ShipmentBatch } from '../models/ShipmentBatch.js'
 import type { ShipmentBatchSource } from '../models/ShipmentBatchSource.js'
 import type { ShipmentModeOfTransport } from '../models/ShipmentModeOfTransport.js'
+import type { ShipmentSummary } from '../models/ShipmentSummary.js'
 
 import { ClientConfig } from '../core/ClientConfig.js'
 import { request as __request } from '../core/request.js'
@@ -415,6 +416,126 @@ export abstract class ShipmentsService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get shipment summary
+     * Returns aggregated information about the shipments matching the given
+     * filters. Accepts the same filters as GET /shipments.
+     *
+     * `shipment_count` is the same as `total` in GET /shipments with `include_totals=true`.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns ShipmentSummary OK
+     */
+    public getShipmentSummary(
+        data?: {
+            /**
+             * Free-text search term used to match shipment IDs in the returned results.
+             *
+             */
+            search?: string
+            /**
+             * Include only shipments with a shipment date on or after this date.
+             *
+             */
+            shipmentDateFrom?: string
+            /**
+             * Include only shipments with a shipment date on or before this date.
+             *
+             */
+            shipmentDateTo?: string
+            /**
+             * Filter shipments by the main carriage mode of transport.
+             *
+             */
+            mainCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Filter shipments by the pre-carriage mode of transport.
+             *
+             */
+            preCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Filter shipments by the post-carriage mode of transport.
+             *
+             */
+            postCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Filter shipments by supplier account IDs.
+             *
+             */
+            supplierId?: Array<string>
+            /**
+             * Filter shipments by shipper account IDs.
+             *
+             */
+            shipperId?: Array<string>
+            /**
+             * Filter shipments by the IDs of the shipment batches they were created from.
+             *
+             */
+            shipmentBatchId?: Array<string>
+            /**
+             * Filter shipments by the IDs of the data sheet uploads their shipment
+             * batches were created from. Values are OR'd: a shipment matches if its
+             * batch came from any of the given data sheets.
+             *
+             */
+            dataSheetId?: Array<string>
+            /**
+             * Filter shipments to only the given IDs. This is the same
+             * Lune-generated unique identifier already returned on each
+             * shipment's `id` field, so it can be matched. Values are OR'd: a
+             * shipment matches if its ID is any of the given values.
+             *
+             */
+            id?: Array<string>
+            /**
+             * Filter shipments by whether they contain legs with flagged emission intensity.
+             *
+             */
+            flagged?: boolean
+            /**
+             * Filter shipments by emissions availability.
+             *
+             */
+            emissions?: 'all' | 'with_co2e' | 'without_co2e'
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): AsyncResult<SuccessResponse<ShipmentSummary>, ApiError> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/shipments/summary',
+            headers: {
+                Accept: 'application/json',
+            },
+            query: {
+                search: data?.search,
+                shipment_date_from: data?.shipmentDateFrom,
+                shipment_date_to: data?.shipmentDateTo,
+                main_carriage_mot: data?.mainCarriageMot,
+                pre_carriage_mot: data?.preCarriageMot,
+                post_carriage_mot: data?.postCarriageMot,
+                supplier_id: data?.supplierId,
+                shipper_id: data?.shipperId,
+                shipment_batch_id: data?.shipmentBatchId,
+                data_sheet_id: data?.dataSheetId,
+                id: data?.id,
+                flagged: data?.flagged,
+                emissions: data?.emissions,
+            },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
