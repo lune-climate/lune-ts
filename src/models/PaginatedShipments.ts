@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { NullEnum } from './NullEnum.js'
 import type { PaginatedBase } from './PaginatedBase.js'
 import type { Shipment } from './Shipment.js'
 import type { ShipmentTotals } from './ShipmentTotals.js'
@@ -28,5 +29,5 @@ export type PaginatedShipments = PaginatedBase & {
      * These totals may lag behind the current shipment data.
      *
      */
-    total: ShipmentTotals | null
+    total: NullEnum | ShipmentTotals
 }
