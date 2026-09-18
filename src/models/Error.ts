@@ -81,5 +81,6 @@ export namespace Error {
         SHIPMENT_BATCH_IDEMPOTENCY_ALREADY_EXISTS = 'shipment_batch_idempotency_already_exists',
         ROUTE_NOT_FOUND = 'route_not_found',
         INSUFFICIENT_CREDITS = 'insufficient_credits',
+        CLIENT_ACCOUNT_MISMATCH = 'client_account_mismatch',
     }
 }

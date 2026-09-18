@@ -20,7 +20,11 @@ import type { AccountIdempotencyKey } from './AccountIdempotencyKey.js'
  *
  * The client account is identfied by the `handle` or `idempotency_key`.
  *
- * The client account is created if it does not exist.
+ * On creating an estimate, the client account is created if it does not exist.
+ *
+ * On updating an estimate, the client account is never created: it must already exist and match the
+ * account that owns the estimate, otherwise the request fails with HTTP 409 Conflict with error code
+ * `client_account_mismatch`.
  *
  * For existing client accounts, if both `handle` and `idempotency_key` are provided,
  * they must be consistent with the existing client account. Other properties are ignored.
