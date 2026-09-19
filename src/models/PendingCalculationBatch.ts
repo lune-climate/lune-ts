@@ -10,31 +10,24 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { ShipmentBatchSource } from './ShipmentBatchSource.js'
-
-export type ProcessingShipmentBatch = {
+export type PendingCalculationBatch = {
     /**
-     * Batch identifier.
+     * Calculation batch identifier.
      */
     id: string
+    status: PendingCalculationBatch.status
     /**
-     * Identifier of the most recently scheduled calculation batch, or
-     * null when no calculation batch has been scheduled.
-     *
+     * Number of shipments requested for calculation.
      */
-    calculationBatchId: string | null
+    shipmentCount: number
     /**
-     * Batch processing status.
+     * Timestamp when the calculation batch was created.
      */
-    status: ProcessingShipmentBatch.status
-    source: ShipmentBatchSource
+    createdAt: string
 }
 
-export namespace ProcessingShipmentBatch {
-    /**
-     * Batch processing status.
-     */
+export namespace PendingCalculationBatch {
     export enum status {
-        PROCESSING = 'processing',
+        PENDING = 'pending',
     }
 }

@@ -9,6 +9,7 @@
 /* istanbul ignore file */
 /* tslint:disable */
 /* eslint-disable */
+import type { CalculationBatch } from '../models/CalculationBatch.js'
 import type { CreateShipmentRequest } from '../models/CreateShipmentRequest.js'
 import type { PaginatedShipmentBatches } from '../models/PaginatedShipmentBatches.js'
 import type { PaginatedShipments } from '../models/PaginatedShipments.js'
@@ -416,6 +417,43 @@ export abstract class ShipmentsService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * Get a shipment calculation batch
+     * Fetch the current state of an asynchronous shipment calculation batch.
+     * While processing continues, `results` has fewer items than
+     * `shipment_count`. Its entries correspond to the first requested
+     * shipments, in request order. Clients can poll this endpoint for progress.
+     *
+     * @param id Calculation batch identifier.
+     * @param options Additional operation options
+     * @returns CalculationBatch OK
+     */
+    public getCalculationBatch(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): AsyncResult<SuccessResponse<CalculationBatch>, ApiError> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/shipments/calculation-batches/{id}',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/json',
+            },
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
