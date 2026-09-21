@@ -10,27 +10,24 @@
 /* tslint:disable */
 /* eslint-disable */
 
-import type { ShipmentBatchRowResult } from './ShipmentBatchRowResult.js'
-import type { ShipmentBatchSource } from './ShipmentBatchSource.js'
+import type { CalculationBatchRowResult } from './CalculationBatchRowResult.js'
 
-export type ProcessedShipmentBatchWithResults = {
+export type ProcessedCalculationBatchWithResults = {
     /**
-     * Batch identifier.
+     * Calculation batch identifier.
      */
     id: string
+    status: ProcessedCalculationBatchWithResults.status
     /**
-     * Identifier of the most recently scheduled calculation batch, or
-     * null when no calculation batch has been scheduled.
-     *
+     * Number of shipments requested for calculation.
      */
-    calculationBatchId: string | null
+    shipmentCount: number
     /**
-     * Batch processing status.
+     * Timestamp when the calculation batch was created.
      */
-    status: ProcessedShipmentBatchWithResults.status
-    source: ShipmentBatchSource
+    createdAt: string
     /**
-     * Number of rows that were processed successfully.
+     * Number of rows processed successfully.
      */
     successCount: number
     /**
@@ -40,13 +37,10 @@ export type ProcessedShipmentBatchWithResults = {
     /**
      * Row-level results in original request order.
      */
-    results: Array<ShipmentBatchRowResult>
+    results: Array<CalculationBatchRowResult>
 }
 
-export namespace ProcessedShipmentBatchWithResults {
-    /**
-     * Batch processing status.
-     */
+export namespace ProcessedCalculationBatchWithResults {
     export enum status {
         PROCESSED = 'processed',
     }

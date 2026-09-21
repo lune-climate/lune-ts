@@ -18,6 +18,12 @@ export type PendingShipmentBatch = {
      */
     id: string
     /**
+     * Identifier of the most recently scheduled calculation batch, or
+     * null when no calculation batch has been scheduled.
+     *
+     */
+    calculationBatchId: string | null
+    /**
      * Batch processing status.
      */
     status: PendingShipmentBatch.status
