@@ -1085,6 +1085,40 @@ export abstract class EmissionEstimatesService {
     }
 
     /**
+     * Get a shipping emission estimate (multi-leg) as a PDF
+     * @param id The estimate's unique identifier
+     * @param options Additional operation options
+     * @returns binary OK
+     */
+    public getMultiLegShippingEstimatePdf(
+        id: string,
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): AsyncResult<SuccessResponse<Blob>, ApiError> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/estimates/shipping/multi-leg/{id}/pdf',
+            path: {
+                id: id,
+            },
+            headers: {
+                Accept: 'application/pdf',
+            },
+            responseType: 'blob',
+            errors: {
+                401: `The API Key is missing or is invalid`,
+                404: `The specified resource was not found`,
+                429: `Too many requests have been made in a short period of time`,
+                503: `The service is temporarily unavailable. You may retry.`,
+            },
+        })
+    }
+
+    /**
      * Create a multi-leg shipping emission estimate based on fuel usage.
      * @param data Request data
      * @param options Additional operation options
