@@ -13,6 +13,8 @@
 /**
  * Calculated emissions for the entire shipment, broken down by
  * carriage phase (pre, main, on) and pollutant.
+ * All CO2e and pollutant values that represent masses, including carriage-phase
+ * breakdowns, are in kilograms.
  *
  */
 export type ShipmentEmissions = {

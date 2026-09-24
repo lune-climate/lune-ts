@@ -22,7 +22,7 @@ export type CreateShipmentRequest = {
     /**
      * Client-side shipment reference identifier.
      */
-    shipmentId?: string
+    shipmentId: string
     /**
      * An identifier you've assigned to this row's counterparty,
      * scoped to the account making the request. A contact may have
