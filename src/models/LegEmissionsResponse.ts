@@ -12,7 +12,7 @@
 
 /**
  * Computed emissions data for a shipment leg.
- * All emission values are in kilograms.
+ * All CO2e and pollutant mass values are in kilograms.
  *
  */
 export type LegEmissionsResponse = {
@@ -29,7 +29,9 @@ export type LegEmissionsResponse = {
      */
     ttw: string | null
     /**
-     * Emission intensity.
+     * Emission intensity in grams of CO2e per tonne-kilometre for transport
+     * legs, or grams of CO2e per tonne for logistics-site legs.
+     *
      */
     intensity: string | null
     /**
