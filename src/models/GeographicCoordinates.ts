@@ -12,11 +12,11 @@
 
 export type GeographicCoordinates = {
     /**
-     * Latitude
+     * Latitude in decimal degrees.
      */
     lat: number
     /**
-     * Longitude
+     * Longitude in decimal degrees.
      */
     lon: number
 }

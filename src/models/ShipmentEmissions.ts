@@ -13,8 +13,9 @@
 /**
  * Calculated emissions for the entire shipment, broken down by
  * carriage phase (pre, main, on) and pollutant.
- * All CO2e and pollutant values that represent masses, including carriage-phase
- * breakdowns, are in kilograms.
+ * All CO2e and pollutant mass values, including carriage-phase breakdowns,
+ * are in kilograms. All emission intensity values are in grams of CO2e per
+ * tonne-kilometre. Latitude and longitude values are in decimal degrees.
  *
  */
 export type ShipmentEmissions = {
