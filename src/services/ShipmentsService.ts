@@ -77,7 +77,14 @@ export abstract class ShipmentsService {
              */
             preCarriageMot?: Array<ShipmentModeOfTransport>
             /**
-             * Filter shipments by the post-carriage mode of transport.
+             * Filter shipments by the on-carriage mode of transport. This parameter takes precedence over
+             * the deprecated `post_carriage_mot` parameter when both are set.
+             *
+             */
+            onCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Deprecated: use `on_carriage_mot` instead. This parameter is used only when
+             * `on_carriage_mot` is not set.
              *
              */
             postCarriageMot?: Array<ShipmentModeOfTransport>
@@ -148,6 +155,7 @@ export abstract class ShipmentsService {
                 shipment_date_to: data?.shipmentDateTo,
                 main_carriage_mot: data?.mainCarriageMot,
                 pre_carriage_mot: data?.preCarriageMot,
+                on_carriage_mot: data?.onCarriageMot,
                 post_carriage_mot: data?.postCarriageMot,
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
@@ -209,7 +217,14 @@ export abstract class ShipmentsService {
              */
             preCarriageMot?: Array<ShipmentModeOfTransport>
             /**
-             * Filter shipments by the post-carriage mode of transport.
+             * Filter shipments by the on-carriage mode of transport. This parameter takes precedence over
+             * the deprecated `post_carriage_mot` parameter when both are set.
+             *
+             */
+            onCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Deprecated: use `on_carriage_mot` instead. This parameter is used only when
+             * `on_carriage_mot` is not set.
              *
              */
             postCarriageMot?: Array<ShipmentModeOfTransport>
@@ -270,6 +285,7 @@ export abstract class ShipmentsService {
                 shipment_date_to: data?.shipmentDateTo,
                 main_carriage_mot: data?.mainCarriageMot,
                 pre_carriage_mot: data?.preCarriageMot,
+                on_carriage_mot: data?.onCarriageMot,
                 post_carriage_mot: data?.postCarriageMot,
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
@@ -332,7 +348,14 @@ export abstract class ShipmentsService {
              */
             preCarriageMot?: Array<ShipmentModeOfTransport>
             /**
-             * Filter shipments by the post-carriage mode of transport.
+             * Filter shipments by the on-carriage mode of transport. This parameter takes precedence over
+             * the deprecated `post_carriage_mot` parameter when both are set.
+             *
+             */
+            onCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Deprecated: use `on_carriage_mot` instead. This parameter is used only when
+             * `on_carriage_mot` is not set.
              *
              */
             postCarriageMot?: Array<ShipmentModeOfTransport>
@@ -404,6 +427,7 @@ export abstract class ShipmentsService {
                 shipment_date_to: data?.shipmentDateTo,
                 main_carriage_mot: data?.mainCarriageMot,
                 pre_carriage_mot: data?.preCarriageMot,
+                on_carriage_mot: data?.onCarriageMot,
                 post_carriage_mot: data?.postCarriageMot,
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
@@ -498,7 +522,14 @@ export abstract class ShipmentsService {
              */
             preCarriageMot?: Array<ShipmentModeOfTransport>
             /**
-             * Filter shipments by the post-carriage mode of transport.
+             * Filter shipments by the on-carriage mode of transport. This parameter takes precedence over
+             * the deprecated `post_carriage_mot` parameter when both are set.
+             *
+             */
+            onCarriageMot?: Array<ShipmentModeOfTransport>
+            /**
+             * Deprecated: use `on_carriage_mot` instead. This parameter is used only when
+             * `on_carriage_mot` is not set.
              *
              */
             postCarriageMot?: Array<ShipmentModeOfTransport>
@@ -562,6 +593,7 @@ export abstract class ShipmentsService {
                 shipment_date_to: data?.shipmentDateTo,
                 main_carriage_mot: data?.mainCarriageMot,
                 pre_carriage_mot: data?.preCarriageMot,
+                on_carriage_mot: data?.onCarriageMot,
                 post_carriage_mot: data?.postCarriageMot,
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
