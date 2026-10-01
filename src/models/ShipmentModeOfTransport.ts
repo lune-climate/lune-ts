@@ -19,4 +19,5 @@ export enum ShipmentModeOfTransport {
     AIR = 'air',
     RAIL = 'rail',
     INLAND_WATERWAY = 'inland_waterway',
+    PARCEL = 'parcel',
 }
