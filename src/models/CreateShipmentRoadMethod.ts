@@ -44,7 +44,7 @@ export type CreateShipmentRoadMethod = {
      */
     emissionStandard?: CreateShipmentRoadEmissionStandard
     /**
-     * The shipment is refrigerated or "dry" (not refrigerated).
+     * The shipment is refrigerated or "dry" (not refrigerated). If omitted, the shipment is not refrigerated.
      *
      */
     refrigerated?: boolean
