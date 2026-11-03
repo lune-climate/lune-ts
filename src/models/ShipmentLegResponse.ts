@@ -35,7 +35,17 @@ export type ShipmentLegResponse = {
     order: number | null
     method: ShipmentMethodResponse
     carriage: CarriageType | NullEnum
+    /**
+     * When the origin has more than one form, the first one in this order is returned: UN/LOCODE,
+     * airport code, address, geographic coordinates.
+     *
+     */
     origin: ShipmentLocation | NullEnum
+    /**
+     * When the destination has more than one form, the first one in this order is returned: UN/LOCODE,
+     * airport code, address, geographic coordinates.
+     *
+     */
     destination: ShipmentLocation | NullEnum
     distance: Distance | NullEnum
     /**
