@@ -25,4 +25,5 @@ export enum EmissionFactorSource {
     EMBER = 'ember',
     CEDA = 'ceda',
     ICCT = 'icct',
+    GHG_PROTOCOL = 'ghg_protocol',
 }
