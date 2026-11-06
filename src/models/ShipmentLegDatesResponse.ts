@@ -33,4 +33,12 @@ export type ShipmentLegDatesResponse = {
      * Actual arrival date or date-time.
      */
     ata: ShipmentDateOrDateTime | NullEnum
+    /**
+     * Date or date-time the carrier collects the goods from the shipper.
+     */
+    pickup: ShipmentDateOrDateTime | NullEnum
+    /**
+     * Date or date-time the carrier hands the goods over to the consignee.
+     */
+    delivery: ShipmentDateOrDateTime | NullEnum
 }

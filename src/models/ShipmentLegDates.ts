@@ -32,4 +32,12 @@ export type ShipmentLegDates = {
      * Actual arrival date or date-time.
      */
     ata?: ShipmentDateOrDateTime
+    /**
+     * Date or date-time the carrier collects the goods from the shipper.
+     */
+    pickup?: ShipmentDateOrDateTime
+    /**
+     * Date or date-time the carrier hands the goods over to the consignee.
+     */
+    delivery?: ShipmentDateOrDateTime
 }
