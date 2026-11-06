@@ -11,6 +11,7 @@
 /* eslint-disable */
 import type { CalculationBatch } from '../models/CalculationBatch.js'
 import type { CreateShipmentRequest } from '../models/CreateShipmentRequest.js'
+import type { PaginatedCalculationBatches } from '../models/PaginatedCalculationBatches.js'
 import type { PaginatedShipmentBatches } from '../models/PaginatedShipmentBatches.js'
 import type { PaginatedShipments } from '../models/PaginatedShipments.js'
 import type { Shipment } from '../models/Shipment.js'
@@ -441,6 +442,105 @@ export abstract class ShipmentsService {
                 400: `The request is invalid. Parameters may be missing or are invalid`,
                 401: `The API Key is missing or is invalid`,
                 403: `The API Key is not authorized to perform the operation`,
+                429: `Too many requests have been made in a short period of time`,
+            },
+        })
+    }
+
+    /**
+     * List shipment calculation batches
+     * Returns paginated calculation history for the current account and accessible
+     * descendant accounts, with the most recently created batches first.
+     *
+     * Different filters are combined with AND. Values within an array filter
+     * are combined with OR. Filters only narrow the accessible batches.
+     *
+     * Each item is a summary without per-shipment results. Use GET
+     * /shipments/calculation-batches/{id} to fetch those results for one batch.
+     *
+     * @param data Request data
+     * @param options Additional operation options
+     * @returns PaginatedCalculationBatches OK
+     */
+    public listCalculationBatches(
+        data?: {
+            /**
+             * Maximum number of resources to return, between 1 and 100.
+             *
+             */
+            limit?: string
+            /**
+             * A cursor for use in pagination.
+             *
+             * The cursor that points to the starting item of the next page of results. If not provided, the first page of results is returned.
+             *
+             */
+            after?: string
+            /**
+             * Filter batches by processing status.
+             */
+            status?: Array<'pending' | 'processing' | 'processed'>
+            /**
+             * Filter by whether a batch has any recorded row failures or a
+             * batch-level error.
+             *
+             * False includes pending batches and processing batches with no failures
+             * recorded so far.
+             *
+             */
+            hasErrors?: boolean
+            /**
+             * Filter by the accounts that requested the calculations. Matches these accounts
+             * exactly, without adding their descendants.
+             *
+             * Inaccessible accounts contribute no results.
+             *
+             */
+            accountId?: Array<string>
+            /**
+             * Include batches created at or after this timestamp.
+             *
+             */
+            createdAtFrom?: string
+            /**
+             * Include batches created before this timestamp.
+             *
+             */
+            createdAtTo?: string
+            /**
+             * Include batches that requested calculation for any of these
+             * Lune-generated shipment IDs. These are not customer-supplied
+             * `shipment_id` values.
+             *
+             */
+            luneShipmentId?: Array<string>
+        },
+        options?: {
+            /**
+             * Account Id to be used to perform the API call
+             */
+            accountId?: string
+        },
+    ): AsyncResult<SuccessResponse<PaginatedCalculationBatches>, ApiError> {
+        return __request(this.client, this.config, options || {}, {
+            method: 'GET',
+            url: '/shipments/calculation-batches',
+            headers: {
+                Accept: 'application/json',
+            },
+            query: {
+                limit: data?.limit,
+                after: data?.after,
+                status: data?.status,
+                has_errors: data?.hasErrors,
+                account_id: data?.accountId,
+                created_at_from: data?.createdAtFrom,
+                created_at_to: data?.createdAtTo,
+                lune_shipment_id: data?.luneShipmentId,
+            },
+            errors: {
+                400: `The request is invalid. Parameters may be missing or are invalid`,
+                401: `The API Key is missing or is invalid`,
                 429: `Too many requests have been made in a short period of time`,
             },
         })
