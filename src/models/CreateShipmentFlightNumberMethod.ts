@@ -25,4 +25,8 @@ export type CreateShipmentFlightNumberMethod = {
      */
     departureOn: string
     aircraftConfiguration?: AircraftConfiguration
+    /**
+     * IATA airline code of the carrier.
+     */
+    airlineCode?: string
 }
