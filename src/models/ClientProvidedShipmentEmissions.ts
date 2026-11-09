@@ -34,4 +34,88 @@ export type ClientProvidedShipmentEmissions = {
      * Total distance in kilometres.
      */
     distanceKm: string
+    /**
+     * Pre-carriage total emissions (kg CO2e).
+     */
+    preCarriageTotal?: string | null
+    /**
+     * Pre-carriage well-to-tank emissions (kg CO2e).
+     */
+    preCarriageWtt?: string | null
+    /**
+     * Pre-carriage tank-to-wheel emissions (kg CO2e).
+     */
+    preCarriageTtw?: string | null
+    /**
+     * Main carriage total emissions (kg CO2e).
+     */
+    mainCarriageTotal?: string | null
+    /**
+     * Main carriage well-to-tank emissions (kg CO2e).
+     */
+    mainCarriageWtt?: string | null
+    /**
+     * Main carriage tank-to-wheel emissions (kg CO2e).
+     */
+    mainCarriageTtw?: string | null
+    /**
+     * On-carriage total emissions (kg CO2e).
+     */
+    onCarriageTotal?: string | null
+    /**
+     * On-carriage well-to-tank emissions (kg CO2e).
+     */
+    onCarriageWtt?: string | null
+    /**
+     * On-carriage tank-to-wheel emissions (kg CO2e).
+     */
+    onCarriageTtw?: string | null
+    /**
+     * Emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensity?: string | null
+    /**
+     * Well-to-tank emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityWtt?: string | null
+    /**
+     * Tank-to-wheel emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityTtw?: string | null
+    /**
+     * Pre-carriage emission intensity (g CO2e per tonne-kilometre).
+     */
+    preCarriageIntensity?: string | null
+    /**
+     * Pre-carriage well-to-tank emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityPreCarriageWtt?: string | null
+    /**
+     * Pre-carriage tank-to-wheel emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityPreCarriageTtw?: string | null
+    /**
+     * Main carriage emission intensity (g CO2e per tonne-kilometre).
+     */
+    mainCarriageIntensity?: string | null
+    /**
+     * Main carriage well-to-tank emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityMainCarriageWtt?: string | null
+    /**
+     * Main carriage tank-to-wheel emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityMainCarriageTtw?: string | null
+    /**
+     * On-carriage emission intensity (g CO2e per tonne-kilometre).
+     */
+    onCarriageIntensity?: string | null
+    /**
+     * On-carriage well-to-tank emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityOnCarriageWtt?: string | null
+    /**
+     * On-carriage tank-to-wheel emission intensity (g CO2e per tonne-kilometre).
+     */
+    intensityOnCarriageTtw?: string | null
 }

@@ -15,6 +15,10 @@ export type CreateShipmentAircraftTypeMethod = {
      * Aircraft type ICAO code.
      */
     aircraftType: CreateShipmentAircraftTypeMethod.aircraft_type
+    /**
+     * IATA airline code of the carrier.
+     */
+    airlineCode?: string
 }
 
 export namespace CreateShipmentAircraftTypeMethod {

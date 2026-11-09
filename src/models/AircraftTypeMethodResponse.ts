@@ -12,4 +12,9 @@
 
 import type { AircraftTypeMethod } from './AircraftTypeMethod.js'
 
-export type AircraftTypeMethodResponse = AircraftTypeMethod
+export type AircraftTypeMethodResponse = AircraftTypeMethod & {
+    /**
+     * IATA airline code of the carrier.
+     */
+    airlineCode: string | null
+}

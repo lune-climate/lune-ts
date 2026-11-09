@@ -30,4 +30,8 @@ export type ShipmentContainerResponse = {
     teu: string | null
     loadType: ContainerLoadType | NullEnum
     cargoType: CargoType | NullEnum
+    /**
+     * Cargo mass per TEU (tonnes).
+     */
+    tonnesPerTeu: string | null
 }

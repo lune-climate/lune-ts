@@ -91,6 +91,18 @@ export type CreateShipmentRequest = {
      * Emission scope for the shipper contract.
      */
     shipperContractEmissionScope?: string
+    /**
+     * Client-side identifier for the customer, which may differ from the supplier and shipper.
+     */
+    customerId?: string
+    /**
+     * Name of the customer, which may differ from the supplier and shipper.
+     */
+    customerName?: string
+    /**
+     * Free-form additional information about the shipment.
+     */
+    additionalInfo?: string
     emissions?: ClientProvidedShipmentEmissions
     legs: Array<ShipmentLeg>
 }

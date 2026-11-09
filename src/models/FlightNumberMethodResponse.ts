@@ -24,4 +24,8 @@ export type FlightNumberMethodResponse = {
      */
     departureOn: string | null
     aircraftConfiguration: AircraftConfiguration | NullEnum
+    /**
+     * IATA airline code of the carrier.
+     */
+    airlineCode: string | null
 }

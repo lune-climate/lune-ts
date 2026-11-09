@@ -102,6 +102,18 @@ export type Shipment = ShipmentEmissions & {
      */
     shipperContractEmissionScope: string | null
     /**
+     * Client-side identifier for the customer, which may differ from the supplier and shipper.
+     */
+    customerId: string | null
+    /**
+     * Name of the customer, which may differ from the supplier and shipper.
+     */
+    customerName: string | null
+    /**
+     * Free-form additional information about the shipment.
+     */
+    additionalInfo: string | null
+    /**
      * Source of the emissions data.
      */
     emissionsSource: 'ecotransit' | 'lune' | 'manual' | NullEnum

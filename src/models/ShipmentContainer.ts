@@ -23,4 +23,12 @@ export type ShipmentContainer = {
      */
     teu?: string
     loadType?: ContainerLoadType
+    /**
+     * Container numbers on this leg, for example `MSCU1234567`.
+     */
+    numbers?: Array<string>
+    /**
+     * Cargo mass per TEU (tonnes).
+     */
+    tonnesPerTeu?: string
 }
