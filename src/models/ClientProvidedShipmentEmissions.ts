@@ -31,9 +31,11 @@ export type ClientProvidedShipmentEmissions = {
      */
     ttw?: string | null
     /**
-     * Total distance in kilometres.
+     * Total distance in kilometres. Optional when all legs are parcel;
+     * required otherwise during batch processing.
+     *
      */
-    distanceKm: string
+    distanceKm?: string
     /**
      * Pre-carriage total emissions (kg CO2e).
      */
