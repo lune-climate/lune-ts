@@ -101,9 +101,11 @@ export type ClientProvidedLegEmissions = {
      */
     fuelConsumptionL?: string | null
     /**
-     * Distance (km).
+     * Distance (km). Optional for parcel legs; required for other
+     * methods during batch processing.
+     *
      */
-    distanceKm: string
+    distanceKm?: string
     /**
      * Transport activity (tonne-kilometres).
      */
