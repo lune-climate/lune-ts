@@ -12,7 +12,7 @@
 
 /**
  * A subset of simple transport methods available for shipment legs.
- * Covers rail and air transport. Road and sea transport should use their
+ * Covers rail, air and parcel transport. Road and sea transport should use their
  * dedicated shipment method schemas instead.
  *
  * Note: Inland waterway transport is not currently supported when
@@ -27,6 +27,12 @@
  * * `passenger_plane`: Belly freight only.
  * * `plane`: Unknown freight capacity (weighted average).
  *
+ * # Parcel
+ * * `parcel`: Shipments with no known underlying mode of transport.
+ * Requires reported well-to-wheel emissions at shipment level and on each parcel leg,
+ * origin and destination country or port codes, mass, and pickup date.
+ * Distance is optional. Emissions cannot be calculated for parcel.
+ *
  */
 export enum SimpleShipmentMethod {
     DIESEL_FREIGHT_TRAIN = 'diesel_freight_train',
@@ -35,4 +41,5 @@ export enum SimpleShipmentMethod {
     PLANE = 'plane',
     PASSENGER_PLANE = 'passenger_plane',
     CARGO_PLANE = 'cargo_plane',
+    PARCEL = 'parcel',
 }
