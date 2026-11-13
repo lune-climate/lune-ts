@@ -112,6 +112,11 @@ export abstract class ShipmentsService {
              */
             dataSheetId?: Array<string>
             /**
+             * Filter shipments by the IDs of the tags applied to them.
+             *
+             */
+            tagId?: Array<string>
+            /**
              * Filter shipments to only the given IDs. This is the same
              * Lune-generated unique identifier already returned on each
              * shipment's `id` field, so it can be matched. Values are OR'd: a
@@ -162,6 +167,7 @@ export abstract class ShipmentsService {
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
                 data_sheet_id: data?.dataSheetId,
+                tag_id: data?.tagId,
                 id: data?.id,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
@@ -252,6 +258,11 @@ export abstract class ShipmentsService {
              */
             dataSheetId?: Array<string>
             /**
+             * Filter shipments by the IDs of the tags applied to them.
+             *
+             */
+            tagId?: Array<string>
+            /**
              * Filter shipments to only the given IDs. This is the same
              * Lune-generated unique identifier already returned on each
              * shipment's `id` field, so it can be matched. Values are OR'd: a
@@ -292,6 +303,7 @@ export abstract class ShipmentsService {
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
                 data_sheet_id: data?.dataSheetId,
+                tag_id: data?.tagId,
                 id: data?.id,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
@@ -383,6 +395,11 @@ export abstract class ShipmentsService {
              */
             dataSheetId?: Array<string>
             /**
+             * Filter shipments by the IDs of the tags applied to them.
+             *
+             */
+            tagId?: Array<string>
+            /**
              * Filter shipments to only the given IDs. This is the same
              * Lune-generated unique identifier already returned on each
              * shipment's `id` field, so it can be matched. Values are OR'd: a
@@ -434,6 +451,7 @@ export abstract class ShipmentsService {
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
                 data_sheet_id: data?.dataSheetId,
+                tag_id: data?.tagId,
                 id: data?.id,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
@@ -656,6 +674,11 @@ export abstract class ShipmentsService {
              */
             dataSheetId?: Array<string>
             /**
+             * Filter shipments by the IDs of the tags applied to them.
+             *
+             */
+            tagId?: Array<string>
+            /**
              * Filter shipments to only the given IDs. This is the same
              * Lune-generated unique identifier already returned on each
              * shipment's `id` field, so it can be matched. Values are OR'd: a
@@ -699,6 +722,7 @@ export abstract class ShipmentsService {
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
                 data_sheet_id: data?.dataSheetId,
+                tag_id: data?.tagId,
                 id: data?.id,
                 flagged: data?.flagged,
                 emissions: data?.emissions,
