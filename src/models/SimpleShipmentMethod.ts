@@ -30,7 +30,7 @@
  * # Parcel
  * * `parcel`: Shipments with no known underlying mode of transport.
  * Requires reported well-to-wheel emissions at shipment level and on each parcel leg,
- * origin and destination country or port codes, mass, and pickup date.
+ * origin and destination country or port codes, mass, and a pickup date, ATD or ETD.
  * Distance is optional. Emissions cannot be calculated for parcel.
  *
  */
