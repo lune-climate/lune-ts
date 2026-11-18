@@ -105,6 +105,17 @@ export abstract class ShipmentsService {
              */
             shipmentBatchId?: Array<string>
             /**
+             * Filter shipments to those referenced by a single calculation batch.
+             * Supply at most one batch ID.
+             *
+             * - Includes shipments regardless of batch status or calculation outcome.
+             * - Returns current shipment versions and excludes deleted shipments.
+             * - Combines with other filters using AND.
+             * - Requires access to the supplied batch and each returned shipment.
+             *
+             */
+            calculationBatchId?: Array<string>
+            /**
              * Filter shipments by the IDs of the data sheet uploads their shipment
              * batches were created from. Values are OR'd: a shipment matches if its
              * batch came from any of the given data sheets.
@@ -166,6 +177,7 @@ export abstract class ShipmentsService {
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
+                calculation_batch_id: data?.calculationBatchId,
                 data_sheet_id: data?.dataSheetId,
                 tag_id: data?.tagId,
                 id: data?.id,
@@ -251,6 +263,17 @@ export abstract class ShipmentsService {
              */
             shipmentBatchId?: Array<string>
             /**
+             * Filter shipments to those referenced by a single calculation batch.
+             * Supply at most one batch ID.
+             *
+             * - Includes shipments regardless of batch status or calculation outcome.
+             * - Returns current shipment versions and excludes deleted shipments.
+             * - Combines with other filters using AND.
+             * - Requires access to the supplied batch and each returned shipment.
+             *
+             */
+            calculationBatchId?: Array<string>
+            /**
              * Filter shipments by the IDs of the data sheet uploads their shipment
              * batches were created from. Values are OR'd: a shipment matches if its
              * batch came from any of the given data sheets.
@@ -302,6 +325,7 @@ export abstract class ShipmentsService {
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
+                calculation_batch_id: data?.calculationBatchId,
                 data_sheet_id: data?.dataSheetId,
                 tag_id: data?.tagId,
                 id: data?.id,
@@ -388,6 +412,17 @@ export abstract class ShipmentsService {
              */
             shipmentBatchId?: Array<string>
             /**
+             * Filter shipments to those referenced by a single calculation batch.
+             * Supply at most one batch ID.
+             *
+             * - Includes shipments regardless of batch status or calculation outcome.
+             * - Returns current shipment versions and excludes deleted shipments.
+             * - Combines with other filters using AND.
+             * - Requires access to the supplied batch and each returned shipment.
+             *
+             */
+            calculationBatchId?: Array<string>
+            /**
              * Filter shipments by the IDs of the data sheet uploads their shipment
              * batches were created from. Values are OR'd: a shipment matches if its
              * batch came from any of the given data sheets.
@@ -450,6 +485,7 @@ export abstract class ShipmentsService {
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
+                calculation_batch_id: data?.calculationBatchId,
                 data_sheet_id: data?.dataSheetId,
                 tag_id: data?.tagId,
                 id: data?.id,
@@ -667,6 +703,17 @@ export abstract class ShipmentsService {
              */
             shipmentBatchId?: Array<string>
             /**
+             * Filter shipments to those referenced by a single calculation batch.
+             * Supply at most one batch ID.
+             *
+             * - Includes shipments regardless of batch status or calculation outcome.
+             * - Returns current shipment versions and excludes deleted shipments.
+             * - Combines with other filters using AND.
+             * - Requires access to the supplied batch and each returned shipment.
+             *
+             */
+            calculationBatchId?: Array<string>
+            /**
              * Filter shipments by the IDs of the data sheet uploads their shipment
              * batches were created from. Values are OR'd: a shipment matches if its
              * batch came from any of the given data sheets.
@@ -721,6 +768,7 @@ export abstract class ShipmentsService {
                 supplier_id: data?.supplierId,
                 shipper_id: data?.shipperId,
                 shipment_batch_id: data?.shipmentBatchId,
+                calculation_batch_id: data?.calculationBatchId,
                 data_sheet_id: data?.dataSheetId,
                 tag_id: data?.tagId,
                 id: data?.id,
