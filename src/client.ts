@@ -529,3 +529,6 @@ export { ShipmentsService } from './services/ShipmentsService.js'
 export { SustainabilityPageService } from './services/SustainabilityPageService.js'
 export { WebhookRequestService } from './services/WebhookRequestService.js'
 export { WebhooksService } from './services/WebhooksService.js'
+
+export type { ApiError } from './core/ApiError.js'
+export type { SuccessResponse, SuccessResponseWithMeta } from './core/SuccessResponse.js'
