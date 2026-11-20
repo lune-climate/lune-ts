@@ -30,6 +30,10 @@ move-client:
 
 # Recreate the final client file. At this point, move the generated luneClient
 build-final-client: move-client
+	printf '%s\n' '' \
+		"export type { ApiError } from './core/ApiError.js'" \
+		"export type { SuccessResponse, SuccessResponseWithMeta } from './core/SuccessResponse.js'" \
+		>> src/client.ts
 
 # Full build of the client from the openapi schema. Use this whenever the openapi schema is updated
 build-from-schema: install api-schema build-final-client fix-linting build
