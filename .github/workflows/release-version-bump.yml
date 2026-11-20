@@ -1,0 +1,76 @@
+name: Release package version change
+
+on:
+  push:
+    branches: [master]
+    paths: [package.json]
+
+permissions: {}
+
+jobs:
+  release:
+    if: github.event.created == false && github.event.deleted == false
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    outputs:
+      tag: ${{ steps.release.outputs.tag }}
+    steps:
+      - name: Create version tag and GitHub release
+        id: release
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.event.after }}
+        run: |
+          package_version() {
+            gh api "repos/$GH_REPO/contents/package.json" -X GET -f ref="$1" --jq .content |
+              base64 -d | jq -er '.version | strings'
+          }
+
+          previous_version=$(package_version "$BEFORE_SHA")
+          version=$(package_version "$AFTER_SHA")
+          if [[ "$version" == "$previous_version" ]]; then
+            printf 'Package version is still %s.\n' "$version"
+            exit 0
+          fi
+          if [[ ! "$version" =~ ^(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)\.(0|[1-9][0-9]*)$ ]]; then
+            printf 'Expected a stable package version in package.json.\n' >&2
+            exit 1
+          fi
+          tag="v$version"
+
+          if ! tag_sha=$(gh api "repos/$GH_REPO/commits/tags/$tag" --jq .sha); then
+            tag_sha=$(gh api "repos/$GH_REPO/git/refs" -f ref="refs/tags/$tag" -f sha="$AFTER_SHA" --jq .object.sha)
+          fi
+          if [[ "$tag_sha" != "$AFTER_SHA" ]]; then
+            printf 'Tag %s already points to %s instead of pushed commit %s.\n' "$tag" "$tag_sha" "$AFTER_SHA" >&2
+            exit 1
+          fi
+
+          if release_is_draft=$(gh release view "$tag" --json isDraft --jq .isDraft 2>/dev/null); then
+            if [[ "$release_is_draft" != false ]]; then
+              printf 'Release %s already exists as a draft.\n' "$tag" >&2
+              exit 1
+            fi
+          else
+            gh release create "$tag" --verify-tag --title "$tag" --generate-notes
+          fi
+          printf 'tag=%s\n' "$tag" >> "$GITHUB_OUTPUT"
+
+  dispatch-publish:
+    needs: release
+    if: needs.release.outputs.tag != ''
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Start npm staging from the release tag
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ needs.release.outputs.tag }}
+        # Tags created with GITHUB_TOKEN do not trigger push workflows.
+        run: gh workflow run publish.yml --ref "$RELEASE_TAG"

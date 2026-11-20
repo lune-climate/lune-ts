@@ -111,8 +111,8 @@ An API change was released to Production. You want to start using it via the lun
    
    Wait for job to finish.
 5. ts-lune repo: 4. should create a PR that bumps the ts-client to a new version. Approve and merge this.
-6. ts-lune repo: Create and push a release tag matching the package version, for example `v3.9.1`,
-   on the commit merged in step 5. This triggers the **Publish new version** workflow.
+6. GitHub Actions: Wait for **Publish new version** to start. Merging the version bump PR into
+   `master` automatically creates the version tag and GitHub release and starts that workflow.
 7. GitHub Actions: Approve the `npm-publish` environment deployment in the **Publish new version**
    workflow. The workflow builds the package without publishing credentials and stages the
    resulting tarball on npm using trusted publishing.
