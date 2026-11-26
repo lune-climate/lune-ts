@@ -138,4 +138,10 @@ export type LegEmissionsResponse = {
      * Year of the emission factor.
      */
     emissionFactorYear: number | null
+    /**
+     * Whether the intensity is outside the plausible range for the leg's mode of
+     * transport, which usually means wrong input data.
+     *
+     */
+    isFlaggedIntensity: boolean
 }
