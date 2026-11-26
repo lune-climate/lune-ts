@@ -348,7 +348,7 @@ export abstract class ShipmentsService {
      * Emissions calculation happens asynchronously: this only enqueues it.
      * Returns the identifiers of the calculation batches created.
      *
-     * The request is rejected if more than 200000 shipments are selected.
+     * The request is rejected if more than 600000 shipments are selected.
      *
      * For an organisation billed by credit, the request is rejected if its
      * credit balance is below the number of matched shipments.
