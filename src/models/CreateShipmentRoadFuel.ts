@@ -21,5 +21,6 @@ export enum CreateShipmentRoadFuel {
     LPG = 'lpg',
     CNG = 'cng',
     LNG = 'lng',
+    ELECTRICITY = 'electricity',
     AUTO_DETECT = 'auto_detect',
 }

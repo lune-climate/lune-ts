@@ -10,6 +10,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
+import type { ElectricRoadFuel } from './ElectricRoadFuel.js'
 import type { FuelConsumption } from './FuelConsumption.js'
 import type { Mass } from './Mass.js'
 import type { NullEnum } from './NullEnum.js'
@@ -21,7 +22,7 @@ import type { RoadVehicleType } from './RoadVehicleType.js'
 
 export type ShipmentRoadMethodResponse = {
     vehicleType: RoadVehicleType | 'truck'
-    fuel: RoadFuel | NullEnum
+    fuel: RoadFuel | ElectricRoadFuel | NullEnum
     gradient: RoadGradient | NullEnum
     situation: RoadSituation | NullEnum
     emissionStandard: RoadEmissionStandard | NullEnum
